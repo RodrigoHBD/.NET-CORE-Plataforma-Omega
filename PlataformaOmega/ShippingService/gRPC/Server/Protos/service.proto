@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "ShippingService.gRPC.Server.Protos";
+
+service Shipping {
+	rpc ShipPackage (GrpcShipPackageRequest) returns (GrpcStatusResponse);
+	rpc SetPackagePosted (GrpcUpdatePackageRequest) returns (GrpcStatusResponse);
+	rpc SetPackageDelivered (GrpcUpdatePackageRequest) returns (GrpcStatusResponse);
+}
+
+// requests
+message GrpcShipPackageRequest {
+	string Name = 1;
+	string TrackingCode = 2;
+	string ProductId = 3;
+}
+
+message GrpcUpdatePackageRequest {
+	string id = 1;
+}
+
+//responses
+message GrpcStatusResponse {
+	bool ok = 1;
+	string message = 2;
+}

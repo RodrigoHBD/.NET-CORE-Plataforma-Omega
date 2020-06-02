@@ -7,8 +7,6 @@ C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductServic
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\ProductService.RazorTargetAssemblyInfo.cache
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\staticwebassets\ProductService.StaticWebAssets.Manifest.cache
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\staticwebassets\ProductService.StaticWebAssets.xml
-C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\ProductService.csproj.CoreCompileInputs.cache
-C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\ProductService.MvcApplicationPartsAssemblyInfo.cache
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\ProductService.exe
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\ProductService.deps.json
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\ProductService.runtimeconfig.json
@@ -26,3 +24,9 @@ C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductServic
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\ProductService.dll
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\ProductService.pdb
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\ProductService.genruntimeconfig.cache
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\DnsClient.dll
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\SharpCompress.dll

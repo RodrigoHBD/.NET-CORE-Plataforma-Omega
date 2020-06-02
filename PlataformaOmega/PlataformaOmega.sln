@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "ProductService\ProductService.csproj", "{06FD5D8D-094D-41F4-B6FB-E466F90FBE88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService", "ProductService\ProductService.csproj", "{06FD5D8D-094D-41F4-B6FB-E466F90FBE88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShippingService", "ShippingService\ShippingService.csproj", "{BE85AEE8-BA01-447B-96CE-84ADF2CC5E21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShippingService", "ShippingService\ShippingService.csproj", "{BE85AEE8-BA01-447B-96CE-84ADF2CC5E21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesService", "SalesService\SalesService.csproj", "{5FADF4D7-B6CF-4936-BBBC-00BA9AB96B4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesService", "SalesService\SalesService.csproj", "{5FADF4D7-B6CF-4936-BBBC-00BA9AB96B4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

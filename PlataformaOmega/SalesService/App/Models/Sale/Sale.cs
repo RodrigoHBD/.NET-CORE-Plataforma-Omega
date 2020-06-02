@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,12 +9,16 @@ namespace SalesService.App.Models.Sale
     public class Sale
     {
         //This is actually the ObjectId
-        public string Id { get; set; }
+        public ObjectId Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public string ProductId { get; set; }
         public SaleStatus Status { get; set; }
         public SaleInventory Inventory { get; set; }
         public SalePlataform Plataform { get; set; }
+        public Sale()
+        {
+            CreatedAt = DateTime.UtcNow;
+        }
     }
 
     public class SaleInventory
@@ -28,7 +33,8 @@ namespace SalesService.App.Models.Sale
         B2W,
         Americanas,
         MercadoLivre,
-        LeroyMerlin
+        LeroyMerlin,
+        Invalid
     }
 
     public enum SaleStatus

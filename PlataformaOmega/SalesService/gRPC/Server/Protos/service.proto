@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "SalesService.gRPC.Server.Protos";
+
+service Sale {
+	rpc RegisterSale (GrpcRegisteSaleRequest) returns (GrpcStatusResponse);
+}
+
+//requests
+message GrpcRegisteSaleRequest {
+	string productId = 1;
+	double totalSaleValue = 2;
+	int32 quantitySold = 3;
+	string plataform = 4;
+}
+
+//responses
+message GrpcStatusResponse {
+	bool ok = 1;
+	string message = 2;
+}

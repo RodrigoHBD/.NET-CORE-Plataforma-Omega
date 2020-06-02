@@ -20,9 +20,8 @@ C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingServi
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\bin\Debug\netcoreapp3.1\Grpc.Net.Client.dll
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\bin\Debug\netcoreapp3.1\Grpc.Net.ClientFactory.dll
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\bin\Debug\netcoreapp3.1\Grpc.Net.Common.dll
-C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\obj\Debug\netcoreapp3.1\ShippingService.csproj.CoreCompileInputs.cache
-C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\obj\Debug\netcoreapp3.1\ShippingService.MvcApplicationPartsAssemblyInfo.cache
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\obj\Debug\netcoreapp3.1\ShippingService.csproj.CopyComplete
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\obj\Debug\netcoreapp3.1\ShippingService.dll
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\obj\Debug\netcoreapp3.1\ShippingService.pdb
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\obj\Debug\netcoreapp3.1\ShippingService.genruntimeconfig.cache
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ShippingService\bin\Debug\netcoreapp3.1\Connected Services\Provedor do Microsoft WCF Web Service Reference\ConnectedService.json

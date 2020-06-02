@@ -18,7 +18,7 @@ namespace SalesService.App.Entities.SaleDataFields
 
                 if (!quantitySoldIsGreaterThanZero)
                 {
-                    throw new ValidationException("Quantidade vendidap", "");
+                    throw new ValidationException("Quantidade vendida mão pode ser zero", "");
                 }
                 if (!saleTotalValueIsGreaterThanZero)
                 {

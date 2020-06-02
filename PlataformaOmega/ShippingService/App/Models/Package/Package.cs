@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +9,8 @@ namespace ShippingService.App.Models
 {
     public class Package
     {
+        [BsonId]
+        public ObjectId Id { get; set; }
         public string Name { get; set; }
         public string ProductId { get; set; }
         public string SaleId { get; set; }
@@ -26,6 +30,7 @@ namespace ShippingService.App.Models
     {
         public bool HasBeenDelivered { get; set; }
         public bool HasBeenPosted { get; set; }
+        public string Message { get; set; }
         public PackageStatus()
         {
             HasBeenDelivered = false;

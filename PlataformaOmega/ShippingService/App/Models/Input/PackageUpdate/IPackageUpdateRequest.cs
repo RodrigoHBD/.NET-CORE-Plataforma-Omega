@@ -9,6 +9,7 @@ namespace ShippingService.App.Models.Input
     {
         public bool SetPosted { get; }
         public bool SetDelivered { get; }
+        public string StatusMessage { get; }
         public DateTime PostedDate { get; }
         public DateTime DeliveredDate { get; }
     }

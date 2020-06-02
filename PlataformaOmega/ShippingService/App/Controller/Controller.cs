@@ -53,5 +53,19 @@ namespace ShippingService.App.Controller
             }
         }
 
+        public static async Task<GrpcStatusResponse> WatchPackage(GrpcWatchPackageRequest grpcRequest)
+        {
+            try
+            {
+                var id = GrpcWatchPackageRequestAdapter.GetId(grpcRequest);
+                await UseCaseOperator.WatchPackage(id);
+                return Presenter.PresentStatusResponse(true);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

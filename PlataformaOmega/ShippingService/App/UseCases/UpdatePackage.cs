@@ -1,4 +1,5 @@
-﻿using ShippingService.App.Models;
+﻿using ShippingService.App.Boundries;
+using ShippingService.App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace ShippingService.App.UseCases
         {
             try
             {
-                return;
+                await DAO.UpdatePackage(id, update);
             }
             catch(Exception e)
             {

@@ -6,6 +6,7 @@ service Shipping {
 	rpc ShipPackage (GrpcShipPackageRequest) returns (GrpcStatusResponse);
 	rpc SetPackagePosted (GrpcUpdatePackageRequest) returns (GrpcStatusResponse);
 	rpc SetPackageDelivered (GrpcUpdatePackageRequest) returns (GrpcStatusResponse);
+	rpc WatchPackage (GrpcWatchPackageRequest) returns (GrpcStatusResponse);
 }
 
 // requests
@@ -16,6 +17,10 @@ message GrpcShipPackageRequest {
 }
 
 message GrpcUpdatePackageRequest {
+	string id = 1;
+}
+
+message GrpcWatchPackageRequest {
 	string id = 1;
 }
 

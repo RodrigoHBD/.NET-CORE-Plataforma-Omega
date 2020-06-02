@@ -9,6 +9,7 @@ namespace ShippingService.App.Models
     {
         public bool SetPosted { get; set; }
         public bool SetDelivered { get; set; }
+        public string StatusMessage { get; set; }
         public DateTime UpdateTime { get; set; }
         public PackageUpdate()
         {

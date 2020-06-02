@@ -1,4 +1,6 @@
-﻿using ShippingService.App.Models;
+﻿using ShippingService.App.Boundries;
+using ShippingService.App.CustomExceptions;
+using ShippingService.App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,12 @@ namespace ShippingService.App.Entities
         {
             try
             {
+                var idExist = await DAO.CheckIdPackageIdExist(id);
 
+                if(!idExist)
+                {
+                    throw new ValidationException("Id", "Esse id não existe");
+                }
             }
             catch (Exception e)
             {

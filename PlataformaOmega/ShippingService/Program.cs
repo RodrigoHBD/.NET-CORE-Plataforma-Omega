@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using ShippingService.App;
 
 namespace ShippingService
 {
@@ -12,6 +13,7 @@ namespace ShippingService
     {
         public static void Main(string[] args)
         {
+            AppInitializer.InitializeAsync().Wait();
             CreateHostBuilder(args).Build().Run();
         }
 

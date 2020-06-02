@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace ShippingService.App
 {
-    public class Correios
+    interface IRoutine
     {
+        public int CallbackIntervalInMilliseconds { get; }
+        public void Callback(Object data);
     }
 }

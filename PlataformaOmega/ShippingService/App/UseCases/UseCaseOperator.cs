@@ -70,6 +70,26 @@ namespace ShippingService.App.UseCases
             }
         }
 
+        public static async Task SetPackageStatusMessage(string id, string message)
+        {
+
+        }
+
+        public static async Task WatchPackage(string id)
+        {
+            try
+            {
+                await PackageEntity.ValidatePackageId(id);
+                var package = await GetPackage.Execute(id);
+                var packageWatcher = CreateNewPackageWatcher.Execute(package);
+                await RegisterPackageWatcher.Execute(packageWatcher);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public static async Task HardDeletePackage(string id)
         {
             try

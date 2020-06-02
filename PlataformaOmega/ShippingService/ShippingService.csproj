@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="App\Entities\Package\DataFields\" />
     <Folder Include="App\Models\Output\" />
     <Folder Include="gRPC\Client\" />
   </ItemGroup>

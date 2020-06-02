@@ -7,22 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Correios
+namespace CorreioRastreamentoLibrary
 {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://resource.webservice.correios.com.br/", ConfigurationName="Correios.Service")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://resource.webservice.correios.com.br/", ConfigurationName="CorreioRastreamentoLibrary.Service")]
     public interface Service
     {
         
         [System.ServiceModel.OperationContractAttribute(Action="buscaEventos", ReplyAction="http://resource.webservice.correios.com.br/Service/buscaEventosResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Correios.buscaEventosResponse> buscaEventosAsync(Correios.buscaEventosRequest request);
+        System.Threading.Tasks.Task<CorreioRastreamentoLibrary.buscaEventosResponse> buscaEventosAsync(CorreioRastreamentoLibrary.buscaEventosRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="buscaEventosLista", ReplyAction="http://resource.webservice.correios.com.br/Service/buscaEventosListaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<Correios.buscaEventosListaResponse> buscaEventosListaAsync(Correios.buscaEventosListaRequest request);
+        System.Threading.Tasks.Task<CorreioRastreamentoLibrary.buscaEventosListaResponse> buscaEventosListaAsync(CorreioRastreamentoLibrary.buscaEventosListaRequest request);
     }
     
     /// <remarks/>
@@ -838,13 +838,13 @@ namespace Correios
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.webservice.correios.com.br/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Correios.sroxml @return;
+        public CorreioRastreamentoLibrary.sroxml @return;
         
         public buscaEventosResponse()
         {
         }
         
-        public buscaEventosResponse(Correios.sroxml @return)
+        public buscaEventosResponse(CorreioRastreamentoLibrary.sroxml @return)
         {
             this.@return = @return;
         }
@@ -903,26 +903,26 @@ namespace Correios
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://resource.webservice.correios.com.br/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public Correios.sroxml @return;
+        public CorreioRastreamentoLibrary.sroxml @return;
         
         public buscaEventosListaResponse()
         {
         }
         
-        public buscaEventosListaResponse(Correios.sroxml @return)
+        public buscaEventosListaResponse(CorreioRastreamentoLibrary.sroxml @return)
         {
             this.@return = @return;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public interface ServiceChannel : Correios.Service, System.ServiceModel.IClientChannel
+    public interface ServiceChannel : CorreioRastreamentoLibrary.Service, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<Correios.Service>, Correios.Service
+    public partial class ServiceClient : System.ServiceModel.ClientBase<CorreioRastreamentoLibrary.Service>, CorreioRastreamentoLibrary.Service
     {
         
         /// <summary>
@@ -965,12 +965,12 @@ namespace Correios
         {
         }
         
-        public System.Threading.Tasks.Task<Correios.buscaEventosResponse> buscaEventosAsync(Correios.buscaEventosRequest request)
+        public System.Threading.Tasks.Task<CorreioRastreamentoLibrary.buscaEventosResponse> buscaEventosAsync(CorreioRastreamentoLibrary.buscaEventosRequest request)
         {
             return base.Channel.buscaEventosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Correios.buscaEventosListaResponse> buscaEventosListaAsync(Correios.buscaEventosListaRequest request)
+        public System.Threading.Tasks.Task<CorreioRastreamentoLibrary.buscaEventosListaResponse> buscaEventosListaAsync(CorreioRastreamentoLibrary.buscaEventosListaRequest request)
         {
             return base.Channel.buscaEventosListaAsync(request);
         }

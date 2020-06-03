@@ -23,8 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="App\Boundries\Mailer\TypeAdapters\Output\" />
+    <Folder Include="App\Entities\Pagination\" />
+    <Folder Include="App\Entities\PackageWatcherSearch\DataFields\" />
     <Folder Include="App\Entities\Package\DataFields\" />
-    <Folder Include="App\Models\Output\" />
+    <Folder Include="App\Models\Output\PackageList\" />
     <Folder Include="gRPC\Client\" />
   </ItemGroup>
 

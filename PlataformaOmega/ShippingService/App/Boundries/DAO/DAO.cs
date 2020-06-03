@@ -96,16 +96,5 @@ namespace ShippingService.App.Boundries
             }
         }
 
-        public static async Task RegisterPackageWatcher(PackageWatcher packageWatcher)
-        {
-            try
-            {
-                await Collections.PackageWatcher.InsertOneAsync(packageWatcher);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
     }
 }

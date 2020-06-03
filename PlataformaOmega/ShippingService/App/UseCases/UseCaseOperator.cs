@@ -2,6 +2,7 @@
 using ShippingService.App.Entities.NewPackageRequest;
 using ShippingService.App.Models;
 using ShippingService.App.Models.Input;
+using ShippingService.App.Models.Output;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,19 @@ namespace ShippingService.App.UseCases
             }
         }
 
+        public static async Task<IPackageWatcherList> SearchPackageWatchersAsync(IPackageWatcherSearch searchObj)
+        {
+            try
+            {
+                PackageWatcherSearchEntity.ValidateSearchObj(searchObj);
+                return await SearchPackageWatchers.Execute(searchObj);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public static async Task HardDeletePackage(string id)
         {
             try
@@ -115,5 +129,22 @@ namespace ShippingService.App.UseCases
                 throw e;
             }
         }
+        
+        public static async Task RunWatcherRoutine(string packageId)
+        {
+            try
+            {
+                await PackageEntity.ValidatePackageId(packageId);
+                var package = await GetPackage.Execute(packageId);
+                var status = await GetPackageStatusWithMailerService.Execute(package.TrackingCode);
+                var statusChangesReport = CheckIfPackageStatusChanged.Execute(package.Status, status);
+                await ProcessPackageStatusChangedReport.Execute(package, statusChangesReport, status);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

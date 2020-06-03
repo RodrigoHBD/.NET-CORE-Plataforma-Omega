@@ -1,18 +1,18 @@
-﻿using System;
+﻿using ShippingService.App.Boundries;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ShippingService.App.Models;
 
-namespace ShippingService.App.Boundries
+namespace ShippingService.App.UseCases
 {
-    public class ShippingService
+    public class GetPackageWatcher
     {
-        public static async Task ShipPakcage(Package package)
+        public static async Task Execute(string id)
         {
             try
             {
-
+                await PackageWatcherDAO.DeletePackageWatcher(id);
             }
             catch (Exception e)
             {

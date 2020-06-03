@@ -35,13 +35,13 @@ namespace CorreioRastreamentoLibrary
         private string versaoField;
         
         private string qtdField;
-        
-        private string tipoPesquisaField;
-        
-        private string tipoResultadoField;
-        
+
         private objeto[] objetoField;
         
+        private string tipoResultadoField;
+
+        private string tipoPesquisaField;
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
         public string versao
@@ -85,7 +85,7 @@ namespace CorreioRastreamentoLibrary
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
         public string TipoResultado
         {
             get
@@ -99,7 +99,7 @@ namespace CorreioRastreamentoLibrary
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("objeto", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute("objeto", Order=3)]
         public objeto[] objeto
         {
             get

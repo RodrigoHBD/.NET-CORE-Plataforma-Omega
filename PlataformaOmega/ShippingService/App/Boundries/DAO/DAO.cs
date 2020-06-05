@@ -50,6 +50,34 @@ namespace ShippingService.App.Boundries
                     await Collections.Packages.UpdateOneAsync(filter, update);
                     somthingWasChanged = true;
                 }
+                if(packageUpdate.StatusMessage.Length > 0)
+                {
+                    var update = Builders<Package>.Update
+                       .Set(package => package.Status.Message, packageUpdate.StatusMessage)
+                       .Set(package => package.Dates.DeliveredAt, DateTime.UtcNow);
+
+                    await Collections.Packages.UpdateOneAsync(filter, update);
+                    somthingWasChanged = true;
+                }
+                if (packageUpdate.SetAwaitingForPickUp)
+                {
+                    var update = Builders<Package>.Update
+                       .Set(package => package.Status.IsAwaitingForPickUp, true)
+                       .Set(package => package.Dates.DeliveredAt, DateTime.UtcNow);
+
+                    await Collections.Packages.UpdateOneAsync(filter, update);
+                    somthingWasChanged = true;
+                }
+                if (packageUpdate.SetIsRejected)
+                {
+                    var update = Builders<Package>.Update
+                       .Set(package => package.Status.IsRejected, true)
+                       .Set(package => package.Dates.DeliveredAt, DateTime.UtcNow);
+
+                    await Collections.Packages.UpdateOneAsync(filter, update);
+                    somthingWasChanged = true;
+                }
+
 
                 if (somthingWasChanged)
                 {

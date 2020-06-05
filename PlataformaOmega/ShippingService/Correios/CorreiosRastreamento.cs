@@ -4,24 +4,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using CorreioRastreamentoLibrary;
 using CorreiosSGEPLibrary;
+using System.Text.Json.Serialization;
+using System.Threading;
+using ShippingService.Correios.Models.Sro;
 
 namespace ShippingService.Correios
 {
     public class CorreiosRastreamento
     {
-        private static ServiceClient Client { get; set; } = new CorreioRastreamentoLibrary.ServiceClient(ServiceClient.EndpointConfiguration.ServicePort);
+        
+        private static string BaseEndpoint { get; } = "https://apiserver.sgpmaisvendas.com.br:80";
+        private static string SroEndpoint { get; } = $"{BaseEndpoint}/sro";
+        private static string Token { get; } = "6a63304a03007e3fc2ea9d51a2b2df03";
 
-        public static async Task<CorreioRastreamentoLibrary.objeto> PegarDadosDeRastreamento(buscaEventosListaRequest request)
+        public static async Task<SroJsonResponse> PegarDadosDeRastreamento(string trackingCode)
         {
             try
             {
-                var conn = new CorreioRastreamentoLibrary.ServiceClient(ServiceClient.EndpointConfiguration.ServicePort);
-                await conn.OpenAsync();
-                var conn2 = new CorreiosSGEPLibrary.AtendeClienteClient();
-              
-                var response = await conn.buscaEventosListaAsync(request);
-                
-                return response.@return.objeto.First();
+                var uri = $"{SroEndpoint}/{Token}/{trackingCode}/T";
+                return await HttpClientLibrary.HttpClient.GetJson<SroJsonResponse>(uri);
             }
             catch (System.Exception e)
             {

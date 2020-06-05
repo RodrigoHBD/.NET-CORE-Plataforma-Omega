@@ -58,7 +58,7 @@ namespace ShippingService.App.RoutineSchedulerRoutines
                     var watcher = SearchWatchers(search).Result.Watchers.First();
 
                     UseCaseOperator.RunWatcherRoutine(watcher.PackageId).Wait();
-                    //IncrementRoutineControl(routineControl);
+                    IncrementRoutineControl(routineControl);
                 }
             }
             catch (Exception e)

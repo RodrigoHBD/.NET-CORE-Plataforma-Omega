@@ -23,6 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="App\Boundries\Mailer\Helpers\" />
+    <Folder Include="App\Boundries\Mailer\TypeAdapters\Input\" />
     <Folder Include="App\Boundries\Mailer\TypeAdapters\Output\" />
     <Folder Include="App\Entities\Pagination\" />
     <Folder Include="App\Entities\PackageWatcherSearch\DataFields\" />

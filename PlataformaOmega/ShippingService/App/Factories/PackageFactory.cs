@@ -58,5 +58,50 @@ namespace ShippingService.App.Factories
             }
         }
 
+        public static PackageUpdate MakePackageStatusMessageUpdate(string message)
+        {
+            try
+            {
+                return new PackageUpdate()
+                {
+                    StatusMessage = message
+                };
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static PackageUpdate MakePackageAwaitingForPickUpUpdate()
+        {
+            try
+            {
+                return new PackageUpdate()
+                {
+                    SetAwaitingForPickUp = true
+                };
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static PackageUpdate MakePackageIsRejectedUpdate()
+        {
+            try
+            {
+                return new PackageUpdate()
+                {
+                    SetIsRejected = true
+                };
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

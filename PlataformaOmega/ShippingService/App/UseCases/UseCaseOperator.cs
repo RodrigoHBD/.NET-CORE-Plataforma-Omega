@@ -1,5 +1,6 @@
 ﻿using ShippingService.App.Entities;
 using ShippingService.App.Entities.NewPackageRequest;
+using ShippingService.App.Factories;
 using ShippingService.App.Models;
 using ShippingService.App.Models.Input;
 using ShippingService.App.Models.Output;
@@ -71,9 +72,46 @@ namespace ShippingService.App.UseCases
             }
         }
 
+        public static async Task SetPackageIsAwaitingForPickUp(string id)
+        {
+            try
+            {
+                await PackageEntity.ValidatePackageId(id);
+                var update = PackageFactory.MakePackageAwaitingForPickUpUpdate();
+                await UpdatePackage.Execute(id, update);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task SetPackageIRejected(string id)
+        {
+            try
+            {
+                await PackageEntity.ValidatePackageId(id);
+                var update = PackageFactory.MakePackageIsRejectedUpdate();
+                await UpdatePackage.Execute(id, update);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public static async Task SetPackageStatusMessage(string id, string message)
         {
-
+            try
+            {
+                await PackageEntity.ValidatePackageId(id);
+                var update = PackageFactory.MakePackageStatusMessageUpdate(message);
+                await UpdatePackage.Execute(id, update);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public static async Task WatchPackage(string id)
@@ -129,7 +167,7 @@ namespace ShippingService.App.UseCases
                 throw e;
             }
         }
-        
+
         public static async Task RunWatcherRoutine(string packageId)
         {
             try

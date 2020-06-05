@@ -15,15 +15,20 @@ namespace ShippingService.App.UseCases
                 var messageChanged = CheckStatusMessage(previousStatus, currentStatus);
                 var postedChanged = CheckPostedStatus(previousStatus, currentStatus);
                 var deliveredChanged = CheckDeliveredStatus(previousStatus, currentStatus);
+                var awaitingForPickUpChanged = CheckAwaitingForPickUpStatus(previousStatus, currentStatus);
+                var isRejectedChanged = CheckIsRejectedStatus(previousStatus, currentStatus);
 
-                var anythingChanged = messageChanged || postedChanged || deliveredChanged;
+                var anythingChanged = messageChanged || postedChanged || deliveredChanged || awaitingForPickUpChanged
+                    || isRejectedChanged;
 
                 return new PackageStatusChangedReport()
                 {
                     AnythingChanged = anythingChanged,
                     MessageMustUpdate = messageChanged,
                     PostedMustUpdate = postedChanged ,
-                    DeliveredMustUpdate = deliveredChanged
+                    DeliveredMustUpdate = deliveredChanged,
+                    AwaitingForPickUpMustUpdate = awaitingForPickUpChanged,
+                    IsRejectedMustUpdate = isRejectedChanged
                 };
             }
             catch (Exception e)
@@ -37,6 +42,32 @@ namespace ShippingService.App.UseCases
             try
             {
                 var hasChanged = previousStatus.Message != currentStatus.Message;
+                return hasChanged;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        private static bool CheckAwaitingForPickUpStatus(PackageStatus previousStatus, PackageStatus currentStatus)
+        {
+            try
+            {
+                var hasChanged = previousStatus.IsAwaitingForPickUp != currentStatus.IsAwaitingForPickUp;
+                return hasChanged;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        private static bool CheckIsRejectedStatus(PackageStatus previousStatus, PackageStatus currentStatus)
+        {
+            try
+            {
+                var hasChanged = previousStatus.IsRejected != currentStatus.IsRejected;
                 return hasChanged;
             }
             catch (Exception e)

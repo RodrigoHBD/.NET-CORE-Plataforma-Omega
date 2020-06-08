@@ -30,3 +30,5 @@ C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductServic
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\bin\Debug\netcoreapp3.1\SharpCompress.dll
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\ProductService.csproj.CoreCompileInputs.cache
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ProductService\obj\Debug\netcoreapp3.1\ProductService.MvcApplicationPartsAssemblyInfo.cache

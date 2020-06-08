@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SalesService.App.CustomExceptions;
-using SalesService.App.Models.Sale;
+using SalesService.App.Models;
 
 namespace SalesService.App.Entities.SaleDataFields
 {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProductService.gRPC.Server.Services;
 
 namespace ProductService
 {
@@ -31,7 +32,7 @@ namespace ProductService
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<ProductServiceImplementataion>();
 
                 endpoints.MapGet("/", async context =>
                 {

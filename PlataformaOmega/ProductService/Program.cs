@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using ProductService.App;
 
 namespace ProductService
 {
@@ -12,6 +13,7 @@ namespace ProductService
     {
         public static void Main(string[] args)
         {
+            AppInitializer.InitializeAsync().Wait();
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -21,6 +23,10 @@ namespace ProductService
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureKestrel(options => 
+                    {
+                        options.ListenLocalhost(5002);
+                    });
                     webBuilder.UseStartup<Startup>();
                 });
     }

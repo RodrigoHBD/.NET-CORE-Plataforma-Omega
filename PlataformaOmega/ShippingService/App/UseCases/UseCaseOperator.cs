@@ -35,7 +35,6 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
-                await PackageEntity.ValidatePackageId(id);
                 return await GetPackage.Execute(id);
             }
             catch (Exception e)
@@ -49,8 +48,7 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
-                var update = CreatePostedPackageUpdate.Execute();
-                await UpdatePackage.Execute(id, update);
+                await PackageStatusEntity.SetPackageStatusHasBeenPosted(id);
             }
             catch (Exception e)
             {
@@ -63,8 +61,7 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
-                var update = CreateDeliveredPackageUpdate.Execute();
-                await UpdatePackage.Execute(id, update);
+                await PackageStatusEntity.SetPackageStatusHasBeenDelivered(id);
             }
             catch (Exception e)
             {
@@ -77,8 +74,7 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
-                var update = PackageFactory.MakePackageAwaitingForPickUpUpdate();
-                await UpdatePackage.Execute(id, update);
+                await PackageStatusEntity.SetPackageStatusIsAwaitingForPickUp(id, true);
             }
             catch (Exception e)
             {
@@ -91,8 +87,7 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
-                var update = PackageFactory.MakePackageIsRejectedUpdate();
-                await UpdatePackage.Execute(id, update);
+                await PackageStatusEntity.SetPackageStatusHasBeenRejected(id);
             }
             catch (Exception e)
             {
@@ -105,8 +100,21 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
-                var update = PackageFactory.MakePackageStatusMessageUpdate(message);
-                await UpdatePackage.Execute(id, update);
+                await PackageStatusEntity.SetPackageStatusMessage(id, message);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task SetPackageIsBeingTransported(IPackageUpdateRequest request)
+        {
+            try
+            {
+                var id = request.Id;
+                var location = request.HeadedTo;
+                await PackageEntity.SetPackageIsBeingTransported(id, location);
             }
             catch (Exception e)
             {
@@ -174,9 +182,17 @@ namespace ShippingService.App.UseCases
             {
                 await PackageEntity.ValidatePackageId(packageId);
                 var package = await GetPackage.Execute(packageId);
-                var status = await GetPackageStatusWithMailerService.Execute(package.TrackingCode);
-                var statusChangesReport = CheckIfPackageStatusChanged.Execute(package.Status, status);
-                await ProcessPackageStatusChangedReport.Execute(package, statusChangesReport, status);
+                var packageData = await GetPackageDataWithMailerService.Execute(package.TrackingCode);
+
+                var statusChangesReport = CheckIfPackageStatusChanged.Execute(package.Status, packageData.Status);
+                var locationChangesReport = CheckIfPackageLocationChanged.Execute(package.Location, packageData.Location);
+                var report = new PackageChangesReport()
+                {
+                    Status = statusChangesReport,
+                    Locations = locationChangesReport
+                };
+
+                await ProcessPackageStatusChanges.Execute(package, report, packageData);
             }
             catch (Exception e)
             {

@@ -13,7 +13,7 @@ namespace ShippingService.App.UseCases
         {
             try
             {
-                await DAO.UpdatePackage(id, update);
+                await PackageDAO.UpdatePackage(id, update);
             }
             catch(Exception e)
             {

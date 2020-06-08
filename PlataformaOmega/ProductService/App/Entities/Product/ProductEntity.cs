@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ProductService.App.Entities.ProductDataFields;
-using ProductService.App.Models.Product;
+using ProductService.App.Models;
 
 namespace ProductService.App.Entities
 {
@@ -25,10 +25,18 @@ namespace ProductService.App.Entities
         {
             try
             {
+                // 3 caracter minimo
                 Name.Validate(product.Name);
-                Sku.Valdiate(product.Sku);
                 Description.Valdiate(product.Description);
-                Weight.Valdiate(product.Weight);
+                Category.Validate(product.Category);
+                // base
+                ProductDataFields.Brand.Validate(product.Brand);
+                // base
+                Model.Validate(product.Model);
+                Color.Validate(product.Color);
+                Warranty.Validate(product.Warranty);
+                Pictures.Validate(product.PicturesUrls);
+                Condition.Validate(product.Condition);
             }
             catch (Exception e)
             {

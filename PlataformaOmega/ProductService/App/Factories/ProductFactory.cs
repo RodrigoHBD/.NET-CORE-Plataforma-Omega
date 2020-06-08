@@ -1,4 +1,4 @@
-﻿using ProductService.App.Models.Product;
+﻿using ProductService.App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

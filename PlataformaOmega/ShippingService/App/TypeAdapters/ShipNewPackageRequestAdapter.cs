@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShippingService.App.Models;
 using ShippingService.App.Models.Input;
 using ShippingService.gRPC.Server.Protos;
 
@@ -34,5 +35,7 @@ namespace ShippingService.App.TypeAdapters
         public string ProductId { get; set; }
 
         public string TrackingCode { get; set; }
+
+        public Location PackageInitialLocation { get; set; }
     }
 }

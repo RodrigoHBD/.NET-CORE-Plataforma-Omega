@@ -1,4 +1,5 @@
-﻿using ShippingService.App.Models;
+﻿using Google.Protobuf.WellKnownTypes;
+using ShippingService.App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace ShippingService.App.UseCases
 {
     public class CheckIfPackageStatusChanged
     {
-        public static PackageStatusChangedReport Execute(PackageStatus previousStatus, PackageStatus currentStatus)
+        public static PackageStatusChangesReport Execute(PackageStatus previousStatus, PackageStatus currentStatus)
         {
             try
             {
@@ -17,18 +18,20 @@ namespace ShippingService.App.UseCases
                 var deliveredChanged = CheckDeliveredStatus(previousStatus, currentStatus);
                 var awaitingForPickUpChanged = CheckAwaitingForPickUpStatus(previousStatus, currentStatus);
                 var isRejectedChanged = CheckIsRejectedStatus(previousStatus, currentStatus);
+                var IsBeingTransportedChanged = CheckIsBeingTransportedStatus(previousStatus, currentStatus);
 
                 var anythingChanged = messageChanged || postedChanged || deliveredChanged || awaitingForPickUpChanged
-                    || isRejectedChanged;
+                    || isRejectedChanged || IsBeingTransportedChanged;
 
-                return new PackageStatusChangedReport()
+                return new PackageStatusChangesReport()
                 {
                     AnythingChanged = anythingChanged,
                     MessageMustUpdate = messageChanged,
                     PostedMustUpdate = postedChanged ,
                     DeliveredMustUpdate = deliveredChanged,
                     AwaitingForPickUpMustUpdate = awaitingForPickUpChanged,
-                    IsRejectedMustUpdate = isRejectedChanged
+                    IsRejectedMustUpdate = isRejectedChanged,
+                    IsBeingTransportedMustUpdate = IsBeingTransportedChanged
                 };
             }
             catch (Exception e)
@@ -55,6 +58,19 @@ namespace ShippingService.App.UseCases
             try
             {
                 var hasChanged = previousStatus.IsAwaitingForPickUp != currentStatus.IsAwaitingForPickUp;
+                return hasChanged;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        private static bool CheckIsBeingTransportedStatus(PackageStatus previousStatus, PackageStatus currentStatus)
+        {
+            try
+            {
+                var hasChanged = previousStatus.IsBeingTransported != currentStatus.IsBeingTransported;
                 return hasChanged;
             }
             catch (Exception e)
@@ -101,5 +117,6 @@ namespace ShippingService.App.UseCases
                 throw e;
             }
         }
+
     }
 }

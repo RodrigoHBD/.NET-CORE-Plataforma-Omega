@@ -7,10 +7,14 @@ namespace ShippingService.App.Models.Input
 {
     public interface IPackageUpdateRequest
     {
-        public bool SetPosted { get; }
-        public bool SetDelivered { get; }
-        public string StatusMessage { get; }
-        public DateTime PostedDate { get; }
-        public DateTime DeliveredDate { get; }
+        string Id { get; }
+        bool SetPosted { get; }
+        bool SetDelivered { get; }
+        string StatusMessage { get; }
+        DateTime PostedDate { get; }
+        DateTime DeliveredDate { get; }
+        Location HeadedTo { get; set; }
     }
+
+
 }

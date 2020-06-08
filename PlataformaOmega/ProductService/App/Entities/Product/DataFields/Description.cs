@@ -11,6 +11,8 @@ namespace ProductService.App.Entities.ProductDataFields
         {
             try
             {
+
+                // caracteres maximo e minimo 165
                 //TODO
                 return;
             }

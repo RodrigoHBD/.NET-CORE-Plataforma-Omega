@@ -13,12 +13,15 @@ namespace ShippingService.App.Factories
         {
             try
             {
-                return new Package()
+                var package = new Package()
                 {
                     Name = request.Name,
                     TrackingCode = request.TrackingCode,
-                    ProductId = request.ProductId
+                    ProductId = request.ProductId,
                 };
+                package.Location.ShippedFrom = request.PackageInitialLocation;
+
+                return package;
             }
             catch(Exception e)
             {
@@ -32,7 +35,6 @@ namespace ShippingService.App.Factories
             {
                 return new PackageUpdate()
                 {
-                    SetDelivered = false,
                     SetPosted = true
                 };
             }
@@ -73,13 +75,28 @@ namespace ShippingService.App.Factories
             }
         }
 
-        public static PackageUpdate MakePackageAwaitingForPickUpUpdate()
+        public static PackageUpdate MakePackageAwaitingForPickUpUpdate(bool toggle = false)
         {
             try
             {
                 return new PackageUpdate()
                 {
-                    SetAwaitingForPickUp = true
+                    SetAwaitingForPickUp = toggle
+                };
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static PackageUpdate MakePackageIsBeingTransportedUpdate(bool toggle)
+        {
+            try
+            {
+                return new PackageUpdate()
+                {
+                    SetIsBeingTransported = toggle
                 };
             }
             catch (Exception e)
@@ -96,6 +113,54 @@ namespace ShippingService.App.Factories
                 {
                     SetIsRejected = true
                 };
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static PackageUpdate MakePackageCommingFromLocationUpdate(Location location)
+        {
+            try
+            {
+                var update = new PackageUpdate();
+                update.CommingFrom.MustUpdate = true;
+                update.CommingFrom.Location = location;
+                update.CurrentLocation.Location.IsSet = true;
+                return update;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static PackageUpdate MakePackageCurrentLocationUpdate(Location location)
+        {
+            try
+            {
+                var update = new PackageUpdate();
+                update.CurrentLocation.MustUpdate = true;
+                update.CurrentLocation.Location = location;
+                update.CurrentLocation.Location.IsSet = true;
+                return update;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static PackageUpdate MakePackageHeadedToLocationUpdate(Location location)
+        {
+            try
+            {
+                var update = new PackageUpdate();
+                update.HeadedTo.MustUpdate = true;
+                update.HeadedTo.Location = location;
+                update.HeadedTo.Location.IsSet = true;
+                return update;
             }
             catch (Exception e)
             {

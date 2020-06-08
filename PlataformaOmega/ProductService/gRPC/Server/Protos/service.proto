@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "ProductService.gRPC.Server.Protos";
+
+service Product {
+	rpc CreateNewPhysicalProduct(GrpcNewPhysicalProduct) returns (GrpcResponseStatus);
+}
+
+//Requests
+message GrpcNewProductData {
+	string name = 1;
+	string description = 2;
+	string category = 4;
+	string brand = 5;
+	string model = 6;
+	string color = 7;
+	string condition = 8;
+	repeated string pictures = 9;
+}
+
+message GrpcNewPhysicalProduct {
+	GrpcNewProductData productData = 1;
+	double weight = 2;
+	int32 height = 3;
+	int32 width = 4;
+	int32 length = 5;
+	int32 warrantyTimeInDays = 6;
+}
+
+//Responses
+message GrpcResponseStatus {
+	bool Ok = 1;
+}

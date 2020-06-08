@@ -8,7 +8,7 @@ namespace ProductService.App.Entities.ProductDataFields
 {
     public class Name
     {
-        private static int MinimumLength = 5;
+        private static int MinimumLength { get; } = 3;
         public static void Validate(string name)
         {
             try

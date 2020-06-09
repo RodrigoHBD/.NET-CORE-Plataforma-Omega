@@ -166,23 +166,21 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters
                 var hasArrived = false;
                 response.evento.ForEach(evento =>
                 {
-                    if (evento.destino != null)
+                    var location = new Location()
                     {
-                        var location = new Location()
-                        {
-                            Cep = evento.codigo[0],
-                            City = evento.cidade[0],
-                            State = evento.uf[0],
-                            StreetName = evento.local[0]
-                        };
-                        var isAMatch = CompareLocationsBool(location, headedToLocation);
-                        var mailerStatusIsOk = !(evento.tipo[0] == "BDI" && evento.status[0] == "69");
+                        Cep = evento.codigo[0],
+                        City = evento.cidade[0],
+                        State = evento.uf[0],
+                        StreetName = evento.local[0]
+                    };
+                    var isAMatch = CompareLocationsBool(location, headedToLocation);
+                    var mailerStatusIsOk = !(evento.tipo[0] == "BDI" && evento.status[0] == "69") && !(evento.tipo[0] == "RO" && evento.status[0] == "01");
 
-                        if (isAMatch && mailerStatusIsOk)
-                        {
-                            hasArrived = true;
-                        }
+                    if (isAMatch && mailerStatusIsOk)
+                    {
+                        hasArrived = true;
                     }
+
                 });
                 return hasArrived;
             }
@@ -240,15 +238,15 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters
         {
             try
             {
-                var isPosted = false;
+                var isAwaitingForPickUp = false;
                 var evento = response.evento[0];
                 var statusIsOk = evento.status[0] == "03" || evento.status[0] == "04";
                 var tipoIsOk = evento.tipo[0] == "LDI";
                 if (statusIsOk && tipoIsOk)
                 {
-                    isPosted = true;
+                    isAwaitingForPickUp = true;
                 }
-                return isPosted;
+                return isAwaitingForPickUp;
             }
             catch (Exception e)
             {
@@ -297,8 +295,17 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters
         {
             try
             {
-                var locationsMatch = Location.Equals(location1, location2);
-                return locationsMatch;
+                var stateMismatch = location1.State != location2.State;
+                var cityMismatch = location1.City != location2.City;
+                var cepMismatch = location1.Cep != location2.Cep;
+                var neighborhoodMismatch = location1.Neighborhood != location2.Neighborhood;
+                var streetNameMismatch = location1.StreetName != location2.StreetName;
+                var streetNumberMismatch = location1.StreetNumber != location2.StreetNumber;
+
+                var anyMismatched = stateMismatch || cityMismatch || cepMismatch || neighborhoodMismatch
+                    || streetNameMismatch || streetNumberMismatch;
+
+                return !anyMismatched;
             }
             catch (Exception e)
             {

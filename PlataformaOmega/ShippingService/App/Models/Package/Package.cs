@@ -62,9 +62,9 @@ namespace ShippingService.App.Models
 
     public class PackageLocation
     {
-        public Location HeadedTo { get; set; } = LocationEntity.ExportInstanceOfDefaultLocation();
-        public Location CommingFrom { get; set; } = LocationEntity.ExportInstanceOfDefaultLocation();
-        public Location CurrentLocation { get; set; } = LocationEntity.ExportInstanceOfDefaultLocation();
-        public Location ShippedFrom { get; set; } = LocationEntity.ExportInstanceOfDefaultLocation();
+        public Location HeadedTo { get; set; } = new Location();
+        public Location CommingFrom { get; set; } = new Location();
+        public Location CurrentLocation { get; set; } = new Location();
+        public Location ShippedFrom { get; set; } = new Location();
     }
 }

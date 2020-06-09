@@ -15,13 +15,15 @@ namespace ShippingService.App.UseCases
                 
                 var commingFromLocationChanged = CompareLocationsBool(previousLocation.CommingFrom, currentLocation.CommingFrom);
                 var headedToLocationChanged = CompareLocationsBool(previousLocation.HeadedTo, currentLocation.HeadedTo);
-                var anythingChanged = commingFromLocationChanged || headedToLocationChanged;
+                var currentLocationChanged = CompareLocationsBool(previousLocation.CurrentLocation, currentLocation.CurrentLocation);
+                var anythingChanged = commingFromLocationChanged || headedToLocationChanged || currentLocationChanged;
 
                 return new PackageLocationChangesReport()
                 {
                     AnythingChanged = anythingChanged,
                     CommingFromLocationMustUpdate = commingFromLocationChanged,
-                    HeadedToLocationMustUpdate = headedToLocationChanged
+                    HeadedToLocationMustUpdate = headedToLocationChanged,
+                    CurrentLocationMustUpdate = currentLocationChanged
                 };
             }
             catch (Exception e)

@@ -58,10 +58,10 @@ namespace ShippingService.App.Boundries
                     await Collections.Packages.UpdateOneAsync(filter, update);
                     somthingWasChanged = true;
                 }
-                if (packageUpdate.SetAwaitingForPickUp)
+                if (packageUpdate.AwaitingForPickUp.IsActive)
                 {
                     var update = Builders<Package>.Update
-                       .Set(package => package.Status.IsAwaitingForPickUp, true);
+                       .Set(package => package.Status.IsAwaitingForPickUp, packageUpdate.AwaitingForPickUp.Toggler);
 
                     await Collections.Packages.UpdateOneAsync(filter, update);
                     somthingWasChanged = true;
@@ -74,10 +74,10 @@ namespace ShippingService.App.Boundries
                     await Collections.Packages.UpdateOneAsync(filter, update);
                     somthingWasChanged = true;
                 }
-                if (packageUpdate.SetIsBeingTransported)
+                if (packageUpdate.IsBeingTransported.IsActive)
                 {
                     var update = Builders<Package>.Update
-                       .Set(package => package.Status.IsBeingTransported, true);
+                       .Set(package => package.Status.IsBeingTransported, packageUpdate.IsBeingTransported.Toggler);
 
                     await Collections.Packages.UpdateOneAsync(filter, update);
                     somthingWasChanged = true;

@@ -81,7 +81,11 @@ namespace ShippingService.App.Factories
             {
                 return new PackageUpdate()
                 {
-                    SetAwaitingForPickUp = toggle
+                    AwaitingForPickUp = new BoolToggler()
+                    {
+                        IsActive = true,
+                        Toggler = toggle
+                    }
                 };
             }
             catch (Exception e)
@@ -96,7 +100,11 @@ namespace ShippingService.App.Factories
             {
                 return new PackageUpdate()
                 {
-                    SetIsBeingTransported = toggle
+                    IsBeingTransported = new BoolToggler()
+                    {
+                        IsActive = true,
+                        Toggler = toggle
+                    }
                 };
             }
             catch (Exception e)

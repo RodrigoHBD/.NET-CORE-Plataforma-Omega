@@ -30,6 +30,7 @@ namespace ShippingService.App.UseCases
                 var currentPackageStatus = await PackageDAO.GetPackageStatus(id);
                 var somethingChangedAndPackageIsNotDelivered = report.Status.AnythingChanged && !currentPackageStatus.HasBeenDelivered;
                 var somthingChangedAndPackageIsDelivered = currentPackageStatus.HasBeenDelivered && report.Status.AnythingChanged;
+                var packageBeingTransported = (currentPackageStatus.IsBeingTransported && !report.Status.IsBeingTransportedMustUpdate) || (!currentPackageStatus.IsBeingTransported && report.Status.IsBeingTransportedMustUpdate);
 
                 if (somethingChangedAndPackageIsNotDelivered)
                 {
@@ -39,7 +40,7 @@ namespace ShippingService.App.UseCases
                     }
                     if (report.Status.IsBeingTransportedMustUpdate)
                     {
-                        await PackageEntity.SetPackageIsBeingTransported(id, packageData.Location.HeadedTo);
+                        await PackageStatusEntity.SetPackageStatusIsBeingTransported(id, packageData.Status.IsBeingTransported);
                     }
                     if (report.Status.AwaitingForPickUpMustUpdate)
                     {
@@ -53,10 +54,31 @@ namespace ShippingService.App.UseCases
                     {
                         await PackageStatusEntity.SetPackageStatusMessage(id, packageData.Status.Message);
                     }
-                    if (report.Status.HasArrived)
+                    if (report.Status.DeliveredMustUpdate)
                     {
-                        await PackageEntity.SetPackageHasArrivedAtLocation(id, packageData.Location.CurrentLocation);
+                        await PackageStatusEntity.SetPackageStatusHasBeenDelivered(id);
                     }
+
+
+                    if (packageBeingTransported)
+                    {
+                        if (report.Locations.CommingFromLocationMustUpdate)
+                        {
+                            await PackageStatusEntity.SetPackageCommingFromLocation(id, packageData.Location.CommingFrom);
+                        }
+                        if (report.Locations.HeadedToLocationMustUpdate)
+                        {
+                            await PackageStatusEntity.SetPackageHeadedToLocation(id, packageData.Location.HeadedTo);
+                        }
+                    }
+                    else
+                    {
+                        if (report.Locations.CurrentLocationMustUpdate)
+                        {
+                            await PackageStatusEntity.SetPackageCurrentLocation(id, packageData.Location.CurrentLocation);
+                        }
+                    }
+                    
                 }
 
 

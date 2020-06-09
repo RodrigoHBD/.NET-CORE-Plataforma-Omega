@@ -10,9 +10,9 @@ namespace ShippingService.App.Models
     {
         public bool SetPosted { get; set; } = false;
         public bool SetDelivered { get; set; } = false;
-        public bool SetAwaitingForPickUp { get; set; } = false;
+        public BoolToggler AwaitingForPickUp { get; set; } = new BoolToggler();
         public bool SetIsRejected { get; set; } = false;
-        public bool SetIsBeingTransported { get; set; } = false;
+        public BoolToggler IsBeingTransported { get; set; } = new BoolToggler();
         public string StatusMessage { get; set; } = "";
         public DateTime UpdateTime { get; set; }
         public PackageLocationUpdate CommingFrom { get; set; }
@@ -31,5 +31,11 @@ namespace ShippingService.App.Models
     {
         public bool MustUpdate { get; set; } = false;
         public Location Location { get; set; } = LocationEntity.ExportInstanceOfDefaultLocation();
+    }
+
+    public class BoolToggler
+    {
+        public bool IsActive { get; set; } = false;
+        public bool Toggler { get; set; } = false;
     }
 }

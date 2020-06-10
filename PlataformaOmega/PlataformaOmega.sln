@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShippingService", "Shipping
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalesService", "SalesService\SalesService.csproj", "{5FADF4D7-B6CF-4936-BBBC-00BA9AB96B4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{88608B95-AC9D-4624-A5B8-2BC4685A86C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.csproj", "{88608B95-AC9D-4624-A5B8-2BC4685A86C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewService", "ViewService\ViewService.csproj", "{55F317CE-0E2E-4972-8E87-00520720AC94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewService", "ViewService\ViewService.csproj", "{55F317CE-0E2E-4972-8E87-00520720AC94}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

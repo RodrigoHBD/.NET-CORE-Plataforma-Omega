@@ -40,7 +40,7 @@ namespace Gateway
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             EndpointRouter.ConfigureRoutes(app, env);
         }

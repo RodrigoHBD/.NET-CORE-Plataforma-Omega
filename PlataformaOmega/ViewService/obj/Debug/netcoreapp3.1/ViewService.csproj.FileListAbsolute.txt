@@ -26,3 +26,8 @@ C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\o
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\obj\Debug\netcoreapp3.1\ViewService.dll
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\obj\Debug\netcoreapp3.1\ViewService.pdb
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\obj\Debug\netcoreapp3.1\ViewService.genruntimeconfig.cache
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\css\normalize.css
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\css\omega-plataforma.webflow.css
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\css\webflow.css
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\webflow.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Views\SPA\index.html

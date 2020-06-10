@@ -17,8 +17,15 @@
 
   <ItemGroup>
     <Folder Include="App\Models\" />
-    <Folder Include="App\Views\Assets\images\" />
-    <Folder Include="App\Views\Pages\NovaPasta\" />
+    <Folder Include="App\Views\" />
+    <Folder Include="Files\Static\Assets\images\" />
+    <Folder Include="Files\Views\Pages\NovaPasta\" />
   </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Files\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 </Project>

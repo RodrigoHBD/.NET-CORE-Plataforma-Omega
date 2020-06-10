@@ -13,7 +13,7 @@ namespace Gateway
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            Application.InitializeAsync(args).Wait();
         }
 
     }

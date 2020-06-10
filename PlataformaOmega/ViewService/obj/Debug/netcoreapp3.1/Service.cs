@@ -25,14 +25,17 @@ namespace ViewService.gRPC.Server.Protos {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiBnUlBDL1NlcnZlci9Qcm90b3Mvc2VydmljZS5wcm90byIiChJHcnBjR2V0",
-            "Vmlld1JlcXVlc3QSDAoEcGF0aBgBIAEoCSIgChBHcnBjVmlld0FzU3RyaW5n",
-            "EgwKBGRhdGEYASABKAkyOQoEVmlldxIxCgdHZXRWaWV3EhMuR3JwY0dldFZp",
-            "ZXdSZXF1ZXN0GhEuR3JwY1ZpZXdBc1N0cmluZ0IhqgIeVmlld1NlcnZpY2Uu",
-            "Z1JQQy5TZXJ2ZXIuUHJvdG9zYgZwcm90bzM="));
+            "Vmlld1JlcXVlc3QSDAoEcGF0aBgBIAEoCSIoChhHcnBjR2V0U3RhdGljRmls",
+            "ZVJlcXVlc3QSDAoEcGF0aBgBIAEoCSIgChBHcnBjVmlld0FzU3RyaW5nEgwK",
+            "BGRhdGEYASABKAkyeAoEVmlldxIxCgdHZXRWaWV3EhMuR3JwY0dldFZpZXdS",
+            "ZXF1ZXN0GhEuR3JwY1ZpZXdBc1N0cmluZxI9Cg1HZXRTdGF0aWNGaWxlEhku",
+            "R3JwY0dldFN0YXRpY0ZpbGVSZXF1ZXN0GhEuR3JwY1ZpZXdBc1N0cmluZ0Ih",
+            "qgIeVmlld1NlcnZpY2UuZ1JQQy5TZXJ2ZXIuUHJvdG9zYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ViewService.gRPC.Server.Protos.GrpcGetViewRequest), global::ViewService.gRPC.Server.Protos.GrpcGetViewRequest.Parser, new[]{ "Path" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ViewService.gRPC.Server.Protos.GrpcGetStaticFileRequest), global::ViewService.gRPC.Server.Protos.GrpcGetStaticFileRequest.Parser, new[]{ "Path" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ViewService.gRPC.Server.Protos.GrpcViewAsString), global::ViewService.gRPC.Server.Protos.GrpcViewAsString.Parser, new[]{ "Data" }, null, null, null, null)
           }));
     }
@@ -169,6 +172,135 @@ namespace ViewService.gRPC.Server.Protos {
 
   }
 
+  public sealed partial class GrpcGetStaticFileRequest : pb::IMessage<GrpcGetStaticFileRequest> {
+    private static readonly pb::MessageParser<GrpcGetStaticFileRequest> _parser = new pb::MessageParser<GrpcGetStaticFileRequest>(() => new GrpcGetStaticFileRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcGetStaticFileRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ViewService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcGetStaticFileRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcGetStaticFileRequest(GrpcGetStaticFileRequest other) : this() {
+      path_ = other.path_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcGetStaticFileRequest Clone() {
+      return new GrpcGetStaticFileRequest(this);
+    }
+
+    /// <summary>Field number for the "path" field.</summary>
+    public const int PathFieldNumber = 1;
+    private string path_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Path {
+      get { return path_; }
+      set {
+        path_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcGetStaticFileRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcGetStaticFileRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Path != other.Path) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Path.Length != 0) hash ^= Path.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Path.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Path);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Path.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Path);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcGetStaticFileRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Path.Length != 0) {
+        Path = other.Path;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Path = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class GrpcViewAsString : pb::IMessage<GrpcViewAsString> {
     private static readonly pb::MessageParser<GrpcViewAsString> _parser = new pb::MessageParser<GrpcViewAsString>(() => new GrpcViewAsString());
     private pb::UnknownFieldSet _unknownFields;
@@ -177,7 +309,7 @@ namespace ViewService.gRPC.Server.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ViewService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ViewService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

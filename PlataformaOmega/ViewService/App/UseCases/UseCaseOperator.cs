@@ -11,7 +11,19 @@ namespace ViewService.App.UseCases
         {
             try
             {
-                return await FileReader.ReadFileAsStringAsync(path);
+                return await GetView.Execute(path);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task<string> GetStaticFileAsync(string path)
+        {
+            try
+            {
+                return await GetStaticFile.Execute(path);
             }
             catch (Exception e)
             {

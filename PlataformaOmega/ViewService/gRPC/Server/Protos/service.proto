@@ -3,10 +3,15 @@ syntax = "proto3";
 option csharp_namespace = "ViewService.gRPC.Server.Protos";
 
 service View {
-	rpc GetView(GrpcGetViewRequest) returns (GrpcViewAsString);
+	rpc GetView (GrpcGetViewRequest) returns (GrpcViewAsString);
+	rpc GetStaticFile (GrpcGetStaticFileRequest) returns (GrpcViewAsString);
 }
 
 message GrpcGetViewRequest {
+	string path = 1;
+}
+
+message GrpcGetStaticFileRequest {
 	string path = 1;
 }
 

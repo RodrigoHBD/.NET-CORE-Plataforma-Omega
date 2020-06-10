@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Gateway.gRPC.Client;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace Gateway
         {
             try
             {
-
+                ViewClient.Initialize();
             }
             catch (Exception e)
             {
@@ -41,7 +42,7 @@ namespace Gateway
 
         private static IHostBuilder CreateHostBuilder(string[] args)
         {
-            return Host.CreateDefaultBuilder(args).ConfigureWebHost(webBuilder => 
+            return Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder => 
             {
                 webBuilder.UseStartup<Startup>();
             });

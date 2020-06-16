@@ -31,11 +31,9 @@ namespace ShippingService.App.TypeAdapters
     public class ShipPackageRequest : IShipPackageRequest
     {
         public string Name { get; set; }
-
         public string ProductId { get; set; }
-
         public string TrackingCode { get; set; }
-
+        public bool SetWatcher { get; set; }
         public Location PackageInitialLocation { get; set; }
     }
 }

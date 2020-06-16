@@ -31,17 +31,32 @@ namespace ProductService.gRPC.Server.Protos {
             "Y3R1cmVzGAkgAygJIp0BChZHcnBjTmV3UGh5c2ljYWxQcm9kdWN0EigKC3By",
             "b2R1Y3REYXRhGAEgASgLMhMuR3JwY05ld1Byb2R1Y3REYXRhEg4KBndlaWdo",
             "dBgCIAEoARIOCgZoZWlnaHQYAyABKAUSDQoFd2lkdGgYBCABKAUSDgoGbGVu",
-            "Z3RoGAUgASgFEhoKEndhcnJhbnR5VGltZUluRGF5cxgGIAEoBSIgChJHcnBj",
-            "UmVzcG9uc2VTdGF0dXMSCgoCT2sYASABKAgyUwoHUHJvZHVjdBJIChhDcmVh",
-            "dGVOZXdQaHlzaWNhbFByb2R1Y3QSFy5HcnBjTmV3UGh5c2ljYWxQcm9kdWN0",
-            "GhMuR3JwY1Jlc3BvbnNlU3RhdHVzQiSqAiFQcm9kdWN0U2VydmljZS5nUlBD",
-            "LlNlcnZlci5Qcm90b3NiBnByb3RvMw=="));
+            "Z3RoGAUgASgFEhoKEndhcnJhbnR5VGltZUluRGF5cxgGIAEoBSIbCg1HcnBj",
+            "SWRNZXNzYWdlEgoKAmlkGAEgASgJIiAKEkdycGNSZXNwb25zZVN0YXR1cxIK",
+            "CgJPaxgBIAEoCCKoAgoLR3JwY1Byb2R1Y3QSCgoCaWQYASABKAkSDQoFb3du",
+            "ZXIYAiABKAkSDAoEbmFtZRgDIAEoCRITCgtkZXNjcmlwdGlvbhgEIAEoCRIQ",
+            "CghjYXRlZ29yeRgFIAEoCRINCgVicmFuZBgGIAEoCRINCgVtb2RlbBgHIAEo",
+            "CRINCgVjb2xvchgIIAEoCRIRCgljb25kaXRpb24YCiABKAkSEwoLcGljdHVy",
+            "ZXNVcmkYCyADKAkSJgoId2FycmFudHkYDCABKAsyFC5HcnBjUHJvZHVjdFdh",
+            "cnJhbnR5EgwKBHR5cGUYDSABKAkSDgoGd2VpZ2h0GA4gASgBEi4KDG1lYXN1",
+            "cmVtZW50cxgPIAEoCzIYLkdycGNQcm9kdWN0TWVhc3VyZW1lbnRzIikKE0dy",
+            "cGNQcm9kdWN0V2FycmFudHkSEgoKdGltZUluRGF5cxgBIAEoBSJIChdHcnBj",
+            "UHJvZHVjdE1lYXN1cmVtZW50cxINCgV3aWR0aBgBIAEoBRIOCgZoZWlnaHQY",
+            "AiABKAUSDgoGbGVuZ3RoGAMgASgFMoMBCgdQcm9kdWN0EkgKGENyZWF0ZU5l",
+            "d1BoeXNpY2FsUHJvZHVjdBIXLkdycGNOZXdQaHlzaWNhbFByb2R1Y3QaEy5H",
+            "cnBjUmVzcG9uc2VTdGF0dXMSLgoOR2V0UHJvZHVjdERhdGESDi5HcnBjSWRN",
+            "ZXNzYWdlGgwuR3JwY1Byb2R1Y3RCJKoCIVByb2R1Y3RTZXJ2aWNlLmdSUEMu",
+            "U2VydmVyLlByb3Rvc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ProductService.gRPC.Server.Protos.GrpcNewProductData), global::ProductService.gRPC.Server.Protos.GrpcNewProductData.Parser, new[]{ "Name", "Description", "Category", "Brand", "Model", "Color", "Condition", "Pictures" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ProductService.gRPC.Server.Protos.GrpcNewPhysicalProduct), global::ProductService.gRPC.Server.Protos.GrpcNewPhysicalProduct.Parser, new[]{ "ProductData", "Weight", "Height", "Width", "Length", "WarrantyTimeInDays" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ProductService.gRPC.Server.Protos.GrpcResponseStatus), global::ProductService.gRPC.Server.Protos.GrpcResponseStatus.Parser, new[]{ "Ok" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProductService.gRPC.Server.Protos.GrpcIdMessage), global::ProductService.gRPC.Server.Protos.GrpcIdMessage.Parser, new[]{ "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProductService.gRPC.Server.Protos.GrpcResponseStatus), global::ProductService.gRPC.Server.Protos.GrpcResponseStatus.Parser, new[]{ "Ok" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProductService.gRPC.Server.Protos.GrpcProduct), global::ProductService.gRPC.Server.Protos.GrpcProduct.Parser, new[]{ "Id", "Owner", "Name", "Description", "Category", "Brand", "Model", "Color", "Condition", "PicturesUri", "Warranty", "Type", "Weight", "Measurements" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProductService.gRPC.Server.Protos.GrpcProductWarranty), global::ProductService.gRPC.Server.Protos.GrpcProductWarranty.Parser, new[]{ "TimeInDays" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ProductService.gRPC.Server.Protos.GrpcProductMeasurements), global::ProductService.gRPC.Server.Protos.GrpcProductMeasurements.Parser, new[]{ "Width", "Height", "Length" }, null, null, null, null)
           }));
     }
     #endregion
@@ -643,6 +658,135 @@ namespace ProductService.gRPC.Server.Protos {
 
   }
 
+  public sealed partial class GrpcIdMessage : pb::IMessage<GrpcIdMessage> {
+    private static readonly pb::MessageParser<GrpcIdMessage> _parser = new pb::MessageParser<GrpcIdMessage>(() => new GrpcIdMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcIdMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProductService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcIdMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcIdMessage(GrpcIdMessage other) : this() {
+      id_ = other.id_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcIdMessage Clone() {
+      return new GrpcIdMessage(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcIdMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcIdMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcIdMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   /// <summary>
   ///Responses
   /// </summary>
@@ -654,7 +798,7 @@ namespace ProductService.gRPC.Server.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ProductService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ProductService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -767,6 +911,817 @@ namespace ProductService.gRPC.Server.Protos {
             break;
           case 8: {
             Ok = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcProduct : pb::IMessage<GrpcProduct> {
+    private static readonly pb::MessageParser<GrpcProduct> _parser = new pb::MessageParser<GrpcProduct>(() => new GrpcProduct());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcProduct> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProductService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProduct() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProduct(GrpcProduct other) : this() {
+      id_ = other.id_;
+      owner_ = other.owner_;
+      name_ = other.name_;
+      description_ = other.description_;
+      category_ = other.category_;
+      brand_ = other.brand_;
+      model_ = other.model_;
+      color_ = other.color_;
+      condition_ = other.condition_;
+      picturesUri_ = other.picturesUri_.Clone();
+      warranty_ = other.warranty_ != null ? other.warranty_.Clone() : null;
+      type_ = other.type_;
+      weight_ = other.weight_;
+      measurements_ = other.measurements_ != null ? other.measurements_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProduct Clone() {
+      return new GrpcProduct(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "owner" field.</summary>
+    public const int OwnerFieldNumber = 2;
+    private string owner_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Owner {
+      get { return owner_; }
+      set {
+        owner_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 3;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "description" field.</summary>
+    public const int DescriptionFieldNumber = 4;
+    private string description_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Description {
+      get { return description_; }
+      set {
+        description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "category" field.</summary>
+    public const int CategoryFieldNumber = 5;
+    private string category_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Category {
+      get { return category_; }
+      set {
+        category_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "brand" field.</summary>
+    public const int BrandFieldNumber = 6;
+    private string brand_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Brand {
+      get { return brand_; }
+      set {
+        brand_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "model" field.</summary>
+    public const int ModelFieldNumber = 7;
+    private string model_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Model {
+      get { return model_; }
+      set {
+        model_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "color" field.</summary>
+    public const int ColorFieldNumber = 8;
+    private string color_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Color {
+      get { return color_; }
+      set {
+        color_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "condition" field.</summary>
+    public const int ConditionFieldNumber = 10;
+    private string condition_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Condition {
+      get { return condition_; }
+      set {
+        condition_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "picturesUri" field.</summary>
+    public const int PicturesUriFieldNumber = 11;
+    private static readonly pb::FieldCodec<string> _repeated_picturesUri_codec
+        = pb::FieldCodec.ForString(90);
+    private readonly pbc::RepeatedField<string> picturesUri_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> PicturesUri {
+      get { return picturesUri_; }
+    }
+
+    /// <summary>Field number for the "warranty" field.</summary>
+    public const int WarrantyFieldNumber = 12;
+    private global::ProductService.gRPC.Server.Protos.GrpcProductWarranty warranty_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProductService.gRPC.Server.Protos.GrpcProductWarranty Warranty {
+      get { return warranty_; }
+      set {
+        warranty_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "type" field.</summary>
+    public const int TypeFieldNumber = 13;
+    private string type_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Type {
+      get { return type_; }
+      set {
+        type_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "weight" field.</summary>
+    public const int WeightFieldNumber = 14;
+    private double weight_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double Weight {
+      get { return weight_; }
+      set {
+        weight_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "measurements" field.</summary>
+    public const int MeasurementsFieldNumber = 15;
+    private global::ProductService.gRPC.Server.Protos.GrpcProductMeasurements measurements_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ProductService.gRPC.Server.Protos.GrpcProductMeasurements Measurements {
+      get { return measurements_; }
+      set {
+        measurements_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcProduct);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcProduct other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Owner != other.Owner) return false;
+      if (Name != other.Name) return false;
+      if (Description != other.Description) return false;
+      if (Category != other.Category) return false;
+      if (Brand != other.Brand) return false;
+      if (Model != other.Model) return false;
+      if (Color != other.Color) return false;
+      if (Condition != other.Condition) return false;
+      if(!picturesUri_.Equals(other.picturesUri_)) return false;
+      if (!object.Equals(Warranty, other.Warranty)) return false;
+      if (Type != other.Type) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Weight, other.Weight)) return false;
+      if (!object.Equals(Measurements, other.Measurements)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Owner.Length != 0) hash ^= Owner.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (Category.Length != 0) hash ^= Category.GetHashCode();
+      if (Brand.Length != 0) hash ^= Brand.GetHashCode();
+      if (Model.Length != 0) hash ^= Model.GetHashCode();
+      if (Color.Length != 0) hash ^= Color.GetHashCode();
+      if (Condition.Length != 0) hash ^= Condition.GetHashCode();
+      hash ^= picturesUri_.GetHashCode();
+      if (warranty_ != null) hash ^= Warranty.GetHashCode();
+      if (Type.Length != 0) hash ^= Type.GetHashCode();
+      if (Weight != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Weight);
+      if (measurements_ != null) hash ^= Measurements.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Owner.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Owner);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Name);
+      }
+      if (Description.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Description);
+      }
+      if (Category.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Category);
+      }
+      if (Brand.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Brand);
+      }
+      if (Model.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Model);
+      }
+      if (Color.Length != 0) {
+        output.WriteRawTag(66);
+        output.WriteString(Color);
+      }
+      if (Condition.Length != 0) {
+        output.WriteRawTag(82);
+        output.WriteString(Condition);
+      }
+      picturesUri_.WriteTo(output, _repeated_picturesUri_codec);
+      if (warranty_ != null) {
+        output.WriteRawTag(98);
+        output.WriteMessage(Warranty);
+      }
+      if (Type.Length != 0) {
+        output.WriteRawTag(106);
+        output.WriteString(Type);
+      }
+      if (Weight != 0D) {
+        output.WriteRawTag(113);
+        output.WriteDouble(Weight);
+      }
+      if (measurements_ != null) {
+        output.WriteRawTag(122);
+        output.WriteMessage(Measurements);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (Owner.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Owner);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (Description.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (Category.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Category);
+      }
+      if (Brand.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Brand);
+      }
+      if (Model.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Model);
+      }
+      if (Color.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Color);
+      }
+      if (Condition.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Condition);
+      }
+      size += picturesUri_.CalculateSize(_repeated_picturesUri_codec);
+      if (warranty_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Warranty);
+      }
+      if (Type.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Type);
+      }
+      if (Weight != 0D) {
+        size += 1 + 8;
+      }
+      if (measurements_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Measurements);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcProduct other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.Owner.Length != 0) {
+        Owner = other.Owner;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.Description.Length != 0) {
+        Description = other.Description;
+      }
+      if (other.Category.Length != 0) {
+        Category = other.Category;
+      }
+      if (other.Brand.Length != 0) {
+        Brand = other.Brand;
+      }
+      if (other.Model.Length != 0) {
+        Model = other.Model;
+      }
+      if (other.Color.Length != 0) {
+        Color = other.Color;
+      }
+      if (other.Condition.Length != 0) {
+        Condition = other.Condition;
+      }
+      picturesUri_.Add(other.picturesUri_);
+      if (other.warranty_ != null) {
+        if (warranty_ == null) {
+          Warranty = new global::ProductService.gRPC.Server.Protos.GrpcProductWarranty();
+        }
+        Warranty.MergeFrom(other.Warranty);
+      }
+      if (other.Type.Length != 0) {
+        Type = other.Type;
+      }
+      if (other.Weight != 0D) {
+        Weight = other.Weight;
+      }
+      if (other.measurements_ != null) {
+        if (measurements_ == null) {
+          Measurements = new global::ProductService.gRPC.Server.Protos.GrpcProductMeasurements();
+        }
+        Measurements.MergeFrom(other.Measurements);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            Owner = input.ReadString();
+            break;
+          }
+          case 26: {
+            Name = input.ReadString();
+            break;
+          }
+          case 34: {
+            Description = input.ReadString();
+            break;
+          }
+          case 42: {
+            Category = input.ReadString();
+            break;
+          }
+          case 50: {
+            Brand = input.ReadString();
+            break;
+          }
+          case 58: {
+            Model = input.ReadString();
+            break;
+          }
+          case 66: {
+            Color = input.ReadString();
+            break;
+          }
+          case 82: {
+            Condition = input.ReadString();
+            break;
+          }
+          case 90: {
+            picturesUri_.AddEntriesFrom(input, _repeated_picturesUri_codec);
+            break;
+          }
+          case 98: {
+            if (warranty_ == null) {
+              Warranty = new global::ProductService.gRPC.Server.Protos.GrpcProductWarranty();
+            }
+            input.ReadMessage(Warranty);
+            break;
+          }
+          case 106: {
+            Type = input.ReadString();
+            break;
+          }
+          case 113: {
+            Weight = input.ReadDouble();
+            break;
+          }
+          case 122: {
+            if (measurements_ == null) {
+              Measurements = new global::ProductService.gRPC.Server.Protos.GrpcProductMeasurements();
+            }
+            input.ReadMessage(Measurements);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcProductWarranty : pb::IMessage<GrpcProductWarranty> {
+    private static readonly pb::MessageParser<GrpcProductWarranty> _parser = new pb::MessageParser<GrpcProductWarranty>(() => new GrpcProductWarranty());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcProductWarranty> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProductService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProductWarranty() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProductWarranty(GrpcProductWarranty other) : this() {
+      timeInDays_ = other.timeInDays_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProductWarranty Clone() {
+      return new GrpcProductWarranty(this);
+    }
+
+    /// <summary>Field number for the "timeInDays" field.</summary>
+    public const int TimeInDaysFieldNumber = 1;
+    private int timeInDays_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int TimeInDays {
+      get { return timeInDays_; }
+      set {
+        timeInDays_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcProductWarranty);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcProductWarranty other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (TimeInDays != other.TimeInDays) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (TimeInDays != 0) hash ^= TimeInDays.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (TimeInDays != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(TimeInDays);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (TimeInDays != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(TimeInDays);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcProductWarranty other) {
+      if (other == null) {
+        return;
+      }
+      if (other.TimeInDays != 0) {
+        TimeInDays = other.TimeInDays;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            TimeInDays = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcProductMeasurements : pb::IMessage<GrpcProductMeasurements> {
+    private static readonly pb::MessageParser<GrpcProductMeasurements> _parser = new pb::MessageParser<GrpcProductMeasurements>(() => new GrpcProductMeasurements());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcProductMeasurements> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ProductService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProductMeasurements() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProductMeasurements(GrpcProductMeasurements other) : this() {
+      width_ = other.width_;
+      height_ = other.height_;
+      length_ = other.length_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcProductMeasurements Clone() {
+      return new GrpcProductMeasurements(this);
+    }
+
+    /// <summary>Field number for the "width" field.</summary>
+    public const int WidthFieldNumber = 1;
+    private int width_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Width {
+      get { return width_; }
+      set {
+        width_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "height" field.</summary>
+    public const int HeightFieldNumber = 2;
+    private int height_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Height {
+      get { return height_; }
+      set {
+        height_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "length" field.</summary>
+    public const int LengthFieldNumber = 3;
+    private int length_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Length {
+      get { return length_; }
+      set {
+        length_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcProductMeasurements);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcProductMeasurements other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Width != other.Width) return false;
+      if (Height != other.Height) return false;
+      if (Length != other.Length) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Width != 0) hash ^= Width.GetHashCode();
+      if (Height != 0) hash ^= Height.GetHashCode();
+      if (Length != 0) hash ^= Length.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Width != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Width);
+      }
+      if (Height != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Height);
+      }
+      if (Length != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Length);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Width != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Width);
+      }
+      if (Height != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Height);
+      }
+      if (Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Length);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcProductMeasurements other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Width != 0) {
+        Width = other.Width;
+      }
+      if (other.Height != 0) {
+        Height = other.Height;
+      }
+      if (other.Length != 0) {
+        Length = other.Length;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Width = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Height = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Length = input.ReadInt32();
             break;
           }
         }

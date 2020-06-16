@@ -3,7 +3,8 @@ syntax = "proto3";
 option csharp_namespace = "ProductService.gRPC.Server.Protos";
 
 service Product {
-	rpc CreateNewPhysicalProduct(GrpcNewPhysicalProduct) returns (GrpcResponseStatus);
+	rpc CreateNewPhysicalProduct (GrpcNewPhysicalProduct) returns (GrpcResponseStatus);
+	rpc GetProductData (GrpcIdMessage) returns (GrpcProduct);
 }
 
 //Requests
@@ -27,7 +28,38 @@ message GrpcNewPhysicalProduct {
 	int32 warrantyTimeInDays = 6;
 }
 
+message GrpcIdMessage {
+	string id = 1;
+}
+
 //Responses
 message GrpcResponseStatus {
 	bool Ok = 1;
+}
+
+message GrpcProduct {
+	string id = 1;
+	string owner = 2;
+	string name = 3;
+	string description = 4;
+	string category = 5;
+	string brand = 6;
+	string model = 7;
+	string color = 8;
+	string condition = 10;
+	repeated string picturesUri = 11;
+	GrpcProductWarranty warranty = 12;
+	string type = 13;
+	double weight = 14;
+	GrpcProductMeasurements measurements = 15;
+}
+
+message GrpcProductWarranty {
+	int32 timeInDays = 1;
+}
+
+message GrpcProductMeasurements {
+	int32 width = 1;
+	int32 height = 2;
+	int32 length = 3;
 }

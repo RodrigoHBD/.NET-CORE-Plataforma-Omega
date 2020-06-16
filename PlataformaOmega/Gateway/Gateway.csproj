@@ -15,4 +15,9 @@
 		<Protobuf Include="gRPC\Client\View\Proto\viewService.proto" GrpcServices="Client" />
 	</ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Routes\" />
+    </ItemGroup>
+	
+
 </Project>

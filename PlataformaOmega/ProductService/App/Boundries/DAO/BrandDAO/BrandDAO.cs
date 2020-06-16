@@ -35,11 +35,41 @@ namespace ProductService.App.Boundries.DAO
             }
         }
 
-        public static async Task<bool> CheckIdBrandExist(string id)
+        public static async Task<bool> CheckIdBrandExistById(string id)
         {
             try
             {
                 var filter = Builders<Brand>.Filter.Where(brand => brand.Id.ToString() == id);
+                var count = await Collections.Brands.CountDocumentsAsync(filter);
+                var exists = count > 0;
+                return exists;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task<bool> CheckBrandNameExist(string name)
+        {
+            try
+            {
+                var filter = Builders<Brand>.Filter.Where(brand => brand.Name == name);
+                var count = await Collections.Brands.CountDocumentsAsync(filter);
+                var exists = count > 0;
+                return exists;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task<bool> CheckBrandCnpjExist(string cnpj)
+        {
+            try
+            {
+                var filter = Builders<Brand>.Filter.Where(brand => brand.Cnpj == cnpj);
                 var count = await Collections.Brands.CountDocumentsAsync(filter);
                 var exists = count > 0;
                 return exists;

@@ -14,6 +14,8 @@ namespace ProductService.gRPC.Server.Protos {
 
     static readonly grpc::Marshaller<global::ProductService.gRPC.Server.Protos.GrpcNewPhysicalProduct> __Marshaller_GrpcNewPhysicalProduct = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ProductService.gRPC.Server.Protos.GrpcNewPhysicalProduct.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::ProductService.gRPC.Server.Protos.GrpcResponseStatus> __Marshaller_GrpcResponseStatus = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ProductService.gRPC.Server.Protos.GrpcResponseStatus.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::ProductService.gRPC.Server.Protos.GrpcIdMessage> __Marshaller_GrpcIdMessage = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ProductService.gRPC.Server.Protos.GrpcIdMessage.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::ProductService.gRPC.Server.Protos.GrpcProduct> __Marshaller_GrpcProduct = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ProductService.gRPC.Server.Protos.GrpcProduct.Parser.ParseFrom);
 
     static readonly grpc::Method<global::ProductService.gRPC.Server.Protos.GrpcNewPhysicalProduct, global::ProductService.gRPC.Server.Protos.GrpcResponseStatus> __Method_CreateNewPhysicalProduct = new grpc::Method<global::ProductService.gRPC.Server.Protos.GrpcNewPhysicalProduct, global::ProductService.gRPC.Server.Protos.GrpcResponseStatus>(
         grpc::MethodType.Unary,
@@ -21,6 +23,13 @@ namespace ProductService.gRPC.Server.Protos {
         "CreateNewPhysicalProduct",
         __Marshaller_GrpcNewPhysicalProduct,
         __Marshaller_GrpcResponseStatus);
+
+    static readonly grpc::Method<global::ProductService.gRPC.Server.Protos.GrpcIdMessage, global::ProductService.gRPC.Server.Protos.GrpcProduct> __Method_GetProductData = new grpc::Method<global::ProductService.gRPC.Server.Protos.GrpcIdMessage, global::ProductService.gRPC.Server.Protos.GrpcProduct>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetProductData",
+        __Marshaller_GrpcIdMessage,
+        __Marshaller_GrpcProduct);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -37,6 +46,11 @@ namespace ProductService.gRPC.Server.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::ProductService.gRPC.Server.Protos.GrpcProduct> GetProductData(global::ProductService.gRPC.Server.Protos.GrpcIdMessage request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -44,7 +58,8 @@ namespace ProductService.gRPC.Server.Protos {
     public static grpc::ServerServiceDefinition BindService(ProductBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_CreateNewPhysicalProduct, serviceImpl.CreateNewPhysicalProduct).Build();
+          .AddMethod(__Method_CreateNewPhysicalProduct, serviceImpl.CreateNewPhysicalProduct)
+          .AddMethod(__Method_GetProductData, serviceImpl.GetProductData).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -54,6 +69,7 @@ namespace ProductService.gRPC.Server.Protos {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, ProductBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_CreateNewPhysicalProduct, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ProductService.gRPC.Server.Protos.GrpcNewPhysicalProduct, global::ProductService.gRPC.Server.Protos.GrpcResponseStatus>(serviceImpl.CreateNewPhysicalProduct));
+      serviceBinder.AddMethod(__Method_GetProductData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ProductService.gRPC.Server.Protos.GrpcIdMessage, global::ProductService.gRPC.Server.Protos.GrpcProduct>(serviceImpl.GetProductData));
     }
 
   }

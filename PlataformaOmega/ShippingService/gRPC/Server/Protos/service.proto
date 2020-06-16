@@ -7,6 +7,9 @@ service Shipping {
 	rpc SetPackagePosted (GrpcUpdatePackageRequest) returns (GrpcStatusResponse);
 	rpc SetPackageDelivered (GrpcUpdatePackageRequest) returns (GrpcStatusResponse);
 	rpc WatchPackage (GrpcWatchPackageRequest) returns (GrpcStatusResponse);
+	rpc GetPackageData (GrpcIdMessage) returns (GrpcPackageData);
+	rpc SearchPackages (GrpcSearchPackageRequest) returns (GrpcPackageList);
+	rpc RunPackageWatcherRoutineManually (GrpcIdMessage) returns (GrpcStatusResponse);
 }
 
 // requests
@@ -24,8 +27,60 @@ message GrpcWatchPackageRequest {
 	string id = 1;
 }
 
+message GrpcSearchPackageRequest {
+	string name = 1;
+	string trackingCode = 2;
+	GrpcPagination pagination = 3;
+}
+
 //responses
 message GrpcStatusResponse {
 	bool ok = 1;
 	string message = 2;
+}
+
+message GrpcPackageList {
+	repeated GrpcPackageData data = 1;
+	GrpcPagination pagination = 2;
+}
+
+// models
+message GrpcPackageData{
+	string id = 1;
+	string name = 2;
+	string productId = 3;
+	string trackingCode = 4;
+	GrpcPackageStatus status = 5;
+	GrpcPackageLocations locations = 6;
+}
+
+message GrpcPackageStatus {
+	bool isPosted = 1;
+	bool isDelivered = 2;
+	bool isAwaitingForPickUp = 3;
+	bool isRejected = 4;
+	bool isBeingTransported = 5;
+	string message = 6;
+}
+
+message GrpcPackageLocations {
+	GrpcLocation currentLocation = 1;
+	GrpcLocation headedToLocation = 2;
+}
+
+message GrpcLocation {
+	string state = 1;
+	string city = 2;
+	string streetName = 3;
+	string cep = 4;
+}
+
+message GrpcIdMessage {
+	string id = 1;
+}
+
+message GrpcPagination {
+	int32 offset = 1;
+	int32 limit = 2;
+	int32 total = 3;
 }

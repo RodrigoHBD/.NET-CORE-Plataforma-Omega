@@ -9,7 +9,7 @@ namespace ProductService.App.Models.Input
     {
         string Name { get; }
         string Description { get; }
-        ProductCategory Category { get; }
+        string Category { get; }
         string Brand { get; }
         string Model { get; }
         ProductColor Color { get; }

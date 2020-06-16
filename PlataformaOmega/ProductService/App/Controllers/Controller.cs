@@ -23,7 +23,18 @@ namespace ProductService.App.Controllers
             }
         }
 
-
+        public static async Task<GrpcProduct> GetProductData(GrpcIdMessage grpcRequest)
+        {
+            try
+            {
+                var id = grpcRequest.Id;
+                var product = await ProductUseCaseController.GetProductDataAsync(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
 
     }
 }

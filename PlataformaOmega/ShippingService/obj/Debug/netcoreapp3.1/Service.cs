@@ -28,22 +28,52 @@ namespace ShippingService.gRPC.Server.Protos {
             "cFBhY2thZ2VSZXF1ZXN0EgwKBE5hbWUYASABKAkSFAoMVHJhY2tpbmdDb2Rl",
             "GAIgASgJEhEKCVByb2R1Y3RJZBgDIAEoCSImChhHcnBjVXBkYXRlUGFja2Fn",
             "ZVJlcXVlc3QSCgoCaWQYASABKAkiJQoXR3JwY1dhdGNoUGFja2FnZVJlcXVl",
-            "c3QSCgoCaWQYASABKAkiMQoSR3JwY1N0YXR1c1Jlc3BvbnNlEgoKAm9rGAEg",
-            "ASgIEg8KB21lc3NhZ2UYAiABKAkykQIKCFNoaXBwaW5nEjsKC1NoaXBQYWNr",
-            "YWdlEhcuR3JwY1NoaXBQYWNrYWdlUmVxdWVzdBoTLkdycGNTdGF0dXNSZXNw",
-            "b25zZRJCChBTZXRQYWNrYWdlUG9zdGVkEhkuR3JwY1VwZGF0ZVBhY2thZ2VS",
-            "ZXF1ZXN0GhMuR3JwY1N0YXR1c1Jlc3BvbnNlEkUKE1NldFBhY2thZ2VEZWxp",
-            "dmVyZWQSGS5HcnBjVXBkYXRlUGFja2FnZVJlcXVlc3QaEy5HcnBjU3RhdHVz",
-            "UmVzcG9uc2USPQoMV2F0Y2hQYWNrYWdlEhguR3JwY1dhdGNoUGFja2FnZVJl",
-            "cXVlc3QaEy5HcnBjU3RhdHVzUmVzcG9uc2VCJaoCIlNoaXBwaW5nU2Vydmlj",
-            "ZS5nUlBDLlNlcnZlci5Qcm90b3NiBnByb3RvMw=="));
+            "c3QSCgoCaWQYASABKAkiYwoYR3JwY1NlYXJjaFBhY2thZ2VSZXF1ZXN0EgwK",
+            "BG5hbWUYASABKAkSFAoMdHJhY2tpbmdDb2RlGAIgASgJEiMKCnBhZ2luYXRp",
+            "b24YAyABKAsyDy5HcnBjUGFnaW5hdGlvbiIxChJHcnBjU3RhdHVzUmVzcG9u",
+            "c2USCgoCb2sYASABKAgSDwoHbWVzc2FnZRgCIAEoCSJWCg9HcnBjUGFja2Fn",
+            "ZUxpc3QSHgoEZGF0YRgBIAMoCzIQLkdycGNQYWNrYWdlRGF0YRIjCgpwYWdp",
+            "bmF0aW9uGAIgASgLMg8uR3JwY1BhZ2luYXRpb24iogEKD0dycGNQYWNrYWdl",
+            "RGF0YRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhEKCXByb2R1Y3RJZBgD",
+            "IAEoCRIUCgx0cmFja2luZ0NvZGUYBCABKAkSIgoGc3RhdHVzGAUgASgLMhIu",
+            "R3JwY1BhY2thZ2VTdGF0dXMSKAoJbG9jYXRpb25zGAYgASgLMhUuR3JwY1Bh",
+            "Y2thZ2VMb2NhdGlvbnMimAEKEUdycGNQYWNrYWdlU3RhdHVzEhAKCGlzUG9z",
+            "dGVkGAEgASgIEhMKC2lzRGVsaXZlcmVkGAIgASgIEhsKE2lzQXdhaXRpbmdG",
+            "b3JQaWNrVXAYAyABKAgSEgoKaXNSZWplY3RlZBgEIAEoCBIaChJpc0JlaW5n",
+            "VHJhbnNwb3J0ZWQYBSABKAgSDwoHbWVzc2FnZRgGIAEoCSJnChRHcnBjUGFj",
+            "a2FnZUxvY2F0aW9ucxImCg9jdXJyZW50TG9jYXRpb24YASABKAsyDS5HcnBj",
+            "TG9jYXRpb24SJwoQaGVhZGVkVG9Mb2NhdGlvbhgCIAEoCzINLkdycGNMb2Nh",
+            "dGlvbiJMCgxHcnBjTG9jYXRpb24SDQoFc3RhdGUYASABKAkSDAoEY2l0eRgC",
+            "IAEoCRISCgpzdHJlZXROYW1lGAMgASgJEgsKA2NlcBgEIAEoCSIbCg1HcnBj",
+            "SWRNZXNzYWdlEgoKAmlkGAEgASgJIj4KDkdycGNQYWdpbmF0aW9uEg4KBm9m",
+            "ZnNldBgBIAEoBRINCgVsaW1pdBgCIAEoBRINCgV0b3RhbBgDIAEoBTLNAwoI",
+            "U2hpcHBpbmcSOwoLU2hpcFBhY2thZ2USFy5HcnBjU2hpcFBhY2thZ2VSZXF1",
+            "ZXN0GhMuR3JwY1N0YXR1c1Jlc3BvbnNlEkIKEFNldFBhY2thZ2VQb3N0ZWQS",
+            "GS5HcnBjVXBkYXRlUGFja2FnZVJlcXVlc3QaEy5HcnBjU3RhdHVzUmVzcG9u",
+            "c2USRQoTU2V0UGFja2FnZURlbGl2ZXJlZBIZLkdycGNVcGRhdGVQYWNrYWdl",
+            "UmVxdWVzdBoTLkdycGNTdGF0dXNSZXNwb25zZRI9CgxXYXRjaFBhY2thZ2US",
+            "GC5HcnBjV2F0Y2hQYWNrYWdlUmVxdWVzdBoTLkdycGNTdGF0dXNSZXNwb25z",
+            "ZRIyCg5HZXRQYWNrYWdlRGF0YRIOLkdycGNJZE1lc3NhZ2UaEC5HcnBjUGFj",
+            "a2FnZURhdGESPQoOU2VhcmNoUGFja2FnZXMSGS5HcnBjU2VhcmNoUGFja2Fn",
+            "ZVJlcXVlc3QaEC5HcnBjUGFja2FnZUxpc3QSRwogUnVuUGFja2FnZVdhdGNo",
+            "ZXJSb3V0aW5lTWFudWFsbHkSDi5HcnBjSWRNZXNzYWdlGhMuR3JwY1N0YXR1",
+            "c1Jlc3BvbnNlQiWqAiJTaGlwcGluZ1NlcnZpY2UuZ1JQQy5TZXJ2ZXIuUHJv",
+            "dG9zYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest.Parser, new[]{ "Name", "TrackingCode", "ProductId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse), global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse.Parser, new[]{ "Ok", "Message" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest.Parser, new[]{ "Name", "TrackingCode", "Pagination" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse), global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse.Parser, new[]{ "Ok", "Message" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageList), global::ShippingService.gRPC.Server.Protos.GrpcPackageList.Parser, new[]{ "Data", "Pagination" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageData), global::ShippingService.gRPC.Server.Protos.GrpcPackageData.Parser, new[]{ "Id", "Name", "ProductId", "TrackingCode", "Status", "Locations" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus), global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus.Parser, new[]{ "IsPosted", "IsDelivered", "IsAwaitingForPickUp", "IsRejected", "IsBeingTransported", "Message" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations), global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations.Parser, new[]{ "CurrentLocation", "HeadedToLocation" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcLocation), global::ShippingService.gRPC.Server.Protos.GrpcLocation.Parser, new[]{ "State", "City", "StreetName", "Cep" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcIdMessage), global::ShippingService.gRPC.Server.Protos.GrpcIdMessage.Parser, new[]{ "Id" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPagination), global::ShippingService.gRPC.Server.Protos.GrpcPagination.Parser, new[]{ "Offset", "Limit", "Total" }, null, null, null, null)
           }));
     }
     #endregion
@@ -496,6 +526,197 @@ namespace ShippingService.gRPC.Server.Protos {
 
   }
 
+  public sealed partial class GrpcSearchPackageRequest : pb::IMessage<GrpcSearchPackageRequest> {
+    private static readonly pb::MessageParser<GrpcSearchPackageRequest> _parser = new pb::MessageParser<GrpcSearchPackageRequest>(() => new GrpcSearchPackageRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcSearchPackageRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcSearchPackageRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcSearchPackageRequest(GrpcSearchPackageRequest other) : this() {
+      name_ = other.name_;
+      trackingCode_ = other.trackingCode_;
+      pagination_ = other.pagination_ != null ? other.pagination_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcSearchPackageRequest Clone() {
+      return new GrpcSearchPackageRequest(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "trackingCode" field.</summary>
+    public const int TrackingCodeFieldNumber = 2;
+    private string trackingCode_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string TrackingCode {
+      get { return trackingCode_; }
+      set {
+        trackingCode_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "pagination" field.</summary>
+    public const int PaginationFieldNumber = 3;
+    private global::ShippingService.gRPC.Server.Protos.GrpcPagination pagination_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ShippingService.gRPC.Server.Protos.GrpcPagination Pagination {
+      get { return pagination_; }
+      set {
+        pagination_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcSearchPackageRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcSearchPackageRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (TrackingCode != other.TrackingCode) return false;
+      if (!object.Equals(Pagination, other.Pagination)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (TrackingCode.Length != 0) hash ^= TrackingCode.GetHashCode();
+      if (pagination_ != null) hash ^= Pagination.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (TrackingCode.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(TrackingCode);
+      }
+      if (pagination_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Pagination);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (TrackingCode.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TrackingCode);
+      }
+      if (pagination_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pagination);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcSearchPackageRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.TrackingCode.Length != 0) {
+        TrackingCode = other.TrackingCode;
+      }
+      if (other.pagination_ != null) {
+        if (pagination_ == null) {
+          Pagination = new global::ShippingService.gRPC.Server.Protos.GrpcPagination();
+        }
+        Pagination.MergeFrom(other.Pagination);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            TrackingCode = input.ReadString();
+            break;
+          }
+          case 26: {
+            if (pagination_ == null) {
+              Pagination = new global::ShippingService.gRPC.Server.Protos.GrpcPagination();
+            }
+            input.ReadMessage(Pagination);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   /// <summary>
   ///responses
   /// </summary>
@@ -507,7 +728,7 @@ namespace ShippingService.gRPC.Server.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -648,6 +869,1410 @@ namespace ShippingService.gRPC.Server.Protos {
           }
           case 18: {
             Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcPackageList : pb::IMessage<GrpcPackageList> {
+    private static readonly pb::MessageParser<GrpcPackageList> _parser = new pb::MessageParser<GrpcPackageList>(() => new GrpcPackageList());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcPackageList> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageList() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageList(GrpcPackageList other) : this() {
+      data_ = other.data_.Clone();
+      pagination_ = other.pagination_ != null ? other.pagination_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageList Clone() {
+      return new GrpcPackageList(this);
+    }
+
+    /// <summary>Field number for the "data" field.</summary>
+    public const int DataFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::ShippingService.gRPC.Server.Protos.GrpcPackageData> _repeated_data_codec
+        = pb::FieldCodec.ForMessage(10, global::ShippingService.gRPC.Server.Protos.GrpcPackageData.Parser);
+    private readonly pbc::RepeatedField<global::ShippingService.gRPC.Server.Protos.GrpcPackageData> data_ = new pbc::RepeatedField<global::ShippingService.gRPC.Server.Protos.GrpcPackageData>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::ShippingService.gRPC.Server.Protos.GrpcPackageData> Data {
+      get { return data_; }
+    }
+
+    /// <summary>Field number for the "pagination" field.</summary>
+    public const int PaginationFieldNumber = 2;
+    private global::ShippingService.gRPC.Server.Protos.GrpcPagination pagination_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ShippingService.gRPC.Server.Protos.GrpcPagination Pagination {
+      get { return pagination_; }
+      set {
+        pagination_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcPackageList);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcPackageList other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!data_.Equals(other.data_)) return false;
+      if (!object.Equals(Pagination, other.Pagination)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= data_.GetHashCode();
+      if (pagination_ != null) hash ^= Pagination.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      data_.WriteTo(output, _repeated_data_codec);
+      if (pagination_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Pagination);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += data_.CalculateSize(_repeated_data_codec);
+      if (pagination_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pagination);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcPackageList other) {
+      if (other == null) {
+        return;
+      }
+      data_.Add(other.data_);
+      if (other.pagination_ != null) {
+        if (pagination_ == null) {
+          Pagination = new global::ShippingService.gRPC.Server.Protos.GrpcPagination();
+        }
+        Pagination.MergeFrom(other.Pagination);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            data_.AddEntriesFrom(input, _repeated_data_codec);
+            break;
+          }
+          case 18: {
+            if (pagination_ == null) {
+              Pagination = new global::ShippingService.gRPC.Server.Protos.GrpcPagination();
+            }
+            input.ReadMessage(Pagination);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// models
+  /// </summary>
+  public sealed partial class GrpcPackageData : pb::IMessage<GrpcPackageData> {
+    private static readonly pb::MessageParser<GrpcPackageData> _parser = new pb::MessageParser<GrpcPackageData>(() => new GrpcPackageData());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcPackageData> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageData() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageData(GrpcPackageData other) : this() {
+      id_ = other.id_;
+      name_ = other.name_;
+      productId_ = other.productId_;
+      trackingCode_ = other.trackingCode_;
+      status_ = other.status_ != null ? other.status_.Clone() : null;
+      locations_ = other.locations_ != null ? other.locations_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageData Clone() {
+      return new GrpcPackageData(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 2;
+    private string name_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "productId" field.</summary>
+    public const int ProductIdFieldNumber = 3;
+    private string productId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ProductId {
+      get { return productId_; }
+      set {
+        productId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "trackingCode" field.</summary>
+    public const int TrackingCodeFieldNumber = 4;
+    private string trackingCode_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string TrackingCode {
+      get { return trackingCode_; }
+      set {
+        trackingCode_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "status" field.</summary>
+    public const int StatusFieldNumber = 5;
+    private global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus status_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus Status {
+      get { return status_; }
+      set {
+        status_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "locations" field.</summary>
+    public const int LocationsFieldNumber = 6;
+    private global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations locations_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations Locations {
+      get { return locations_; }
+      set {
+        locations_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcPackageData);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcPackageData other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (Name != other.Name) return false;
+      if (ProductId != other.ProductId) return false;
+      if (TrackingCode != other.TrackingCode) return false;
+      if (!object.Equals(Status, other.Status)) return false;
+      if (!object.Equals(Locations, other.Locations)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
+      if (TrackingCode.Length != 0) hash ^= TrackingCode.GetHashCode();
+      if (status_ != null) hash ^= Status.GetHashCode();
+      if (locations_ != null) hash ^= Locations.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(Name);
+      }
+      if (ProductId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ProductId);
+      }
+      if (TrackingCode.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(TrackingCode);
+      }
+      if (status_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Status);
+      }
+      if (locations_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Locations);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (ProductId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ProductId);
+      }
+      if (TrackingCode.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TrackingCode);
+      }
+      if (status_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Status);
+      }
+      if (locations_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Locations);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcPackageData other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.ProductId.Length != 0) {
+        ProductId = other.ProductId;
+      }
+      if (other.TrackingCode.Length != 0) {
+        TrackingCode = other.TrackingCode;
+      }
+      if (other.status_ != null) {
+        if (status_ == null) {
+          Status = new global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus();
+        }
+        Status.MergeFrom(other.Status);
+      }
+      if (other.locations_ != null) {
+        if (locations_ == null) {
+          Locations = new global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations();
+        }
+        Locations.MergeFrom(other.Locations);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            Name = input.ReadString();
+            break;
+          }
+          case 26: {
+            ProductId = input.ReadString();
+            break;
+          }
+          case 34: {
+            TrackingCode = input.ReadString();
+            break;
+          }
+          case 42: {
+            if (status_ == null) {
+              Status = new global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus();
+            }
+            input.ReadMessage(Status);
+            break;
+          }
+          case 50: {
+            if (locations_ == null) {
+              Locations = new global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations();
+            }
+            input.ReadMessage(Locations);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcPackageStatus : pb::IMessage<GrpcPackageStatus> {
+    private static readonly pb::MessageParser<GrpcPackageStatus> _parser = new pb::MessageParser<GrpcPackageStatus>(() => new GrpcPackageStatus());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcPackageStatus> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageStatus() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageStatus(GrpcPackageStatus other) : this() {
+      isPosted_ = other.isPosted_;
+      isDelivered_ = other.isDelivered_;
+      isAwaitingForPickUp_ = other.isAwaitingForPickUp_;
+      isRejected_ = other.isRejected_;
+      isBeingTransported_ = other.isBeingTransported_;
+      message_ = other.message_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageStatus Clone() {
+      return new GrpcPackageStatus(this);
+    }
+
+    /// <summary>Field number for the "isPosted" field.</summary>
+    public const int IsPostedFieldNumber = 1;
+    private bool isPosted_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsPosted {
+      get { return isPosted_; }
+      set {
+        isPosted_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "isDelivered" field.</summary>
+    public const int IsDeliveredFieldNumber = 2;
+    private bool isDelivered_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsDelivered {
+      get { return isDelivered_; }
+      set {
+        isDelivered_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "isAwaitingForPickUp" field.</summary>
+    public const int IsAwaitingForPickUpFieldNumber = 3;
+    private bool isAwaitingForPickUp_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsAwaitingForPickUp {
+      get { return isAwaitingForPickUp_; }
+      set {
+        isAwaitingForPickUp_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "isRejected" field.</summary>
+    public const int IsRejectedFieldNumber = 4;
+    private bool isRejected_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsRejected {
+      get { return isRejected_; }
+      set {
+        isRejected_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "isBeingTransported" field.</summary>
+    public const int IsBeingTransportedFieldNumber = 5;
+    private bool isBeingTransported_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsBeingTransported {
+      get { return isBeingTransported_; }
+      set {
+        isBeingTransported_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 6;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcPackageStatus);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcPackageStatus other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (IsPosted != other.IsPosted) return false;
+      if (IsDelivered != other.IsDelivered) return false;
+      if (IsAwaitingForPickUp != other.IsAwaitingForPickUp) return false;
+      if (IsRejected != other.IsRejected) return false;
+      if (IsBeingTransported != other.IsBeingTransported) return false;
+      if (Message != other.Message) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (IsPosted != false) hash ^= IsPosted.GetHashCode();
+      if (IsDelivered != false) hash ^= IsDelivered.GetHashCode();
+      if (IsAwaitingForPickUp != false) hash ^= IsAwaitingForPickUp.GetHashCode();
+      if (IsRejected != false) hash ^= IsRejected.GetHashCode();
+      if (IsBeingTransported != false) hash ^= IsBeingTransported.GetHashCode();
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (IsPosted != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(IsPosted);
+      }
+      if (IsDelivered != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(IsDelivered);
+      }
+      if (IsAwaitingForPickUp != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsAwaitingForPickUp);
+      }
+      if (IsRejected != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(IsRejected);
+      }
+      if (IsBeingTransported != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(IsBeingTransported);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Message);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (IsPosted != false) {
+        size += 1 + 1;
+      }
+      if (IsDelivered != false) {
+        size += 1 + 1;
+      }
+      if (IsAwaitingForPickUp != false) {
+        size += 1 + 1;
+      }
+      if (IsRejected != false) {
+        size += 1 + 1;
+      }
+      if (IsBeingTransported != false) {
+        size += 1 + 1;
+      }
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcPackageStatus other) {
+      if (other == null) {
+        return;
+      }
+      if (other.IsPosted != false) {
+        IsPosted = other.IsPosted;
+      }
+      if (other.IsDelivered != false) {
+        IsDelivered = other.IsDelivered;
+      }
+      if (other.IsAwaitingForPickUp != false) {
+        IsAwaitingForPickUp = other.IsAwaitingForPickUp;
+      }
+      if (other.IsRejected != false) {
+        IsRejected = other.IsRejected;
+      }
+      if (other.IsBeingTransported != false) {
+        IsBeingTransported = other.IsBeingTransported;
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            IsPosted = input.ReadBool();
+            break;
+          }
+          case 16: {
+            IsDelivered = input.ReadBool();
+            break;
+          }
+          case 24: {
+            IsAwaitingForPickUp = input.ReadBool();
+            break;
+          }
+          case 32: {
+            IsRejected = input.ReadBool();
+            break;
+          }
+          case 40: {
+            IsBeingTransported = input.ReadBool();
+            break;
+          }
+          case 50: {
+            Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcPackageLocations : pb::IMessage<GrpcPackageLocations> {
+    private static readonly pb::MessageParser<GrpcPackageLocations> _parser = new pb::MessageParser<GrpcPackageLocations>(() => new GrpcPackageLocations());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcPackageLocations> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageLocations() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageLocations(GrpcPackageLocations other) : this() {
+      currentLocation_ = other.currentLocation_ != null ? other.currentLocation_.Clone() : null;
+      headedToLocation_ = other.headedToLocation_ != null ? other.headedToLocation_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPackageLocations Clone() {
+      return new GrpcPackageLocations(this);
+    }
+
+    /// <summary>Field number for the "currentLocation" field.</summary>
+    public const int CurrentLocationFieldNumber = 1;
+    private global::ShippingService.gRPC.Server.Protos.GrpcLocation currentLocation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ShippingService.gRPC.Server.Protos.GrpcLocation CurrentLocation {
+      get { return currentLocation_; }
+      set {
+        currentLocation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "headedToLocation" field.</summary>
+    public const int HeadedToLocationFieldNumber = 2;
+    private global::ShippingService.gRPC.Server.Protos.GrpcLocation headedToLocation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ShippingService.gRPC.Server.Protos.GrpcLocation HeadedToLocation {
+      get { return headedToLocation_; }
+      set {
+        headedToLocation_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcPackageLocations);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcPackageLocations other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(CurrentLocation, other.CurrentLocation)) return false;
+      if (!object.Equals(HeadedToLocation, other.HeadedToLocation)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (currentLocation_ != null) hash ^= CurrentLocation.GetHashCode();
+      if (headedToLocation_ != null) hash ^= HeadedToLocation.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (currentLocation_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(CurrentLocation);
+      }
+      if (headedToLocation_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(HeadedToLocation);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (currentLocation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(CurrentLocation);
+      }
+      if (headedToLocation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(HeadedToLocation);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcPackageLocations other) {
+      if (other == null) {
+        return;
+      }
+      if (other.currentLocation_ != null) {
+        if (currentLocation_ == null) {
+          CurrentLocation = new global::ShippingService.gRPC.Server.Protos.GrpcLocation();
+        }
+        CurrentLocation.MergeFrom(other.CurrentLocation);
+      }
+      if (other.headedToLocation_ != null) {
+        if (headedToLocation_ == null) {
+          HeadedToLocation = new global::ShippingService.gRPC.Server.Protos.GrpcLocation();
+        }
+        HeadedToLocation.MergeFrom(other.HeadedToLocation);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (currentLocation_ == null) {
+              CurrentLocation = new global::ShippingService.gRPC.Server.Protos.GrpcLocation();
+            }
+            input.ReadMessage(CurrentLocation);
+            break;
+          }
+          case 18: {
+            if (headedToLocation_ == null) {
+              HeadedToLocation = new global::ShippingService.gRPC.Server.Protos.GrpcLocation();
+            }
+            input.ReadMessage(HeadedToLocation);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcLocation : pb::IMessage<GrpcLocation> {
+    private static readonly pb::MessageParser<GrpcLocation> _parser = new pb::MessageParser<GrpcLocation>(() => new GrpcLocation());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcLocation> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcLocation() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcLocation(GrpcLocation other) : this() {
+      state_ = other.state_;
+      city_ = other.city_;
+      streetName_ = other.streetName_;
+      cep_ = other.cep_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcLocation Clone() {
+      return new GrpcLocation(this);
+    }
+
+    /// <summary>Field number for the "state" field.</summary>
+    public const int StateFieldNumber = 1;
+    private string state_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string State {
+      get { return state_; }
+      set {
+        state_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "city" field.</summary>
+    public const int CityFieldNumber = 2;
+    private string city_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string City {
+      get { return city_; }
+      set {
+        city_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "streetName" field.</summary>
+    public const int StreetNameFieldNumber = 3;
+    private string streetName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string StreetName {
+      get { return streetName_; }
+      set {
+        streetName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "cep" field.</summary>
+    public const int CepFieldNumber = 4;
+    private string cep_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Cep {
+      get { return cep_; }
+      set {
+        cep_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcLocation);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcLocation other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (State != other.State) return false;
+      if (City != other.City) return false;
+      if (StreetName != other.StreetName) return false;
+      if (Cep != other.Cep) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (State.Length != 0) hash ^= State.GetHashCode();
+      if (City.Length != 0) hash ^= City.GetHashCode();
+      if (StreetName.Length != 0) hash ^= StreetName.GetHashCode();
+      if (Cep.Length != 0) hash ^= Cep.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (State.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(State);
+      }
+      if (City.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(City);
+      }
+      if (StreetName.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(StreetName);
+      }
+      if (Cep.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Cep);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (State.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(State);
+      }
+      if (City.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(City);
+      }
+      if (StreetName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(StreetName);
+      }
+      if (Cep.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Cep);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcLocation other) {
+      if (other == null) {
+        return;
+      }
+      if (other.State.Length != 0) {
+        State = other.State;
+      }
+      if (other.City.Length != 0) {
+        City = other.City;
+      }
+      if (other.StreetName.Length != 0) {
+        StreetName = other.StreetName;
+      }
+      if (other.Cep.Length != 0) {
+        Cep = other.Cep;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            State = input.ReadString();
+            break;
+          }
+          case 18: {
+            City = input.ReadString();
+            break;
+          }
+          case 26: {
+            StreetName = input.ReadString();
+            break;
+          }
+          case 34: {
+            Cep = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcIdMessage : pb::IMessage<GrpcIdMessage> {
+    private static readonly pb::MessageParser<GrpcIdMessage> _parser = new pb::MessageParser<GrpcIdMessage>(() => new GrpcIdMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcIdMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcIdMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcIdMessage(GrpcIdMessage other) : this() {
+      id_ = other.id_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcIdMessage Clone() {
+      return new GrpcIdMessage(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcIdMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcIdMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcIdMessage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GrpcPagination : pb::IMessage<GrpcPagination> {
+    private static readonly pb::MessageParser<GrpcPagination> _parser = new pb::MessageParser<GrpcPagination>(() => new GrpcPagination());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GrpcPagination> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ShippingService.gRPC.Server.Protos.ServiceReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPagination() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPagination(GrpcPagination other) : this() {
+      offset_ = other.offset_;
+      limit_ = other.limit_;
+      total_ = other.total_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GrpcPagination Clone() {
+      return new GrpcPagination(this);
+    }
+
+    /// <summary>Field number for the "offset" field.</summary>
+    public const int OffsetFieldNumber = 1;
+    private int offset_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Offset {
+      get { return offset_; }
+      set {
+        offset_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "limit" field.</summary>
+    public const int LimitFieldNumber = 2;
+    private int limit_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Limit {
+      get { return limit_; }
+      set {
+        limit_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "total" field.</summary>
+    public const int TotalFieldNumber = 3;
+    private int total_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Total {
+      get { return total_; }
+      set {
+        total_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GrpcPagination);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GrpcPagination other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Offset != other.Offset) return false;
+      if (Limit != other.Limit) return false;
+      if (Total != other.Total) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Offset != 0) hash ^= Offset.GetHashCode();
+      if (Limit != 0) hash ^= Limit.GetHashCode();
+      if (Total != 0) hash ^= Total.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Offset != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Offset);
+      }
+      if (Limit != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Limit);
+      }
+      if (Total != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(Total);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Offset != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Offset);
+      }
+      if (Limit != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Limit);
+      }
+      if (Total != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Total);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GrpcPagination other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Offset != 0) {
+        Offset = other.Offset;
+      }
+      if (other.Limit != 0) {
+        Limit = other.Limit;
+      }
+      if (other.Total != 0) {
+        Total = other.Total;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Offset = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Limit = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            Total = input.ReadInt32();
             break;
           }
         }

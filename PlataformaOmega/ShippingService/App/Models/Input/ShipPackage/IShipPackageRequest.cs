@@ -10,6 +10,7 @@ namespace ShippingService.App.Models.Input
         string Name { get; }
         string ProductId { get; }
         string TrackingCode { get; }
+        bool SetWatcher { get; }
         Location PackageInitialLocation { get; }
     }
 }

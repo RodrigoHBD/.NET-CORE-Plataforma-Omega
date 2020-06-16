@@ -1,19 +1,17 @@
-﻿using ShippingService.App.Factories;
-using ShippingService.App.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShippingService.App.UseCases
 {
-    public class CreateDeliveredPackageUpdate
+    public class TogglePackageIsBeingWatched
     {
-        public static PackageUpdate Execute()
+        public static async Task Execute(bool toggler)
         {
             try
             {
-                return PackageFactory.MakePackageDeliveredUpdate();
+
             }
             catch (Exception e)
             {

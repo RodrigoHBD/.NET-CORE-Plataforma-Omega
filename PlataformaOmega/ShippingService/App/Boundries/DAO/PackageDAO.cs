@@ -1,6 +1,10 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
+using ShippingService.App.Boundries.DAO.ReturnModels;
+using ShippingService.App.Boundries.DAOReturnModels;
 using ShippingService.App.Models;
+using ShippingService.App.Models.Input;
+using ShippingService.App.Models.Output;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +34,14 @@ namespace ShippingService.App.Boundries
             {
                 var filter = Builders<Package>.Filter.Where(package => package.Id == ObjectId.Parse(id));
                 var somthingWasChanged = false;
-                
+
+                if (packageUpdate.IsBeingWatched.IsActive)
+                {
+                    var update = Builders<Package>.Update
+                        .Set(package => package.IsBeingWatched, packageUpdate.IsBeingWatched.Toggler);
+                    await Collections.Packages.UpdateOneAsync(filter, update);
+                }
+               
                 if (packageUpdate.SetPosted)
                 {
                     var update = Builders<Package>.Update
@@ -177,6 +188,57 @@ namespace ShippingService.App.Boundries
                 var query = Collections.Packages.Find(filter).Project(package => package.Status);
                 var status = query.First();
                 return status;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task<IPackageList> SearchPackages(IPackageSearchRequest request)
+        {
+            try
+            {
+                var nameFilter = Builders<Package>.Filter.Empty;
+                var trackingCodeFilter = Builders<Package>.Filter.Empty;
+                var filter = Builders<Package>.Filter.Empty;
+
+                if (request.Name.IsActive)
+                {
+                    nameFilter = Builders<Package>.Filter.Where(package => package.Name.Contains(request.Name.Value));
+                }
+                if (request.TrackingCode.IsActive)
+                {
+                    trackingCodeFilter = Builders<Package>.Filter.Where(package => package.TrackingCode == request.TrackingCode.Value);
+                }
+
+                filter = Builders<Package>.Filter.And(nameFilter, trackingCodeFilter);
+
+                var total = await CountPackagesAsync(filter);
+                var query = Collections.Packages.Find(filter).Limit(request.Pagination.Limit).Skip(request.Pagination.Offset);
+
+                return new PackageList()
+                {
+                    Packages = query.ToList(),
+                    Pagination = new PaginationOut()
+                    {
+                        Limit = request.Pagination.Limit,
+                        Offset = request.Pagination.Offset,
+                        Total = total
+                    }
+                };
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        private static async Task<int> CountPackagesAsync(FilterDefinition<Package> filter)
+        {
+            try
+            {
+                return (int) await Collections.Packages.CountDocumentsAsync(filter);
             }
             catch (Exception e)
             {

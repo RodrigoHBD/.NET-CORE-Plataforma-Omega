@@ -1,5 +1,6 @@
 ﻿using ShippingService.App.Entities;
 using ShippingService.App.Entities.NewPackageRequest;
+using ShippingService.App.Entities.PackageSearch;
 using ShippingService.App.Factories;
 using ShippingService.App.Models;
 using ShippingService.App.Models.Input;
@@ -150,12 +151,25 @@ namespace ShippingService.App.UseCases
             }
         }
 
+        public static async Task<IPackageList> SearchPackagesAsync(IPackageSearchRequest request)
+        {
+            try
+            {
+                PackageSearchEntity.ValidateRequest(request);
+                return await SearchPackages.Execute(request);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public static async Task HardDeletePackage(string id)
         {
             try
             {
                 await PackageEntity.ValidatePackageId(id);
-                await DeletePackage.Execute(id);
+                //await DeletePackage.Execute(id);
             }
             catch (Exception e)
             {

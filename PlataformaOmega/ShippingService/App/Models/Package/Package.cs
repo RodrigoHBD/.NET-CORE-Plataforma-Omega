@@ -21,6 +21,7 @@ namespace ShippingService.App.Models
         public PackageStatusMessages Messages { get; set; }
         public PackageLocation Location { get; set; }
         public bool IsSoftDeleted { get; set; }
+        public bool IsBeingWatched { get; set; } = false;
 
         public Package()
         {

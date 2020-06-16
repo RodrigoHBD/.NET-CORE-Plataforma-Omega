@@ -24,6 +24,11 @@ namespace ProductService.gRPC.Server.Services
 
         }
 
+        public override Task<GrpcProduct> GetProductData(GrpcIdMessage request, ServerCallContext context)
+        {
+            return base.GetProductData(request, context);
+        }
+
         public static RpcException HandleException(Exception exception)
         {
             return new RpcException(new Status(StatusCode.Unknown, exception.Message));

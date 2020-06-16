@@ -67,5 +67,47 @@ namespace ShippingService.App.Controller
             }
         }
 
+        public static async Task<GrpcPackageData> GetPackageData(GrpcIdMessage grpcRequest)
+        {
+            try
+            {
+                var id = grpcRequest.Id;
+                var package = await UseCaseOperator.GetPackageData(id);
+                return Presenter.PresentPackage(package);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task<GrpcPackageList> SearchPackages(GrpcSearchPackageRequest grpcRequest)
+        {
+            try
+            {
+                var request = GrpcSearchPackageReqAdapter.Adapt(grpcRequest);
+                var packageList = await UseCaseOperator.SearchPackagesAsync(request);
+                return PackageListPresenter.PresentPackageList(packageList);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task<GrpcStatusResponse> RunPackageStatusUpdateRoutine(GrpcIdMessage grpcRequest)
+        {
+            try
+            {
+                var id = grpcRequest.Id;
+                await UseCaseOperator.RunWatcherRoutine(id);
+                return Presenter.PresentStatusResponse(true, "Rotina executada com sucesso");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

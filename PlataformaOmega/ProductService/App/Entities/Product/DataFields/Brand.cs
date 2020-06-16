@@ -7,11 +7,11 @@ namespace ProductService.App.Entities.ProductDataFields
 {
     public class Brand
     {
-        public static void Validate(string brand)
+        public static async Task Validate(string brand)
         {
             try
             {
-
+                await BrandEntity.ValidateExistent(brand);
             }
             catch (Exception e)
             {

@@ -9,22 +9,11 @@ namespace ProductService.App.Entities.ProductDataFields
 {
     public class Category
     {
-        public static void Validate(ProductCategory category)
+        public static async Task Validate(string category)
         {
             try
             {
-                var enumMax = ProductCategory.Invalid;
-                var enumMin = ProductCategory.Teste;
-                var categoryIsOutOfRange = (category > enumMax) || (category < enumMin);
-
-                if (category == ProductCategory.Invalid)
-                {
-                    throw new ValidationException("Categoria", "Categoria Não Existe");
-                }
-                if (categoryIsOutOfRange)
-                {
-                    throw new ValidationException("Categoria", "Categoria Inválida");
-                }
+                await CategoryEntity.Validate(category);
             }
             catch (Exception e)
             {

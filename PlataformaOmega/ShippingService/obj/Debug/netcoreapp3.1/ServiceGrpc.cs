@@ -16,6 +16,10 @@ namespace ShippingService.gRPC.Server.Protos {
     static readonly grpc::Marshaller<global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse> __Marshaller_GrpcStatusResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest> __Marshaller_GrpcUpdatePackageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest> __Marshaller_GrpcWatchPackageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage> __Marshaller_GrpcIdMessage = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ShippingService.gRPC.Server.Protos.GrpcIdMessage.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::ShippingService.gRPC.Server.Protos.GrpcPackageData> __Marshaller_GrpcPackageData = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ShippingService.gRPC.Server.Protos.GrpcPackageData.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest> __Marshaller_GrpcSearchPackageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::ShippingService.gRPC.Server.Protos.GrpcPackageList> __Marshaller_GrpcPackageList = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::ShippingService.gRPC.Server.Protos.GrpcPackageList.Parser.ParseFrom);
 
     static readonly grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse> __Method_ShipPackage = new grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(
         grpc::MethodType.Unary,
@@ -43,6 +47,27 @@ namespace ShippingService.gRPC.Server.Protos {
         __ServiceName,
         "WatchPackage",
         __Marshaller_GrpcWatchPackageRequest,
+        __Marshaller_GrpcStatusResponse);
+
+    static readonly grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcPackageData> __Method_GetPackageData = new grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcPackageData>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetPackageData",
+        __Marshaller_GrpcIdMessage,
+        __Marshaller_GrpcPackageData);
+
+    static readonly grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcPackageList> __Method_SearchPackages = new grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcPackageList>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SearchPackages",
+        __Marshaller_GrpcSearchPackageRequest,
+        __Marshaller_GrpcPackageList);
+
+    static readonly grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse> __Method_RunPackageWatcherRoutineManually = new grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "RunPackageWatcherRoutineManually",
+        __Marshaller_GrpcIdMessage,
         __Marshaller_GrpcStatusResponse);
 
     /// <summary>Service descriptor</summary>
@@ -75,6 +100,21 @@ namespace ShippingService.gRPC.Server.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::ShippingService.gRPC.Server.Protos.GrpcPackageData> GetPackageData(global::ShippingService.gRPC.Server.Protos.GrpcIdMessage request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::ShippingService.gRPC.Server.Protos.GrpcPackageList> SearchPackages(global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse> RunPackageWatcherRoutineManually(global::ShippingService.gRPC.Server.Protos.GrpcIdMessage request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -85,7 +125,10 @@ namespace ShippingService.gRPC.Server.Protos {
           .AddMethod(__Method_ShipPackage, serviceImpl.ShipPackage)
           .AddMethod(__Method_SetPackagePosted, serviceImpl.SetPackagePosted)
           .AddMethod(__Method_SetPackageDelivered, serviceImpl.SetPackageDelivered)
-          .AddMethod(__Method_WatchPackage, serviceImpl.WatchPackage).Build();
+          .AddMethod(__Method_WatchPackage, serviceImpl.WatchPackage)
+          .AddMethod(__Method_GetPackageData, serviceImpl.GetPackageData)
+          .AddMethod(__Method_SearchPackages, serviceImpl.SearchPackages)
+          .AddMethod(__Method_RunPackageWatcherRoutineManually, serviceImpl.RunPackageWatcherRoutineManually).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -98,6 +141,9 @@ namespace ShippingService.gRPC.Server.Protos {
       serviceBinder.AddMethod(__Method_SetPackagePosted, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(serviceImpl.SetPackagePosted));
       serviceBinder.AddMethod(__Method_SetPackageDelivered, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(serviceImpl.SetPackageDelivered));
       serviceBinder.AddMethod(__Method_WatchPackage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(serviceImpl.WatchPackage));
+      serviceBinder.AddMethod(__Method_GetPackageData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcPackageData>(serviceImpl.GetPackageData));
+      serviceBinder.AddMethod(__Method_SearchPackages, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcPackageList>(serviceImpl.SearchPackages));
+      serviceBinder.AddMethod(__Method_RunPackageWatcherRoutineManually, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(serviceImpl.RunPackageWatcherRoutineManually));
     }
 
   }

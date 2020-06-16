@@ -31,3 +31,16 @@ C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\b
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\css\webflow.css
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\webflow.js
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Views\SPA\index.html
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\toolbox.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\dismiss.png
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\favicon.ico
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\icons8-lembrete-de-compromissos-96.png
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\icons8-mais-96.png
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\mercado-livre-logo-p-500.png
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\mercado-livre-logo.png
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\untitled.svg
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\webclip.png
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\http-client.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\app.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\session-controller.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\vue-controller.js

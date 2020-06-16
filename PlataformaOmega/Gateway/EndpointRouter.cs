@@ -1,5 +1,4 @@
-﻿using Gateway.Routes;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
@@ -14,8 +13,14 @@ namespace Gateway
         {
             try
             {
-                DefaultRouter.ConfigureRoutes(app, env);
-                ApiRouter.ConfigureRoutes(app, env);
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                    endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=View}/{action=Index}");
+
+                });
             }
             catch (Exception e)
             {

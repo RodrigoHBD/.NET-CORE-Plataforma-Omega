@@ -176,5 +176,24 @@ namespace ShippingService.App.Factories
             }
         }
 
+        public static PackageUpdate MakePackageIsBeingWatchedUpdate(bool toggle = false)
+        {
+            try
+            {
+                return new PackageUpdate()
+                {
+                    AwaitingForPickUp = new BoolToggler()
+                    {
+                        IsActive = true,
+                        Toggler = toggle
+                    }
+                };
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

@@ -13,5 +13,6 @@ namespace ProductService.App.Models
         public ObjectId Id { get; set; }
         public string Name { get; set; } = "";
         public string Abbreviation { get; set; } = "";
+        public string Cnpj { get; set; } = "";
     }
 }

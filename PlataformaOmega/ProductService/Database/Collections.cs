@@ -19,11 +19,13 @@ namespace ProductService
         public static IMongoCollection<Product> Products { get; set; }
         public static IMongoCollection<PhysicalProduct> PhysicalProducts { get; set; }
         public static IMongoCollection<Brand> Brands { get; set; }
+        public static IMongoCollection<Category> Categories { get; set; }
         public static async Task InitializeAsync()
         {
             Products = Connection.GetCollection<Product>("Products");
             PhysicalProducts = Connection.GetCollection<PhysicalProduct>("PhysicalProducts");
             Brands = Connection.GetCollection<Brand>("Brands");
+            Categories = Connection.GetCollection<Category>("Categories");
         }
     }
 }

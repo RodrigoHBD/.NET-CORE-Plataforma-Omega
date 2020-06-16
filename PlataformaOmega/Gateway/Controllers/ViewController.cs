@@ -1,40 +1,44 @@
-﻿using Gateway.App.UseCases;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
+using Gateway.App.UseCases;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Gateway.Controllers
 {
-    public class ViewController
+    public class ViewController : Controller
     {
-        public static async Task HandleRequestForHtml(HttpContext context, IViewSelector viewSelector)
+        [Produces("text/html")]
+        [Route("/")]
+        [Route("/home")]
+        [Route("/index")]
+        public IActionResult Index()
         {
             try
             {
-                var html = await UseCaseController.GetHtmlAsync(viewSelector.Path);
-                await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes(html));
+                var html = UseCaseController.GetHtmlAsync("\\SPA\\index.html").Result;
+                return new ContentResult()
+                {
+                    Content = html,
+                    ContentType = "text/html",
+                };
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-                await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes(e.Message));
+                return HandleException(e);
             }
         }
 
-        public static async Task HandleRequestForStaticFile(HttpContext context, StaticFileSelector fileSelector)
+        private IActionResult HandleException(Exception e)
         {
-            try
+            return new ContentResult()
             {
-                var file = await UseCaseController.GetStaticFileAsync(fileSelector.Path);
-                await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes(file));
-            }
-            catch (Exception e)
-            {
-                await context.Response.Body.WriteAsync(Encoding.UTF8.GetBytes(e.Message));
-            }
+                Content = e.Message,
+                ContentType = "text/html",
+            };
         }
     }
-
 }

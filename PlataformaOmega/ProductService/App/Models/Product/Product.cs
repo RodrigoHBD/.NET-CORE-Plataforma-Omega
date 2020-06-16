@@ -11,11 +11,11 @@ namespace ProductService.App.Models
     {
         [BsonId]
         public ObjectId Id { get; set; }
+        public string Owner { get; set; } = "";
         public string Type { get; protected set; }
-        // no update
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";
-        public ProductCategory Category { get; set; }
+        public string Category { get; set; } = "";
         public string Brand { get; set; } = "";
         public string Model { get; set; } = "";
         public ProductColor Color { get; set; }
@@ -25,12 +25,11 @@ namespace ProductService.App.Models
 
         public Product()
         {
-            Category = ProductCategory.Invalid;
             Color = ProductColor.Invalid;
             Warranty = new ProductWarranty();
             PicturesUrls = new List<string>();
             Condition = ProductCondition.Invalid;
-            Type = "BaseClass";
+            Type = "Base Class";
         }
 
     }

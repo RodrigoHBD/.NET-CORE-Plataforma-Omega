@@ -13,6 +13,7 @@ namespace ShippingService.App.Models
         public BoolToggler AwaitingForPickUp { get; set; } = new BoolToggler();
         public bool SetIsRejected { get; set; } = false;
         public BoolToggler IsBeingTransported { get; set; } = new BoolToggler();
+        public BoolToggler IsBeingWatched { get; set; } = new BoolToggler();
         public string StatusMessage { get; set; } = "";
         public DateTime UpdateTime { get; set; }
         public PackageLocationUpdate CommingFrom { get; set; }

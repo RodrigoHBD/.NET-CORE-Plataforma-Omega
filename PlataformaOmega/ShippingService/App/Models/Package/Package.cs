@@ -11,16 +11,18 @@ namespace ShippingService.App.Models
     public class Package
     {
         [BsonId]
-        public ObjectId Id { get; set; }
-        public string Name { get; set; }
-        public string ProductId { get; set; }
-        public string SaleId { get; set; }
-        public string TrackingCode { get; set; }
+        public ObjectId Id { get; set; } 
+        public string Name { get; set; } = "";
+        public string SaleId { get; set; } = "";
+        public string TrackingCode { get; set; } = "";
+        public AvailablePlatformsToBind BoundPlatform { get; set; } 
+        public double Weight { get; set; }
+        public PackageContent Content { get; set; }
         public PackageDates Dates { get; set; }
         public PackageStatus Status { get; set; }
         public PackageStatusMessages Messages { get; set; }
         public PackageLocation Location { get; set; }
-        public bool IsSoftDeleted { get; set; }
+        public bool IsSoftDeleted { get; set; } = false;
         public bool IsBeingWatched { get; set; } = false;
 
         public Package()
@@ -29,6 +31,7 @@ namespace ShippingService.App.Models
             Status = new PackageStatus();
             Location = new PackageLocation();
             IsSoftDeleted = false;
+            BoundPlatform = AvailablePlatformsToBind.None;
         }
     }
 
@@ -67,5 +70,18 @@ namespace ShippingService.App.Models
         public Location CommingFrom { get; set; } = new Location();
         public Location CurrentLocation { get; set; } = new Location();
         public Location ShippedFrom { get; set; } = new Location();
+        public Location FinalDestination { get; set; } = new Location();
+    }
+
+    public class PackageContent
+    {
+        public List<string> Products { get; set; }
+    }
+
+    public enum AvailablePlatformsToBind
+    {
+        MercadoLivre = 0,
+        B2W = 1,
+        None = 10
     }
 }

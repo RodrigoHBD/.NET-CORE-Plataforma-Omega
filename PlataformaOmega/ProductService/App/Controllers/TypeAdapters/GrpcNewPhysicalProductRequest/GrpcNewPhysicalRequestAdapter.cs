@@ -73,11 +73,7 @@ namespace ProductService.App.TypeAdapters.GrpcNewPhysicalProductRequest
         {
             try
             {
-                if (grpcRequest.ProductData.Category == "")
-                {
-
-                }
-                request.Category = ProductCategory.Teste;
+                
             }
             catch (Exception e)
             {
@@ -143,7 +139,7 @@ namespace ProductService.App.TypeAdapters.GrpcNewPhysicalProductRequest
 
         public string Description { get; set; }
 
-        public ProductCategory Category { get; set; }
+        public string Category { get; set; }
 
         public string Brand { get; set; }
 

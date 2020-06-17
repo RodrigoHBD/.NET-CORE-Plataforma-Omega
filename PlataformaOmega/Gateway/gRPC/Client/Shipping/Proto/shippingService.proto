@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+option csharp_namespace = "Gateway.gRPC.Client.ShippingClientProto";
+
+service Shipping {
+	rpc ShipPackage (GrpcShipPackageRequest) returns (GrpcStatusResponse);
+	rpc SetPackagePosted (GrpcUpdatePackageRequest) returns (GrpcStatusResponse);
+	rpc SetPackageDelivered (GrpcUpdatePackageRequest) returns (GrpcStatusResponse);
+	rpc WatchPackage (GrpcWatchPackageRequest) returns (GrpcStatusResponse);
+	rpc GetPackageData (GrpcIdMessage) returns (GrpcPackageData);
+	rpc SearchPackages (GrpcSearchPackageRequest) returns (GrpcPackageList);
+	rpc RunPackageWatcherRoutineManually (GrpcIdMessage) returns (GrpcStatusResponse);
+}
+
+// requests
+message GrpcShipPackageRequest {
+	string name = 1;
+	string trackingCode = 2;
+	string saleId = 3;
+	double weight = 4;
+	int32 platform = 5;
+	GrpcLocation initialLocation = 6;
+	repeated string content = 7;
+}
+
+message GrpcUpdatePackageRequest {
+	string id = 1;
+}
+
+message GrpcWatchPackageRequest {
+	string id = 1;
+}
+
+message GrpcSearchPackageRequest {
+	string name = 1;
+	string trackingCode = 2;
+	GrpcPagination pagination = 3;
+}
+
+//responses
+message GrpcStatusResponse {
+	bool ok = 1;
+	string message = 2;
+}
+
+message GrpcPackageList {
+	repeated GrpcPackageData data = 1;
+	GrpcPagination pagination = 2;
+}
+
+// models
+message GrpcPackageData {
+	string id = 1;
+	string saleId = 2;
+	string name = 3;
+	string trackingCode = 5;
+	string boundPlatform = 6;
+	double weight = 7;
+	repeated string content = 8;
+	bool isBeingWatched = 9;
+	GrpcPackageStatus status = 10;
+	GrpcPackageLocations locations = 11;
+}
+
+message GrpcPackageStatus {
+	bool isPosted = 1;
+	bool isDelivered = 2;
+	bool isAwaitingForPickUp = 3;
+	bool isRejected = 4;
+	bool isBeingTransported = 5;
+	string message = 6;
+}
+
+message GrpcPackageLocations {
+	GrpcLocation currentLocation = 1;
+	GrpcLocation headedToLocation = 2;
+}
+
+message GrpcLocation {
+	string state = 1;
+	string city = 2;
+	string streetName = 3;
+	string cep = 4;
+	int32 streetNumber = 5;
+}
+
+message GrpcIdMessage {
+	string id = 1;
+}
+
+message GrpcPagination {
+	int32 offset = 1;
+	int32 limit = 2;
+	int32 total = 3;
+}

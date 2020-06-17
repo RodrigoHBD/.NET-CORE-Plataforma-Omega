@@ -8,9 +8,12 @@ namespace ShippingService.App.Models.Input
     public interface IShipPackageRequest
     {
         string Name { get; }
-        string ProductId { get; }
+        string SaleId { get; }
         string TrackingCode { get; }
-        bool SetWatcher { get; }
+        double Weight { get; }
+        AvailablePlatformsToBind Platform { get; }
+        List<string> Content { get; }
         Location PackageInitialLocation { get; }
+        bool SetWatcher { get; }
     }
 }

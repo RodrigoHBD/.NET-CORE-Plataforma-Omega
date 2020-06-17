@@ -24,54 +24,58 @@ namespace ShippingService.gRPC.Server.Protos {
     static ServiceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiBnUlBDL1NlcnZlci9Qcm90b3Mvc2VydmljZS5wcm90byJPChZHcnBjU2hp",
-            "cFBhY2thZ2VSZXF1ZXN0EgwKBE5hbWUYASABKAkSFAoMVHJhY2tpbmdDb2Rl",
-            "GAIgASgJEhEKCVByb2R1Y3RJZBgDIAEoCSImChhHcnBjVXBkYXRlUGFja2Fn",
-            "ZVJlcXVlc3QSCgoCaWQYASABKAkiJQoXR3JwY1dhdGNoUGFja2FnZVJlcXVl",
-            "c3QSCgoCaWQYASABKAkiYwoYR3JwY1NlYXJjaFBhY2thZ2VSZXF1ZXN0EgwK",
-            "BG5hbWUYASABKAkSFAoMdHJhY2tpbmdDb2RlGAIgASgJEiMKCnBhZ2luYXRp",
-            "b24YAyABKAsyDy5HcnBjUGFnaW5hdGlvbiIxChJHcnBjU3RhdHVzUmVzcG9u",
-            "c2USCgoCb2sYASABKAgSDwoHbWVzc2FnZRgCIAEoCSJWCg9HcnBjUGFja2Fn",
-            "ZUxpc3QSHgoEZGF0YRgBIAMoCzIQLkdycGNQYWNrYWdlRGF0YRIjCgpwYWdp",
-            "bmF0aW9uGAIgASgLMg8uR3JwY1BhZ2luYXRpb24iogEKD0dycGNQYWNrYWdl",
-            "RGF0YRIKCgJpZBgBIAEoCRIMCgRuYW1lGAIgASgJEhEKCXByb2R1Y3RJZBgD",
-            "IAEoCRIUCgx0cmFja2luZ0NvZGUYBCABKAkSIgoGc3RhdHVzGAUgASgLMhIu",
-            "R3JwY1BhY2thZ2VTdGF0dXMSKAoJbG9jYXRpb25zGAYgASgLMhUuR3JwY1Bh",
-            "Y2thZ2VMb2NhdGlvbnMimAEKEUdycGNQYWNrYWdlU3RhdHVzEhAKCGlzUG9z",
-            "dGVkGAEgASgIEhMKC2lzRGVsaXZlcmVkGAIgASgIEhsKE2lzQXdhaXRpbmdG",
-            "b3JQaWNrVXAYAyABKAgSEgoKaXNSZWplY3RlZBgEIAEoCBIaChJpc0JlaW5n",
-            "VHJhbnNwb3J0ZWQYBSABKAgSDwoHbWVzc2FnZRgGIAEoCSJnChRHcnBjUGFj",
-            "a2FnZUxvY2F0aW9ucxImCg9jdXJyZW50TG9jYXRpb24YASABKAsyDS5HcnBj",
-            "TG9jYXRpb24SJwoQaGVhZGVkVG9Mb2NhdGlvbhgCIAEoCzINLkdycGNMb2Nh",
-            "dGlvbiJMCgxHcnBjTG9jYXRpb24SDQoFc3RhdGUYASABKAkSDAoEY2l0eRgC",
-            "IAEoCRISCgpzdHJlZXROYW1lGAMgASgJEgsKA2NlcBgEIAEoCSIbCg1HcnBj",
-            "SWRNZXNzYWdlEgoKAmlkGAEgASgJIj4KDkdycGNQYWdpbmF0aW9uEg4KBm9m",
-            "ZnNldBgBIAEoBRINCgVsaW1pdBgCIAEoBRINCgV0b3RhbBgDIAEoBTLNAwoI",
-            "U2hpcHBpbmcSOwoLU2hpcFBhY2thZ2USFy5HcnBjU2hpcFBhY2thZ2VSZXF1",
-            "ZXN0GhMuR3JwY1N0YXR1c1Jlc3BvbnNlEkIKEFNldFBhY2thZ2VQb3N0ZWQS",
-            "GS5HcnBjVXBkYXRlUGFja2FnZVJlcXVlc3QaEy5HcnBjU3RhdHVzUmVzcG9u",
-            "c2USRQoTU2V0UGFja2FnZURlbGl2ZXJlZBIZLkdycGNVcGRhdGVQYWNrYWdl",
-            "UmVxdWVzdBoTLkdycGNTdGF0dXNSZXNwb25zZRI9CgxXYXRjaFBhY2thZ2US",
-            "GC5HcnBjV2F0Y2hQYWNrYWdlUmVxdWVzdBoTLkdycGNTdGF0dXNSZXNwb25z",
-            "ZRIyCg5HZXRQYWNrYWdlRGF0YRIOLkdycGNJZE1lc3NhZ2UaEC5HcnBjUGFj",
-            "a2FnZURhdGESPQoOU2VhcmNoUGFja2FnZXMSGS5HcnBjU2VhcmNoUGFja2Fn",
-            "ZVJlcXVlc3QaEC5HcnBjUGFja2FnZUxpc3QSRwogUnVuUGFja2FnZVdhdGNo",
-            "ZXJSb3V0aW5lTWFudWFsbHkSDi5HcnBjSWRNZXNzYWdlGhMuR3JwY1N0YXR1",
-            "c1Jlc3BvbnNlQiWqAiJTaGlwcGluZ1NlcnZpY2UuZ1JQQy5TZXJ2ZXIuUHJv",
-            "dG9zYgZwcm90bzM="));
+            "CiBnUlBDL1NlcnZlci9Qcm90b3Mvc2VydmljZS5wcm90byKnAQoWR3JwY1No",
+            "aXBQYWNrYWdlUmVxdWVzdBIMCgRuYW1lGAEgASgJEhQKDHRyYWNraW5nQ29k",
+            "ZRgCIAEoCRIOCgZzYWxlSWQYAyABKAkSDgoGd2VpZ2h0GAQgASgBEhAKCHBs",
+            "YXRmb3JtGAUgASgFEiYKD2luaXRpYWxMb2NhdGlvbhgGIAEoCzINLkdycGNM",
+            "b2NhdGlvbhIPCgdjb250ZW50GAcgAygJIiYKGEdycGNVcGRhdGVQYWNrYWdl",
+            "UmVxdWVzdBIKCgJpZBgBIAEoCSIlChdHcnBjV2F0Y2hQYWNrYWdlUmVxdWVz",
+            "dBIKCgJpZBgBIAEoCSJjChhHcnBjU2VhcmNoUGFja2FnZVJlcXVlc3QSDAoE",
+            "bmFtZRgBIAEoCRIUCgx0cmFja2luZ0NvZGUYAiABKAkSIwoKcGFnaW5hdGlv",
+            "bhgDIAEoCzIPLkdycGNQYWdpbmF0aW9uIjEKEkdycGNTdGF0dXNSZXNwb25z",
+            "ZRIKCgJvaxgBIAEoCBIPCgdtZXNzYWdlGAIgASgJIlYKD0dycGNQYWNrYWdl",
+            "TGlzdBIeCgRkYXRhGAEgAygLMhAuR3JwY1BhY2thZ2VEYXRhEiMKCnBhZ2lu",
+            "YXRpb24YAiABKAsyDy5HcnBjUGFnaW5hdGlvbiLvAQoPR3JwY1BhY2thZ2VE",
+            "YXRhEgoKAmlkGAEgASgJEg4KBnNhbGVJZBgCIAEoCRIMCgRuYW1lGAMgASgJ",
+            "EhQKDHRyYWNraW5nQ29kZRgFIAEoCRIVCg1ib3VuZFBsYXRmb3JtGAYgASgJ",
+            "Eg4KBndlaWdodBgHIAEoARIPCgdjb250ZW50GAggAygJEhYKDmlzQmVpbmdX",
+            "YXRjaGVkGAkgASgIEiIKBnN0YXR1cxgKIAEoCzISLkdycGNQYWNrYWdlU3Rh",
+            "dHVzEigKCWxvY2F0aW9ucxgLIAEoCzIVLkdycGNQYWNrYWdlTG9jYXRpb25z",
+            "IpgBChFHcnBjUGFja2FnZVN0YXR1cxIQCghpc1Bvc3RlZBgBIAEoCBITCgtp",
+            "c0RlbGl2ZXJlZBgCIAEoCBIbChNpc0F3YWl0aW5nRm9yUGlja1VwGAMgASgI",
+            "EhIKCmlzUmVqZWN0ZWQYBCABKAgSGgoSaXNCZWluZ1RyYW5zcG9ydGVkGAUg",
+            "ASgIEg8KB21lc3NhZ2UYBiABKAkiZwoUR3JwY1BhY2thZ2VMb2NhdGlvbnMS",
+            "JgoPY3VycmVudExvY2F0aW9uGAEgASgLMg0uR3JwY0xvY2F0aW9uEicKEGhl",
+            "YWRlZFRvTG9jYXRpb24YAiABKAsyDS5HcnBjTG9jYXRpb24iYgoMR3JwY0xv",
+            "Y2F0aW9uEg0KBXN0YXRlGAEgASgJEgwKBGNpdHkYAiABKAkSEgoKc3RyZWV0",
+            "TmFtZRgDIAEoCRILCgNjZXAYBCABKAkSFAoMc3RyZWV0TnVtYmVyGAUgASgF",
+            "IhsKDUdycGNJZE1lc3NhZ2USCgoCaWQYASABKAkiPgoOR3JwY1BhZ2luYXRp",
+            "b24SDgoGb2Zmc2V0GAEgASgFEg0KBWxpbWl0GAIgASgFEg0KBXRvdGFsGAMg",
+            "ASgFMs0DCghTaGlwcGluZxI7CgtTaGlwUGFja2FnZRIXLkdycGNTaGlwUGFj",
+            "a2FnZVJlcXVlc3QaEy5HcnBjU3RhdHVzUmVzcG9uc2USQgoQU2V0UGFja2Fn",
+            "ZVBvc3RlZBIZLkdycGNVcGRhdGVQYWNrYWdlUmVxdWVzdBoTLkdycGNTdGF0",
+            "dXNSZXNwb25zZRJFChNTZXRQYWNrYWdlRGVsaXZlcmVkEhkuR3JwY1VwZGF0",
+            "ZVBhY2thZ2VSZXF1ZXN0GhMuR3JwY1N0YXR1c1Jlc3BvbnNlEj0KDFdhdGNo",
+            "UGFja2FnZRIYLkdycGNXYXRjaFBhY2thZ2VSZXF1ZXN0GhMuR3JwY1N0YXR1",
+            "c1Jlc3BvbnNlEjIKDkdldFBhY2thZ2VEYXRhEg4uR3JwY0lkTWVzc2FnZRoQ",
+            "LkdycGNQYWNrYWdlRGF0YRI9Cg5TZWFyY2hQYWNrYWdlcxIZLkdycGNTZWFy",
+            "Y2hQYWNrYWdlUmVxdWVzdBoQLkdycGNQYWNrYWdlTGlzdBJHCiBSdW5QYWNr",
+            "YWdlV2F0Y2hlclJvdXRpbmVNYW51YWxseRIOLkdycGNJZE1lc3NhZ2UaEy5H",
+            "cnBjU3RhdHVzUmVzcG9uc2VCJaoCIlNoaXBwaW5nU2VydmljZS5nUlBDLlNl",
+            "cnZlci5Qcm90b3NiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest.Parser, new[]{ "Name", "TrackingCode", "ProductId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest.Parser, new[]{ "Name", "TrackingCode", "SaleId", "Weight", "Platform", "InitialLocation", "Content" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest.Parser, new[]{ "Name", "TrackingCode", "Pagination" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse), global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse.Parser, new[]{ "Ok", "Message" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageList), global::ShippingService.gRPC.Server.Protos.GrpcPackageList.Parser, new[]{ "Data", "Pagination" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageData), global::ShippingService.gRPC.Server.Protos.GrpcPackageData.Parser, new[]{ "Id", "Name", "ProductId", "TrackingCode", "Status", "Locations" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageData), global::ShippingService.gRPC.Server.Protos.GrpcPackageData.Parser, new[]{ "Id", "SaleId", "Name", "TrackingCode", "BoundPlatform", "Weight", "Content", "IsBeingWatched", "Status", "Locations" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus), global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus.Parser, new[]{ "IsPosted", "IsDelivered", "IsAwaitingForPickUp", "IsRejected", "IsBeingTransported", "Message" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations), global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations.Parser, new[]{ "CurrentLocation", "HeadedToLocation" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcLocation), global::ShippingService.gRPC.Server.Protos.GrpcLocation.Parser, new[]{ "State", "City", "StreetName", "Cep" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcLocation), global::ShippingService.gRPC.Server.Protos.GrpcLocation.Parser, new[]{ "State", "City", "StreetName", "Cep", "StreetNumber" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcIdMessage), global::ShippingService.gRPC.Server.Protos.GrpcIdMessage.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPagination), global::ShippingService.gRPC.Server.Protos.GrpcPagination.Parser, new[]{ "Offset", "Limit", "Total" }, null, null, null, null)
           }));
@@ -110,7 +114,11 @@ namespace ShippingService.gRPC.Server.Protos {
     public GrpcShipPackageRequest(GrpcShipPackageRequest other) : this() {
       name_ = other.name_;
       trackingCode_ = other.trackingCode_;
-      productId_ = other.productId_;
+      saleId_ = other.saleId_;
+      weight_ = other.weight_;
+      platform_ = other.platform_;
+      initialLocation_ = other.initialLocation_ != null ? other.initialLocation_.Clone() : null;
+      content_ = other.content_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -119,7 +127,7 @@ namespace ShippingService.gRPC.Server.Protos {
       return new GrpcShipPackageRequest(this);
     }
 
-    /// <summary>Field number for the "Name" field.</summary>
+    /// <summary>Field number for the "name" field.</summary>
     public const int NameFieldNumber = 1;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -130,7 +138,7 @@ namespace ShippingService.gRPC.Server.Protos {
       }
     }
 
-    /// <summary>Field number for the "TrackingCode" field.</summary>
+    /// <summary>Field number for the "trackingCode" field.</summary>
     public const int TrackingCodeFieldNumber = 2;
     private string trackingCode_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -141,15 +149,58 @@ namespace ShippingService.gRPC.Server.Protos {
       }
     }
 
-    /// <summary>Field number for the "ProductId" field.</summary>
-    public const int ProductIdFieldNumber = 3;
-    private string productId_ = "";
+    /// <summary>Field number for the "saleId" field.</summary>
+    public const int SaleIdFieldNumber = 3;
+    private string saleId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string ProductId {
-      get { return productId_; }
+    public string SaleId {
+      get { return saleId_; }
       set {
-        productId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        saleId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
+    }
+
+    /// <summary>Field number for the "weight" field.</summary>
+    public const int WeightFieldNumber = 4;
+    private double weight_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double Weight {
+      get { return weight_; }
+      set {
+        weight_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "platform" field.</summary>
+    public const int PlatformFieldNumber = 5;
+    private int platform_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Platform {
+      get { return platform_; }
+      set {
+        platform_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "initialLocation" field.</summary>
+    public const int InitialLocationFieldNumber = 6;
+    private global::ShippingService.gRPC.Server.Protos.GrpcLocation initialLocation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::ShippingService.gRPC.Server.Protos.GrpcLocation InitialLocation {
+      get { return initialLocation_; }
+      set {
+        initialLocation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "content" field.</summary>
+    public const int ContentFieldNumber = 7;
+    private static readonly pb::FieldCodec<string> _repeated_content_codec
+        = pb::FieldCodec.ForString(58);
+    private readonly pbc::RepeatedField<string> content_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> Content {
+      get { return content_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -167,7 +218,11 @@ namespace ShippingService.gRPC.Server.Protos {
       }
       if (Name != other.Name) return false;
       if (TrackingCode != other.TrackingCode) return false;
-      if (ProductId != other.ProductId) return false;
+      if (SaleId != other.SaleId) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Weight, other.Weight)) return false;
+      if (Platform != other.Platform) return false;
+      if (!object.Equals(InitialLocation, other.InitialLocation)) return false;
+      if(!content_.Equals(other.content_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -176,7 +231,11 @@ namespace ShippingService.gRPC.Server.Protos {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (TrackingCode.Length != 0) hash ^= TrackingCode.GetHashCode();
-      if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
+      if (SaleId.Length != 0) hash ^= SaleId.GetHashCode();
+      if (Weight != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Weight);
+      if (Platform != 0) hash ^= Platform.GetHashCode();
+      if (initialLocation_ != null) hash ^= InitialLocation.GetHashCode();
+      hash ^= content_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -198,10 +257,23 @@ namespace ShippingService.gRPC.Server.Protos {
         output.WriteRawTag(18);
         output.WriteString(TrackingCode);
       }
-      if (ProductId.Length != 0) {
+      if (SaleId.Length != 0) {
         output.WriteRawTag(26);
-        output.WriteString(ProductId);
+        output.WriteString(SaleId);
       }
+      if (Weight != 0D) {
+        output.WriteRawTag(33);
+        output.WriteDouble(Weight);
+      }
+      if (Platform != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Platform);
+      }
+      if (initialLocation_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(InitialLocation);
+      }
+      content_.WriteTo(output, _repeated_content_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -216,9 +288,19 @@ namespace ShippingService.gRPC.Server.Protos {
       if (TrackingCode.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TrackingCode);
       }
-      if (ProductId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ProductId);
+      if (SaleId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SaleId);
       }
+      if (Weight != 0D) {
+        size += 1 + 8;
+      }
+      if (Platform != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Platform);
+      }
+      if (initialLocation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(InitialLocation);
+      }
+      size += content_.CalculateSize(_repeated_content_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -236,9 +318,22 @@ namespace ShippingService.gRPC.Server.Protos {
       if (other.TrackingCode.Length != 0) {
         TrackingCode = other.TrackingCode;
       }
-      if (other.ProductId.Length != 0) {
-        ProductId = other.ProductId;
+      if (other.SaleId.Length != 0) {
+        SaleId = other.SaleId;
       }
+      if (other.Weight != 0D) {
+        Weight = other.Weight;
+      }
+      if (other.Platform != 0) {
+        Platform = other.Platform;
+      }
+      if (other.initialLocation_ != null) {
+        if (initialLocation_ == null) {
+          InitialLocation = new global::ShippingService.gRPC.Server.Protos.GrpcLocation();
+        }
+        InitialLocation.MergeFrom(other.InitialLocation);
+      }
+      content_.Add(other.content_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -259,7 +354,26 @@ namespace ShippingService.gRPC.Server.Protos {
             break;
           }
           case 26: {
-            ProductId = input.ReadString();
+            SaleId = input.ReadString();
+            break;
+          }
+          case 33: {
+            Weight = input.ReadDouble();
+            break;
+          }
+          case 40: {
+            Platform = input.ReadInt32();
+            break;
+          }
+          case 50: {
+            if (initialLocation_ == null) {
+              InitialLocation = new global::ShippingService.gRPC.Server.Protos.GrpcLocation();
+            }
+            input.ReadMessage(InitialLocation);
+            break;
+          }
+          case 58: {
+            content_.AddEntriesFrom(input, _repeated_content_codec);
             break;
           }
         }
@@ -1061,9 +1175,13 @@ namespace ShippingService.gRPC.Server.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GrpcPackageData(GrpcPackageData other) : this() {
       id_ = other.id_;
+      saleId_ = other.saleId_;
       name_ = other.name_;
-      productId_ = other.productId_;
       trackingCode_ = other.trackingCode_;
+      boundPlatform_ = other.boundPlatform_;
+      weight_ = other.weight_;
+      content_ = other.content_.Clone();
+      isBeingWatched_ = other.isBeingWatched_;
       status_ = other.status_ != null ? other.status_.Clone() : null;
       locations_ = other.locations_ != null ? other.locations_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1085,8 +1203,19 @@ namespace ShippingService.gRPC.Server.Protos {
       }
     }
 
+    /// <summary>Field number for the "saleId" field.</summary>
+    public const int SaleIdFieldNumber = 2;
+    private string saleId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SaleId {
+      get { return saleId_; }
+      set {
+        saleId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 2;
+    public const int NameFieldNumber = 3;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -1096,19 +1225,8 @@ namespace ShippingService.gRPC.Server.Protos {
       }
     }
 
-    /// <summary>Field number for the "productId" field.</summary>
-    public const int ProductIdFieldNumber = 3;
-    private string productId_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string ProductId {
-      get { return productId_; }
-      set {
-        productId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
     /// <summary>Field number for the "trackingCode" field.</summary>
-    public const int TrackingCodeFieldNumber = 4;
+    public const int TrackingCodeFieldNumber = 5;
     private string trackingCode_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string TrackingCode {
@@ -1118,8 +1236,51 @@ namespace ShippingService.gRPC.Server.Protos {
       }
     }
 
+    /// <summary>Field number for the "boundPlatform" field.</summary>
+    public const int BoundPlatformFieldNumber = 6;
+    private string boundPlatform_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string BoundPlatform {
+      get { return boundPlatform_; }
+      set {
+        boundPlatform_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "weight" field.</summary>
+    public const int WeightFieldNumber = 7;
+    private double weight_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public double Weight {
+      get { return weight_; }
+      set {
+        weight_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "content" field.</summary>
+    public const int ContentFieldNumber = 8;
+    private static readonly pb::FieldCodec<string> _repeated_content_codec
+        = pb::FieldCodec.ForString(66);
+    private readonly pbc::RepeatedField<string> content_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<string> Content {
+      get { return content_; }
+    }
+
+    /// <summary>Field number for the "isBeingWatched" field.</summary>
+    public const int IsBeingWatchedFieldNumber = 9;
+    private bool isBeingWatched_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsBeingWatched {
+      get { return isBeingWatched_; }
+      set {
+        isBeingWatched_ = value;
+      }
+    }
+
     /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 5;
+    public const int StatusFieldNumber = 10;
     private global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus status_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus Status {
@@ -1130,7 +1291,7 @@ namespace ShippingService.gRPC.Server.Protos {
     }
 
     /// <summary>Field number for the "locations" field.</summary>
-    public const int LocationsFieldNumber = 6;
+    public const int LocationsFieldNumber = 11;
     private global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations locations_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations Locations {
@@ -1154,9 +1315,13 @@ namespace ShippingService.gRPC.Server.Protos {
         return true;
       }
       if (Id != other.Id) return false;
+      if (SaleId != other.SaleId) return false;
       if (Name != other.Name) return false;
-      if (ProductId != other.ProductId) return false;
       if (TrackingCode != other.TrackingCode) return false;
+      if (BoundPlatform != other.BoundPlatform) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Weight, other.Weight)) return false;
+      if(!content_.Equals(other.content_)) return false;
+      if (IsBeingWatched != other.IsBeingWatched) return false;
       if (!object.Equals(Status, other.Status)) return false;
       if (!object.Equals(Locations, other.Locations)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1166,9 +1331,13 @@ namespace ShippingService.gRPC.Server.Protos {
     public override int GetHashCode() {
       int hash = 1;
       if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (SaleId.Length != 0) hash ^= SaleId.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (ProductId.Length != 0) hash ^= ProductId.GetHashCode();
       if (TrackingCode.Length != 0) hash ^= TrackingCode.GetHashCode();
+      if (BoundPlatform.Length != 0) hash ^= BoundPlatform.GetHashCode();
+      if (Weight != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Weight);
+      hash ^= content_.GetHashCode();
+      if (IsBeingWatched != false) hash ^= IsBeingWatched.GetHashCode();
       if (status_ != null) hash ^= Status.GetHashCode();
       if (locations_ != null) hash ^= Locations.GetHashCode();
       if (_unknownFields != null) {
@@ -1188,24 +1357,37 @@ namespace ShippingService.gRPC.Server.Protos {
         output.WriteRawTag(10);
         output.WriteString(Id);
       }
-      if (Name.Length != 0) {
+      if (SaleId.Length != 0) {
         output.WriteRawTag(18);
+        output.WriteString(SaleId);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(26);
         output.WriteString(Name);
       }
-      if (ProductId.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(ProductId);
-      }
       if (TrackingCode.Length != 0) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteString(TrackingCode);
       }
+      if (BoundPlatform.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(BoundPlatform);
+      }
+      if (Weight != 0D) {
+        output.WriteRawTag(57);
+        output.WriteDouble(Weight);
+      }
+      content_.WriteTo(output, _repeated_content_codec);
+      if (IsBeingWatched != false) {
+        output.WriteRawTag(72);
+        output.WriteBool(IsBeingWatched);
+      }
       if (status_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(82);
         output.WriteMessage(Status);
       }
       if (locations_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(90);
         output.WriteMessage(Locations);
       }
       if (_unknownFields != null) {
@@ -1219,14 +1401,24 @@ namespace ShippingService.gRPC.Server.Protos {
       if (Id.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
       }
+      if (SaleId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SaleId);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (ProductId.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ProductId);
-      }
       if (TrackingCode.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TrackingCode);
+      }
+      if (BoundPlatform.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BoundPlatform);
+      }
+      if (Weight != 0D) {
+        size += 1 + 8;
+      }
+      size += content_.CalculateSize(_repeated_content_codec);
+      if (IsBeingWatched != false) {
+        size += 1 + 1;
       }
       if (status_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Status);
@@ -1248,14 +1440,24 @@ namespace ShippingService.gRPC.Server.Protos {
       if (other.Id.Length != 0) {
         Id = other.Id;
       }
+      if (other.SaleId.Length != 0) {
+        SaleId = other.SaleId;
+      }
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
-      if (other.ProductId.Length != 0) {
-        ProductId = other.ProductId;
-      }
       if (other.TrackingCode.Length != 0) {
         TrackingCode = other.TrackingCode;
+      }
+      if (other.BoundPlatform.Length != 0) {
+        BoundPlatform = other.BoundPlatform;
+      }
+      if (other.Weight != 0D) {
+        Weight = other.Weight;
+      }
+      content_.Add(other.content_);
+      if (other.IsBeingWatched != false) {
+        IsBeingWatched = other.IsBeingWatched;
       }
       if (other.status_ != null) {
         if (status_ == null) {
@@ -1285,25 +1487,41 @@ namespace ShippingService.gRPC.Server.Protos {
             break;
           }
           case 18: {
-            Name = input.ReadString();
+            SaleId = input.ReadString();
             break;
           }
           case 26: {
-            ProductId = input.ReadString();
-            break;
-          }
-          case 34: {
-            TrackingCode = input.ReadString();
+            Name = input.ReadString();
             break;
           }
           case 42: {
+            TrackingCode = input.ReadString();
+            break;
+          }
+          case 50: {
+            BoundPlatform = input.ReadString();
+            break;
+          }
+          case 57: {
+            Weight = input.ReadDouble();
+            break;
+          }
+          case 66: {
+            content_.AddEntriesFrom(input, _repeated_content_codec);
+            break;
+          }
+          case 72: {
+            IsBeingWatched = input.ReadBool();
+            break;
+          }
+          case 82: {
             if (status_ == null) {
               Status = new global::ShippingService.gRPC.Server.Protos.GrpcPackageStatus();
             }
             input.ReadMessage(Status);
             break;
           }
-          case 50: {
+          case 90: {
             if (locations_ == null) {
               Locations = new global::ShippingService.gRPC.Server.Protos.GrpcPackageLocations();
             }
@@ -1783,6 +2001,7 @@ namespace ShippingService.gRPC.Server.Protos {
       city_ = other.city_;
       streetName_ = other.streetName_;
       cep_ = other.cep_;
+      streetNumber_ = other.streetNumber_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1835,6 +2054,17 @@ namespace ShippingService.gRPC.Server.Protos {
       }
     }
 
+    /// <summary>Field number for the "streetNumber" field.</summary>
+    public const int StreetNumberFieldNumber = 5;
+    private int streetNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int StreetNumber {
+      get { return streetNumber_; }
+      set {
+        streetNumber_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as GrpcLocation);
@@ -1852,6 +2082,7 @@ namespace ShippingService.gRPC.Server.Protos {
       if (City != other.City) return false;
       if (StreetName != other.StreetName) return false;
       if (Cep != other.Cep) return false;
+      if (StreetNumber != other.StreetNumber) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1862,6 +2093,7 @@ namespace ShippingService.gRPC.Server.Protos {
       if (City.Length != 0) hash ^= City.GetHashCode();
       if (StreetName.Length != 0) hash ^= StreetName.GetHashCode();
       if (Cep.Length != 0) hash ^= Cep.GetHashCode();
+      if (StreetNumber != 0) hash ^= StreetNumber.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1891,6 +2123,10 @@ namespace ShippingService.gRPC.Server.Protos {
         output.WriteRawTag(34);
         output.WriteString(Cep);
       }
+      if (StreetNumber != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(StreetNumber);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1910,6 +2146,9 @@ namespace ShippingService.gRPC.Server.Protos {
       }
       if (Cep.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Cep);
+      }
+      if (StreetNumber != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(StreetNumber);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1933,6 +2172,9 @@ namespace ShippingService.gRPC.Server.Protos {
       }
       if (other.Cep.Length != 0) {
         Cep = other.Cep;
+      }
+      if (other.StreetNumber != 0) {
+        StreetNumber = other.StreetNumber;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1959,6 +2201,10 @@ namespace ShippingService.gRPC.Server.Protos {
           }
           case 34: {
             Cep = input.ReadString();
+            break;
+          }
+          case 40: {
+            StreetNumber = input.ReadInt32();
             break;
           }
         }

@@ -1,4 +1,5 @@
-﻿using ProductService.App.TypeAdapters.GrpcNewPhysicalProductRequest;
+﻿using ProductService.App.Presenters;
+using ProductService.App.TypeAdapters.GrpcNewPhysicalProductRequest;
 using ProductService.App.UseCases;
 using ProductService.gRPC.Server.Protos;
 using System;
@@ -29,6 +30,7 @@ namespace ProductService.App.Controllers
             {
                 var id = grpcRequest.Id;
                 var product = await ProductUseCaseController.GetProductDataAsync(id);
+                return ProductPresenter.PresentProduct(product);
             }
             catch (Exception e)
             {

@@ -8,10 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.Controllers
 {
-    [Route("js/{path?}/{action=GetJsFile}/")]
-    [Route("css/{path?}/{action=GetCssFile}/")]
+    //[Route("js/{path?}/~")]
+    //[Route("css/{path?}/~")]
     public class StaticFileController : ControllerBase
     {
+        [Route("js/{*path}")]
         public IActionResult GetJsFile(string path)
         {
             try
@@ -30,6 +31,7 @@ namespace Gateway.Controllers
             }
         }
 
+        [Route("css/{*path}")]
         public IActionResult GetCssFile(string path)
         {
             try

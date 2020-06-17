@@ -24,9 +24,16 @@ namespace ProductService.gRPC.Server.Services
 
         }
 
-        public override Task<GrpcProduct> GetProductData(GrpcIdMessage request, ServerCallContext context)
+        public override async Task<GrpcProduct> GetProductData(GrpcIdMessage request, ServerCallContext context)
         {
-            return base.GetProductData(request, context);
+            try
+            {
+                return await Controller.GetProductData(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
         }
 
         public static RpcException HandleException(Exception exception)

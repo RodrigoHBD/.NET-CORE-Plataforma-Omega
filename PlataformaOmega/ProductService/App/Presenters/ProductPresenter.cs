@@ -9,16 +9,35 @@ namespace ProductService.App.Presenters
 {
     public class ProductPresenter
     {
-        public static GrpcProduct PresentProduct(Models.Product product)
+        public static GrpcProduct PresentProduct<T>(T product)
         {
-            return new GrpcProduct();
+            try
+            {
+                if(product is PhysicalProduct)
+                {
+                    return PresentPhysicalProduct(product as PhysicalProduct);
+                }
+                else
+                {
+                    return PresentPhysicalProduct(product as PhysicalProduct);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
-        public static GrpcProduct PresentPhysicalProduct(PhysicalProduct product)
+        private static GrpcProduct PresentPhysicalProduct(PhysicalProduct product)
         {
             return new GrpcProduct()
             {
-
+                Id = product.Id.ToString(),
+                Name = product.Name,
+                Brand = product.Brand,
+                Category = product.Category,
+                Description = product.Description,
+                Measurements = MeasurementsPresenter.PresentPhysicalMeasurements(product.Measurements)
             };
         }
     }

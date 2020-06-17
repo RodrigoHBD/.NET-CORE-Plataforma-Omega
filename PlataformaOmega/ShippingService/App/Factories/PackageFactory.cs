@@ -17,7 +17,13 @@ namespace ShippingService.App.Factories
                 {
                     Name = request.Name,
                     TrackingCode = request.TrackingCode,
-                    ProductId = request.ProductId,
+                    SaleId = request.SaleId,
+                    Weight = request.Weight,
+                    BoundPlatform = request.Platform,
+                    Content = new PackageContent()
+                    {
+                        Products = request.Content
+                    }
                 };
                 package.Location.ShippedFrom = request.PackageInitialLocation;
 

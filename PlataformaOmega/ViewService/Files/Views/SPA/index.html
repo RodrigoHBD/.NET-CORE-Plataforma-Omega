@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Tue Jun 16 2020 16:56:14 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Wed Jun 17 2020 18:34:57 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 <head>
   <meta charset="utf-8">
@@ -43,7 +43,7 @@
       <div data-duration-in="300" data-duration-out="100" class="tabs w-tabs">
         <div class="tabs-menu w-tab-menu">
           <a data-w-tab="Tab 1" class="menuoptiontab w-inline-block w-tab-link">
-            <div class="text-block">Todos</div>
+            <div class="text-block">Dashboard</div>
           </a>
           <a data-w-tab="Tab 2" class="menuoptiontab w-inline-block w-tab-link">
             <div class="text-block-2">B2W</div>
@@ -52,7 +52,7 @@
             <div class="text-block-3">Via Varejo</div>
           </a>
           <a data-w-tab="Tab 4" class="menuoptiontab w-inline-block w-tab-link">
-            <div>Tab 4</div>
+            <div>Mercado Livre</div>
           </a>
           <a data-w-tab="Tab 5" class="menuoptiontab w-inline-block w-tab-link">
             <div>Tab 5</div>
@@ -96,18 +96,18 @@
             <div class="div-block-2">
               <div data-duration-in="300" data-duration-out="100" class="tabs-2 w-tabs">
                 <div class="w-tab-menu">
-                  <a data-w-tab="Tab 1" class="w-inline-block w-tab-link">
+                  <a data-w-tab="Tab 1" class="w-inline-block w-tab-link w--current">
                     <div>Objetos Cadastrados</div>
                   </a>
                   <a data-w-tab="Tab 2" class="w-inline-block w-tab-link">
                     <div>Cadastro Manual</div>
                   </a>
-                  <a data-w-tab="Tab 3" id="CorreiosTab-InnerTabs-DetailsTab" class="correiostab-innertabs-detailstab w-inline-block w-tab-link w--current">
+                  <a data-w-tab="Tab 3" id="CorreiosTab-InnerTabs-DetailsTab" class="correiostab-innertabs-detailstab w-inline-block w-tab-link">
                     <div>Detalhe</div>
                   </a>
                 </div>
                 <div class="tabs-content-2 w-tab-content">
-                  <div data-w-tab="Tab 1" class="tab-pane-tab-1 w-tab-pane">
+                  <div data-w-tab="Tab 1" class="tab-pane-tab-1 w-tab-pane w--tab-active">
                     <div class="div-block-15">
                       <h2 class="heading">Tabela de Objetos</h2>
                       <div class="correio-tabela-objetos-head">
@@ -137,24 +137,27 @@
                               <div class="correio-tabela-objetos-iteration-template">
                                 <div class="text-block-8">Plataforma</div>
                                 <div class="linhaseparadora-semespa-o-white"></div>
-                                <div class="text-block-9">Nome</div>
+                                <div class="text-block-9">Pedido</div>
                                 <div class="linhaseparadora-semespa-o-white"></div>
                                 <div class="text-block-10">Código de Rastreamento</div>
                                 <div class="linhaseparadora-semespa-o-white"></div>
-                                <h5 class="item-text">Pesagem</h5>
+                                <h5 class="item-text">Peso</h5>
                                 <div class="linhaseparadora-semespa-o-white"></div>
                                 <h5 class="item-text">Status</h5>
                                 <div class="linhaseparadora-semespa-o-white"></div>
                                 <div class="text-block-11">Ações</div>
                               </div>
-                              <div class="correio-tabela-objetos-iteration">
+                              <div v-for="package in Correios.ObjectsTable.Body" class="correio-tabela-objetos-iteration">
                                 <div class="div-block-14"><img src="images/mercado-livre-logo.png" srcset="images/mercado-livre-logo-p-500.png 500w, images/mercado-livre-logo.png 660w" sizes="(max-width: 479px) 13.800003051757812px, (max-width: 991px) 5vw, 7vw" alt="" class="image-2"></div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
-                                <div class="text-block-5">Nome do Pacote de Entrega</div>
+                                <div class="text-block-5">{{ package.SaleId }}</div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
-                                <div class="text-block-6">PW806396839BR</div>
+                                <div class="text-block-6">{{ package.TrackingCode}}</div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
-                                <div class="text-block-4">12 KG</div>
+                                <div class="div-block-22">
+                                  <div class="text-block-4">V 12,000 </div>
+                                  <div class="text-block-4-copy">P {{ package.Weight}}</div>
+                                </div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="div-block-8"><img src="images/untitled.svg" width="256" alt="" class="image"></div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
@@ -186,15 +189,21 @@
                       </div>
                     </div>
                   </div>
-                  <div data-w-tab="Tab 3" class="w-tab-pane w--tab-active">
+                  <div data-w-tab="Tab 3" class="w-tab-pane">
                     <h2 class="heading-11">Detalhe do Objeto</h2>
                     <div class="div-block-21">
                       <div class="correio-detalhe-objeto-data-field">
-                        <div class="correio-detalheobjeto-titulodecampo">Nome</div>
+                        <div class="correio-detalheobjeto-titulodecampo">Pedido</div>
                         <div id="correio-detalheobjeto-nome" class="text-block-12">Package Name Here foobar 1234</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
-                        <div class="correio-detalheobjeto-titulodecampo">Mensagem Status</div>
+                        <div class="correio-detalheobjeto-titulodecampo">Nome do Cliente</div>
+                        <div id="correio-detalheobjeto-nome" class="text-block-12">Package Name Here foobar 1234</div>
+                      </div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Link do Anúncio</div><a href="#">https://mercadodibre.com/498415215</a></div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Status Correio</div>
                         <div id="correio-detalheobjeto-msg" class="text-block-12">Objeto está aguardando retirada no local indicado.</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
@@ -202,8 +211,12 @@
                         <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">{{ correios.trackingCode }}</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
-                        <div class="correio-detalheobjeto-titulodecampo">Produto</div>
-                        <div id="correio-detalheobjeto-produto" class="text-block-12">Suporte 3D TVs Grande Porte SKU</div>
+                        <div class="correio-detalheobjeto-titulodecampo">SAC</div><a href="#">https://mercadodibre.com/498415215</a></div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Plataforma</div><img src="images/mercado-livre-logo.png" srcset="images/mercado-livre-logo-p-500.png 500w, images/mercado-livre-logo.png 660w" sizes="82.13333129882812px" alt="" class="image-6"></div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Estimativa Prometido</div>
+                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12-copy">25/07/2020</div>
                       </div>
                       <h3 class="heading-12">Localizações</h3>
                       <div class="correio-detalhe-objeto-data-field correio-detalhe-objeto-data-field-location">
@@ -273,7 +286,10 @@
   <script src="js/toolbox.js" type="text/javascript"></script>
   <script src="js/http-client.js" type="text/javascript"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="js/app.js" type="text/javascript"></script>
+  <script src="js/main-app/vue-controller.js" type="text/javascript"></script>
+  <script src="js/main-app/session-controller.js" type="text/javascript"></script>
+  <script src="js/main-app/app.js" type="text/javascript"></script>
+  <script src="js/main-app/correios/correios.js" type="text/javascript"></script>
   <script>
   $('.correio-tabela-objetos-abrirdetalhesbtn').on('click', function (evt) {
     $('#CorreiosTab-InnerTabs-DetailsTab').triggerHandler('click');

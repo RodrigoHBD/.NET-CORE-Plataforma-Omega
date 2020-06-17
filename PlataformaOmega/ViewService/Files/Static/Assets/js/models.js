@@ -1,4 +1,0 @@
-class Package {
-    Name = "";
-    TrackingCode = "";
-}

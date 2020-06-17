@@ -13,6 +13,7 @@
 
     <ItemGroup>
 		<Protobuf Include="gRPC\Client\View\Proto\viewService.proto" GrpcServices="Client" />
+		<Protobuf Include="gRPC\Client\Shipping\Proto\shippingService.proto" GrpcServices="Client" />
 	</ItemGroup>
 
     <ItemGroup>

@@ -15,10 +15,11 @@ class HttpClient {
 
     async Post(uri, body) {
         try {
-
+            let response = await axios.post(uri, body);
+            return this.HandleResponse(response);
         }
         catch (error) {
-
+            throw error;
         }
     }
 

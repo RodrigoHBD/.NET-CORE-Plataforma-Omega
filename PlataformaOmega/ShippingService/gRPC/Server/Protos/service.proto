@@ -14,9 +14,13 @@ service Shipping {
 
 // requests
 message GrpcShipPackageRequest {
-	string Name = 1;
-	string TrackingCode = 2;
-	string ProductId = 3;
+	string name = 1;
+	string trackingCode = 2;
+	string saleId = 3;
+	double weight = 4;
+	int32 platform = 5;
+	GrpcLocation initialLocation = 6;
+	repeated string content = 7;
 }
 
 message GrpcUpdatePackageRequest {
@@ -45,13 +49,17 @@ message GrpcPackageList {
 }
 
 // models
-message GrpcPackageData{
+message GrpcPackageData {
 	string id = 1;
-	string name = 2;
-	string productId = 3;
-	string trackingCode = 4;
-	GrpcPackageStatus status = 5;
-	GrpcPackageLocations locations = 6;
+	string saleId = 2;
+	string name = 3;
+	string trackingCode = 5;
+	string boundPlatform = 6;
+	double weight = 7;
+	repeated string content = 8;
+	bool isBeingWatched = 9;
+	GrpcPackageStatus status = 10;
+	GrpcPackageLocations locations = 11;
 }
 
 message GrpcPackageStatus {
@@ -73,6 +81,7 @@ message GrpcLocation {
 	string city = 2;
 	string streetName = 3;
 	string cep = 4;
+	int32 streetNumber = 5;
 }
 
 message GrpcIdMessage {

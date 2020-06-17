@@ -17,7 +17,7 @@ namespace ShippingService.App.Controller
             {
                 var request = ShipNewPackageRequestAdapter.AdaptFromGrpc(grpcRequest);
                 await UseCaseOperator.ShipNewPackage(request);
-                return Presenter.PresentStatusResponse(true);
+                return StatusResponsePresenter.Present(true);
             }
             catch (Exception e)
             {
@@ -31,7 +31,7 @@ namespace ShippingService.App.Controller
             {
                 var id = GrpcUpdatePackageAdapter.GetId(grpcRequest);
                 await UseCaseOperator.SetPackagePosted(id);
-                return Presenter.PresentStatusResponse(true);
+                return StatusResponsePresenter.Present(true);
             }
             catch (Exception e)
             {
@@ -45,7 +45,7 @@ namespace ShippingService.App.Controller
             {
                 var id = GrpcUpdatePackageAdapter.GetId(grpcRequest);
                 await UseCaseOperator.SetPackageDelivered(id);
-                return Presenter.PresentStatusResponse(true);
+                return StatusResponsePresenter.Present(true);
             }
             catch (Exception e)
             {
@@ -59,7 +59,7 @@ namespace ShippingService.App.Controller
             {
                 var id = GrpcWatchPackageRequestAdapter.GetId(grpcRequest);
                 await UseCaseOperator.WatchPackage(id);
-                return Presenter.PresentStatusResponse(true);
+                return StatusResponsePresenter.Present(true);
             }
             catch (Exception e)
             {
@@ -73,7 +73,7 @@ namespace ShippingService.App.Controller
             {
                 var id = grpcRequest.Id;
                 var package = await UseCaseOperator.GetPackageData(id);
-                return Presenter.PresentPackage(package);
+                return PackagePresenter.PresentePackage(package);
             }
             catch (Exception e)
             {
@@ -101,7 +101,7 @@ namespace ShippingService.App.Controller
             {
                 var id = grpcRequest.Id;
                 await UseCaseOperator.RunWatcherRoutine(id);
-                return Presenter.PresentStatusResponse(true, "Rotina executada com sucesso");
+                return StatusResponsePresenter.Present(true, "Rotina executada com sucesso");
             }
             catch (Exception e)
             {

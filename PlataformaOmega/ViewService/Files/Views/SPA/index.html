@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Wed Jun 17 2020 18:34:57 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Thu Jun 18 2020 18:48:27 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 <head>
   <meta charset="utf-8">
@@ -112,7 +112,7 @@
                       <h2 class="heading">Tabela de Objetos</h2>
                       <div class="correio-tabela-objetos-head">
                         <div class="div-block-4">
-                          <h3 class="heading-2">Pagina: 1</h3>
+                          <h3 class="heading-2">Pagina: {{ Correios.ObjectsTable.CurrentPage }}</h3>
                           <h3 class="heading-2">Total de Páginas: 1</h3>
                         </div>
                         <div class="correio-tabela-objetos-actionmenu"><a data-w-id="aaa6591d-d6f7-e20b-ae2a-9012e5144d09" href="#" class="button-2 w-button">Mostrar Filtros</a>
@@ -128,7 +128,7 @@
                                 <div>Oops! Something went wrong while submitting the form.</div>
                               </div>
                             </div>
-                          </div><a href="#" class="button-3 w-button">Atualizar</a></div>
+                          </div><a whenclicked="app.Controllers.Correios.SearchPackages" href="#" class="button-3 w-button">Atualizar</a></div>
                       </div>
                       <div data-w-id="23ff6725-43fc-bb77-7d80-ea9909c7576f" class="correio-tabela-objeto-body">
                         <div class="div-block-16">
@@ -208,7 +208,7 @@
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">Código de Rastreamento</div>
-                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">{{ correios.trackingCode }}</div>
+                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">{correios.trackingCode }}</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">SAC</div><a href="#">https://mercadodibre.com/498415215</a></div>
@@ -282,14 +282,24 @@
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5edfa191b5ff34226cd2885d" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <!--  Dependencies  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!--  Common  -->
   <script src="js/toolbox.js" type="text/javascript"></script>
   <script src="js/http-client.js" type="text/javascript"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!--  App  -->
+  <!--  Coontrollers  -->
   <script src="js/main-app/vue-controller.js" type="text/javascript"></script>
   <script src="js/main-app/session-controller.js" type="text/javascript"></script>
-  <script src="js/main-app/app.js" type="text/javascript"></script>
+  <script src="js/main-app/correios/correios-controller.js" type="text/javascript"></script>
+  <script src="js/main-app/computed-controller.js" type="text/javascript"></script>
+  <script src="js/main-app/controllers.js" type="text/javascript"></script>
+  <!--  Models  -->
+  <script src="js/main-app/models.js" type="text/javascript"></script>
   <script src="js/main-app/correios/correios.js" type="text/javascript"></script>
+  <script src="js/main-app/app.js" type="text/javascript"></script>
+  <!--  End App   -->
   <script>
   $('.correio-tabela-objetos-abrirdetalhesbtn').on('click', function (evt) {
     $('#CorreiosTab-InnerTabs-DetailsTab').triggerHandler('click');

@@ -2,49 +2,73 @@ var app;
 
 class App {
     IsInitialized = false;
-    VueController;
-    SessionController;
+    Controllers = new Controllers();
     Session;
+    Computed;
     HttpClient = new HttpClient();
 
-    Initialize(){
-        try{
-            if(this.IsInitialized){
+    Initialize() {
+        try {
+            if (this.IsInitialized) {
                 return console.log("App instance is already initialized");
             }
-            
+
             this.InitializeSession();
+            this.InitializeComputed();
             this.InitializeVue();
+            this.SetWhenClickedAttribute();
             this.IsInitialized = true;
         }
-        catch(erro){
+        catch (erro) {
             throw erro;
         }
     }
 
-    InitializeSession(){
+    InitializeSession() {
         try {
-            this.SessionController = new SessionController();
-            this.SessionController.Initialize();
-            this.Session = this.SessionController.ExportSession();
+            this.Controllers.Session.Initialize();
+            this.Session = this.Controllers.Session.ExportSession();
         }
-        catch(error){
-            throw error;
-        }
-    }
-
-    InitializeVue(){
-        try {
-            this.VueController = new VueController();
-            this.VueController.Initialize();
-        } 
         catch (error) {
             throw error;
         }
     }
+
+    InitializeComputed() {
+        try {
+            this.Controllers.Computed.Initialize();
+            this.Computed = this.Controllers.Computed.ExportComputed();
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+
+    InitializeVue() {
+        try {
+            this.Controllers.Vue.Initialize();
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+
+    SetWhenClickedAttribute() {
+        var elements = document.getElementsByTagName('*');
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            var hasAtt = element.hasAttribute("whenClicked");
+
+            if (hasAtt) {
+                element.addEventListener("click", function (){
+                    var code = this.getAttribute('whenclicked');
+                    eval(code);
+                });
+            }
+
+        }
+    }
 }
 
-window.onload = () => {
-    app = new App();
-    app.Initialize();
-};
+app = new App();
+app.Initialize();

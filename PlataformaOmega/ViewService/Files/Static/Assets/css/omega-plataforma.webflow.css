@@ -824,8 +824,9 @@
 }
 
 .text-block-4 {
-  width: 10%;
+  width: 100%;
   margin-right: auto;
+  margin-bottom: 0em;
   margin-left: auto;
   padding-right: 0.5em;
   padding-left: 0.5em;
@@ -837,6 +838,7 @@
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+  border: 1px none #000;
   text-align: center;
 }
 
@@ -1351,10 +1353,20 @@
 }
 
 .correio-detalhe-objeto-data-field {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 45%;
   margin-right: 2.5%;
   margin-bottom: 3.5em;
   margin-left: 2.5%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
   font-size: 1.1em;
 }
 
@@ -1365,6 +1377,7 @@
 .text-block-12 {
   margin-top: 1em;
   margin-bottom: 1em;
+  color: #333;
   font-size: 1.5em;
 }
 
@@ -1411,4 +1424,48 @@
   padding-bottom: 0.125em;
   border-bottom: 1px solid #000;
   text-align: center;
+}
+
+.div-block-22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 10%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.text-block-4-copy {
+  width: 100%;
+  margin-right: auto;
+  margin-bottom: 0em;
+  margin-left: auto;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  border: 1px none #000;
+  color: #098b14;
+  text-align: center;
+}
+
+.image-6 {
+  height: 4em;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.text-block-12-copy {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #03971e;
+  font-size: 1.5em;
 }

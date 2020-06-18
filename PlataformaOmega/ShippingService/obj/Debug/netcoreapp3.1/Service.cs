@@ -30,46 +30,46 @@ namespace ShippingService.gRPC.Server.Protos {
             "YXRmb3JtGAUgASgFEiYKD2luaXRpYWxMb2NhdGlvbhgGIAEoCzINLkdycGNM",
             "b2NhdGlvbhIPCgdjb250ZW50GAcgAygJIiYKGEdycGNVcGRhdGVQYWNrYWdl",
             "UmVxdWVzdBIKCgJpZBgBIAEoCSIlChdHcnBjV2F0Y2hQYWNrYWdlUmVxdWVz",
-            "dBIKCgJpZBgBIAEoCSJjChhHcnBjU2VhcmNoUGFja2FnZVJlcXVlc3QSDAoE",
-            "bmFtZRgBIAEoCRIUCgx0cmFja2luZ0NvZGUYAiABKAkSIwoKcGFnaW5hdGlv",
-            "bhgDIAEoCzIPLkdycGNQYWdpbmF0aW9uIjEKEkdycGNTdGF0dXNSZXNwb25z",
-            "ZRIKCgJvaxgBIAEoCBIPCgdtZXNzYWdlGAIgASgJIlYKD0dycGNQYWNrYWdl",
-            "TGlzdBIeCgRkYXRhGAEgAygLMhAuR3JwY1BhY2thZ2VEYXRhEiMKCnBhZ2lu",
-            "YXRpb24YAiABKAsyDy5HcnBjUGFnaW5hdGlvbiLvAQoPR3JwY1BhY2thZ2VE",
-            "YXRhEgoKAmlkGAEgASgJEg4KBnNhbGVJZBgCIAEoCRIMCgRuYW1lGAMgASgJ",
-            "EhQKDHRyYWNraW5nQ29kZRgFIAEoCRIVCg1ib3VuZFBsYXRmb3JtGAYgASgJ",
-            "Eg4KBndlaWdodBgHIAEoARIPCgdjb250ZW50GAggAygJEhYKDmlzQmVpbmdX",
-            "YXRjaGVkGAkgASgIEiIKBnN0YXR1cxgKIAEoCzISLkdycGNQYWNrYWdlU3Rh",
-            "dHVzEigKCWxvY2F0aW9ucxgLIAEoCzIVLkdycGNQYWNrYWdlTG9jYXRpb25z",
-            "IpgBChFHcnBjUGFja2FnZVN0YXR1cxIQCghpc1Bvc3RlZBgBIAEoCBITCgtp",
-            "c0RlbGl2ZXJlZBgCIAEoCBIbChNpc0F3YWl0aW5nRm9yUGlja1VwGAMgASgI",
-            "EhIKCmlzUmVqZWN0ZWQYBCABKAgSGgoSaXNCZWluZ1RyYW5zcG9ydGVkGAUg",
-            "ASgIEg8KB21lc3NhZ2UYBiABKAkiZwoUR3JwY1BhY2thZ2VMb2NhdGlvbnMS",
-            "JgoPY3VycmVudExvY2F0aW9uGAEgASgLMg0uR3JwY0xvY2F0aW9uEicKEGhl",
-            "YWRlZFRvTG9jYXRpb24YAiABKAsyDS5HcnBjTG9jYXRpb24iYgoMR3JwY0xv",
-            "Y2F0aW9uEg0KBXN0YXRlGAEgASgJEgwKBGNpdHkYAiABKAkSEgoKc3RyZWV0",
-            "TmFtZRgDIAEoCRILCgNjZXAYBCABKAkSFAoMc3RyZWV0TnVtYmVyGAUgASgF",
-            "IhsKDUdycGNJZE1lc3NhZ2USCgoCaWQYASABKAkiPgoOR3JwY1BhZ2luYXRp",
-            "b24SDgoGb2Zmc2V0GAEgASgFEg0KBWxpbWl0GAIgASgFEg0KBXRvdGFsGAMg",
-            "ASgFMs0DCghTaGlwcGluZxI7CgtTaGlwUGFja2FnZRIXLkdycGNTaGlwUGFj",
-            "a2FnZVJlcXVlc3QaEy5HcnBjU3RhdHVzUmVzcG9uc2USQgoQU2V0UGFja2Fn",
-            "ZVBvc3RlZBIZLkdycGNVcGRhdGVQYWNrYWdlUmVxdWVzdBoTLkdycGNTdGF0",
-            "dXNSZXNwb25zZRJFChNTZXRQYWNrYWdlRGVsaXZlcmVkEhkuR3JwY1VwZGF0",
-            "ZVBhY2thZ2VSZXF1ZXN0GhMuR3JwY1N0YXR1c1Jlc3BvbnNlEj0KDFdhdGNo",
-            "UGFja2FnZRIYLkdycGNXYXRjaFBhY2thZ2VSZXF1ZXN0GhMuR3JwY1N0YXR1",
-            "c1Jlc3BvbnNlEjIKDkdldFBhY2thZ2VEYXRhEg4uR3JwY0lkTWVzc2FnZRoQ",
-            "LkdycGNQYWNrYWdlRGF0YRI9Cg5TZWFyY2hQYWNrYWdlcxIZLkdycGNTZWFy",
-            "Y2hQYWNrYWdlUmVxdWVzdBoQLkdycGNQYWNrYWdlTGlzdBJHCiBSdW5QYWNr",
-            "YWdlV2F0Y2hlclJvdXRpbmVNYW51YWxseRIOLkdycGNJZE1lc3NhZ2UaEy5H",
-            "cnBjU3RhdHVzUmVzcG9uc2VCJaoCIlNoaXBwaW5nU2VydmljZS5nUlBDLlNl",
-            "cnZlci5Qcm90b3NiBnByb3RvMw=="));
+            "dBIKCgJpZBgBIAEoCSJ5ChhHcnBjU2VhcmNoUGFja2FnZVJlcXVlc3QSDAoE",
+            "bmFtZRgBIAEoCRIUCgx0cmFja2luZ0NvZGUYAiABKAkSFAoMZHluYW1pY0Zp",
+            "ZWxkGAMgASgJEiMKCnBhZ2luYXRpb24YBCABKAsyDy5HcnBjUGFnaW5hdGlv",
+            "biIxChJHcnBjU3RhdHVzUmVzcG9uc2USCgoCb2sYASABKAgSDwoHbWVzc2Fn",
+            "ZRgCIAEoCSJWCg9HcnBjUGFja2FnZUxpc3QSHgoEZGF0YRgBIAMoCzIQLkdy",
+            "cGNQYWNrYWdlRGF0YRIjCgpwYWdpbmF0aW9uGAIgASgLMg8uR3JwY1BhZ2lu",
+            "YXRpb24i7wEKD0dycGNQYWNrYWdlRGF0YRIKCgJpZBgBIAEoCRIOCgZzYWxl",
+            "SWQYAiABKAkSDAoEbmFtZRgDIAEoCRIUCgx0cmFja2luZ0NvZGUYBSABKAkS",
+            "FQoNYm91bmRQbGF0Zm9ybRgGIAEoCRIOCgZ3ZWlnaHQYByABKAESDwoHY29u",
+            "dGVudBgIIAMoCRIWCg5pc0JlaW5nV2F0Y2hlZBgJIAEoCBIiCgZzdGF0dXMY",
+            "CiABKAsyEi5HcnBjUGFja2FnZVN0YXR1cxIoCglsb2NhdGlvbnMYCyABKAsy",
+            "FS5HcnBjUGFja2FnZUxvY2F0aW9ucyKYAQoRR3JwY1BhY2thZ2VTdGF0dXMS",
+            "EAoIaXNQb3N0ZWQYASABKAgSEwoLaXNEZWxpdmVyZWQYAiABKAgSGwoTaXNB",
+            "d2FpdGluZ0ZvclBpY2tVcBgDIAEoCBISCgppc1JlamVjdGVkGAQgASgIEhoK",
+            "EmlzQmVpbmdUcmFuc3BvcnRlZBgFIAEoCBIPCgdtZXNzYWdlGAYgASgJImcK",
+            "FEdycGNQYWNrYWdlTG9jYXRpb25zEiYKD2N1cnJlbnRMb2NhdGlvbhgBIAEo",
+            "CzINLkdycGNMb2NhdGlvbhInChBoZWFkZWRUb0xvY2F0aW9uGAIgASgLMg0u",
+            "R3JwY0xvY2F0aW9uImIKDEdycGNMb2NhdGlvbhINCgVzdGF0ZRgBIAEoCRIM",
+            "CgRjaXR5GAIgASgJEhIKCnN0cmVldE5hbWUYAyABKAkSCwoDY2VwGAQgASgJ",
+            "EhQKDHN0cmVldE51bWJlchgFIAEoBSIbCg1HcnBjSWRNZXNzYWdlEgoKAmlk",
+            "GAEgASgJIj4KDkdycGNQYWdpbmF0aW9uEg4KBm9mZnNldBgBIAEoBRINCgVs",
+            "aW1pdBgCIAEoBRINCgV0b3RhbBgDIAEoBTLNAwoIU2hpcHBpbmcSOwoLU2hp",
+            "cFBhY2thZ2USFy5HcnBjU2hpcFBhY2thZ2VSZXF1ZXN0GhMuR3JwY1N0YXR1",
+            "c1Jlc3BvbnNlEkIKEFNldFBhY2thZ2VQb3N0ZWQSGS5HcnBjVXBkYXRlUGFj",
+            "a2FnZVJlcXVlc3QaEy5HcnBjU3RhdHVzUmVzcG9uc2USRQoTU2V0UGFja2Fn",
+            "ZURlbGl2ZXJlZBIZLkdycGNVcGRhdGVQYWNrYWdlUmVxdWVzdBoTLkdycGNT",
+            "dGF0dXNSZXNwb25zZRI9CgxXYXRjaFBhY2thZ2USGC5HcnBjV2F0Y2hQYWNr",
+            "YWdlUmVxdWVzdBoTLkdycGNTdGF0dXNSZXNwb25zZRIyCg5HZXRQYWNrYWdl",
+            "RGF0YRIOLkdycGNJZE1lc3NhZ2UaEC5HcnBjUGFja2FnZURhdGESPQoOU2Vh",
+            "cmNoUGFja2FnZXMSGS5HcnBjU2VhcmNoUGFja2FnZVJlcXVlc3QaEC5HcnBj",
+            "UGFja2FnZUxpc3QSRwogUnVuUGFja2FnZVdhdGNoZXJSb3V0aW5lTWFudWFs",
+            "bHkSDi5HcnBjSWRNZXNzYWdlGhMuR3JwY1N0YXR1c1Jlc3BvbnNlQiWqAiJT",
+            "aGlwcGluZ1NlcnZpY2UuZ1JQQy5TZXJ2ZXIuUHJvdG9zYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcShipPackageRequest.Parser, new[]{ "Name", "TrackingCode", "SaleId", "Weight", "Platform", "InitialLocation", "Content" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcUpdatePackageRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcWatchPackageRequest.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest.Parser, new[]{ "Name", "TrackingCode", "Pagination" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest), global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest.Parser, new[]{ "Name", "TrackingCode", "DynamicField", "Pagination" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse), global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse.Parser, new[]{ "Ok", "Message" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageList), global::ShippingService.gRPC.Server.Protos.GrpcPackageList.Parser, new[]{ "Data", "Pagination" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ShippingService.gRPC.Server.Protos.GrpcPackageData), global::ShippingService.gRPC.Server.Protos.GrpcPackageData.Parser, new[]{ "Id", "SaleId", "Name", "TrackingCode", "BoundPlatform", "Weight", "Content", "IsBeingWatched", "Status", "Locations" }, null, null, null, null),
@@ -667,6 +667,7 @@ namespace ShippingService.gRPC.Server.Protos {
     public GrpcSearchPackageRequest(GrpcSearchPackageRequest other) : this() {
       name_ = other.name_;
       trackingCode_ = other.trackingCode_;
+      dynamicField_ = other.dynamicField_;
       pagination_ = other.pagination_ != null ? other.pagination_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -698,8 +699,19 @@ namespace ShippingService.gRPC.Server.Protos {
       }
     }
 
+    /// <summary>Field number for the "dynamicField" field.</summary>
+    public const int DynamicFieldFieldNumber = 3;
+    private string dynamicField_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DynamicField {
+      get { return dynamicField_; }
+      set {
+        dynamicField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "pagination" field.</summary>
-    public const int PaginationFieldNumber = 3;
+    public const int PaginationFieldNumber = 4;
     private global::ShippingService.gRPC.Server.Protos.GrpcPagination pagination_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::ShippingService.gRPC.Server.Protos.GrpcPagination Pagination {
@@ -724,6 +736,7 @@ namespace ShippingService.gRPC.Server.Protos {
       }
       if (Name != other.Name) return false;
       if (TrackingCode != other.TrackingCode) return false;
+      if (DynamicField != other.DynamicField) return false;
       if (!object.Equals(Pagination, other.Pagination)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -733,6 +746,7 @@ namespace ShippingService.gRPC.Server.Protos {
       int hash = 1;
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (TrackingCode.Length != 0) hash ^= TrackingCode.GetHashCode();
+      if (DynamicField.Length != 0) hash ^= DynamicField.GetHashCode();
       if (pagination_ != null) hash ^= Pagination.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -755,8 +769,12 @@ namespace ShippingService.gRPC.Server.Protos {
         output.WriteRawTag(18);
         output.WriteString(TrackingCode);
       }
-      if (pagination_ != null) {
+      if (DynamicField.Length != 0) {
         output.WriteRawTag(26);
+        output.WriteString(DynamicField);
+      }
+      if (pagination_ != null) {
+        output.WriteRawTag(34);
         output.WriteMessage(Pagination);
       }
       if (_unknownFields != null) {
@@ -772,6 +790,9 @@ namespace ShippingService.gRPC.Server.Protos {
       }
       if (TrackingCode.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(TrackingCode);
+      }
+      if (DynamicField.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DynamicField);
       }
       if (pagination_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pagination);
@@ -792,6 +813,9 @@ namespace ShippingService.gRPC.Server.Protos {
       }
       if (other.TrackingCode.Length != 0) {
         TrackingCode = other.TrackingCode;
+      }
+      if (other.DynamicField.Length != 0) {
+        DynamicField = other.DynamicField;
       }
       if (other.pagination_ != null) {
         if (pagination_ == null) {
@@ -819,6 +843,10 @@ namespace ShippingService.gRPC.Server.Protos {
             break;
           }
           case 26: {
+            DynamicField = input.ReadString();
+            break;
+          }
+          case 34: {
             if (pagination_ == null) {
               Pagination = new global::ShippingService.gRPC.Server.Protos.GrpcPagination();
             }

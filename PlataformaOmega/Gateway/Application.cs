@@ -28,6 +28,7 @@ namespace Gateway
             try
             {
                 ViewClient.Initialize();
+                ShippingClient.Initialize();
             }
             catch (Exception e)
             {

@@ -64,7 +64,7 @@ namespace ShippingService.App.Boundries
                 if(packageUpdate.StatusMessage.Length > 0)
                 {
                     var update = Builders<Package>.Update
-                       .Set(package => package.Status.Message, packageUpdate.StatusMessage);
+                       .Set(package => package.Messages.StatusDescription, packageUpdate.StatusMessage);
 
                     await Collections.Packages.UpdateOneAsync(filter, update);
                     somthingWasChanged = true;
@@ -201,18 +201,21 @@ namespace ShippingService.App.Boundries
             {
                 var nameFilter = Builders<Package>.Filter.Empty;
                 var trackingCodeFilter = Builders<Package>.Filter.Empty;
+                var dynamicFilter = Builders<Package>.Filter.Empty;
                 var filter = Builders<Package>.Filter.Empty;
 
-                if (request.Name.IsActive)
+                if (request.DynamicString.IsActive)
                 {
-                    nameFilter = Builders<Package>.Filter.Where(package => package.Name.Contains(request.Name.Value));
+                    nameFilter = Builders<Package>.Filter.Where(package => package.Name.Contains(request.DynamicString.Value));
+                    trackingCodeFilter = Builders<Package>.Filter.Where(package => package.TrackingCode == request.DynamicString.Value);
+                    dynamicFilter = Builders<Package>.Filter.Or(nameFilter, trackingCodeFilter);
                 }
-                if (request.TrackingCode.IsActive)
+                else
                 {
-                    trackingCodeFilter = Builders<Package>.Filter.Where(package => package.TrackingCode == request.TrackingCode.Value);
+                    //TODO
                 }
 
-                filter = Builders<Package>.Filter.And(nameFilter, trackingCodeFilter);
+                filter = Builders<Package>.Filter.And(dynamicFilter);
 
                 var total = await CountPackagesAsync(filter);
                 var query = Collections.Packages.Find(filter).Limit(request.Pagination.Limit).Skip(request.Pagination.Offset);

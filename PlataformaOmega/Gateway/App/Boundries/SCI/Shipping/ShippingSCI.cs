@@ -8,6 +8,16 @@ namespace Gateway.App.Boundries.SCI.Shipping
 {
     public class ShippingSCI
     {
-        //public static async Task GetPackageDataAsync(PackageSearch)
+        public static async Task GetPackageDataAsync(string id)
+        {
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace ShippingService.App.Presenters
                         IsDelivered = package.Status.HasBeenDelivered,
                         IsPosted = package.Status.HasBeenPosted,
                         IsRejected = package.Status.IsRejected,
-                        Message = package.Status.Message
+                        Message = package.Messages.StatusDescription
                     },
                     Locations = new GrpcPackageLocations()
                     {

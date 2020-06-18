@@ -10,9 +10,8 @@ namespace ShippingService.App.Controller.Implementations
     public class PackageSearchRequest : IPackageSearchRequest
     {
         public IStringSearchField Name { get; set; } = new StringSearchField();
-
         public IStringSearchField TrackingCode { get; set; } = new StringSearchField();
-
+        public IStringSearchField DynamicString { get; set; } = new StringSearchField();
         public IPaginationIn Pagination { get; set; } = new PaginationIn();
     }
 

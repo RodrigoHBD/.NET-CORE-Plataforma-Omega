@@ -20,16 +20,13 @@ namespace ShippingService.App.TypeAdapters
                 {
                     Name = new StringSearchField() { Value = grpcRequest.Name },
                     TrackingCode = new StringSearchField() { Value = grpcRequest.TrackingCode },
+                    DynamicString = new StringSearchField() { Value =grpcRequest.DynamicField },
                     Pagination = GrpcPaginationAdapter.Adapt(grpcRequest.Pagination)
                 };
 
-                if(grpcRequest.Name.Length > 0)
+                if(grpcRequest.Name.Length > 0 || grpcRequest.TrackingCode.Length > 0 || grpcRequest.DynamicField.Length > 0)
                 {
-                    request.Name.IsActive = true;
-                }
-                if(grpcRequest.TrackingCode.Length > 0)
-                {
-                    request.TrackingCode.IsActive = true;
+                    request.DynamicString.IsActive = true;
                 }
 
                 return request;

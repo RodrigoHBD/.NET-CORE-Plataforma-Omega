@@ -34,7 +34,8 @@ message GrpcWatchPackageRequest {
 message GrpcSearchPackageRequest {
 	string name = 1;
 	string trackingCode = 2;
-	GrpcPagination pagination = 3;
+	string dynamicField = 3;
+	GrpcPagination pagination = 4;
 }
 
 //responses

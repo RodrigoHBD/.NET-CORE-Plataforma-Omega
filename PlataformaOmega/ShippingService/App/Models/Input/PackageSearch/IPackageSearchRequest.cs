@@ -10,6 +10,7 @@ namespace ShippingService.App.Models.Input
     {
         IStringSearchField Name { get; }
         IStringSearchField TrackingCode { get; }
+        IStringSearchField DynamicString { get; }
         IPaginationIn Pagination { get; }
     }
 }

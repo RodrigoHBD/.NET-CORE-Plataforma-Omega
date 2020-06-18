@@ -6,7 +6,8 @@ class VueController {
         try {
             this.VueInstance = new Vue({
                 el: "#app",
-                data: app.Session
+                data: app.Session,
+                computed: app.Computed
             })
         } 
         catch (error) {

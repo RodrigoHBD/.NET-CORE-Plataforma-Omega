@@ -30,6 +30,7 @@ namespace ShippingService.App.Models
             Dates = new PackageDates();
             Status = new PackageStatus();
             Location = new PackageLocation();
+            Messages = new PackageStatusMessages();
             IsSoftDeleted = false;
             BoundPlatform = AvailablePlatformsToBind.None;
         }

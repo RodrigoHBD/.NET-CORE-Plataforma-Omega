@@ -22,6 +22,7 @@ namespace ShippingService.App.TypeAdapters
                     TrackingCode = grpcRequest.TrackingCode,
                     Weight = grpcRequest.Weight,
                     Platform = DeterminePlatform(grpcRequest),
+                    CreatedManually = grpcRequest.CreatedManually,
                     PackageInitialLocation = GrpcLocationAdapter.Adapt(grpcRequest.InitialLocation)
                 };
                 grpcRequest.Content.ToList().ForEach(product => { request.Content.Add(product); });
@@ -70,5 +71,6 @@ namespace ShippingService.App.TypeAdapters
         public double Weight { get; set; } 
         public AvailablePlatformsToBind Platform { get; set; }
         public List<string> Content { get; set; } = new List<string>();
+        public bool CreatedManually { get; set; } = false;
     }
 }

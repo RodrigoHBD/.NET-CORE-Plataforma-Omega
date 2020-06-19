@@ -15,5 +15,6 @@ namespace ShippingService.App.Models.Input
         List<string> Content { get; }
         Location PackageInitialLocation { get; }
         bool SetWatcher { get; }
+        bool CreatedManually { get; }
     }
 }

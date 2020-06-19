@@ -169,7 +169,7 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
-                //await DeletePackage.Execute(id);
+                await DeletePackage.Execute(id);
             }
             catch (Exception e)
             {

@@ -48,3 +48,9 @@ class JsonUtil {
 class StringUtil {
     
 }
+
+class Toolbox {
+    Form = new FormUtil();
+}
+
+var toolbox = new Toolbox();

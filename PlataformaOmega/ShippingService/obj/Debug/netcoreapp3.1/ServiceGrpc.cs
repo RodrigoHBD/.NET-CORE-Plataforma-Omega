@@ -70,6 +70,13 @@ namespace ShippingService.gRPC.Server.Protos {
         __Marshaller_GrpcIdMessage,
         __Marshaller_GrpcStatusResponse);
 
+    static readonly grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse> __Method_HardDeletePackage = new grpc::Method<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "HardDeletePackage",
+        __Marshaller_GrpcIdMessage,
+        __Marshaller_GrpcStatusResponse);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -115,6 +122,11 @@ namespace ShippingService.gRPC.Server.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse> HardDeletePackage(global::ShippingService.gRPC.Server.Protos.GrpcIdMessage request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -128,7 +140,8 @@ namespace ShippingService.gRPC.Server.Protos {
           .AddMethod(__Method_WatchPackage, serviceImpl.WatchPackage)
           .AddMethod(__Method_GetPackageData, serviceImpl.GetPackageData)
           .AddMethod(__Method_SearchPackages, serviceImpl.SearchPackages)
-          .AddMethod(__Method_RunPackageWatcherRoutineManually, serviceImpl.RunPackageWatcherRoutineManually).Build();
+          .AddMethod(__Method_RunPackageWatcherRoutineManually, serviceImpl.RunPackageWatcherRoutineManually)
+          .AddMethod(__Method_HardDeletePackage, serviceImpl.HardDeletePackage).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -144,6 +157,7 @@ namespace ShippingService.gRPC.Server.Protos {
       serviceBinder.AddMethod(__Method_GetPackageData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcPackageData>(serviceImpl.GetPackageData));
       serviceBinder.AddMethod(__Method_SearchPackages, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcSearchPackageRequest, global::ShippingService.gRPC.Server.Protos.GrpcPackageList>(serviceImpl.SearchPackages));
       serviceBinder.AddMethod(__Method_RunPackageWatcherRoutineManually, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(serviceImpl.RunPackageWatcherRoutineManually));
+      serviceBinder.AddMethod(__Method_HardDeletePackage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::ShippingService.gRPC.Server.Protos.GrpcIdMessage, global::ShippingService.gRPC.Server.Protos.GrpcStatusResponse>(serviceImpl.HardDeletePackage));
     }
 
   }

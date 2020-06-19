@@ -10,6 +10,7 @@ service Shipping {
 	rpc GetPackageData (GrpcIdMessage) returns (GrpcPackageData);
 	rpc SearchPackages (GrpcSearchPackageRequest) returns (GrpcPackageList);
 	rpc RunPackageWatcherRoutineManually (GrpcIdMessage) returns (GrpcStatusResponse);
+	rpc HardDeletePackage (GrpcIdMessage) returns (GrpcStatusResponse);
 }
 
 // requests
@@ -21,6 +22,7 @@ message GrpcShipPackageRequest {
 	int32 platform = 5;
 	GrpcLocation initialLocation = 6;
 	repeated string content = 7;
+	bool createdManually = 8;
 }
 
 message GrpcUpdatePackageRequest {
@@ -61,6 +63,7 @@ message GrpcPackageData {
 	bool isBeingWatched = 9;
 	GrpcPackageStatus status = 10;
 	GrpcPackageLocations locations = 11;
+	bool createdManually = 12;
 }
 
 message GrpcPackageStatus {

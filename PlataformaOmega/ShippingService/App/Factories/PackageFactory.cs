@@ -20,6 +20,7 @@ namespace ShippingService.App.Factories
                     SaleId = request.SaleId,
                     Weight = request.Weight,
                     BoundPlatform = request.Platform,
+                    CreatedManually = request.CreatedManually,
                     Content = new PackageContent()
                     {
                         Products = request.Content

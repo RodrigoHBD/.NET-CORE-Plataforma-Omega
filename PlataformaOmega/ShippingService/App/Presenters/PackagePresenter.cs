@@ -22,6 +22,7 @@ namespace ShippingService.App.Presenters
                     IsBeingWatched = package.IsBeingWatched,
                     Weight = package.Weight,
                     BoundPlatform = AdaptPlatform(package),
+                    CreatedManually = package.CreatedManually,
                     Status = new GrpcPackageStatus()
                     {
                         IsAwaitingForPickUp = package.Status.IsAwaitingForPickUp,

@@ -248,5 +248,19 @@ namespace ShippingService.App.Boundries
                 throw e;
             }
         }
+
+        public static async Task HardDeletePackage(string id)
+        {
+            try
+            {
+                var filter = Builders<Package>.Filter.Where(package => package.Id == ObjectId.Parse(id));
+                await Collections.Packages.DeleteOneAsync(filter);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

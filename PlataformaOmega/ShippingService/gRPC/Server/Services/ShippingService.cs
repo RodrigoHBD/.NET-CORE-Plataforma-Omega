@@ -82,5 +82,17 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
+        public override async Task<GrpcStatusResponse> HardDeletePackage(GrpcIdMessage request, ServerCallContext context)
+        {
+            try
+            {
+                return await Controller.HardDeletePackage(request);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

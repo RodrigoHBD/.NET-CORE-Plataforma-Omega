@@ -12,6 +12,7 @@ class CorreiosComputed {
     }
 }
 
+
 class CorreiosObjectsTable {
     Pagination = new Pagination();
     CurrentPage = () => { return parseInt(this.Pagination.Offset/this.Pagination.Limit) +1 }
@@ -19,6 +20,13 @@ class CorreiosObjectsTable {
         var num = this.Pagination.Total/this.Pagination.Limit;
         if(num > parseInt(num)){
             num++
+            num = parseInt(num)
+        }
+        else if (num > 0){
+            num = 1
+        }
+        else {
+            num = 0
         }
         return num;
     }

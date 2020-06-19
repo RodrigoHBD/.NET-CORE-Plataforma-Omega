@@ -21,6 +21,7 @@ namespace Gateway.Controllers.Api.Shipping.Factories
                 TrackingCode = data.TrackingCode,
                 Weight = data.Weight,
                 IsWatched = data.IsBeingWatched,
+                IsManuallyCreated = data.CreatedManually,
                 Content = MakePackageDataContent(data),
                 Locations = new PackageLocations()
                 {

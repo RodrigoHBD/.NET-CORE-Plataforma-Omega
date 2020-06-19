@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Thu Jun 18 2020 18:48:27 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Fri Jun 19 2020 20:41:11 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 <head>
   <meta charset="utf-8">
@@ -112,15 +112,16 @@
                       <h2 class="heading">Tabela de Objetos</h2>
                       <div class="correio-tabela-objetos-head">
                         <div class="div-block-4">
-                          <h3 class="heading-2">Pagina: {{ Correios.ObjectsTable.CurrentPage }}</h3>
-                          <h3 class="heading-2">Total de Páginas: 1</h3>
+                          <h3 class="heading-2">Pagina: {{ Correios.ObjectsTable.CurrentPage() }}</h3>
+                          <h3 class="heading-2">Total de Páginas: {{Correios.ObjectsTable.TotalPages()}}</h3>
                         </div>
                         <div class="correio-tabela-objetos-actionmenu"><a data-w-id="aaa6591d-d6f7-e20b-ae2a-9012e5144d09" href="#" class="button-2 w-button">Mostrar Filtros</a>
                           <div data-w-id="95b68b7b-9779-2892-b254-a277b68ec11c" style="opacity:0" class="correio-tabela-objetos-filtros">
                             <h1 class="heading-5">Filtros</h1>
                             <div class="form-block-3 w-form">
-                              <form id="email-form-3" name="email-form-3" data-name="Email Form 3"><label for="status" class="field-label-4">Status</label>
-                                <div class="div-block-17"><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Em Trânsito</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="checkbox-4" name="checkbox-4" data-name="Checkbox 4" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Aguardando Retirada</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="checkbox-3" name="checkbox-3" data-name="Checkbox 3" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Rejeitado</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Entregue</span></label></div><label for="email">Pesquisar por texto abrangendo multi-campos (código/nome)</label><input type="text" class="w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name"></form>
+                              <form id="correios-search-filters-form" name="email-form-3" data-name="Email Form 3" class="form-6"><label for="status" class="field-label-4">Status</label><label class="field-label-14">Paginação</label>
+                                <div class="div-block-17"><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="checkbox" name="checkbox" data-name="Checkbox" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Em Trânsito</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="checkbox-4" name="checkbox-4" data-name="Checkbox 4" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Aguardando Retirada</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="checkbox-3" name="checkbox-3" data-name="Checkbox 3" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Rejeitado</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="checkbox-2" name="checkbox-2" data-name="Checkbox 2" class="w-checkbox-input checkbox"><span class="checkbox-label w-form-label">Entregue</span></label></div>
+                                <div class="div-block-23"><label for="PageOffset">Offset de Página</label><input type="number" class="w-input" maxlength="256" name="PageOffset" data-name="PageOffset" placeholder="Pular para página...." id="PageOffset" required=""></div><label for="DynamicString">Pesquisar por texto abrangendo multi-campos (código/nome)</label><input type="text" class="w-input" maxlength="256" name="DynamicString" data-name="DynamicString" placeholder="" id="DynamicString"></form>
                               <div class="w-form-done">
                                 <div>Thank you! Your submission has been received!</div>
                               </div>
@@ -128,12 +129,12 @@
                                 <div>Oops! Something went wrong while submitting the form.</div>
                               </div>
                             </div>
-                          </div><a whenclicked="app.Controllers.Correios.SearchPackages" href="#" class="button-3 w-button">Atualizar</a></div>
+                          </div><a whenclicked="app.Controllers.Correios.SearchPackages()" href="#" class="button-3 w-button">Atualizar</a><a id="correios-open-detailbtn" href="#" class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a></div>
                       </div>
                       <div data-w-id="23ff6725-43fc-bb77-7d80-ea9909c7576f" class="correio-tabela-objeto-body">
                         <div class="div-block-16">
                           <div class="form-block-2 w-form">
-                            <form id="email-form-2" name="email-form-2" data-name="Email Form 2" class="form-2">
+                            <form id="correios-objects-table" name="email-form-2" data-name="Email Form 2" class="form-2">
                               <div class="correio-tabela-objetos-iteration-template">
                                 <div class="text-block-8">Plataforma</div>
                                 <div class="linhaseparadora-semespa-o-white"></div>
@@ -147,8 +148,9 @@
                                 <div class="linhaseparadora-semespa-o-white"></div>
                                 <div class="text-block-11">Ações</div>
                               </div>
-                              <div v-for="package in Correios.ObjectsTable.Body" class="correio-tabela-objetos-iteration">
-                                <div class="div-block-14"><img src="images/mercado-livre-logo.png" srcset="images/mercado-livre-logo-p-500.png 500w, images/mercado-livre-logo.png 660w" sizes="(max-width: 479px) 13.800003051757812px, (max-width: 991px) 5vw, 7vw" alt="" class="image-2"></div>
+                              <div v-for="package in Correios.ObjectsTable.Body" v-bind:package_id="package.Id" class="correio-tabela-objetos-iteration">
+                                <div class="div-block-14">
+                                  <div v-if="package.IsManuallyCreated" class="html-embed-2 w-embed"><img src="https://img.icons8.com/pastel-glyph/64/000000/hand-box.png"></div><img src="images/mercado-livre-logo.png" srcset="images/mercado-livre-logo-p-500.png 500w, images/mercado-livre-logo.png 660w" sizes="(max-width: 479px) 6.9000091552734375px, (max-width: 767px) 2vw, (max-width: 991px) 3vw, 4vw" alt="" class="image-2"></div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="text-block-5">{{ package.SaleId }}</div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
@@ -161,7 +163,11 @@
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="div-block-8"><img src="images/untitled.svg" width="256" alt="" class="image"></div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
-                                <div class="div-block-13"><img src="images/icons8-mais-96.png" width="68" alt="" class="correio-tabela-objetos-abrirdetalhesbtn"></div>
+                                <div class="div-block-13">
+                                  <div whenclicked="app.Controllers.Correios.ShowPackageDetail(this)" v-bind:package_id="package.Id" class="correio-tabela-objetos-abrirdetalhesbtn w-embed"><img src="https://img.icons8.com/ios/40/000000/show-property.png"></div>
+                                  <div whenclicked="app.Controllers.Correios.DeletePackage(this)" v-bind:package_id="package.Id" class="html-embed w-embed"><img src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
+                                </div>
+                                <div class="invisible-data-div"></div>
                               </div>
                             </form>
                             <div class="w-form-done">
@@ -179,8 +185,8 @@
                   <div data-w-tab="Tab 2" class="w-tab-pane">
                     <h2 class="heading-8">Cadastro Manual de Entrega</h2>
                     <div class="w-form">
-                      <form id="email-form-4" name="email-form-4" data-name="Email Form 4" class="form-4"><label for="name-2" class="field-label-7">Nome</label><input type="text" class="text-field-6 w-input" maxlength="256" name="name-2" data-name="Name 2" placeholder="" id="name-2"><label for="email" class="field-label-5">Código de Rastreio</label><label class="field-label-6">Id do Produto ( Interno )</label><input type="email" class="text-field-4 w-input" maxlength="256" name="email" data-name="Email" placeholder="" id="email" required=""><input type="text" class="text-field-5 w-input" maxlength="256" name="field" data-name="Field" placeholder="Example Text" id="field" required=""><label class="w-checkbox checkbox-field"><input type="checkbox" id="checkbox-5" name="checkbox-5" data-name="Checkbox 5" class="w-checkbox-input"><span class="checkbox-label-2 w-form-label">Monitorar</span></label>
-                        <h4 class="heading-10">Localização Inicial de Postagem</h4><label class="field-label-8">CEP</label><label class="field-label-9">Número da Rua</label><input type="tel" class="text-field-7 w-input" maxlength="256" name="cep" data-name="cep" placeholder="CEP" id="cep" required=""><input type="number" class="text-field-8 w-input" maxlength="256" name="streetNumber" data-name="streetNumber" placeholder="Número" id="streetNumber" required=""><a href="#" class="button-4 w-button">Cadastrar</a></form>
+                      <form id="correios-new-package-form" name="email-form-4" data-name="Email Form 4" class="form-4"><label for="Name-4" class="field-label-7">Nome</label><input type="text" class="text-field-6 w-input" maxlength="256" name="Name" data-name="Name" placeholder="Campo opcional, dê um nome ao pacote..." id="Name-4"><label for="email" class="field-label-5">Código de Rastreio</label><label for="TrackingCode" class="field-label-6">Id da Venda ( Interno )</label><input type="email" class="text-field-4 w-input" maxlength="256" name="TrackingCode" data-name="TrackingCode" placeholder="Código de Rastreio..." id="TrackingCode" required=""><input type="text" class="text-field-5 w-input" maxlength="256" name="SaleId" data-name="SaleId" placeholder="Código Id..." id="SaleId" required=""><label class="field-label-12">Peso em Gramas</label><label for="Weight" class="field-label-13">Plataforma</label><input type="number" class="text-field-11 w-input" maxlength="256" name="Weight" data-name="Weight" placeholder="Peso ..." id="Weight" required=""><select id="Platform" name="Platform" data-name="Platform" class="select-field-2 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select><label class="w-checkbox checkbox-field"><input type="checkbox" id="SetWatcher" name="SetWatcher" data-name="SetWatcher" class="w-checkbox-input"><span for="SetWatcher" class="checkbox-label-2 w-form-label">Monitorar</span></label>
+                        <h4 class="heading-10">Localização Inicial de Postagem</h4><label class="field-label-8">CEP</label><label for="Cep-2" class="field-label-9">Número da Rua</label><input type="tel" class="text-field-7 w-input" maxlength="256" name="Cep" data-name="Cep" placeholder="CEP" id="Cep-2" required=""><input type="number" class="text-field-8 w-input" maxlength="256" name="StreetNumber" data-name="StreetNumber" placeholder="Número" id="StreetNumber-2" required=""><a whenclicked="app.Controllers.Correios.CreateNewPackage()" href="#" class="button-4 w-button">Cadastrar</a></form>
                       <div class="w-form-done">
                         <div>Thank you! Your submission has been received!</div>
                       </div>
@@ -194,7 +200,7 @@
                     <div class="div-block-21">
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">Pedido</div>
-                        <div id="correio-detalheobjeto-nome" class="text-block-12">Package Name Here foobar 1234</div>
+                        <div id="correio-detalheobjeto-nome" class="text-block-12">{{Correios.CachedPackage.SaleId }}</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">Nome do Cliente</div>
@@ -204,11 +210,11 @@
                         <div class="correio-detalheobjeto-titulodecampo">Link do Anúncio</div><a href="#">https://mercadodibre.com/498415215</a></div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">Status Correio</div>
-                        <div id="correio-detalheobjeto-msg" class="text-block-12">Objeto está aguardando retirada no local indicado.</div>
+                        <div id="correio-detalheobjeto-msg" class="text-block-12">{{ Correios.CachedPackage.Messages.StatusDescription }}</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">Código de Rastreamento</div>
-                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">{correios.trackingCode }}</div>
+                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">{{ Correios.CachedPackage.TrackingCode }}</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">SAC</div><a href="#">https://mercadodibre.com/498415215</a></div>
@@ -224,16 +230,16 @@
                         <div class="location-display">
                           <ul role="list" class="w-list-unstyled">
                             <li class="list-item">
-                              <div class="text-block-12"><span class="text-span">Cidade:</span> Curitiba</div>
+                              <div class="text-block-12"><span class="text-span">Cidade: {{Correios.CachedPackage.Locations.CurrentLocation.City }}</span></div>
                             </li>
                             <li class="list-item-2">
-                              <div class="text-block-12"><span class="text-span">Estado:</span> Paraná</div>
+                              <div class="text-block-12"><span class="text-span">Estado:</span> {{Correios.CachedPackage.Locations.CurrentLocation.State }}</div>
                             </li>
                             <li>
-                              <div class="text-block-12"><span class="text-span">Rua:</span> Manoel Ribas <span class="text-span-2">65</span></div>
+                              <div class="text-block-12"><span class="text-span">Rua:</span> {{Correios.CachedPackage.Locations.CurrentLocation.StreetName }} {{Correios.CachedPackage.Locations.CurrentLocation.StreetNumber }}</div>
                             </li>
                             <li class="list-item">
-                              <div class="text-block-12"><span class="text-span">CEP:</span> 82450380</div>
+                              <div class="text-block-12"><span class="text-span">CEP:</span> {{Correios.CachedPackage.Locations.CurrentLocation.Cep}}</div>
                             </li>
                           </ul>
                         </div>

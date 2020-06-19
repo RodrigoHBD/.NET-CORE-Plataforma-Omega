@@ -41,6 +41,11 @@ C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\b
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\untitled.svg
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\images\webclip.png
 C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\http-client.js
-C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\app.js
-C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\session-controller.js
-C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\vue-controller.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\main-app\computed-controller.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\main-app\controllers.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\main-app\models.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\main-app\session-controller.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\main-app\app.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\main-app\correios\correios-controller.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\main-app\correios\correios.js
+C:\Plataforma de Integração\Servidores\.NET CORE\PlataformaOmega\ViewService\bin\Debug\netcoreapp3.1\Files\Static\Assets\js\main-app\vue-controller.js

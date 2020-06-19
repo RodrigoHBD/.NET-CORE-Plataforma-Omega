@@ -7,7 +7,16 @@ class VueController {
             this.VueInstance = new Vue({
                 el: "#app",
                 data: app.Session,
-                computed: app.Computed
+                computed: app.Computed,
+                // WebFlow Animations FIX 
+                mounted: function () {
+                    this.$nextTick(function () {
+                        //RE-INIT WF as Vue.js init breaks WF interactions
+                        Webflow.destroy();
+                        Webflow.ready();
+                        Webflow.require('ix2').init();
+                    });
+                }
             })
         } 
         catch (error) {

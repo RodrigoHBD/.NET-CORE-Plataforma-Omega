@@ -69,11 +69,25 @@ namespace Gateway.gRPC.Client
                     SaleId = newPackage.SaleId,
                     TrackingCode = newPackage.TrackingCode,
                     Weight = newPackage.Weight,
+                    CreatedManually = newPackage.IsManuallyCreated,
                     InitialLocation = LocationAdapter.Adapt(newPackage.PostingLocation)
                 };
                 return await Client.ShipPackageAsync(request);
             }
             catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task<GrpcStatusResponse> DeletePackage(string id)
+        {
+            try
+            {
+                var request = new GrpcIdMessage() { Id = id };
+                return await Client.HardDeletePackageAsync(request);
+            }
+            catch (Exception e)
             {
                 throw e;
             }

@@ -14,6 +14,7 @@ namespace Gateway.Controllers.Api.Shipping.Models.Input
         public double Weight { get; set; } = 0;
         public int Platform { get; set; } = -1;
         public bool SetWatcher { get; set; } = false;
+        public bool IsManuallyCreated { get; set; } = false;
         public List<string> Content { get; set; } = new List<string>();
         public Location PostingLocation { get; set; } = new Location();
     }

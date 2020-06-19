@@ -68,5 +68,19 @@ namespace Gateway.Controllers
                 throw e;
             }
         }
+
+        [Route("delete-package")]
+        [HttpDelete]
+        public async Task DeletePackageAsync(string id)
+        {
+            try
+            {
+                await ShippingClient.DeletePackage(id);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Gateway.Controllers.Api.Shipping.Models.Output
         public string BoundPlatform { get; set; }
         public double Weight { get; set; }
         public bool IsWatched { get; set; }
+        public bool IsManuallyCreated { get; set; }
         public List<string> Content { get; set; }
         public PackageStatus Status { get; set; } = new PackageStatus();
         public PackageMessages Messages { get; set; } = new PackageMessages();

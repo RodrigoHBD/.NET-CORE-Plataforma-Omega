@@ -58,17 +58,38 @@ class App {
         for (var i = 0; i < elements.length; i++) {
             var element = elements[i];
             var hasAtt = element.hasAttribute("whenClicked");
+            var hasAlreadyBeenSet = element.hasAttribute("whenClickedHasBeenSet")
 
-            if (hasAtt) {
-                element.addEventListener("click", function (){
-                    var code = this.getAttribute('whenclicked');
+            if (hasAtt && !hasAlreadyBeenSet) {
+                element.addEventListener("click", function () {
+                    element.setAttribute("whenClickedHasBeenSet", true);
+                    var code = this.getAttribute('whenClicked');
                     eval(code);
                 });
             }
 
         }
     }
+
+    SetWhenClickedAttributeForElement(id){
+        var fatherElement = document.getElementById(id);
+        var elements = fatherElement.childNodes
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            var hasAtt = element.hasAttribute("whenClicked");
+
+            if (hasAtt) {
+                element.addEventListener("click", function () {
+                    var code = this.getAttribute('whenClicked');
+                    eval(code);
+                });
+            }
+
+        }
+    }
+
 }
+
 
 app = new App();
 app.Initialize();

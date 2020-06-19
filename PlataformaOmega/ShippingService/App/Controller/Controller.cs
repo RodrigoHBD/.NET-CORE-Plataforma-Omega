@@ -109,5 +109,18 @@ namespace ShippingService.App.Controller
             }
         }
 
+        public static async Task<GrpcStatusResponse> HardDeletePackage(GrpcIdMessage grpcRequest)
+        {
+            try
+            {
+                await UseCaseOperator.HardDeletePackage(grpcRequest.Id);
+                return StatusResponsePresenter.Present(true, "Pacote deletado");
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

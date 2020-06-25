@@ -70,6 +70,7 @@ namespace Gateway.gRPC.Client
                     TrackingCode = newPackage.TrackingCode,
                     Weight = newPackage.Weight,
                     CreatedManually = newPackage.IsManuallyCreated,
+                    SetWatcher = newPackage.SetWatcher,
                     InitialLocation = LocationAdapter.Adapt(newPackage.PostingLocation)
                 };
                 return await Client.ShipPackageAsync(request);

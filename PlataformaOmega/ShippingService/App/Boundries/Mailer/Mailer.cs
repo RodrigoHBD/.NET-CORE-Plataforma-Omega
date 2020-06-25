@@ -21,7 +21,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 

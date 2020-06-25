@@ -7,6 +7,7 @@ using CorreiosSGEPLibrary;
 using System.Text.Json.Serialization;
 using System.Threading;
 using ShippingService.Correios.Models.Sro;
+using ShippingService.HttpClientLibrary.Helpers;
 
 namespace ShippingService.Correios
 {
@@ -22,11 +23,40 @@ namespace ShippingService.Correios
             try
             {
                 var uri = $"{SroEndpoint}/{Token}/{trackingCode}/T";
-                return await HttpClientLibrary.HttpClient.GetJson<SroJsonResponse>(uri);
+                var serializedJson = await HttpClientLibrary.HttpClient.Get(uri);
+                serializedJson = TrimJson(serializedJson);
+                return await ParseSroJson(serializedJson);
             }
             catch (System.Exception e)
             {
-                throw e;
+                throw ;
+            }
+        }
+
+        private static string TrimJson(string json)
+        {
+            try
+            {
+                // This only exist because some intern put the json inside of an array
+                json = json.Remove(0, 1);
+                json = json.Remove(json.Length - 1);
+                return json;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
+        private static async Task<SroJsonResponse> ParseSroJson(string json)
+        {
+            try
+            {
+                return await JsonHelper.Deserialize<SroJsonResponse>(json);
+            }
+            catch (System.Exception)
+            {
+                throw;
             }
         }
     }

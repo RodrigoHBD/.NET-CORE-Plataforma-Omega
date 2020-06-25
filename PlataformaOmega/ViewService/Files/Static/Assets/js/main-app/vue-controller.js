@@ -1,4 +1,4 @@
-class VueController {
+export default class VueController {
     isInitialized = false;
     VueInstance;
 
@@ -6,8 +6,8 @@ class VueController {
         try {
             this.VueInstance = new Vue({
                 el: "#app",
-                data: app.Session,
-                computed: app.Computed,
+                data: application.Session,
+                //computed: app.Computed,
                 // WebFlow Animations FIX 
                 mounted: function () {
                     this.$nextTick(function () {

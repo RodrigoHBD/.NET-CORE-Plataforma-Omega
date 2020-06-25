@@ -30,5 +30,33 @@ namespace ShippingService.App.Entities.PackageWatcher
                 throw e;
             }
         }
+
+        public static async Task CheckIfWatcherAlreadyExistsByPackageId(string packageId, bool toogle)
+        {
+            try
+            {
+                var watcherExist = await PackageWatcherDAO.CheckIfExistByPackageId(packageId);
+                var message = "";
+
+                if (!toogle)
+                {
+                    message = "Um monitorador já existe para esse pacote";
+                }
+                else
+                {
+                    message = "Esse pacote não tem um monitorador";
+                }
+
+                if (watcherExist != toogle)
+                {
+                    throw new ValidationException("Id", message);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
     }
 }

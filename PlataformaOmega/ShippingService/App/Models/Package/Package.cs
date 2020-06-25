@@ -44,7 +44,6 @@ namespace ShippingService.App.Models
         public bool IsAwaitingForPickUp { get; set; } = false;
         public bool IsRejected { get; set; } = false;
         public bool IsBeingTransported { get; set; } = false;
-        public string Message { get; set; } = "";
     }
 
     public class PackageDates

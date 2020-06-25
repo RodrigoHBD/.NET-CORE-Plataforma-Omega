@@ -1,5 +1,6 @@
 ﻿using ShippingService.App.Boundries;
 using ShippingService.App.Entities;
+using ShippingService.App.Factories;
 using ShippingService.App.Models;
 using ShippingService.App.Models.MailerService.PackageData;
 using System;
@@ -11,11 +12,13 @@ namespace ShippingService.App.UseCases
 {
     public class ProcessPackageStatusChanges
     {
-        public static async Task Execute(Package package, PackageChangesReport report, MailerServicePackageData packageData)
+        public static async Task Execute(Package package, MailerServicePackageData mailerData, PackageChangesReport report)
         {
             try
             {
-                await ProcessReports(package.Id.ToString(), report, packageData);
+                await ProcessStatusChanges(package, mailerData.Status, report.Status);
+                await ProcessMessagesChanges(package,mailerData.Messages, report.Messages);
+                await ProcessLocationsChanges(package, mailerData.Location, report.Locations);
             }
             catch (Exception e)
             {
@@ -23,74 +26,93 @@ namespace ShippingService.App.UseCases
             }
         }
 
-        private static async Task ProcessReports(string id, PackageChangesReport report, MailerServicePackageData packageData)
+        private static async Task ProcessStatusChanges(Package package, PackageStatus mailerData, PackageStatusChangesReport report)
         {
             try
             {
-                var currentPackageStatus = await PackageDAO.GetPackageStatus(id);
-                var somethingChangedAndPackageIsNotDelivered = report.Status.AnythingChanged && !currentPackageStatus.HasBeenDelivered;
-                var somthingChangedAndPackageIsDelivered = currentPackageStatus.HasBeenDelivered && report.Status.AnythingChanged;
-                var packageBeingTransported = (currentPackageStatus.IsBeingTransported && !report.Status.IsBeingTransportedMustUpdate) || (!currentPackageStatus.IsBeingTransported && report.Status.IsBeingTransportedMustUpdate);
+                var id = package.Id.ToString();
+                var actionHandlers = PackageStatusEntity.FindCurrentStateActionHandlers(package.Status);
+                var canPost = actionHandlers.Any(handler => !(handler.Actions.SetPosted.IsSet && !handler.Actions.SetPosted.IsExecutable));
+                var canMove = actionHandlers.Any(handler => !(handler.Actions.SetBeingTransported.IsSet && !handler.Actions.SetBeingTransported.IsExecutable));
+                var canSetAwaitingForPickUp = actionHandlers.Any(handler => !(handler.Actions.SetIsAwaitingForPickUp.IsSet && !handler.Actions.SetIsAwaitingForPickUp.IsExecutable));
+                var canReject = actionHandlers.Any(handler => !(handler.Actions.SetIsRejected.IsSet && !handler.Actions.SetIsRejected.IsExecutable));
+                var canDeliver = actionHandlers.Any(handler => !(handler.Actions.SetDelivered.IsSet && !handler.Actions.SetDelivered.IsExecutable));
 
-                if (somethingChangedAndPackageIsNotDelivered)
+                if (report.PostedMustUpdate && canPost)
                 {
-                    if (report.Status.PostedMustUpdate)
-                    {
-                        await UseCaseOperator.SetPackagePosted(id);
-                    }
-                    if (report.Status.IsBeingTransportedMustUpdate)
-                    {
-                        await PackageStatusEntity.SetPackageStatusIsBeingTransported(id, packageData.Status.IsBeingTransported);
-                    }
-                    if (report.Status.AwaitingForPickUpMustUpdate)
-                    {
-                        await PackageStatusEntity.SetPackageStatusIsAwaitingForPickUp(id, packageData.Status.IsAwaitingForPickUp);
-                    }
-                    if (report.Status.IsRejectedMustUpdate)
-                    {
-                        await PackageStatusEntity.SetPackageStatusHasBeenRejected(id);
-                    }
-                    if (report.Status.MessageMustUpdate)
-                    {
-                        await PackageStatusEntity.SetPackageStatusMessage(id, packageData.Status.Message);
-                    }
-                    if (report.Status.DeliveredMustUpdate)
-                    {
-                        await PackageStatusEntity.SetPackageStatusHasBeenDelivered(id);
-                    }
-
-
-                    if (packageBeingTransported)
-                    {
-                        if (report.Locations.CommingFromLocationMustUpdate)
-                        {
-                            await PackageStatusEntity.SetPackageCommingFromLocation(id, packageData.Location.CommingFrom);
-                        }
-                        if (report.Locations.HeadedToLocationMustUpdate)
-                        {
-                            await PackageStatusEntity.SetPackageHeadedToLocation(id, packageData.Location.HeadedTo);
-                        }
-                    }
-                    else
-                    {
-                        if (report.Locations.CurrentLocationMustUpdate)
-                        {
-                            await PackageStatusEntity.SetPackageCurrentLocation(id, packageData.Location.CurrentLocation);
-                        }
-                    }
-                    
+                    await PackageStatusEntity.SetPackageStatusHasBeenPosted(id);
+                    package = await GetPackage.Execute(id);
+                    actionHandlers = PackageStatusEntity.FindCurrentStateActionHandlers(package.Status);
                 }
-
-
-                if (somthingChangedAndPackageIsDelivered)
+                if (report.IsBeingTransportedMustUpdate && canMove)
                 {
-                    throw new Exception("Não pode modificar status de um pacote já entregue");
+                    var toggler = mailerData.IsBeingTransported;
+                    await PackageStatusEntity.SetPackageStatusIsBeingTransported(id, toggler);
+
+                    if(toggler == true)
+                    {
+                        await PackageStatusEntity.SetPackageCurrentLocation(id, LocationEntity.ExportLocationForBeingTransported());
+                    }
+                }
+                if(report.DeliveredMustUpdate && canDeliver)
+                {
+                    await PackageStatusEntity.SetPackageStatusHasBeenDelivered(id);
+                }
+                if(report.AwaitingForPickUpMustUpdate && canSetAwaitingForPickUp)
+                {
+                    await PackageStatusEntity.SetPackageStatusIsAwaitingForPickUp(id, mailerData.IsAwaitingForPickUp);
+                }
+                if(report.IsRejectedMustUpdate && canReject)
+                {
+                    await PackageStatusEntity.SetPackageStatusHasBeenRejected(id);
+                }
+                
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        private static async Task ProcessMessagesChanges(Package package, PackageStatusMessages mailerData, PackageMessagesChangesReport report)
+        {
+            try
+            {
+                var id = package.Id.ToString();
+
+                if (report.StatusDescriptionMustUpdate)
+                {
+                    await PackageStatusEntity.SetPackageStatusMessage(id, mailerData.StatusDescription);
                 }
 
             }
             catch (Exception e)
             {
                 throw e;
+            }
+        }
+
+        private static async Task ProcessLocationsChanges(Package package, PackageLocation mailerData, PackageLocationChangesReport report)
+        {
+            try
+            {
+                var id = package.Id.ToString();
+                var actionHandlers = PackageStatusEntity.FindCurrentStateActionHandlers(package.Status);
+                var canSetCurrentLocation = actionHandlers.Any(handler => !(handler.Actions.SetCurrentLocation.IsSet && !handler.Actions.SetCurrentLocation.IsExecutable));
+                var canSetHeadedToLocation = actionHandlers.Any(handler => !(handler.Actions.SetHeadedToLocation.IsSet && !handler.Actions.SetHeadedToLocation.IsExecutable));
+
+                if (report.CurrentLocationMustUpdate && canSetCurrentLocation)
+                {
+                    await PackageStatusEntity.SetPackageCurrentLocation(id, mailerData.CurrentLocation);
+                }
+                if(report.HeadedToLocationMustUpdate && canSetHeadedToLocation)
+                {
+                    await PackageStatusEntity.SetPackageHeadedToLocation(id, mailerData.HeadedTo);
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
             }
         }
 

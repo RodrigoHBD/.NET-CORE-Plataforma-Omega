@@ -1,6 +1,7 @@
 ﻿using ShippingService.App.Entities;
 using ShippingService.App.Entities.NewPackageRequest;
 using ShippingService.App.Entities.PackageSearch;
+using ShippingService.App.Entities.PackageWatcher;
 using ShippingService.App.Factories;
 using ShippingService.App.Models;
 using ShippingService.App.Models.Input;
@@ -22,7 +23,13 @@ namespace ShippingService.App.UseCases
                 await ShipPackageRequestEntity.Valdiate(request);
                 var package = CreateNewPackage.Execute(request);
                 await PackageEntity.ValidateNewPackage(package);
-                await RegisterPackage.Execute(package);
+                var id = await RegisterPackage.Execute(package);
+
+                if (request.SetWatcher)
+                {
+                    await WatchPackage(id);
+                }
+
                 return;
             }
             catch (Exception e)
@@ -128,9 +135,24 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
+                await PackageWatcherEntity.CheckIfWatcherAlreadyExistsByPackageId(id, false);
                 var package = await GetPackage.Execute(id);
                 var packageWatcher = CreateNewPackageWatcher.Execute(package);
                 await RegisterPackageWatcher.Execute(packageWatcher);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public static async Task StopWatchingPackage(string id)
+        {
+            try
+            {
+                await PackageEntity.ValidatePackageId(id);
+                await PackageWatcherEntity.CheckIfWatcherAlreadyExistsByPackageId(id, true);
+                await DeletePackageWatcher.Execute(id);
             }
             catch (Exception e)
             {
@@ -169,6 +191,7 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(id);
+                await DeletePackageWatcher.Execute(id);
                 await DeletePackage.Execute(id);
             }
             catch (Exception e)
@@ -195,22 +218,22 @@ namespace ShippingService.App.UseCases
             try
             {
                 await PackageEntity.ValidatePackageId(packageId);
-                var package = await GetPackage.Execute(packageId);
-                var packageData = await GetPackageDataWithMailerService.Execute(package.TrackingCode);
+                var localData = await GetPackage.Execute(packageId);
+                var mailerData = await GetPackageDataWithMailerService.Execute(localData.TrackingCode);
 
-                var statusChangesReport = CheckIfPackageStatusChanged.Execute(package.Status, packageData.Status);
-                var locationChangesReport = CheckIfPackageLocationChanged.Execute(package.Location, packageData.Location);
                 var report = new PackageChangesReport()
                 {
-                    Status = statusChangesReport,
-                    Locations = locationChangesReport
+                    Status = PackageStatusEntity.CreateChangesReport(localData.Status, mailerData.Status),
+                    Messages = PackageMessagesEntity.CreateChangesReport(localData.Messages, mailerData.Messages),
+                    //TODO
+                    Locations = CheckIfPackageLocationChanged.Execute(localData.Location, mailerData.Location)
                 };
 
-                await ProcessPackageStatusChanges.Execute(package, report, packageData);
+                await ProcessPackageStatusChanges.Execute(localData, mailerData, report);
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Fri Jun 19 2020 20:41:11 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Thu Jun 25 2020 20:45:11 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 <head>
   <meta charset="utf-8">
@@ -20,6 +20,12 @@
 <body class="body">
   <div id="app" class="app">
     <div pointer-events="none" class="app-wrapper"></div>
+    <div id="warning-box" data-w-id="af9d9941-5066-77dd-7609-4c276d5d6d4f" class="warning-box">
+      <div class="div-block-24">
+        <div class="div-block-25">
+          <h3 class="heading-13">Tem Certeza que deseja deletar? goggole chrome e uma mjerda</h3><a data-w-id="d05fbbf4-91ef-ee66-6294-d27679a65b75" href="#" class="button-6 w-button">Cancelar</a><a v-bind:click="application.Session.Common.ConfirmationWarning.Callback()" href="#" class="button-7 w-button">Confirmar</a></div>
+      </div>
+    </div>
     <div id="app-notification-box" data-w-id="13844d19-ee3f-5530-6fca-23b82df19b83" class="notificationbox">
       <div class="div-block-19"><img src="images/icons8-lembrete-de-compromissos-96.png" id="open-notification-box-btn" data-w-id="f6688854-1985-7b16-d3fe-b6cd9a2099ec" alt="" class="open-notification-box-btn"><img src="images/dismiss.png" id="close-notification-box-btn" data-w-id="33b59e6d-5123-9ade-dded-7c36cc1bbbbb" alt="" class="close-notification-box-btn"></div>
       <h3 class="heading-9">Notificações</h3>
@@ -29,17 +35,17 @@
         <div></div>
       </div>
     </div>
-    <div id="navbar" class="navbar">
-      <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="w-nav">
-        <div class="w-container"><a href="#" class="brand w-nav-brand"></a>
-          <nav role="navigation" class="w-nav-menu"><a href="#" class="w-nav-link">Home</a><a href="#" class="w-nav-link">About</a><a href="#" class="w-nav-link">Contact</a></nav>
-          <div class="w-nav-button">
-            <div class="w-icon-nav-menu"></div>
+    <div id="app-body" data-w-id="dcbc9561-d1f2-1b21-d0c3-bcd452b6bdc9" class="app-body">
+      <div id="navbar" class="navbar">
+        <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navbar-2 w-nav">
+          <div class="w-container"><a href="#" class="brand w-nav-brand"></a>
+            <nav role="navigation" class="w-nav-menu"><a href="#" class="w-nav-link">Home</a><a href="#" class="w-nav-link">About</a><a href="#" class="w-nav-link">Contact</a></nav>
+            <div class="w-nav-button">
+              <div class="w-icon-nav-menu"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="app-body">
       <div data-duration-in="300" data-duration-out="100" class="tabs w-tabs">
         <div class="tabs-menu w-tab-menu">
           <a data-w-tab="Tab 1" class="menuoptiontab w-inline-block w-tab-link">
@@ -129,7 +135,7 @@
                                 <div>Oops! Something went wrong while submitting the form.</div>
                               </div>
                             </div>
-                          </div><a whenclicked="app.Controllers.Correios.SearchPackages()" href="#" class="button-3 w-button">Atualizar</a><a id="correios-open-detailbtn" href="#" class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a></div>
+                          </div><a v-on:click="Controllers.Correios.SearchPackages()" href="#" class="button-3 w-button">Atualizar</a><a id="correios-open-detailbtn" href="#" class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a></div>
                       </div>
                       <div data-w-id="23ff6725-43fc-bb77-7d80-ea9909c7576f" class="correio-tabela-objeto-body">
                         <div class="div-block-16">
@@ -148,9 +154,11 @@
                                 <div class="linhaseparadora-semespa-o-white"></div>
                                 <div class="text-block-11">Ações</div>
                               </div>
-                              <div v-for="package in Correios.ObjectsTable.Body" v-bind:package_id="package.Id" class="correio-tabela-objetos-iteration">
+                              <div v-for="package in Correios.ObjectsTable.Body" class="correio-tabela-objetos-iteration">
                                 <div class="div-block-14">
-                                  <div v-if="package.IsManuallyCreated" class="html-embed-2 w-embed"><img src="https://img.icons8.com/pastel-glyph/64/000000/hand-box.png"></div><img src="images/mercado-livre-logo.png" srcset="images/mercado-livre-logo-p-500.png 500w, images/mercado-livre-logo.png 660w" sizes="(max-width: 479px) 6.9000091552734375px, (max-width: 767px) 2vw, (max-width: 991px) 3vw, 4vw" alt="" class="image-2"></div>
+                                  <div v-if="package.IsManuallyCreated" class="html-embed-2 w-embed"><img src="https://img.icons8.com/pastel-glyph/64/000000/hand-box.png"></div>
+                                  <div v-if="package.IsManuallyCreated" class="html-embed-2 w-embed"><img src="https://s2.glbimg.com/FGXio_G5LAoAVWJK4-R1NEedURo=/607x607/smart/e.glbimg.com/og/ed/f/original/2020/03/17/novo-logo-mercado-livre.jpg"></div>
+                                </div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="text-block-5">{{ package.SaleId }}</div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
@@ -161,11 +169,13 @@
                                   <div class="text-block-4-copy">P {{ package.Weight}}</div>
                                 </div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
-                                <div class="div-block-8"><img src="images/untitled.svg" width="256" alt="" class="image"></div>
+                                <div class="div-block-8">
+                                  <div v-bind:class="Controllers.Correios.GetPackageStatusCssClass(package.Id)" class="statusball-orange"></div>
+                                </div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="div-block-13">
-                                  <div whenclicked="app.Controllers.Correios.ShowPackageDetail(this)" v-bind:package_id="package.Id" class="correio-tabela-objetos-abrirdetalhesbtn w-embed"><img src="https://img.icons8.com/ios/40/000000/show-property.png"></div>
-                                  <div whenclicked="app.Controllers.Correios.DeletePackage(this)" v-bind:package_id="package.Id" class="html-embed w-embed"><img src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
+                                  <div v-on:click="Controllers.Correios.ShowPackageDetail(package.Id)" class="correio-tabela-objetos-abrirdetalhesbtn w-embed"><img src="https://img.icons8.com/ios/40/000000/show-property.png"></div>
+                                  <div v-on:click="Controllers.Correios.DeletePackage(package.Id)" class="html-embed w-embed"><img src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
                                 </div>
                                 <div class="invisible-data-div"></div>
                               </div>
@@ -284,6 +294,7 @@
         </div>
       </div>
     </div>
+    <div class="thehiddenactioncontroller"><a id="app-actions-show-confirmation-warning" data-w-id="d00cf800-cdbf-fc25-8e58-e011f75b7fc4" href="#" class="w-button">AppBlur</a></div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5edfa191b5ff34226cd2885d" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
@@ -295,16 +306,9 @@
   <script src="js/toolbox.js" type="text/javascript"></script>
   <script src="js/http-client.js" type="text/javascript"></script>
   <!--  App  -->
-  <!--  Coontrollers  -->
-  <script src="js/main-app/vue-controller.js" type="text/javascript"></script>
-  <script src="js/main-app/session-controller.js" type="text/javascript"></script>
-  <script src="js/main-app/correios/correios-controller.js" type="text/javascript"></script>
-  <script src="js/main-app/computed-controller.js" type="text/javascript"></script>
-  <script src="js/main-app/controllers.js" type="text/javascript"></script>
-  <!--  Models  -->
-  <script src="js/main-app/models.js" type="text/javascript"></script>
-  <script src="js/main-app/correios/correios.js" type="text/javascript"></script>
-  <script src="js/main-app/app.js" type="text/javascript"></script>
+  <script type="module">
+  import App from '/js/main-app/app.js'; 
+</script>
   <!--  End App   -->
   <script>
   $('.correio-tabela-objetos-abrirdetalhesbtn').on('click', function (evt) {

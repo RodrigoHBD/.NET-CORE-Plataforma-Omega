@@ -16,7 +16,7 @@ namespace ShippingService.HttpClientLibrary.Helpers
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
     }

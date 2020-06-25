@@ -15,15 +15,16 @@ namespace ShippingService.App.Boundries
 {
     public class PackageDAO
     {
-        public static async Task RegisterPackage(Package package)
+        public static async Task<string> RegisterPackage(Package package)
         {
             try
             {
                 await Collections.Packages.InsertOneAsync(package);
+                return package.Id.ToString();
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -129,9 +130,9 @@ namespace ShippingService.App.Boundries
                 }
                 
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -146,7 +147,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -161,7 +162,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -176,7 +177,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -191,7 +192,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -233,7 +234,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -245,7 +246,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -258,7 +259,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 

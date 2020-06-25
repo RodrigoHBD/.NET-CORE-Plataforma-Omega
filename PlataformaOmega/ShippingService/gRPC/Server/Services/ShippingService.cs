@@ -18,7 +18,7 @@ namespace ShippingService.gRPC.Server.Services
             }
             catch (Exception e)
             {
-                throw e;
+                throw HandleException(e);
             }
         }
 
@@ -30,7 +30,7 @@ namespace ShippingService.gRPC.Server.Services
             }
             catch (Exception e)
             {
-                throw e;
+                throw HandleException(e);
             }
         }
 
@@ -42,7 +42,7 @@ namespace ShippingService.gRPC.Server.Services
             }
             catch (Exception e)
             {
-                throw e;
+                throw HandleException(e);
             }
         }
 
@@ -54,7 +54,7 @@ namespace ShippingService.gRPC.Server.Services
             }
             catch (Exception e)
             {
-                throw e;
+                throw HandleException(e);
             }
         }
 
@@ -66,7 +66,7 @@ namespace ShippingService.gRPC.Server.Services
             }
             catch (Exception e)
             {
-                throw e;
+                throw HandleException(e);
             }
         }
 
@@ -78,7 +78,7 @@ namespace ShippingService.gRPC.Server.Services
             }
             catch (Exception e)
             {
-                throw e;
+                throw HandleException(e);
             }
         }
 
@@ -90,8 +90,13 @@ namespace ShippingService.gRPC.Server.Services
             }
             catch (Exception e)
             {
-                throw e;
+                throw HandleException(e);
             }
+        }
+
+        public static RpcException HandleException(Exception exception)
+        {
+            return new RpcException(new Status(StatusCode.Unknown, exception.Message));
         }
 
     }

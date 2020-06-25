@@ -1,4 +1,4 @@
-class ComputedController {
+export default class ComputedController {
     Initialize() {
         try {
             

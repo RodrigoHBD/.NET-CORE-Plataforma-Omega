@@ -1,4 +1,6 @@
-class CorreiosController {
+import { Pagination } from "/js/main-app/models.js";
+
+export default class CorreiosController {
     BaseUri = "/api/shipping";
 
     async SearchPackages() {
@@ -6,7 +8,7 @@ class CorreiosController {
             var pagination = this.GetCurrentPagination();
             var filters = this.GetFilters();
             var request = this.BuildSearchPackagesRequest(pagination, filters);
-            var response = await app.HttpClient.Post(`${this.BaseUri}/search-package`, request);
+            var response = await application.HttpClient.Post(`${this.BaseUri}/search-package`, request);
             this.UpdateObjectsTable(response.body);
         }
         catch (error) {
@@ -42,7 +44,7 @@ class CorreiosController {
             idParam.name = "id";
             idParam.value = id;
             params.push(idParam);
-            var response = await app.HttpClient.Get(`${this.BaseUri}/get-package`, params);
+            var response = await application.HttpClient.Get(`${this.BaseUri}/get-package`, params);
             return response.body;
         }
         catch (error) {
@@ -50,9 +52,9 @@ class CorreiosController {
         }
     }
 
-    async GetPackageDetailFromMemory(id) {
+    GetPackageDetailFromMemory(id) {
         try {
-            var pack = app.Session.Correios.ObjectsTable.Body.find(_package => _package.Id === id);
+            var pack = application.Session.Correios.ObjectsTable.Body.find(_package => _package.Id === id);
             return pack;
         }
         catch (error) {
@@ -60,27 +62,36 @@ class CorreiosController {
         }
     }
 
-    async ShowPackageDetail(element) {
+    async ShowPackageDetail(id) {
         try {
-            var id = element.getAttribute("package_id")
-            var data = await this.GetPackageDetailFromMemory(id);
+            //var id = element.getAttribute("package_id")
+            var data = this.GetPackageDetailFromMemory(id);
             this.UpdatePackageDetail(data);
-            document.getElementById("correios-open-detailbtn").click();
+            document.getElementById("CorreiosTab-InnerTabs-DetailsTab").click();
         }
         catch (erro) {
             throw erro;
         }
     }
 
-    async DeletePackage(element) {
+    async DeletePackage() {
         try {
-            var id = element.getAttribute("package_id")
+            var id = application.Session.Common.Params.id;
             var uri = `${this.BaseUri}/delete-package`;
             var param = new QueryStringParamModel();
             param.name = "id";
             param.value = id;
-            await app.HttpClient.Delete(uri, [param])
+            await application.HttpClient.Delete(uri, [param])
             await this.SearchPackages();
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+
+    DeletePackageWithPrompt(id) {
+        try {
+            application.Controllers.Common.AskForConfirmation("Tem certeza que deseja deletar?", this.DeletePackage, { id });
         }
         catch (error) {
             throw error;
@@ -89,7 +100,7 @@ class CorreiosController {
 
     UpdatePackageDetail(data) {
         try {
-            app.Session.Correios.CachedPackage = data;
+            application.Session.Correios.CachedPackage = data;
         }
         catch (erro) {
             throw erro;
@@ -98,11 +109,10 @@ class CorreiosController {
 
     UpdateObjectsTable(response) {
         try {
-            app.Session.Correios.ObjectsTable.Body = response.Data;
-            app.Session.Correios.ObjectsTable.Pagination.Limit = response.Pagination.Limit;
-            app.Session.Correios.ObjectsTable.Pagination.Offset = response.Pagination.Offset;
-            app.Session.Correios.ObjectsTable.Pagination.Total = response.Pagination.Total;
-            app.SetWhenClickedAttribute();
+            application.Session.Correios.ObjectsTable.Body = response.Data;
+            application.Session.Correios.ObjectsTable.Pagination.Limit = response.Pagination.Limit;
+            application.Session.Correios.ObjectsTable.Pagination.Offset = response.Pagination.Offset;
+            application.Session.Correios.ObjectsTable.Pagination.Total = response.Pagination.Total;
         }
         catch (error) {
             throw error;
@@ -115,7 +125,7 @@ class CorreiosController {
             var request = this.BuildNewPackageRequest(data);
             console.log({ request });
 
-            await app.HttpClient.Post(`${this.BaseUri}/new-package`, request);
+            await application.HttpClient.Post(`${this.BaseUri}/new-package`, request);
         }
         catch (error) {
             throw error;
@@ -126,31 +136,64 @@ class CorreiosController {
         try {
             data.IsManuallyCreated = true;
             data.Platform = -1;
-            if(isNaN(parseFloat(data.Weight))){
+            if (isNaN(parseFloat(data.Weight))) {
                 data.Weight = 0;
             }
             else {
                 data.Weight = parseFloat(data.Weight);
             }
             //////////////////////
-            if(isNaN(parseInt(data.StreetNumber))){
+            if (isNaN(parseInt(data.StreetNumber))) {
                 data.StreetNumber = 0;
             }
             else {
                 data.StreetNumber = parseInt(data.StreetNumber);
             }
             ////////
-            if(data.SetWatcher){
+            if (data.SetWatcher) {
                 data.SetWatcher = true;
             }
             else {
                 data.SetWatcher = false;
             }
-            
+
             return data;
         }
         catch (error) {
             throw error;
+        }
+    }
+
+    GetPackageStatusCssClass(id) {
+        try {
+            var _package = this.GetPackageDetailFromMemory(id);
+            var isPosted = _package.Status.IsPosted;
+            var isDelivered = _package.Status.IsDelivered;
+            var isAwaitingForPickUp = _package.Status.IsAwaitingForPickUp;
+            var isBeingTransported = _package.Status.IsBeingTransported;
+            var isRejected = _package.Status.IsRejected;
+
+            if (isDelivered && isRejected) {
+                return "statusball-red";
+            }
+            else if (isDelivered && !isRejected) {
+                return "statusball-green";
+            }
+            else if (isAwaitingForPickUp) {
+                return "statusball-orange";
+            }
+            else if (isBeingTransported) {
+                return "statusball-yellow";
+            }
+            else if (isPosted) {
+                return "statusball-gray";
+            }
+            else {
+                return "statusball-white-blackborder";
+            }
+        }
+        catch (erro) {
+            throw erro;
         }
     }
 

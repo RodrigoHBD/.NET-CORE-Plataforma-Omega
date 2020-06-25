@@ -1,17 +1,12 @@
-class CorreiosSession {
+import { Package, Pagination } from "/js/main-app/models.js";
+
+export default class CorreiosSession {
     CachedPackage = new Package();
     ObjectsTable = new CorreiosObjectsTable();
     Initialize() {
 
     }
 }
-
-class CorreiosComputed {
-    CurrentPage = () => {
-        return parseInt(Correios.ObjectsTable.Pagination.Offset / Correios.ObjectsTable.Pagination.Limit + 1);
-    }
-}
-
 
 class CorreiosObjectsTable {
     Pagination = new Pagination();

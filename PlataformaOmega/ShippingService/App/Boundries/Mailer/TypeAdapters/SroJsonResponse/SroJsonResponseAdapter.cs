@@ -1,4 +1,6 @@
-﻿using ShippingService.App.Entities;
+﻿using CorreioRastreamentoLibrary;
+using ShippingService.App.Boundries.MailerTypeAdapters.SroJsonResponseFactories;
+using ShippingService.App.Entities;
 using ShippingService.App.Models;
 using ShippingService.App.Models.MailerService.PackageData;
 using ShippingService.Correios.Models.Sro;
@@ -15,42 +17,91 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters
         {
             try
             {
-                return new MailerServicePackageData()
+                ValidateResponse(response);
+
+                var mailerData = new MailerServicePackageData();
+                var hasAtLeastOneEvent = CheckIfHasAtLeastOneEvent(response);
+
+                if (hasAtLeastOneEvent)
                 {
-                    Status = BuildStatus(response),
-                    Location = BuildLocation(response)
-                };
+                    // THE ORDER MATTERS // LOCATIONS COMES FIRST
+                    mailerData.Location = BuildLocation(response);
+                    mailerData.Status = BuildStatus(response, mailerData.Location);
+                    mailerData.Messages = BuildMessages(response);
+                }
+                
+                return mailerData;
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
-        private static PackageStatus BuildStatus(SroJsonResponse response)
+        private static void ValidateResponse(SroJsonResponse response)
         {
             try
             {
-                var status = new PackageStatus();
-                var headedToLocationIsAvailable = CheckIfHeadedToLocationIsAvailable(response);
+                var hasError = response.erro.Any();
 
-                status.HasBeenPosted = CheckIfIsPosted(response);
-                status.HasBeenDelivered = CheckIfIsDelivered(response);
-                status.Message = GetStatusMessage(response);
-                status.IsAwaitingForPickUp = CheckIfIsAwaitingForPickUp(response);
-                status.IsRejected = CheckIfIsRejected(response);
-
-                if (headedToLocationIsAvailable)
+                if(hasError)
                 {
-                    var headedToLocation = GetLatestHeadedToLocation(response);
-                    status.IsBeingTransported = !CheckIfHasArrivedInLatestHeadedToLocation(response, headedToLocation);
+                    var error = response.erro[0];
+                    throw new Exception(error);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private static bool CheckIfHasAtLeastOneEvent(SroJsonResponse response)
+        {
+            try
+            {
+                var hasAtLeastOneEvent = response.evento.Any();
+                return hasAtLeastOneEvent;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private static PackageStatusMessages BuildMessages(SroJsonResponse response)
+        {
+            try
+            {
+                var messages = new PackageStatusMessages();
+
+                if(response.evento.Count > 0)
+                {
+                    var evento = response.evento[0];
+
+                    if(evento.descricao.Count > 0)
+                    {
+                        messages.StatusDescription = evento.descricao[0];
+                    }
                 }
 
-                return status;
+                return messages;
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
+            }
+        }
+
+        private static PackageStatus BuildStatus(SroJsonResponse response, PackageLocation locations)
+        {
+            try
+            {
+                return PackageStatusFactory.MakeStatus(response, locations);
+            }
+            catch (Exception e)
+            {
+                throw ;
             }
         }
 
@@ -58,224 +109,19 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters
         {
             try
             {
-                var evento = response.evento[0];
                 var location = new PackageLocation();
-                BuildCurrentLocation(evento, location);
-                BuildHeadedToLocation(response, location);
+
+                location.CurrentLocation = PackageLocationFactory.MakeFromLatestLocation(response);
+                location.HeadedTo = PackageLocationFactory.MakeFromLatestHeadedToLocation(response);
 
                 return location;
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
-
-        private static void BuildCurrentLocation(SroEvent evento, PackageLocation location)
-        {
-            try
-            {
-                location.CurrentLocation.Cep = evento.codigo[0];
-                location.CurrentLocation.City = evento.cidade[0];
-                location.CurrentLocation.State = evento.uf[0];
-                location.CurrentLocation.StreetName = evento.local[0];
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static void BuildHeadedToLocation(SroJsonResponse response, PackageLocation location)
-        {
-            try
-            {
-                var locationIsAvailable = CheckIfHeadedToLocationIsAvailable(response);
-
-                if (locationIsAvailable)
-                {
-                    location.HeadedTo = GetLatestHeadedToLocation(response);
-                }
-                else
-                {
-                    location.HeadedTo = LocationEntity.ExportInstanceOfDefaultLocation();
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static bool CheckIfHeadedToLocationIsAvailable(SroJsonResponse response)
-        {
-            try
-            {
-                var isAvailable = false;
-                for (var index = 0; isAvailable == false || index < response.evento.Count; index++)
-                {
-                    var evento = response.evento[index];
-                    if (evento.destino != null)
-                    {
-                        isAvailable = true;
-                    }
-                }
-                return isAvailable;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static Location GetLatestHeadedToLocation(SroJsonResponse response)
-        {
-            try
-            {
-                var isFound = false;
-                Location location = new Location();
-
-                do
-                {
-                    for (var index = 0; index < response.evento.Count && !isFound; index++)
-                    {
-                        var evento = response.evento[index];
-                        if (evento.destino != null)
-                        {
-                            isFound = true;
-                            location.Cep = evento.destino[0].codigo[0];
-                            location.City = evento.destino[0].cidade[0];
-                            location.State = evento.destino[0].uf[0];
-                            location.StreetName = evento.destino[0].local[0];
-                        }
-                    }
-                } while (!isFound);
-
-                return location;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static bool CheckIfHasArrivedInLatestHeadedToLocation(SroJsonResponse response, Location headedToLocation)
-        {
-            try
-            {
-                var hasArrived = false;
-                response.evento.ForEach(evento =>
-                {
-                    var location = new Location()
-                    {
-                        Cep = evento.codigo[0],
-                        City = evento.cidade[0],
-                        State = evento.uf[0],
-                        StreetName = evento.local[0]
-                    };
-                    var isAMatch = CompareLocationsBool(location, headedToLocation);
-                    var mailerStatusIsOk = !(evento.tipo[0] == "BDI" && evento.status[0] == "69") && !(evento.tipo[0] == "RO" && evento.status[0] == "01");
-
-                    if (isAMatch && mailerStatusIsOk)
-                    {
-                        hasArrived = true;
-                    }
-
-                });
-                return hasArrived;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static bool CheckIfIsPosted(SroJsonResponse response)
-        {
-            try
-            {
-                var isPosted = false;
-                response.evento.ForEach(evento =>
-                {
-                    var statusIsOk = evento.status[0] == "09";
-                    var tipoIsOk = evento.tipo[0] == "PO";
-                    if (statusIsOk && tipoIsOk)
-                    {
-                        isPosted = true;
-                    }
-                });
-                return isPosted;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static bool CheckIfIsDelivered(SroJsonResponse response)
-        {
-            try
-            {
-                var isPosted = false;
-                response.evento.ForEach(evento =>
-                {
-                    var statusIsOk = evento.status[0] == "01" || evento.status[0] == "23";
-                    var tipoIsOk = evento.tipo[0] == "BDE";
-                    if (statusIsOk && tipoIsOk)
-                    {
-                        isPosted = true;
-                    }
-                });
-                return isPosted;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static bool CheckIfIsAwaitingForPickUp(SroJsonResponse response)
-        {
-            try
-            {
-                var isAwaitingForPickUp = false;
-                var evento = response.evento[0];
-                var statusIsOk = evento.status[0] == "03" || evento.status[0] == "04";
-                var tipoIsOk = evento.tipo[0] == "LDI";
-                if (statusIsOk && tipoIsOk)
-                {
-                    isAwaitingForPickUp = true;
-                }
-                return isAwaitingForPickUp;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static bool CheckIfIsRejected(SroJsonResponse response)
-        {
-            try
-            {
-                var isPosted = false;
-                response.evento.ForEach(evento =>
-                {
-                    var statusIsOk = evento.status[0] == "26";
-                    var tipoIsOk = evento.tipo[0] == "BDI";
-                    if (statusIsOk && tipoIsOk)
-                    {
-                        isPosted = true;
-                    }
-                });
-                return isPosted;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
+        
         private static string GetStatusMessage(SroJsonResponse response)
         {
             try
@@ -287,30 +133,9 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 
-        private static bool CompareLocationsBool(Location location1, Location location2)
-        {
-            try
-            {
-                var stateMismatch = location1.State != location2.State;
-                var cityMismatch = location1.City != location2.City;
-                var cepMismatch = location1.Cep != location2.Cep;
-                var neighborhoodMismatch = location1.Neighborhood != location2.Neighborhood;
-                var streetNameMismatch = location1.StreetName != location2.StreetName;
-                var streetNumberMismatch = location1.StreetNumber != location2.StreetNumber;
-
-                var anyMismatched = stateMismatch || cityMismatch || cepMismatch || neighborhoodMismatch
-                    || streetNameMismatch || streetNumberMismatch;
-
-                return !anyMismatched;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
     }
 }

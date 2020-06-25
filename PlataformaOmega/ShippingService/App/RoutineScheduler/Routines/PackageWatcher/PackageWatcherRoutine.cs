@@ -5,6 +5,7 @@ using ShippingService.App.RoutineSchedulerRoutines.PackageWatcher;
 using ShippingService.App.UseCases;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace ShippingService.App.RoutineSchedulerRoutines
     {
         private static PackageWatcherSearch InitialSearchParams = new PackageWatcherSearch();
 
+        private static bool IsExecuting { get; set; } = false;
+
         public static int DefaultSearchLimit { get; } = 1;
 
         public int CallbackIntervalInMilliseconds { get; } = 10000;
@@ -23,16 +26,28 @@ namespace ShippingService.App.RoutineSchedulerRoutines
         {
             try
             {
+                if (IsExecuting)
+                {
+                    return;
+                }
+
+                var watch = new Stopwatch();
+                watch.Start();
+
+                IsExecuting = true;
                 var routineControl = new RoutineControl();
                 var starterSearch = SearchWatchers(InitialSearchParams).Result;
 
                 routineControl.WathersTotalNumber = starterSearch.Pagination.Total;
                 LoopSearch(routineControl);
+                watch.Stop();
+                Console.WriteLine($"Package Watcher Routine Cicle Fineshed. Elapsed Time: {watch.Elapsed}");
+                IsExecuting = false;
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Routine Exception ->> {e.Message}");
-                Console.WriteLine($"Stack Trace ->> {e.StackTrace}");
+                Console.WriteLine("----------- Package Watcher Routine Exception ------------------");
+                Console.WriteLine(e);
             }
         }
 
@@ -63,7 +78,12 @@ namespace ShippingService.App.RoutineSchedulerRoutines
             }
             catch (Exception e)
             {
-                throw e;
+                if (e.InnerException != null)
+                {
+                    e = e.InnerException;
+                }
+                Console.WriteLine("----------- Package Watcher Routine LOOP Exeption ------------------");
+                Console.WriteLine(e);
             }
         }
 

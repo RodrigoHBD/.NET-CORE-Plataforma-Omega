@@ -1,4 +1,8 @@
-class SessionController {
+import CorreiosSession from "/js/main-app/correios/correios.js";
+import CommonSession from "/js/main-app/common/common-session.js";
+import Controllers from "/js/main-app/controllers.js";
+
+export default class SessionController {
     Initialize() {
         try {
             
@@ -10,7 +14,6 @@ class SessionController {
     ExportSession() {
         try {
             var session = new Session();
-            
             return session;
         }
         catch (error) {
@@ -20,5 +23,7 @@ class SessionController {
 }
 
 class Session {
+    Common = new CommonSession();
     Correios = new CorreiosSession();
+    Controllers = application.Controllers;
 }

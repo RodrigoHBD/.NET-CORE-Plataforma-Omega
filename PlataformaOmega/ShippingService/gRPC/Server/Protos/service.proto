@@ -23,6 +23,7 @@ message GrpcShipPackageRequest {
 	GrpcLocation initialLocation = 6;
 	repeated string content = 7;
 	bool createdManually = 8;
+	bool setWatcher = 9;
 }
 
 message GrpcUpdatePackageRequest {

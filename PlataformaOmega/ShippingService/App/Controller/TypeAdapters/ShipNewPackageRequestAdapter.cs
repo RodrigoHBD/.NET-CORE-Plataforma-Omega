@@ -23,6 +23,7 @@ namespace ShippingService.App.TypeAdapters
                     Weight = grpcRequest.Weight,
                     Platform = DeterminePlatform(grpcRequest),
                     CreatedManually = grpcRequest.CreatedManually,
+                    SetWatcher = grpcRequest.SetWatcher,
                     PackageInitialLocation = GrpcLocationAdapter.Adapt(grpcRequest.InitialLocation)
                 };
                 grpcRequest.Content.ToList().ForEach(product => { request.Content.Add(product); });

@@ -9,11 +9,11 @@ namespace ShippingService.App.UseCases
 {
     public class RegisterPackage
     {
-        public static async Task Execute(Package package)
+        public static async Task<string> Execute(Package package)
         {
             try
             {
-                await PackageDAO.RegisterPackage(package);
+                return await PackageDAO.RegisterPackage(package);
             }
             catch (Exception e)
             {

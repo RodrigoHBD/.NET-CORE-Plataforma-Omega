@@ -25,7 +25,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -37,7 +37,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -50,7 +50,35 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
+            }
+        }
+
+        public static async Task DeletePackageWatcherByPackageId(string id)
+        {
+            try
+            {
+                var filter = Builders<PackageWatcher>.Filter.Where(watcher => watcher.PackageId == id);
+                await Collections.PackageWatcher.DeleteOneAsync(filter);
+            }
+            catch (Exception e)
+            {
+                throw ;
+            }
+        }
+
+        public static async Task<bool> CheckIfExistByPackageId(string id)
+        {
+            try
+            {
+                var filter = Builders<PackageWatcher>.Filter.Where(watcher => watcher.PackageId == id);
+                var count = await Collections.PackageWatcher.CountDocumentsAsync(filter);
+                var exists = count > 0;
+                return exists;
+            }
+            catch (Exception e)
+            {
+                throw ;
             }
         }
 
@@ -58,14 +86,14 @@ namespace ShippingService.App.Boundries
         {
             try
             {
-                var filter = Builders<PackageWatcher>.Filter.Where(package => package.Id == ObjectId.Parse(id));
+                var filter = Builders<PackageWatcher>.Filter.Where(watcher => watcher.Id == ObjectId.Parse(id));
                 var count = await Collections.PackageWatcher.CountDocumentsAsync(filter);
                 var exists = count > 0;
                 return exists;
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -102,7 +130,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 
@@ -114,7 +142,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception e)
             {
-                throw e;
+                throw ;
             }
         }
 

@@ -21,6 +21,7 @@ class Pagination {
     Total = 0;
 }
 
+
 class Location {
     City = "";
     State = "";
@@ -28,3 +29,5 @@ class Location {
     StreetNumber = 0;
     Cep = "";
 }
+
+export { Package, Pagination, Location };

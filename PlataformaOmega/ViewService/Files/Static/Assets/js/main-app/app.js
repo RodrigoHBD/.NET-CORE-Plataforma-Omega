@@ -1,26 +1,36 @@
-var app;
+import Controllers from "/js/main-app/controllers.js";
 
-class App {
+export default class App {
     IsInitialized = false;
-    Controllers = new Controllers();
+    Controllers;
     Session;
     Computed;
     HttpClient = new HttpClient();
 
     Initialize() {
         try {
+            console.log("initializeing application instance...")
             if (this.IsInitialized) {
                 return console.log("App instance is already initialized");
             }
-
+            this.InitialzieControllers();
             this.InitializeSession();
-            this.InitializeComputed();
+            //this.InitializeComputed();
             this.InitializeVue();
             this.SetWhenClickedAttribute();
             this.IsInitialized = true;
         }
         catch (erro) {
             throw erro;
+        }
+    }
+
+    InitialzieControllers(){
+        try {
+            this.Controllers = new Controllers();
+        }
+        catch (error) {
+            throw error;
         }
     }
 
@@ -71,7 +81,7 @@ class App {
         }
     }
 
-    SetWhenClickedAttributeForElement(id){
+    SetWhenClickedAttributeForElement(id) {
         var fatherElement = document.getElementById(id);
         var elements = fatherElement.childNodes
         for (var i = 0; i < elements.length; i++) {
@@ -91,5 +101,5 @@ class App {
 }
 
 
-app = new App();
-app.Initialize();
+window.application = new App();
+window.application.Initialize();

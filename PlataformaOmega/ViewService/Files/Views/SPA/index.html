@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Thu Jun 25 2020 20:45:11 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Mon Jun 29 2020 19:58:08 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 <head>
   <meta charset="utf-8">
@@ -23,7 +23,7 @@
     <div id="warning-box" data-w-id="af9d9941-5066-77dd-7609-4c276d5d6d4f" class="warning-box">
       <div class="div-block-24">
         <div class="div-block-25">
-          <h3 class="heading-13">Tem Certeza que deseja deletar? goggole chrome e uma mjerda</h3><a data-w-id="d05fbbf4-91ef-ee66-6294-d27679a65b75" href="#" class="button-6 w-button">Cancelar</a><a v-bind:click="application.Session.Common.ConfirmationWarning.Callback()" href="#" class="button-7 w-button">Confirmar</a></div>
+          <h3 class="heading-13">{{ Common.ConfirmationWarning.Message}}</h3><a id="close-warning-box-btn" data-w-id="d05fbbf4-91ef-ee66-6294-d27679a65b75" href="#" class="button-6 w-button">Cancelar</a><a v-bind:click="Controllers.Common.ExecuteWarningCallback()" href="#" class="button-7 w-button">Confirmar</a></div>
       </div>
     </div>
     <div id="app-notification-box" data-w-id="13844d19-ee3f-5530-6fca-23b82df19b83" class="notificationbox">
@@ -170,12 +170,12 @@
                                 </div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="div-block-8">
-                                  <div v-bind:class="Controllers.Correios.GetPackageStatusCssClass(package.Id)" class="statusball-orange"></div>
+                                  <div v-bind:class="Controllers.Correios.GetPackageStatusCssClass(package.Id)"></div>
                                 </div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="div-block-13">
                                   <div v-on:click="Controllers.Correios.ShowPackageDetail(package.Id)" class="correio-tabela-objetos-abrirdetalhesbtn w-embed"><img src="https://img.icons8.com/ios/40/000000/show-property.png"></div>
-                                  <div v-on:click="Controllers.Correios.DeletePackage(package.Id)" class="html-embed w-embed"><img src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
+                                  <div v-on:click="Controllers.Correios.DeletePackageWithPrompt(package.Id)" class="html-embed w-embed"><img src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
                                 </div>
                                 <div class="invisible-data-div"></div>
                               </div>
@@ -195,8 +195,8 @@
                   <div data-w-tab="Tab 2" class="w-tab-pane">
                     <h2 class="heading-8">Cadastro Manual de Entrega</h2>
                     <div class="w-form">
-                      <form id="correios-new-package-form" name="email-form-4" data-name="Email Form 4" class="form-4"><label for="Name-4" class="field-label-7">Nome</label><input type="text" class="text-field-6 w-input" maxlength="256" name="Name" data-name="Name" placeholder="Campo opcional, dê um nome ao pacote..." id="Name-4"><label for="email" class="field-label-5">Código de Rastreio</label><label for="TrackingCode" class="field-label-6">Id da Venda ( Interno )</label><input type="email" class="text-field-4 w-input" maxlength="256" name="TrackingCode" data-name="TrackingCode" placeholder="Código de Rastreio..." id="TrackingCode" required=""><input type="text" class="text-field-5 w-input" maxlength="256" name="SaleId" data-name="SaleId" placeholder="Código Id..." id="SaleId" required=""><label class="field-label-12">Peso em Gramas</label><label for="Weight" class="field-label-13">Plataforma</label><input type="number" class="text-field-11 w-input" maxlength="256" name="Weight" data-name="Weight" placeholder="Peso ..." id="Weight" required=""><select id="Platform" name="Platform" data-name="Platform" class="select-field-2 w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select><label class="w-checkbox checkbox-field"><input type="checkbox" id="SetWatcher" name="SetWatcher" data-name="SetWatcher" class="w-checkbox-input"><span for="SetWatcher" class="checkbox-label-2 w-form-label">Monitorar</span></label>
-                        <h4 class="heading-10">Localização Inicial de Postagem</h4><label class="field-label-8">CEP</label><label for="Cep-2" class="field-label-9">Número da Rua</label><input type="tel" class="text-field-7 w-input" maxlength="256" name="Cep" data-name="Cep" placeholder="CEP" id="Cep-2" required=""><input type="number" class="text-field-8 w-input" maxlength="256" name="StreetNumber" data-name="StreetNumber" placeholder="Número" id="StreetNumber-2" required=""><a whenclicked="app.Controllers.Correios.CreateNewPackage()" href="#" class="button-4 w-button">Cadastrar</a></form>
+                      <form id="correios-new-package-form" name="email-form-4" data-name="Email Form 4" class="form-4"><label for="Name-4" class="field-label-7">Nome</label><input type="text" class="text-field-6 w-input" maxlength="256" name="Name" data-name="Name" placeholder="Campo opcional, dê um nome ao pacote..." id="Name-4"><label for="email" class="field-label-5">Código de Rastreio</label><label for="TrackingCode" class="field-label-6">Id da Venda ( Interno )</label><input type="email" class="text-field-4 w-input" maxlength="256" name="TrackingCode" data-name="TrackingCode" placeholder="Código de Rastreio..." id="TrackingCode" required=""><input type="text" class="text-field-5 w-input" maxlength="256" name="SaleId" data-name="SaleId" placeholder="Código Id..." id="SaleId" required=""><label class="field-label-12">Peso em Gramas</label><label for="Weight" class="field-label-13">Plataforma</label><input type="number" class="text-field-11 w-input" maxlength="256" name="Weight" data-name="Weight" placeholder="Peso ..." id="Weight" required=""><select id="Platform" name="Platform" data-name="Platform" class="select-field-2 w-select"><option value="">Select one...</option><option value="0">Mercado Livre</option><option value="1">B2W</option><option value="Third">Third Choice</option></select><label class="w-checkbox checkbox-field"><input type="checkbox" id="SetWatcher" name="SetWatcher" data-name="SetWatcher" class="w-checkbox-input"><span for="SetWatcher" class="checkbox-label-2 w-form-label">Monitorar</span></label>
+                        <h4 class="heading-10">Localização Inicial de Postagem</h4><label class="field-label-8">CEP</label><label for="Cep-2" class="field-label-9">Número da Rua</label><input type="tel" class="text-field-7 w-input" maxlength="256" name="Cep" data-name="Cep" placeholder="CEP" id="Cep-2" required=""><input type="number" class="text-field-8 w-input" maxlength="256" name="StreetNumber" data-name="StreetNumber" placeholder="Número" id="StreetNumber-2" required=""><a v-on:click="Controllers.Correios.CreateNewPackage()" href="#" class="button-4 w-button">Cadastrar</a></form>
                       <div class="w-form-done">
                         <div>Thank you! Your submission has been received!</div>
                       </div>
@@ -229,7 +229,9 @@
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">SAC</div><a href="#">https://mercadodibre.com/498415215</a></div>
                       <div class="correio-detalhe-objeto-data-field">
-                        <div class="correio-detalheobjeto-titulodecampo">Plataforma</div><img src="images/mercado-livre-logo.png" srcset="images/mercado-livre-logo-p-500.png 500w, images/mercado-livre-logo.png 660w" sizes="82.13333129882812px" alt="" class="image-6"></div>
+                        <div class="correio-detalheobjeto-titulodecampo">Plataforma</div>
+                        <div class="html-embed-3 w-embed"><img src="https://s2.glbimg.com/FGXio_G5LAoAVWJK4-R1NEedURo=/607x607/smart/e.glbimg.com/og/ed/f/original/2020/03/17/novo-logo-mercado-livre.jpg"></div>
+                      </div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">Estimativa Prometido</div>
                         <div id="correio-detalheobjeto-nome-codigo" class="text-block-12-copy">25/07/2020</div>
@@ -259,16 +261,16 @@
                         <div class="location-display">
                           <ul role="list" class="w-list-unstyled">
                             <li class="list-item">
-                              <div class="text-block-12"><span class="text-span">Cidade:</span> Curitiba</div>
+                              <div class="text-block-12"><span class="text-span">Cidade: {{Correios.CachedPackage.Locations.HeadedToLocation.City }}</span></div>
                             </li>
                             <li class="list-item-2">
-                              <div class="text-block-12"><span class="text-span">Estado:</span> Paraná</div>
+                              <div class="text-block-12"><span class="text-span">Estado:</span>  {{Correios.CachedPackage.Locations.HeadedToLocation.State }}</div>
                             </li>
                             <li>
-                              <div class="text-block-12"><span class="text-span">Rua:</span> Manoel Ribas <span class="text-span-2">65</span></div>
+                              <div class="text-block-12"><span class="text-span">Rua:</span> {{Correios.CachedPackage.Locations.HeadedToLocation.StreetName }} {{Correios.CachedPackage.Locations.HeadedToLocation.StreetNumber }}</div>
                             </li>
                             <li class="list-item">
-                              <div class="text-block-12"><span class="text-span">CEP:</span> 82450380</div>
+                              <div class="text-block-12"><span class="text-span">CEP:</span> {{Correios.CachedPackage.Locations.HeadedToLocation.Cep}}</div>
                             </li>
                           </ul>
                         </div>
@@ -294,7 +296,7 @@
         </div>
       </div>
     </div>
-    <div class="thehiddenactioncontroller"><a id="app-actions-show-confirmation-warning" data-w-id="d00cf800-cdbf-fc25-8e58-e011f75b7fc4" href="#" class="w-button">AppBlur</a></div>
+    <div class="thehiddenactioncontroller"><a id="app-actions-show-confirmation-warning" data-w-id="d00cf800-cdbf-fc25-8e58-e011f75b7fc4" href="#" class="button-8 w-button">AppBlur</a></div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5edfa191b5ff34226cd2885d" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>

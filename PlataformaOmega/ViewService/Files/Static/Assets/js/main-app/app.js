@@ -17,7 +17,7 @@ export default class App {
             this.InitializeSession();
             //this.InitializeComputed();
             this.InitializeVue();
-            this.SetWhenClickedAttribute();
+            //this.SetWhenClickedAttribute();
             this.IsInitialized = true;
         }
         catch (erro) {
@@ -100,6 +100,6 @@ export default class App {
 
 }
 
-
+window.Callback = function(){};
 window.application = new App();
 window.application.Initialize();

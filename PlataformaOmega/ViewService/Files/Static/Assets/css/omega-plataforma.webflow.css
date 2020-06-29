@@ -1778,3 +1778,17 @@
   border-radius: 50%;
   background-color: #fff;
 }
+
+.html-embed-3 {
+  width: 20%;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+}
+
+.button-8 {
+  display: none;
+}

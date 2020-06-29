@@ -79,6 +79,11 @@ namespace ShippingService.App.Models
         public List<string> Products { get; set; }
     }
 
+    public class PackageContactInformation
+    {
+        public string MobilePhoneNumer { get; set; }
+    }
+
     public enum AvailablePlatformsToBind
     {
         MercadoLivre = 0,

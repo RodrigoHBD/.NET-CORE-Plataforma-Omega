@@ -1,10 +1,11 @@
 
 export default class CommonController {
-    AskFormConfirmation(message, callback, params){
+    AskForConfirmation(message, callback, params){
         try {
+            console.log("Ceeeee")
             application.Session.Common.ConfirmationWarning.Message = message;
             application.Session.Common.ConfirmationWarning.Params = params;
-            application.Session.Common.ConfirmationWarning.Callback = callback;
+            window.Callback = callback;
             application.Controllers.Animations.PromptWarning();
         }
         catch(erro){
@@ -14,7 +15,8 @@ export default class CommonController {
 
     async ExecuteWarningCallback(){
         try {
-            await application.Session.Common.ConfirmationWarning.Callback();
+            //await window.Callback();
+            application.Controllers.Animations.HideWarning();
         }
         catch(erro){
             throw erro;

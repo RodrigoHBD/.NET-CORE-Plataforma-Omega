@@ -8,5 +8,6 @@ namespace ShippingService.App.Models
     public class Platform
     {
         public string Name { get; set; }
+        public int Value { get; set; }
     }
 }

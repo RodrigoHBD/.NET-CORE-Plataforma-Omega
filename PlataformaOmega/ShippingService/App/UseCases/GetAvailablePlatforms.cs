@@ -12,7 +12,8 @@ namespace ShippingService.App.UseCases
         {
             return new List<Platform>()
             {
-                new Platform(){ Name = "Mercado Livre" }
+                new Platform(){ Name = "Mercado Livre", Value = 0 },
+                new Platform(){ Name = "B2W", Value = 1 }
             };
         }
     }

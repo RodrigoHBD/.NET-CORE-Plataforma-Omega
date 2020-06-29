@@ -7,4 +7,13 @@ export default class AnimationsController {
             throw erro;
         }
     }
+    
+    HideWarning(){
+        try {
+            document.getElementById("close-warning-box-btn").click();
+        }
+        catch(erro){
+            throw erro;
+        }
+    }
 }

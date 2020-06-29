@@ -76,13 +76,14 @@ export default class CorreiosController {
 
     async DeletePackage() {
         try {
-            var id = application.Session.Common.Params.id;
-            var uri = `${this.BaseUri}/delete-package`;
+            console.log("taaaa")
+            var id = application.Session.Common.ConfirmationWarning.Params.id;
+            var uri = `${application.Controllers.Correios.BaseUri}/delete-package`;
             var param = new QueryStringParamModel();
             param.name = "id";
             param.value = id;
             await application.HttpClient.Delete(uri, [param])
-            await this.SearchPackages();
+            //await application.Controllers.Correios.SearchPackages();
         }
         catch (error) {
             throw error;
@@ -91,7 +92,9 @@ export default class CorreiosController {
 
     DeletePackageWithPrompt(id) {
         try {
-            application.Controllers.Common.AskForConfirmation("Tem certeza que deseja deletar?", this.DeletePackage, { id });
+            console.log("BOOOO")
+            var callback = this.DeletePackage;
+            application.Controllers.Common.AskForConfirmation("Tem certeza que deseja deletar?", callback, { id });
         }
         catch (error) {
             throw error;
@@ -150,12 +153,7 @@ export default class CorreiosController {
                 data.StreetNumber = parseInt(data.StreetNumber);
             }
             ////////
-            if (data.SetWatcher) {
-                data.SetWatcher = true;
-            }
-            else {
-                data.SetWatcher = false;
-            }
+            data.SetWatcher = true;
 
             return data;
         }

@@ -1,2 +1,0 @@
-obj\Debug\netcoreapp3.1/Service.cs \
-obj\Debug\netcoreapp3.1/ServiceGrpc.cs: gRPC/Server/Protos/service.proto

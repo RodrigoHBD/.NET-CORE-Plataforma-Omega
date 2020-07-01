@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "U4F64xiGBdVrIeX9Sxe+kPzMIMBoyV6fCAPJoJ6AwO9ydvXUAmaN0IfcP9NekWW7I9zqr+Vmvm/i7NXG6QVgww==",
+  "dgSpecHash": "0L9IqnjLE9GFDMG3OiMEYbaWOJL56SJg0q2dmmgoP41QGhOW6g+P0TA3vaB+JAU6dHxPtu2yQQlYaB0UxkhB/g==",
   "success": true,
   "projectFilePath": "C:\\Plataforma de Integração\\Servidores\\.NET CORE\\PlataformaOmega\\ViewService\\ViewService.csproj",
   "expectedPackageFiles": [
@@ -25,8 +25,7 @@
     "C:\\Users\\rpjco\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\rpjco\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.5.1\\system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512",
     "C:\\Users\\rpjco\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\rpjco\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
-    "C:\\Users\\rpjco\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\rpjco\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
   ],
   "logs": []
 }

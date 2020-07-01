@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Bv1aqFfDmbqpuiRi3A/8WAZs71BqOtivK7auLwpMD/0pu2OL4cDcUmYtXiAd/JjVYmbBPqlDDFobfmhHHSdTlQ==",
+  "dgSpecHash": "vZp5TgWwoPVTrbZ9OPFZf4f12+Lrs6XD5N+H0HBatt7ZoHWERqGrvT/fmBgapD3PFTC2NbFXmUqE05SZGb5OHQ==",
   "success": true,
   "projectFilePath": "C:\\Plataforma de Integração\\Servidores\\.NET CORE\\PlataformaOmega\\SalesService\\SalesService.csproj",
   "expectedPackageFiles": [
@@ -126,8 +126,7 @@
     "C:\\Users\\rpjco\\.nuget\\packages\\system.threading.threadpool\\4.3.0\\system.threading.threadpool.4.3.0.nupkg.sha512",
     "C:\\Users\\rpjco\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\rpjco\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\rpjco\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\rpjco\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\rpjco\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

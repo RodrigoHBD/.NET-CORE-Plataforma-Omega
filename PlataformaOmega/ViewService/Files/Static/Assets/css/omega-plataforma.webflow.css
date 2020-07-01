@@ -473,7 +473,14 @@
 }
 
 .correio-tabela-objetos-actionmenu {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 .form-3 {
@@ -729,6 +736,8 @@
 }
 
 .button-3 {
+  margin-right: auto;
+  margin-left: auto;
   border: 1px solid #000;
   border-radius: 0px;
   background-color: transparent;
@@ -876,12 +885,15 @@
 }
 
 .correio-tabela-objetos-abrirdetalhesbtn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-right: auto;
   margin-left: auto;
   padding: 0.3em 0.125em 0.125em 0.3em;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
-  -ms-grid-row-align: center;
   align-self: center;
   font-size: 1em;
   cursor: pointer;
@@ -1330,6 +1342,7 @@
 }
 
 .checkbox-field {
+  display: none;
   width: 100px;
   margin-right: auto;
   margin-bottom: 1.5em;
@@ -1791,4 +1804,14 @@
 
 .button-8 {
   display: none;
+}
+
+.button-9 {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.button-10 {
+  margin-right: auto;
+  margin-left: auto;
 }

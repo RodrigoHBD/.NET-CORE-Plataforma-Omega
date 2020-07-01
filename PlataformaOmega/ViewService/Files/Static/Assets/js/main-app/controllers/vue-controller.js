@@ -7,7 +7,6 @@ export default class VueController {
             this.VueInstance = new Vue({
                 el: "#app",
                 data: application.Session,
-                //computed: app.Computed,
                 // WebFlow Animations FIX 
                 mounted: function () {
                     this.$nextTick(function () {

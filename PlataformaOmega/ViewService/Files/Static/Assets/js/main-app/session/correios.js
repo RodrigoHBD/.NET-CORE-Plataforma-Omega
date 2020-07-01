@@ -9,15 +9,15 @@ export default class CorreiosSession {
 }
 
 class CorreiosObjectsTable {
-    Pagination = new Pagination();
-    CurrentPage = () => { return parseInt(this.Pagination.Offset/this.Pagination.Limit) +1 }
-    TotalPages = () =>{
-        var num = this.Pagination.Total/this.Pagination.Limit;
-        if(num > parseInt(num)){
+    Pagination;
+    CurrentPage = () => { return parseInt(this.Pagination.Offset / this.Pagination.Limit) + 1 }
+    TotalPages = () => {
+        var num = this.Pagination.Total / this.Pagination.Limit;
+        if (num > parseInt(num)) {
             num++
             num = parseInt(num)
         }
-        else if (num > 0){
+        else if (num > 0) {
             num = 1
         }
         else {
@@ -26,6 +26,11 @@ class CorreiosObjectsTable {
         return num;
     }
     Body = new Array();
+
+    constructor() {
+        this.Pagination = new Pagination();
+        this.Pagination.Limit = 25;
+    }
 }
 
 class CorreiosObjectsTableFilters {

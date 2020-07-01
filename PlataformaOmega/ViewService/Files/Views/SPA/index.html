@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Mon Jun 29 2020 19:58:08 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Tue Jun 30 2020 17:17:54 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 <head>
   <meta charset="utf-8">
@@ -23,7 +23,7 @@
     <div id="warning-box" data-w-id="af9d9941-5066-77dd-7609-4c276d5d6d4f" class="warning-box">
       <div class="div-block-24">
         <div class="div-block-25">
-          <h3 class="heading-13">{{ Common.ConfirmationWarning.Message}}</h3><a id="close-warning-box-btn" data-w-id="d05fbbf4-91ef-ee66-6294-d27679a65b75" href="#" class="button-6 w-button">Cancelar</a><a v-bind:click="Controllers.Common.ExecuteWarningCallback()" href="#" class="button-7 w-button">Confirmar</a></div>
+          <h3 class="heading-13">{{ Common.ConfirmationWarning.Message}}</h3><a id="close-warning-box-btn" data-w-id="d05fbbf4-91ef-ee66-6294-d27679a65b75" href="#" class="button-6 w-button">Cancelar</a><a id="execute-warning-callback-btn" v-on:click="Controllers.Common.ExecuteWarningCallback()" href="#" class="button-7 w-button">Confirmar</a></div>
       </div>
     </div>
     <div id="app-notification-box" data-w-id="13844d19-ee3f-5530-6fca-23b82df19b83" class="notificationbox">
@@ -121,7 +121,7 @@
                           <h3 class="heading-2">Pagina: {{ Correios.ObjectsTable.CurrentPage() }}</h3>
                           <h3 class="heading-2">Total de Páginas: {{Correios.ObjectsTable.TotalPages()}}</h3>
                         </div>
-                        <div class="correio-tabela-objetos-actionmenu"><a data-w-id="aaa6591d-d6f7-e20b-ae2a-9012e5144d09" href="#" class="button-2 w-button">Mostrar Filtros</a>
+                        <div class="correio-tabela-objetos-actionmenu"><a id="correios-open-detailbtn" href="#" class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a><a data-w-id="aaa6591d-d6f7-e20b-ae2a-9012e5144d09" href="#" class="button-2 w-button">Mostrar Filtros</a>
                           <div data-w-id="95b68b7b-9779-2892-b254-a277b68ec11c" style="opacity:0" class="correio-tabela-objetos-filtros">
                             <h1 class="heading-5">Filtros</h1>
                             <div class="form-block-3 w-form">
@@ -135,7 +135,7 @@
                                 <div>Oops! Something went wrong while submitting the form.</div>
                               </div>
                             </div>
-                          </div><a v-on:click="Controllers.Correios.SearchPackages()" href="#" class="button-3 w-button">Atualizar</a><a id="correios-open-detailbtn" href="#" class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a></div>
+                          </div><a v-on:click="Controllers.Correios.SearchPackages()" href="#" class="button-3 w-button">Atualizar</a><a v-on:click="Controllers.Correios.PaginateBackwards()" v-if="Correios.ObjectsTable.Pagination.Offset &gt; 0" href="#" class="button-10 w-button">Retroceder</a><a v-on:click="Controllers.Correios.PaginateForward()" v-if="(Correios.ObjectsTable.Pagination.Offset + Correios.ObjectsTable.Pagination.Limit) &lt; Correios.ObjectsTable.Pagination.Total" href="#" class="button-9 w-button">Avançar</a></div>
                       </div>
                       <div data-w-id="23ff6725-43fc-bb77-7d80-ea9909c7576f" class="correio-tabela-objeto-body">
                         <div class="div-block-16">
@@ -189,7 +189,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="correio-tabela-objeto-footer"><a href="#" class="w-button">Retroceder</a><a href="#" class="w-button">Avançar</a></div>
+                      <div class="correio-tabela-objeto-footer"><a v-on:click="Controllers.Correios.PaginateBackwards()" v-if="Correios.ObjectsTable.Pagination.Offset &gt; 0" href="#" class="w-button">Retroceder</a><a v-on:click="Controllers.Correios.PaginateForward()" v-if="(Correios.ObjectsTable.Pagination.Offset + Correios.ObjectsTable.Pagination.Limit) &lt; Correios.ObjectsTable.Pagination.Total" href="#" class="w-button">Avançar</a></div>
                     </div>
                   </div>
                   <div data-w-tab="Tab 2" class="w-tab-pane">

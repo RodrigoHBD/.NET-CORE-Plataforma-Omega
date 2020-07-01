@@ -7,7 +7,7 @@ namespace ShippingService.App.Models.Input
 {
     public interface IPaginationIn
     {
-        int Offset { get; }
-        int Limit { get; }
+        int Offset { get; set; }
+        int Limit { get; set; }
     }
 }

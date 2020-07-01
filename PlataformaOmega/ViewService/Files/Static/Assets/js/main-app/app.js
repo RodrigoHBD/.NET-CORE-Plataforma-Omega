@@ -1,4 +1,4 @@
-import Controllers from "/js/main-app/controllers.js";
+import Controllers from "/js/main-app/controllers/controllers.js";
 
 export default class App {
     IsInitialized = false;
@@ -100,6 +100,9 @@ export default class App {
 
 }
 
-window.Callback = function(){};
+window.temp = {
+    Common: new Object(),
+    Correios: new Object()
+}
 window.application = new App();
 window.application.Initialize();

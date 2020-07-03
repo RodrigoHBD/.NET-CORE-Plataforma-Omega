@@ -14,11 +14,13 @@ namespace Gateway
         {
             try
             {
+                Console.WriteLine("Initializing Gateway");
                 await RunInitializationRoutine();
                 StartHttpServer(args);
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 throw e;
             }
         }
@@ -45,7 +47,7 @@ namespace Gateway
         {
             return Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder => 
             {
-                //webBuilder.
+                webBuilder.UseIISIntegration();
                 webBuilder.UseStartup<Startup>();
             });
         }

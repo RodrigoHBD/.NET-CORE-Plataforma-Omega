@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewService", "ViewService\ViewService.csproj", "{55F317CE-0E2E-4972-8E87-00520720AC94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService", "UserService\UserService.csproj", "{E2BA1942-41DC-437B-9502-42FAE9637D3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserService", "UserService\UserService.csproj", "{E2BA1942-41DC-437B-9502-42FAE9637D3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{CF1E2D1F-678B-46CE-A6E2-6651ACCE012A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{E2BA1942-41DC-437B-9502-42FAE9637D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2BA1942-41DC-437B-9502-42FAE9637D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2BA1942-41DC-437B-9502-42FAE9637D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF1E2D1F-678B-46CE-A6E2-6651ACCE012A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF1E2D1F-678B-46CE-A6E2-6651ACCE012A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF1E2D1F-678B-46CE-A6E2-6651ACCE012A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF1E2D1F-678B-46CE-A6E2-6651ACCE012A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

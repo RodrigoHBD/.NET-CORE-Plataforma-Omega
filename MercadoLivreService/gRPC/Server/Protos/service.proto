@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "MercadoLivreService.gRPC.Server.Protos";
+
+service MercadoLivre {
+	rpc AddNewAccount (GrpcAddAccountReq) returns (GrpcStatusResponse);
+	rpc GetAppId (GrpcVoid) returns (GrpcStringResponse);
+	rpc GetAppToken (GrpcVoid) returns (GrpcStringResponse);
+}
+
+message GrpcAddAccountReq {
+	string name = 1;
+	string description = 2;
+	string owner = 3;
+	string authCode = 4;
+}
+
+message GrpcStatusResponse {
+	bool ok = 1;
+	string message = 2;
+}
+
+message GrpcStringResponse {
+	string data = 1;
+}
+
+message GrpcVoid {
+
+}

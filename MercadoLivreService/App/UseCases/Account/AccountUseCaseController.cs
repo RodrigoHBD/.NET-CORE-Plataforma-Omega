@@ -1,4 +1,5 @@
-﻿using MercadoLivreService.App.Models;
+﻿using MercadoLivreService.App.Entities;
+using MercadoLivreService.App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace MercadoLivreService.App.UseCases
             {
                 var accountTokens = await ExchangeCodeForTokens.Execute(request.AuthCode);
                 var account = CreateAccount.Execute(request, accountTokens);
+                await AccountEntity.ValidateNew(account);
                 await RegisterAccount.Execute(account);
             }
             catch (Exception)
@@ -21,5 +23,19 @@ namespace MercadoLivreService.App.UseCases
                 throw;
             }
         }
+
+        public static async Task<IAccountList> SearchAccountsAsync(ISearchAccountsReq request)
+        {
+            try
+            {
+                await AccountSearchEntity.ValidateSearch(request);
+                return await SearchAccounts.Execute(request);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

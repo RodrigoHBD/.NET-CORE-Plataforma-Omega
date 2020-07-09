@@ -1,4 +1,5 @@
 ﻿using MercadoLivreService.App.Controllers.Adapters;
+using MercadoLivreService.App.Presenter;
 using MercadoLivreService.App.UseCases;
 using MercadoLivreService.gRPC.Server.Protos;
 using System;
@@ -22,6 +23,20 @@ namespace MercadoLivreService.App.Controllers
                 {
                     Ok = true
                 };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcAccountList> SearchAccounts(GrpcSearchAccountsReq grpcRequest)
+        {
+            try
+            {
+                var request = GrpcSearchAccountReqAdapter.Adapt(grpcRequest);
+                var result = await AccountUseCaseController.SearchAccountsAsync(request);
+                return AccountListPresenter.Present(result);
             }
             catch (Exception)
             {

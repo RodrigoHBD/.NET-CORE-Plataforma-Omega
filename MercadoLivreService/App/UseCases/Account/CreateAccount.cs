@@ -15,6 +15,7 @@ namespace MercadoLivreService.App.UseCases
             {
                 return new Account()
                 {
+                    MercadoLivreId = tokens.UserId.ToString(),
                     Name = request.Name,
                     Description = request.Description,
                     Owner = request.Owner,

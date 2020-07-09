@@ -31,6 +31,7 @@ namespace Gateway
             {
                 ViewClient.Initialize();
                 ShippingClient.Initialize();
+                MercadoLivreClient.Initialize();
             }
             catch (Exception e)
             {

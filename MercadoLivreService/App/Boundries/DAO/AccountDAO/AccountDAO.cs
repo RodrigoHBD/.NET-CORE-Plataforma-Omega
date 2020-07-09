@@ -1,4 +1,5 @@
 ﻿using MercadoLivreService.App.Boundries.DAO.AccountDAOFactories;
+using MercadoLivreService.App.Entities.AccountDataFields;
 using MercadoLivreService.App.Models;
 using Microsoft.VisualBasic;
 using MongoDB.Driver;
@@ -55,7 +56,7 @@ namespace MercadoLivreService.App.Boundries.DAO
                 }
                 if (search.Name.IsActive)
                 {
-                    nameFilter = Builders<Account>.Filter.Where(account => account.Name == search.Name.Value);
+                    nameFilter = Builders<Account>.Filter.Where(account => account.Name.Contains(search.Name.Value));
                 }
                 filter = Builders<Account>.Filter.And(nameFilter, ownerFilter);
 
@@ -72,6 +73,36 @@ namespace MercadoLivreService.App.Boundries.DAO
             try
             {
                 return await Collections.Accounts.CountDocumentsAsync(filter);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<bool> CheckIfAccountNameForUserIsTaken(string user, string accountName)
+        {
+            try
+            {
+                var filter = Builders<Account>.Filter.Where(account => account.Owner == user && account.Name == accountName);
+                var count = await Collections.Accounts.CountDocumentsAsync(filter);
+                var nameIsTaken = count > 0;
+                return nameIsTaken;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<bool> CheckIfMercadoLivreIdExists(string id)
+        {
+            try
+            {
+                var filter = Builders<Account>.Filter.Where(account => account.MercadoLivreId == id);
+                var count = await Collections.Accounts.CountDocumentsAsync(filter);
+                var exist = count > 0;
+                return exist;
             }
             catch (Exception)
             {

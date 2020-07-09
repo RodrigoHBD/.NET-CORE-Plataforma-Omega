@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "MercadoLivreService.gRPC.Server.Protos";
+option csharp_namespace = "Gateway.gRPC.Client.MercadoLivreProto";
 
 service MercadoLivre {
 	rpc AddNewAccount (GrpcAddAccountReq) returns (GrpcStatusResponse);

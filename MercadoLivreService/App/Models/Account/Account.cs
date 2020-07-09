@@ -9,6 +9,7 @@ namespace MercadoLivreService.App.Models
     public class Account
     {
         public ObjectId Id { get; set; }
+        public string MercadoLivreId { get; set; } = "";
         public string Owner { get; set; } = "";
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";

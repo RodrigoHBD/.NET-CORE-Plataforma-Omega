@@ -46,6 +46,18 @@ namespace MercadoLivreService.gRPC.Server
             }
         }
 
+        public override async Task<GrpcAccountList> SearchAccounts(GrpcSearchAccountsReq request, ServerCallContext context)
+        {
+            try
+            {
+                return await MainController.SearchAccounts(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
         private RpcException HandleException(Exception e)
         {
             Console.WriteLine(e);

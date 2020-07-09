@@ -8,6 +8,6 @@ namespace MercadoLivreService.App.Models
     public interface IPaginationIn
     {
         int Offset { get; }
-        int Limit { get; }
+        int Limit { get; set; }
     }
 }

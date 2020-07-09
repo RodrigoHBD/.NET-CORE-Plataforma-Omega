@@ -15,9 +15,9 @@ namespace MercadoLivreService.App.UseCases
             {
                 return await MercadoLivreBoundry.ExchangeAuthorizationCodeForAccessTokens(code);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw new Exception($"Erro na autenticação com o Mercado Livre: {e.Message}");
             }
         }
     }

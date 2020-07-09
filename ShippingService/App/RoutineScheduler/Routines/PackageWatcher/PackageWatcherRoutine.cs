@@ -20,7 +20,7 @@ namespace ShippingService.App.RoutineSchedulerRoutines
 
         public static int DefaultSearchLimit { get; } = 1;
 
-        public int CallbackIntervalInMilliseconds { get; } = 10000;
+        public int CallbackIntervalInMilliseconds { get; } = 14400000;
 
         public void Callback(object data)
         {

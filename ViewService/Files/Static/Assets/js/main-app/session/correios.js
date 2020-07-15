@@ -1,4 +1,4 @@
-import { Package, Pagination } from "/js/main-app/models.js";
+import { Package, Pagination } from "/js/main-app/models/models.js";
 
 export default class CorreiosSession {
     CachedPackage = new Package();

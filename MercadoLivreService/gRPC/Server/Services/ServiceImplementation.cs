@@ -1,5 +1,6 @@
 ﻿using Grpc.Core;
 using MercadoLivreService.App.Controllers;
+using MercadoLivreService.App.UseCases;
 using MercadoLivreService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;
@@ -51,6 +52,31 @@ namespace MercadoLivreService.gRPC.Server
             try
             {
                 return await MainController.SearchAccounts(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
+        public override async Task<GrpcVoid> RefreshAccountTokens(GrpcGetByIdReq request, ServerCallContext context)
+        {
+            try
+            {
+                await AccountUseCaseController.RefreshAndUpdateTokens(request.Id);
+                return new GrpcVoid();
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
+        public override async Task<GrpcVoid> SearchRecentOrders(GrpcStringReq request, ServerCallContext context)
+        {
+            try
+            {
+                return await MainController.SearchRecentOrders(request);
             }
             catch (Exception e)
             {

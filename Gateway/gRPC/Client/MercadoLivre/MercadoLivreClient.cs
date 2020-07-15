@@ -33,5 +33,18 @@ namespace Gateway.gRPC.Client
             }
         }
 
+        public static async Task<GrpcStringResponse> GetAppId()
+        {
+            try
+            {
+                var request = new GrpcVoid();
+                return await Client.GetAppIdAsync(request);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

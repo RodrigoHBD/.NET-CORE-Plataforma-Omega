@@ -1,4 +1,5 @@
 export default class CommonSession {
+    UserData = new UserData();
     ConfirmationWarning = new ConfirmationWarning();
 }
 
@@ -7,4 +8,9 @@ class ConfirmationWarning {
     Toggler = false;
     Params = {};
     Callback = function(){};
+}
+
+class UserData {
+    Username = "";
+    Token = "";
 }

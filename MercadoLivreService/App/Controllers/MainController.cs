@@ -44,6 +44,20 @@ namespace MercadoLivreService.App.Controllers
             }
         }
 
+        public static async Task<GrpcVoid> SearchRecentOrders(GrpcStringReq grpcRequest)
+        {
+            try
+            {
+                var id = GrpcStringReqAdapter.GetStringData(grpcRequest);
+                await OrderUseCaseController.SearchRecentOrdersAsync(id);
+                return new GrpcVoid();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public static async Task<GrpcStringResponse> GetAppId()
         {
             try

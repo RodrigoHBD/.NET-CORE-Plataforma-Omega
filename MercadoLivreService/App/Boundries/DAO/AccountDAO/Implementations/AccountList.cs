@@ -9,6 +9,6 @@ namespace MercadoLivreService.App.Boundries.DAO.Implementations
     public class AccountList : IAccountList
     {
         public List<Account> Accounts { get; set; }
-        public IPaginationOut Pagination { get; set; } = new Pagination();
+        public IPaginationOut Pagination { get; set; } = new PaginationOut();
     }
 }

@@ -9,18 +9,21 @@ namespace MercadoLivreService.App.UseCases
 {
     public class CreateAccount
     {
-        public static Account Execute (IAddAccountRequest request, AuthCodeExchangeResult tokens)
+        public static Account Execute(IAddAccountRequest request, AuthCodeExchangeResult tokens)
         {
             try
             {
                 return new Account()
                 {
-                    MercadoLivreId = tokens.UserId.ToString(),
+                    MercadoLivreId = tokens.UserId,
                     Name = request.Name,
                     Description = request.Description,
                     Owner = request.Owner,
-                    AccessToken = tokens.AccessToken,
-                    RefreshToken = tokens.RefreshToken,
+                    Tokens = new AccountTokens()
+                    {
+                        AccessToken = tokens.AccessToken,
+                        RefreshToken = tokens.RefreshToken
+                    },
                     Dates = new AccountDates()
                     {
                         AddedAt = DateTime.UtcNow

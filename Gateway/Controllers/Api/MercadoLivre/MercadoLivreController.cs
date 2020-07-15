@@ -36,5 +36,39 @@ namespace Gateway.Controllers.Api
                 throw;
             }
         }
+
+        [HttpGet]
+        [Route("app-id")]
+        public async Task<IActionResult> GetAppId()
+        {
+            try
+            {
+                var grpcStringResp = await MercadoLivreClient.GetAppId();
+                return new ContentResult()
+                {
+                    Content = grpcStringResp.Data,
+                    ContentType = "application/json",
+                    StatusCode = 200
+                };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("process-authcode-exchange")]
+        public async Task ProcessAuthCodeExchange(string metadata, string code)
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
     }
 }

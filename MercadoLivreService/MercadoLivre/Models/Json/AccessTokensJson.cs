@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MercadoLivreService.MercadoLivreModels.Out
 {
-    public class AuthCodeExchangeJson
+    public class AccessTokensJson
     {
         public string access_token { get; set; } = "";
         public string token_type { get; set; } = "";

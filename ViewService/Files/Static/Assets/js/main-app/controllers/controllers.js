@@ -4,6 +4,7 @@ import SessionController from "/js/main-app/controllers/session-controller.js";
 import ComputedController from "/js/main-app/controllers/computed-controller.js";
 import CommonController from "/js/main-app/controllers/common-controller.js";
 import AnimationsController from '/js/main-app/controllers/animations-controller.js';
+import MercadoLivreController from '/js/main-app/controllers/mercado-livre-controller.js';
 
 export default class Controllers {
     Common = new CommonController();
@@ -12,4 +13,5 @@ export default class Controllers {
     Vue = new VueController();
     Session = new SessionController();
     Computed = new ComputedController();
+    MercadoLivre = new MercadoLivreController();
 }

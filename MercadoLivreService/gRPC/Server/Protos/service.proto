@@ -8,6 +8,8 @@ service MercadoLivre {
 	rpc GetAppToken (GrpcVoid) returns (GrpcStringResponse);
 	rpc GetAccountById (GrpcGetByIdReq) returns (GrpcAccount);
 	rpc SearchAccounts (GrpcSearchAccountsReq) returns (GrpcAccountList);
+	rpc RefreshAccountTokens (GrpcGetByIdReq) returns (GrpcVoid);
+	rpc SearchRecentOrders (GrpcStringReq) returns (GrpcVoid);
 }
 
 message GrpcAddAccountReq {
@@ -26,6 +28,14 @@ message GrpcSearchAccountsReq {
 
 message GrpcGetByIdReq {
 	string id = 1;
+}
+
+message GrpcStringReq {
+	string data = 1;
+}
+
+message GrpcIntReq {
+	int32 data = 1;
 }
 
 // responses

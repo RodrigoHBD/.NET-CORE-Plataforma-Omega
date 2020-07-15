@@ -2,6 +2,7 @@
 using MercadoLivreService.App.Entities.AccountDataFields;
 using MercadoLivreService.App.Models;
 using Microsoft.VisualBasic;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,38 @@ namespace MercadoLivreService.App.Boundries.DAO
             try
             {
                 await Collections.Accounts.InsertOneAsync(account);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<Account> GetAccountById(string id)
+        {
+            try
+            {
+                var filter = Builders<Account>.Filter.Where(acc => acc.Id == ObjectId.Parse(id));
+                var query = await Collections.Accounts.FindAsync(filter); 
+                return query.FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task UpdateAccountTokens(string id, AccountTokens newTokens)
+        {
+            try
+            {
+                var filter = Builders<Account>.Filter.Where(acc => acc.Id == ObjectId.Parse(id));
+                var update = Builders<Account>.Update
+                    .Set(acc => acc.Tokens.AccessToken, newTokens.AccessToken)
+                    .Set(acc => acc.Tokens.RefreshToken, newTokens.RefreshToken)
+                    .Set(acc => acc.Dates.TokensLastRefreshedAt, DateTime.UtcNow);
+
+                await Collections.Accounts.FindOneAndUpdateAsync(filter, update);
             }
             catch (Exception)
             {
@@ -95,7 +128,7 @@ namespace MercadoLivreService.App.Boundries.DAO
             }
         }
 
-        public static async Task<bool> CheckIfMercadoLivreIdExists(string id)
+        public static async Task<bool> CheckIfMercadoLivreIdExists(int id)
         {
             try
             {

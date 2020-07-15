@@ -9,7 +9,7 @@ namespace MercadoLivreService.App.Boundries.MercadoLivreAdapters
 {
     public class AuthCodeExchangeJsonAdapter
     {
-        public static AuthCodeExchangeResult Adapt(AuthCodeExchangeJson json)
+        public static AuthCodeExchangeResult Adapt(AccessTokensJson json)
         {
             try
             {

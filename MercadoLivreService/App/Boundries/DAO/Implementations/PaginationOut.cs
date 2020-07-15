@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MercadoLivreService.App.Boundries.DAO.Implementations
 {
-    public class Pagination : IPaginationOut
+    public class PaginationOut : IPaginationOut
     {
         public int Offset { get; set; }
         public int Limit { get; set; }

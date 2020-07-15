@@ -57,22 +57,23 @@ namespace MercadoLivreService.HttpClientLibrary
             }
         }
 
-        public static async Task<string> Get(string uri)
+        public static async Task<HttpResponseMessage> Post(string uri, HttpContent body = null)
         {
             try
             {
-                var response = await Client.GetAsync(uri);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var requestIsOk = response.StatusCode == System.Net.HttpStatusCode.OK;
+                return await Client.PostAsync(uri, body);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
 
-                if (requestIsOk)
-                {
-                    return responseBody;
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
+        public static async Task<HttpResponseMessage> Get(string uri)
+        {
+            try
+            {
+                return await Client.GetAsync(uri);
             }
             catch (Exception e)
             {

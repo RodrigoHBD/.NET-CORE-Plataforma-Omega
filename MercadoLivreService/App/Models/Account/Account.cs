@@ -9,14 +9,19 @@ namespace MercadoLivreService.App.Models
     public class Account
     {
         public ObjectId Id { get; set; }
-        public string MercadoLivreId { get; set; } = "";
+        public int MercadoLivreId { get; set; } 
         public string Owner { get; set; } = "";
         public string Name { get; set; } = "";
         public string Description { get; set; } = "";
-        public string AccessToken { get; set; } = "";
-        public string RefreshToken { get; set; } = "";
+        public AccountTokens Tokens { get; set; } = new AccountTokens();
         public AccountStates States { get; set; } = new AccountStates();
         public AccountDates Dates { get; set; } = new AccountDates();
+    }
+
+    public class AccountTokens
+    {
+        public string AccessToken { get; set; } = "";
+        public string RefreshToken { get; set; } = "";
     }
 
     public class AccountStates
@@ -28,6 +33,7 @@ namespace MercadoLivreService.App.Models
     {
         public DateTime AddedAt { get; set; }
         public DateTime LastSyncedAt { get; set; }
+        public DateTime TokensLastRefreshedAt { get; set; }
     }
 
 }

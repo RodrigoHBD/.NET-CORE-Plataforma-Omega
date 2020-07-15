@@ -18,7 +18,7 @@ namespace MercadoLivreService.App.Boundries.DAO.AccountDAOFactories
                 return new AccountList()
                 {
                     Accounts = query.ToList(),
-                    Pagination = new Pagination()
+                    Pagination = new PaginationOut()
                     {
                         Limit = pagination.Limit,
                         Offset = pagination.Offset,

@@ -28,8 +28,7 @@ namespace MercadoLivreService.App.Entities
             {
                 await Owner.Validate(account.Owner);
                 await Name.Validate(account.Owner, account.Name);
-                AccessToken.Validate(account.AccessToken);
-                RefreshToken.Validate(account.RefreshToken);
+                Tokens.Validate(account.Tokens);
             }
             catch (Exception)
             {

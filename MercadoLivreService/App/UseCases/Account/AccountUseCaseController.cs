@@ -37,5 +37,32 @@ namespace MercadoLivreService.App.UseCases
             }
         }
 
+        public static async Task<AccountTokens> RefreshAndUpdateTokens(string id)
+        {
+            try
+            {
+                var account = await GetAccountById.Execute(id);
+                var newTokens = await RefreshAccountTokens.Execute(account.Tokens.RefreshToken);
+                await UpdateAccountTokens.Execute(id, newTokens);
+                return newTokens;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<Account> GetAccountByIdAsync(string id)
+        {
+            try
+            {
+                return await GetAccountById.Execute(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

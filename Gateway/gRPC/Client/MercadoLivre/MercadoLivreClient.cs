@@ -46,5 +46,17 @@ namespace Gateway.gRPC.Client
             }
         }
 
+        public static async Task<GrpcStatusResponse> AddAccount(GrpcAddAccountReq req)
+        {
+            try
+            {
+                return await Client.AddNewAccountAsync(req);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

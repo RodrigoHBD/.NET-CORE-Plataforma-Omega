@@ -9,9 +9,10 @@ namespace MercadoLivreService.App.Models
     public class Account
     {
         public ObjectId Id { get; set; }
-        public int MercadoLivreId { get; set; } 
+        public long MercadoLivreId { get; set; } 
         public string Owner { get; set; } = "";
         public string Name { get; set; } = "";
+        public string Email { get; set; } = "";
         public string Description { get; set; } = "";
         public AccountTokens Tokens { get; set; } = new AccountTokens();
         public AccountStates States { get; set; } = new AccountStates();

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Gateway.Controllers.Api.MercadoLivreModels.Input;
 using Gateway.Controllers.Api.MercadoLivreAdapters;
 using Gateway.gRPC.Client;
+using Gateway.Controllers.Api.MercadoLivreAdapter;
 
 namespace Gateway.Controllers.Api
 {
@@ -59,11 +60,16 @@ namespace Gateway.Controllers.Api
 
         [HttpGet]
         [Route("process-authcode-exchange")]
-        public async Task ProcessAuthCodeExchange(string metadata, string code)
+        public async Task ProcessAuthCodeExchange(string code, string metadata = null)
         {
             try
             {
-
+                var request = new AddAccountReq()
+                {
+                    AuthCode = code
+                };
+                var grpcRequest = AddAccountReqAdapter.AdaptToGrpc(request);
+                await MercadoLivreClient.AddAccount(grpcRequest);
             }
             catch (Exception)
             {

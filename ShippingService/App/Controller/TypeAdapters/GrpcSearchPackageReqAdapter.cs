@@ -21,6 +21,10 @@ namespace ShippingService.App.TypeAdapters
                     Name = new StringSearchField() { Value = grpcRequest.Name },
                     TrackingCode = new StringSearchField() { Value = grpcRequest.TrackingCode },
                     DynamicString = new StringSearchField() { Value =grpcRequest.DynamicField },
+                    AwaitingForPickUp = GrpcBooleanSearchFieldAdapter.Adapt(grpcRequest.AwaitingForPickUp),
+                    BeingTransported = GrpcBooleanSearchFieldAdapter.Adapt(grpcRequest.BeingTransported),
+                    Delivered = GrpcBooleanSearchFieldAdapter.Adapt(grpcRequest.Delivered),
+                    Rejected = GrpcBooleanSearchFieldAdapter.Adapt(grpcRequest.Rejected),
                     Pagination = GrpcPaginationAdapter.Adapt(grpcRequest.Pagination)
                 };
 
@@ -33,7 +37,7 @@ namespace ShippingService.App.TypeAdapters
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
     }

@@ -128,7 +128,7 @@ namespace MercadoLivreService.App.Boundries.DAO
             }
         }
 
-        public static async Task<bool> CheckIfMercadoLivreIdExists(int id)
+        public static async Task<bool> CheckIfMercadoLivreIdExists(long id)
         {
             try
             {

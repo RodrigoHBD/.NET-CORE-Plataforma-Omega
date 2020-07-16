@@ -30,4 +30,11 @@ class Location {
     Cep = "";
 }
 
-export { Package, Pagination, Location };
+var SearchFields = {
+    Boolean: class {
+        IsActive = false;
+        Value = false;
+    }
+}
+
+export { Package, Pagination, Location, SearchFields };

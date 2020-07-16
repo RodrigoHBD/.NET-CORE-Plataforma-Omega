@@ -182,7 +182,7 @@ namespace ShippingService.App.UseCases
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 

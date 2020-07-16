@@ -7,7 +7,7 @@ namespace MercadoLivreService.MercadoLivreModels.In
 {
     public class SearchOrdersApiCall : ApiCall
     {
-        public int BuyerId { get; set; }
-        public int SellerId { get; set; }
+        public long BuyerId { get; set; }
+        public long SellerId { get; set; }
     }
 }

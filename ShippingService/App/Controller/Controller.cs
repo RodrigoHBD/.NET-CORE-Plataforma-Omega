@@ -91,7 +91,7 @@ namespace ShippingService.App.Controller
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 

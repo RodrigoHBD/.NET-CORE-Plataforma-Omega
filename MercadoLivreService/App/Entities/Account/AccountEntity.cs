@@ -26,6 +26,7 @@ namespace MercadoLivreService.App.Entities
         {
             try
             {
+                await MercadoLivreId.ValidateNew(account.MercadoLivreId);
                 await Owner.Validate(account.Owner);
                 await Name.Validate(account.Owner, account.Name);
                 Tokens.Validate(account.Tokens);

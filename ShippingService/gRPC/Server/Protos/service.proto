@@ -38,7 +38,11 @@ message GrpcSearchPackageRequest {
 	string name = 1;
 	string trackingCode = 2;
 	string dynamicField = 3;
-	GrpcPagination pagination = 4;
+	GrpcBooleanSearchField delivered = 4;
+	GrpcBooleanSearchField rejected = 5;
+	GrpcBooleanSearchField awaitingForPickUp = 6;
+	GrpcBooleanSearchField beingTransported = 7;
+	GrpcPagination pagination = 8;
 }
 
 //responses
@@ -97,4 +101,9 @@ message GrpcPagination {
 	int32 offset = 1;
 	int32 limit = 2;
 	int32 total = 3;
+}
+
+message GrpcBooleanSearchField {
+	bool isActive = 1;
+	bool value = 2;
 }

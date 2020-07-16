@@ -17,6 +17,12 @@ namespace MercadoLivreService.App.Entities.AccountDataFields
         {
             try
             {
+                var nameIsEmpty = name.Length == 0;
+                if (nameIsEmpty)
+                {
+                    return;
+                };
+
                 var isInRange = name.Length >= MinLength && name.Length <= MaxLength;
                 var nameIsTaken = await AccountDAO.CheckIfAccountNameForUserIsTaken(owner, name);
 

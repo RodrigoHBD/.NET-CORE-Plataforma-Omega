@@ -11,6 +11,10 @@ namespace ShippingService.App.Models.Input
         IStringSearchField Name { get; }
         IStringSearchField TrackingCode { get; }
         IStringSearchField DynamicString { get; }
+        IBooleanSearchField AwaitingForPickUp { get; set; }
+        IBooleanSearchField Rejected { get; set; }
+        IBooleanSearchField Delivered { get; set; }
+        IBooleanSearchField BeingTransported { get; set; }
         IPaginationIn Pagination { get; }
     }
 }

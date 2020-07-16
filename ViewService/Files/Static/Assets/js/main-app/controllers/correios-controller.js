@@ -1,4 +1,4 @@
-import { Pagination } from "/js/main-app/models/models.js";
+import { Pagination, SearchFields } from "/js/main-app/models/models.js";
 
 export default class CorreiosController {
     BaseUri = "/api/shipping";
@@ -56,7 +56,7 @@ export default class CorreiosController {
         }
     }
 
-    async PaginateBackwards(){
+    async PaginateBackwards() {
         try {
             application.Session.Correios.ObjectsTable.Pagination.Offset = application.Session.Correios.ObjectsTable.Pagination.Offset - 25;
             await this.SearchPackages();
@@ -72,6 +72,24 @@ export default class CorreiosController {
             request.DynamicString = filters.DynamicString;
             request.Pagination.Limit = pagination.Limit;
             request.Pagination.Offset = pagination.Offset;
+
+            if(filters.BeingTransported){
+                request.BeingTransported.IsActive = true;
+                request.BeingTransported.Value = true
+            }
+            if(filters.AwaitingForPickUp){
+                request.AwaitingForPickUp.IsActive = true;
+                request.AwaitingForPickUp.Value = true
+            }
+            if(filters.Rejected){
+                request.Rejected.IsActive = true;
+                request.Rejected.Value = true
+            }
+            if(filters.Delivered){
+                request.Delivered.IsActive = true;
+                request.Delivered.Value = true
+            }
+            
             return request;
         }
         catch (error) {
@@ -166,9 +184,20 @@ export default class CorreiosController {
         try {
             var data = toolbox.Form.GetFormData("correios-new-package-form");
             var request = this.BuildNewPackageRequest(data);
-            console.log({ request });
             await application.HttpClient.Post(`${this.BaseUri}/new-package`, request);
+            application.Controllers.Correios.FlushNewPackageForm();
             await application.Controllers.Correios.SearchPackages();
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+
+    async CreateNewPackageOnEnterPressed(event) {
+        try {
+            if (event.keyCode == 13) {
+                await application.Controllers.Correios.CreateNewPackage();
+            }
         }
         catch (error) {
             throw error;
@@ -202,6 +231,15 @@ export default class CorreiosController {
         }
     }
 
+    FlushNewPackageForm() {
+        try {
+            document.getElementById("correios-new-package-form").reset();
+        }
+        catch (erro) {
+            throw erro;
+        }
+    }
+
     GetPackageStatusCssClass(id) {
         try {
             var _package = this.GetPackageDetailFromMemory(id);
@@ -223,6 +261,9 @@ export default class CorreiosController {
             else if (isBeingTransported) {
                 return "statusball-yellow";
             }
+            else if (isBeingTransported && isRejected) {
+                return "statusball-yellow-redborder"
+            }
             else if (isPosted) {
                 return "statusball-gray";
             }
@@ -239,5 +280,10 @@ export default class CorreiosController {
 
 class SearchPackagesRequestModel {
     Name = "";
+    DynamicString = "";
+    BeingTransported = new SearchFields.Boolean();
+    AwaitingForPickUp = new SearchFields.Boolean();
+    Rejected = new SearchFields.Boolean();
+    Delivered = new SearchFields.Boolean();
     Pagination = new Pagination();
 }

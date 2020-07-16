@@ -44,6 +44,10 @@ namespace Gateway.gRPC.Client
                     TrackingCode = search.TrackingCode,
                     Name = search.Name,
                     DynamicField = search.DynamicString,
+                    BeingTransported = BooleanSearchFieldAdapter.Adapt(search.BeingTransported),
+                    AwaitingForPickUp = BooleanSearchFieldAdapter.Adapt(search.AwaitingForPickUp),
+                    Delivered = BooleanSearchFieldAdapter.Adapt(search.Delivered),
+                    Rejected = BooleanSearchFieldAdapter.Adapt(search.Rejected),
                     Pagination = new GrpcPagination()
                     {
                         Limit = search.Pagination.Limit,

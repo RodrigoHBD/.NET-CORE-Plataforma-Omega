@@ -13,8 +13,8 @@ namespace MercadoLivreService.App.Boundries.MercadoLivreModels
 
         public string AppToken { get; set; } = "";
 
-        public int BuyerId { get; set; }
+        public long BuyerId { get; set; }
 
-        public int SellerId { get; set; }
+        public long SellerId { get; set; }
     }
 }

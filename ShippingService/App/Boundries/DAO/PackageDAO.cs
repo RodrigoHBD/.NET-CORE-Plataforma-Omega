@@ -203,7 +203,38 @@ namespace ShippingService.App.Boundries
                 var nameFilter = Builders<Package>.Filter.Empty;
                 var trackingCodeFilter = Builders<Package>.Filter.Empty;
                 var dynamicFilter = Builders<Package>.Filter.Empty;
+
+                var awaitingForPickUpFilter = Builders<Package>.Filter.Empty;
+                var beingTransportedFilter = Builders<Package>.Filter.Empty;
+                var deliveredFilter = Builders<Package>.Filter.Empty;
+                var rejectedFilter = Builders<Package>.Filter.Empty;
+
                 var filter = Builders<Package>.Filter.Empty;
+
+                if (request.AwaitingForPickUp.IsActive)
+                {
+                    awaitingForPickUpFilter = Builders<Package>.Filter
+                        .Where(package => package.Status.IsAwaitingForPickUp == request.AwaitingForPickUp.Value);
+                }
+
+                if (request.BeingTransported.IsActive)
+                {
+                    awaitingForPickUpFilter = Builders<Package>.Filter
+                        .Where(package => package.Status.IsBeingTransported == request.BeingTransported.Value);
+                }
+
+                if (request.Delivered.IsActive)
+                {
+                    awaitingForPickUpFilter = Builders<Package>.Filter
+                        .Where(package => package.Status.HasBeenDelivered == request.Delivered.Value);
+                }
+
+                if (request.Rejected.IsActive)
+                {
+                    awaitingForPickUpFilter = Builders<Package>.Filter
+                        .Where(package => package.Status.IsRejected == request.Rejected.Value);
+                }
+
 
                 if (request.DynamicString.IsActive)
                 {
@@ -216,7 +247,8 @@ namespace ShippingService.App.Boundries
                     //TODO
                 }
 
-                filter = Builders<Package>.Filter.And(dynamicFilter);
+                filter = Builders<Package>.Filter.And(dynamicFilter, awaitingForPickUpFilter, beingTransportedFilter,
+                    deliveredFilter, rejectedFilter);
 
                 var total = await CountPackagesAsync(filter);
                 var query = Collections.Packages.Find(filter).Limit(request.Pagination.Limit).Skip(request.Pagination.Offset);

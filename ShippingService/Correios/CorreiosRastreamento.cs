@@ -52,6 +52,8 @@ namespace ShippingService.Correios
         {
             try
             {
+                //var parseWithDataModelAttempt = JsonHelper.TryDeserialize<SroJsonResponse>(json);
+
                 return await JsonHelper.Deserialize<SroJsonResponse>(json);
             }
             catch (System.Exception)
@@ -59,5 +61,7 @@ namespace ShippingService.Correios
                 throw;
             }
         }
+
+        
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShippingService.App.RoutineSchedulerRoutines.PackageWatcher
+namespace ShippingService.App.RoutineSchedulerRoutines
 {
     public class PackageWatcherSearch : IPackageWatcherSearch
     {

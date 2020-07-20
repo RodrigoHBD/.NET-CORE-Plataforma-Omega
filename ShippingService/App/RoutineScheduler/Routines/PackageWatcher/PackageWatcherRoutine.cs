@@ -1,7 +1,6 @@
 ﻿using ShippingService.App.Boundries;
 using ShippingService.App.Models.Input;
 using ShippingService.App.Models.Output;
-using ShippingService.App.RoutineSchedulerRoutines.PackageWatcher;
 using ShippingService.App.UseCases;
 using System;
 using System.Collections.Generic;
@@ -20,7 +19,12 @@ namespace ShippingService.App.RoutineSchedulerRoutines
 
         public static int DefaultSearchLimit { get; } = 1;
 
+        public string Name { get; set; } = "PackageWatcher";
+
         public int CallbackIntervalInMilliseconds { get; } = 14400000;
+
+        public Timer RoutineTimer { get; set; }
+        public bool IsPaused { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Callback(object data)
         {
@@ -111,6 +115,34 @@ namespace ShippingService.App.RoutineSchedulerRoutines
             routineControl.CurrentIteration++;
         }
 
+        public Task Start()
+        {
+            throw new NotImplementedException();
+        }
 
+        public Task Pause()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Resume()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task End()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task Run()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TimerCallback(object state)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -9,12 +9,12 @@ namespace ShippingService.App
 {
     public class RoutineScheduler
     {
-        private static List<Timer> Routines { get; set; } = new List<Timer>();
+        private static List<IRoutine> Routines { get; set; } = new List<IRoutine>();
         public static void Initialize()
         {
             try
             {
-                CreateRoutine(new PackageWatcherRoutine());
+                CreateRoutine(new PackageWatcherRoutine2());
             }
             catch (Exception e)
             {
@@ -26,8 +26,8 @@ namespace ShippingService.App
         {
             try
             {
-                var timer = new Timer(new TimerCallback(routine.Callback), null, 0, routine.CallbackIntervalInMilliseconds);
-                PushRoutineToHeap(timer);
+                PushRoutineToHeap(routine);
+                routine.Start().Wait();
             }
             catch (Exception e)
             {
@@ -35,7 +35,7 @@ namespace ShippingService.App
             }
         }
 
-        private static void PushRoutineToHeap(Timer routine)
+        private static void PushRoutineToHeap(IRoutine routine)
         {
             try
             {

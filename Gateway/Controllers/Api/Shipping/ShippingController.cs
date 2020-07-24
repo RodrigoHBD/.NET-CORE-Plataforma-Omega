@@ -82,5 +82,53 @@ namespace Gateway.Controllers
                 throw e;
             }
         }
+
+        [HttpGet]
+        [Route("package-watcher-routine-state")]
+        public async Task<IActionResult> GetPackageWatcherRoutineState()
+        {
+            try
+            {
+                var grpcResponse = await ShippingClient.GetPackageWatcherRoutineState();
+                return new ContentResult()
+                {
+                    Content = PackageWatcherRoutineStateFactory.MakeSerialized(grpcResponse),
+                    ContentType = "application/json"
+                };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("run-package-watcher-routine")]
+        public async Task RunPackageWatcherRoutine()
+        {
+            try
+            {
+                await ShippingClient.RunPackageWatcherRoutine();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("run-package-watcher-routine-by-id")]
+        public async Task RunPackageWatcherRoutineById(string id)
+        {
+            try
+            {
+                await ShippingClient.RunWatcherRoutineOnOnePackage(id);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -10,6 +10,7 @@ namespace ShippingService.App
     public class RoutineScheduler
     {
         private static List<IRoutine> Routines { get; set; } = new List<IRoutine>();
+
         public static void Initialize()
         {
             try
@@ -32,6 +33,111 @@ namespace ShippingService.App
             catch (Exception e)
             {
                 throw e;
+            }
+        }
+
+        public static RoutineStates GetRoutineStates(string name)
+        {
+            try
+            {
+                var routine = Routines.Find(_routine => _routine.Name == name);
+
+                if (routine != null)
+                {
+                    return routine.States;
+                }
+                else
+                {
+                    throw new Exception($"Rotina de nome {name} não existe");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static RoutineDates GetRoutineDates(string name)
+        {
+            try
+            {
+                var routine = Routines.Find(_routine => _routine.Name == name);
+
+                if (routine != null)
+                {
+                    return routine.Dates;
+                }
+                else
+                {
+                    throw new Exception($"Rotina de nome {name} não existe");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static void PauseRoutine(string name)
+        {
+            try
+            {
+                var routine = Routines.Find(_routine => _routine.Name == name);
+
+                if(routine != null)
+                {
+                    routine.Pause().Wait();
+                }
+                else
+                {
+                    throw new Exception($"Rotina de nome {name} não existe");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static void ResumeRoutine(string name)
+        {
+            try
+            {
+                var routine = Routines.Find(_routine => _routine.Name == name);
+
+                if (routine != null)
+                {
+                    routine.Resume().Wait();
+                }
+                else
+                {
+                    throw new Exception($"Rotina de nome {name} não existe");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static void RunRoutine(string name)
+        {
+            try
+            {
+                var routine = Routines.Find(_routine => _routine.Name == name);
+
+                if (routine != null)
+                {
+                    routine.Run().Wait();
+                }
+                else
+                {
+                    throw new Exception($"Rotina de nome {name} não existe");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 

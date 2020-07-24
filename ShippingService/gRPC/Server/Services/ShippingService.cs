@@ -94,6 +94,30 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
+        public override async Task<GrpcStatusResponse> RunPackageWatcherRoutine(GrpcVoid request, ServerCallContext context)
+        {
+            try
+            {
+                return await Controller.RunPackageWatcherRoutine();
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
+        public override async Task<GrpcRoutineStates> GetPackageWatcherRoutineState(GrpcVoid request, ServerCallContext context)
+        {
+            try
+            {
+                return await Controller.GetPackageWatcherRoutineState();
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
         public static RpcException HandleException(Exception exception)
         {
             return new RpcException(new Status(StatusCode.Unknown, exception.Message));

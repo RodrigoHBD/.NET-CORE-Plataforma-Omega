@@ -5,6 +5,8 @@ import ComputedController from "/js/main-app/controllers/computed-controller.js"
 import CommonController from "/js/main-app/controllers/common-controller.js";
 import AnimationsController from '/js/main-app/controllers/animations-controller.js';
 import MercadoLivreController from '/js/main-app/controllers/mercado-livre-controller.js';
+import ShippingController from '/js/main-app/controllers/shipping-controller.js';
+import NotificationController from '/js/main-app/controllers/notification-controller.js';
 
 export default class Controllers {
     Common = new CommonController();
@@ -14,4 +16,6 @@ export default class Controllers {
     Session = new SessionController();
     Computed = new ComputedController();
     MercadoLivre = new MercadoLivreController();
+    Shipping = new ShippingController();
+    Notification = new NotificationController();
 }

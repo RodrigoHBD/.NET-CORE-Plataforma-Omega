@@ -6,17 +6,29 @@ using System.Threading.Tasks;
 
 namespace ShippingService.App
 {
-    interface IRoutine
+    public interface IRoutine
     {
         public string Name { get; set; }
         public int CallbackIntervalInMilliseconds { get; }
-        public bool IsPaused { get; set; }
-        public Timer RoutineTimer { get; set; }
+        public RoutineStates States { get; set; }
+        public RoutineDates Dates { get; set; }
         public Task Start();
+        public Task End();
         public Task Pause();
         public Task Resume();
-        public Task End();
         public Task Run();
-        public void TimerCallback(object state);
+    }
+
+    public class RoutineStates 
+    {
+        public bool IsPaused { get; set; }
+        public bool IsExecuting { get; set; }
+        public bool IsInitialized { get; set; }
+    }
+
+    public class RoutineDates
+    {
+        public DateTime LastExecutedAt { get; set; }
+        public DateTime NextExecutionAt { get; set; }
     }
 }

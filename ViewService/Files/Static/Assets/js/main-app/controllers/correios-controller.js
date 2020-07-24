@@ -258,11 +258,11 @@ export default class CorreiosController {
             else if (isAwaitingForPickUp) {
                 return "statusball-orange";
             }
-            else if (isBeingTransported) {
-                return "statusball-yellow";
-            }
             else if (isBeingTransported && isRejected) {
                 return "statusball-yellow-redborder"
+            }
+            else if (isBeingTransported) {
+                return "statusball-yellow";
             }
             else if (isPosted) {
                 return "statusball-gray";
@@ -274,6 +274,10 @@ export default class CorreiosController {
         catch (erro) {
             throw erro;
         }
+    }
+
+    OpenCorreiosLinksPage(trackingCode){
+        window.open(`https://linkcorreios.com.br/${trackingCode}`);
     }
 
 }

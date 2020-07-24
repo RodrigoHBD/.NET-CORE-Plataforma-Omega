@@ -98,7 +98,9 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.SroJsonResponseFactor
                     || evento.status[0] == "21" || evento.status[0] == "26" || evento.status[0] == "36" || evento.status[0] == "48"
                     || evento.status[0] == "49" || evento.status[0] == "64");
 
-                    if (rejectedBDE || rejectedBDI || rejectedBDR)
+                    var rejectedFC = evento.tipo[0] == "FC" && (evento.status[0] == "01");
+
+                    if (rejectedBDE || rejectedBDI || rejectedBDR || rejectedFC)
                     {
                         isPosted = true;
                     }
@@ -121,8 +123,7 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.SroJsonResponseFactor
                 var awaitingBDI = evento.tipo[0] == "BDI" && (evento.status[0] == "24");
                 var awaitingBDR = evento.tipo[0] == "BDR" && (evento.status[0] == "24");
                 var awaitingLDI = evento.tipo[0] == "LDI" && (evento.status[0] == "01" || evento.status[0] == "02"
-                    || evento.status[0] == "03" || evento.status[0] == "04" || evento.status[0] == "11" || evento.status[0] == "13"
-                    || evento.status[0] == "14");
+                    || evento.status[0] == "03" || evento.status[0] == "04" || evento.status[0] == "11" || evento.status[0] == "13");
 
                 if (awaitingBDE || awaitingBDI || awaitingBDR || awaitingLDI)
                 {

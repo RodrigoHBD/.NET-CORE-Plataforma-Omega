@@ -98,5 +98,45 @@ namespace Gateway.gRPC.Client
             }
         }
 
+        public static  async Task<GrpcRoutineStates> GetPackageWatcherRoutineState()
+        {
+            try
+            {
+                return await Client.GetPackageWatcherRoutineStateAsync(new GrpcVoid());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcStatusResponse> RunPackageWatcherRoutine()
+        {
+            try
+            {
+                return await Client.RunPackageWatcherRoutineAsync(new GrpcVoid());
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcStatusResponse> RunWatcherRoutineOnOnePackage(string id)
+        {
+            try
+            {
+                var request = new GrpcIdMessage()
+                {
+                    Id = id
+                };
+                return await Client.RunPackageWatcherRoutineManuallyAsync(request);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

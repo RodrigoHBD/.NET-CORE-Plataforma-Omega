@@ -13,23 +13,16 @@ namespace ShippingService.App.RoutineSchedulerRoutines
     public class PackageWatcherRoutine2 : IRoutine
     {
         private static Timer _RoutineTimer { get; set; }
-        public Timer RoutineTimer { get; set; }
 
         public string Name { get; set; }
 
         public int CallbackIntervalInMilliseconds { get; set; }
 
-        public bool IsPaused { get; set; } = false;
-
-        public bool IsInitialized { get; set; } = false;
-
-        private bool IsExecuting { get; set; } = false;
-
         private bool ShouldExecute
         {
             get
             {
-                if(!IsPaused && !IsExecuting)
+                if(!States.IsPaused && !States.IsExecuting)
                 {
                     return true;
                 }
@@ -44,10 +37,14 @@ namespace ShippingService.App.RoutineSchedulerRoutines
 
         private IPackageWatcherSearch SearchRequest { get; set; }
 
+        public RoutineStates States { get; set; } = new RoutineStates();
+
+        public RoutineDates Dates { get; set; } = new RoutineDates();
+
         public PackageWatcherRoutine2()
         {
             Name = "Package Watcher";
-            CallbackIntervalInMilliseconds = 10000;   
+            CallbackIntervalInMilliseconds = 14400000;   
         }
 
         private void InitializeTimer()
@@ -71,19 +68,20 @@ namespace ShippingService.App.RoutineSchedulerRoutines
         public async Task Start()
         {
             InitializeTimer();
-            IsInitialized = true;
+            States.IsInitialized = true;
         }
 
         public async Task End()
         {
             _RoutineTimer.Dispose();
-            IsInitialized = false;
-            IsPaused = false;
+            States.IsInitialized = false;
+            States.IsPaused = false;
+            States.IsExecuting = false;
         }
 
         public async Task Pause()
         {
-            IsPaused = true;
+            States.IsPaused = true;
         }
 
         public async Task Run()
@@ -101,8 +99,8 @@ namespace ShippingService.App.RoutineSchedulerRoutines
 
         public async Task Resume()
         {
-            IsPaused = false;
-            await Run();
+            States.IsPaused = false;
+            //await Run();
         }
 
         private void InitializeRoutine()
@@ -115,16 +113,16 @@ namespace ShippingService.App.RoutineSchedulerRoutines
         {
             try
             {
-                IsExecuting = true;
+                StartCicle();
                 InitializeRoutine();
-                Console.WriteLine("Routine Init");
+                
                 while (RoutineControl.WathersTotalNumber > RoutineControl.CurrentIteration)
                 {
-                    await RunSearchCicle();
+                    await RunSearch();
                     IncrementSearchPagination();
                 }
-                Console.WriteLine("Routine Finish");
-                IsExecuting = false;
+
+                FinishCicle();
             }
             catch (Exception)
             {
@@ -132,7 +130,39 @@ namespace ShippingService.App.RoutineSchedulerRoutines
             }
         }
 
-        private async Task RunSearchCicle()
+        private void StartCicle()
+        {
+            CicleStartedUpdateDates();
+            CicleStartedUpdateStates();
+        }
+
+        private void FinishCicle()
+        {
+            CicleFinishedUpdateDates();
+            CicleFinishedUpdateStates();
+        }
+
+        private void CicleStartedUpdateStates()
+        {
+            States.IsExecuting = true;
+        }
+
+        private void CicleStartedUpdateDates()
+        {
+            Dates.NextExecutionAt = DateTime.Now.AddMilliseconds(CallbackIntervalInMilliseconds);
+        }
+
+        private void CicleFinishedUpdateStates()
+        {
+            States.IsExecuting = false;
+        }
+
+        private void CicleFinishedUpdateDates()
+        {
+            Dates.LastExecutedAt = DateTime.Now;
+        }
+
+        private async Task RunSearch()
         {
             try
             {

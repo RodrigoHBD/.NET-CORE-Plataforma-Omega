@@ -3,6 +3,8 @@ using MercadoLivreService.App;
 using MercadoLivreService.App.UseCases;
 using MercadoLivreService.HttpClientLibrary;
 using MercadoLivreService.HttpClientLibrary.Helpers;
+using MercadoLivreService.MercadoLivre;
+using MercadoLivreService.MercadoLivre.Methods;
 using MercadoLivreService.MercadoLivreModels;
 using MercadoLivreService.MercadoLivreModels.In;
 using MercadoLivreService.MercadoLivreModels.Out;
@@ -22,12 +24,17 @@ namespace MercadoLivreService
 
         private static string RefreshTokenUri { get { return $"{BaseUri}/oauth/token?grant_type=refresh_token"; } }
 
-        private static MercadoLivreAppCredentials Credentials { get { return AppCredentials.GetInstance(); } }
+        public static MercadoLivreAppCredentials Credentials { get { return AppCredentials.GetInstance(); } }
+
+        public static MercadoLivreMethods Methods { get; private set; } = new MercadoLivreMethods();
+
+        public static ResponseHandler ResponseHandler { get; private set; } = new ResponseHandler();
 
         public static async Task<AccessTokensJson> ExchangeCodeForTokens(string code)
         {
             try
             {
+                await Methods.Tokens.ExchangeAuthCodeForTokens.Execute(new MercadoLivre.Models.In.ExchangeAuthCodeCall());
                 var credentials = Credentials;
                 var uri = $"{AuthCodeUri}&client_id={credentials.AppId}&client_secret={credentials.AppToken}&code={code}&redirect_uri=https://plataforma-omega.brazilsouth.cloudapp.azure.com/api/mercadolivre/process-authcode-exchange";
                 return await HttpClientLibrary.HttpClient.Post<AccessTokensJson>(uri, null);
@@ -66,6 +73,19 @@ namespace MercadoLivreService
                 var uri = $"{BaseUri}/orders/{id}?access_token={accessToken}";
                 var response = await HttpClientLibrary.HttpClient.Post(uri, null);
                 return await HandleApiResponse<OrderDetailsJson>(response);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<ApiCallResponse> GetAccountDetails()
+        {
+            try
+            {
+                await Methods.Account.GetAccountDetails.Execute(new ApiCall());
+                return new ApiCallResponse();
             }
             catch (Exception)
             {

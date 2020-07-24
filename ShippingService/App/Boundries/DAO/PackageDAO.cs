@@ -219,19 +219,19 @@ namespace ShippingService.App.Boundries
 
                 if (request.BeingTransported.IsActive)
                 {
-                    awaitingForPickUpFilter = Builders<Package>.Filter
+                    beingTransportedFilter = Builders<Package>.Filter
                         .Where(package => package.Status.IsBeingTransported == request.BeingTransported.Value);
                 }
 
                 if (request.Delivered.IsActive)
                 {
-                    awaitingForPickUpFilter = Builders<Package>.Filter
+                    deliveredFilter = Builders<Package>.Filter
                         .Where(package => package.Status.HasBeenDelivered == request.Delivered.Value);
                 }
 
                 if (request.Rejected.IsActive)
                 {
-                    awaitingForPickUpFilter = Builders<Package>.Filter
+                    rejectedFilter = Builders<Package>.Filter
                         .Where(package => package.Status.IsRejected == request.Rejected.Value);
                 }
 

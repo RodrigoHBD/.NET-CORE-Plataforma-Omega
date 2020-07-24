@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Thu Jul 16 2020 19:48:25 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Thu Jul 23 2020 19:23:34 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 <head>
   <meta charset="utf-8">
@@ -122,18 +122,18 @@
             <div id="MercadoLivreTabContent" data-w-id="823e6e38-ca34-c47b-a36c-245e0afcc771" class="mercadolivre-tab-content">
               <div data-duration-in="300" data-duration-out="100" class="w-tabs">
                 <div class="tabs-menu-3 w-tab-menu">
-                  <a data-w-tab="Tab 1" class="mercadolivretaboption w-inline-block w-tab-link">
+                  <a data-w-tab="Tab 1" class="mercadolivretaboption w-inline-block w-tab-link w--current">
                     <div>Contas</div>
                   </a>
                   <a data-w-tab="Tab 2" class="mercadolivretaboption w-inline-block w-tab-link">
                     <div>Adicionar Contas</div>
                   </a>
-                  <a data-w-tab="Tab 3" class="mercadolivretaboption w-inline-block w-tab-link w--current">
+                  <a data-w-tab="Tab 3" class="mercadolivretaboption w-inline-block w-tab-link">
                     <div>Detalhes da Conta</div>
                   </a>
                 </div>
                 <div class="w-tab-content">
-                  <div data-w-tab="Tab 1" class="w-tab-pane">
+                  <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
                     <div class="text-block-14">Listagem de contas adicionadas a plataforma</div>
                     <div class="mercadolivre-accountstable">
                       <div class="mercadolivre-accountstable-head">
@@ -176,7 +176,7 @@
                   </div>
                   <div data-w-tab="Tab 2" class="tab-pane-tab-2 w-tab-pane">
                     <h2 class="heading-24">Sincornizar uma Nova Conta à Plataforma</h2><a href="#" class="button-14 w-button">Sincronizar Conta</a></div>
-                  <div data-w-tab="Tab 3" class="w-tab-pane w--tab-active"></div>
+                  <div data-w-tab="Tab 3" class="w-tab-pane"></div>
                 </div>
               </div>
             </div>
@@ -194,18 +194,21 @@
             <div class="div-block-2">
               <div data-duration-in="300" data-duration-out="100" class="tabs-2 w-tabs">
                 <div class="w-tab-menu">
-                  <a data-w-tab="Tab 1" class="w-inline-block w-tab-link w--current">
+                  <a data-w-tab="Tabela de Pacotes" class="w-inline-block w-tab-link">
                     <div>Objetos Cadastrados</div>
                   </a>
-                  <a data-w-tab="Tab 2" class="w-inline-block w-tab-link">
+                  <a data-w-tab="Cadastro Manual" class="w-inline-block w-tab-link">
                     <div>Cadastro Manual</div>
                   </a>
-                  <a data-w-tab="Tab 3" id="CorreiosTab-InnerTabs-DetailsTab" class="correiostab-innertabs-detailstab w-inline-block w-tab-link">
+                  <a data-w-tab="Detalhes" id="CorreiosTab-InnerTabs-DetailsTab" class="correiostab-innertabs-detailstab w-inline-block w-tab-link w--current">
                     <div>Detalhe</div>
+                  </a>
+                  <a data-w-tab="Monitorador" v-on:click="Controllers.Shipping.UpdateWatcherState()" class="w-inline-block w-tab-link">
+                    <div>Monitorador</div>
                   </a>
                 </div>
                 <div class="tabs-content-2 w-tab-content">
-                  <div data-w-tab="Tab 1" class="tab-pane-tab-1 w-tab-pane w--tab-active">
+                  <div data-w-tab="Tabela de Pacotes" class="tab-pane-tab-1 w-tab-pane">
                     <div class="div-block-15">
                       <h2 class="heading">Tabela de Objetos</h2>
                       <div class="correio-tabela-objetos-head">
@@ -254,7 +257,7 @@
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="text-block-5">{{ package.SaleId }}</div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
-                                <div class="text-block-6">{{ package.TrackingCode}}</div>
+                                <div v-on:click="Controllers.Correios.OpenCorreiosLinksPage(package.TrackingCode)" class="text-block-6">{{ package.TrackingCode}}</div>
                                 <div class="linhaseparadora-semespa-o-black"></div>
                                 <div class="div-block-22">
                                   <div class="text-block-4">V 12,000 </div>
@@ -284,7 +287,7 @@
                       <div class="correio-tabela-objeto-footer"><a v-on:click="Controllers.Correios.PaginateBackwards()" v-if="Correios.ObjectsTable.Pagination.Offset &gt; 0" href="#" class="w-button">Retroceder</a><a v-on:click="Controllers.Correios.PaginateForward()" v-if="(Correios.ObjectsTable.Pagination.Offset + Correios.ObjectsTable.Pagination.Limit) &lt; Correios.ObjectsTable.Pagination.Total" href="#" class="w-button">Avançar</a></div>
                     </div>
                   </div>
-                  <div data-w-tab="Tab 2" class="w-tab-pane">
+                  <div data-w-tab="Cadastro Manual" class="w-tab-pane">
                     <h2 class="heading-8">Cadastro Manual de Entrega</h2>
                     <div v-on:keyup="Controllers.Correios.CreateNewPackageOnEnterPressed($event)" class="w-form">
                       <form id="correios-new-package-form" name="email-form-4" data-name="Email Form 4" class="form-4"><label for="Name-4" class="field-label-7">Nome</label><input type="text" class="text-field-6 w-input" maxlength="256" name="Name" data-name="Name" placeholder="Campo opcional, dê um nome ao pacote..." id="Name-4"><label for="email" class="field-label-5">Código de Rastreio</label><label for="TrackingCode" class="field-label-6">Id da Venda ( Interno )</label><input type="email" class="text-field-4 w-input" maxlength="256" name="TrackingCode" data-name="TrackingCode" placeholder="Código de Rastreio..." id="TrackingCode" required=""><input type="text" class="text-field-5 w-input" maxlength="256" name="SaleId" data-name="SaleId" placeholder="Código Id..." id="SaleId" required=""><label class="field-label-12">Peso em Gramas</label><label for="Weight" class="field-label-13">Plataforma</label><input type="number" class="text-field-11 w-input" maxlength="256" name="Weight" data-name="Weight" placeholder="Peso ..." id="Weight" required=""><select id="Platform" name="Platform" data-name="Platform" class="select-field-2 w-select"><option value="">Select one...</option><option value="0">Mercado Livre</option><option value="1">B2W</option><option value="Third">Third Choice</option></select><label class="w-checkbox checkbox-field"><input type="checkbox" id="SetWatcher" name="SetWatcher" data-name="SetWatcher" class="w-checkbox-input"><span for="SetWatcher" class="checkbox-label-2 w-form-label">Monitorar</span></label>
@@ -297,7 +300,7 @@
                       </div>
                     </div>
                   </div>
-                  <div data-w-tab="Tab 3" class="w-tab-pane">
+                  <div data-w-tab="Detalhes" class="w-tab-pane w--tab-active">
                     <h2 class="heading-11">Detalhe do Objeto</h2>
                     <div class="div-block-21">
                       <div class="correio-detalhe-objeto-data-field">
@@ -312,11 +315,11 @@
                         <div class="correio-detalheobjeto-titulodecampo">Link do Anúncio</div><a href="#">https://mercadodibre.com/498415215</a></div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">Status Correio</div>
-                        <div id="correio-detalheobjeto-msg" class="text-block-12">{{ Correios.CachedPackage.Messages.StatusDescription }}</div>
+                        <div id="correio-detalheobjeto-msg" class="text-block-12">{{ Correios.CachedPackage. Messages.StatusDescription }}</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">Código de Rastreamento</div>
-                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">{{ Correios.CachedPackage.TrackingCode }}</div>
+                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">{{ Correios.CachedPackage. TrackingCode }}</div>
                       </div>
                       <div class="correio-detalhe-objeto-data-field">
                         <div class="correio-detalheobjeto-titulodecampo">SAC</div><a href="#">https://mercadodibre.com/498415215</a></div>
@@ -328,22 +331,24 @@
                         <div class="correio-detalheobjeto-titulodecampo">Estimativa Prometido</div>
                         <div id="correio-detalheobjeto-nome-codigo" class="text-block-12-copy">25/07/2020</div>
                       </div>
+                      <div class="div-block-42">
+                        <div class="text-block-23">Ações</div><a v-on:click="Controllers.Shipping.RunPackageWatcherRoutineById(Correios.CachedPackage.Id)" href="#" class="w-button">Atualizar Status</a></div>
                       <h3 class="heading-12">Localizações</h3>
                       <div class="correio-detalhe-objeto-data-field correio-detalhe-objeto-data-field-location">
                         <div class="correio-detalheobjeto-titulodecampo">Localização Atual</div>
                         <div class="location-display">
                           <ul role="list" class="w-list-unstyled">
                             <li class="list-item">
-                              <div class="text-block-12"><span class="text-span">Cidade: {{Correios.CachedPackage.Locations.CurrentLocation.City }}</span></div>
+                              <div class="text-block-12"><span class="text-span">Cidade: {{Correios.CachedPackage. Locations.CurrentLocation.City }}</span></div>
                             </li>
                             <li class="list-item-2">
-                              <div class="text-block-12"><span class="text-span">Estado:</span> {{Correios.CachedPackage.Locations.CurrentLocation.State }}</div>
+                              <div class="text-block-12"><span class="text-span">Estado:</span> {{Correios.CachedPackage.Locations. CurrentLocation.State }}</div>
                             </li>
                             <li>
-                              <div class="text-block-12"><span class="text-span">Rua:</span> {{Correios.CachedPackage.Locations.CurrentLocation.StreetName }} {{Correios.CachedPackage.Locations.CurrentLocation.StreetNumber }}</div>
+                              <div class="text-block-12"><span class="text-span">Rua:</span> {{Correios.CachedPackage.Locations. CurrentLocation.StreetName }} {{Correios.CachedPackage.Locations. CurrentLocation.StreetNumber }}</div>
                             </li>
                             <li class="list-item">
-                              <div class="text-block-12"><span class="text-span">CEP:</span> {{Correios.CachedPackage.Locations.CurrentLocation.Cep}}</div>
+                              <div class="text-block-12"><span class="text-span">CEP:</span> {{Correios.CachedPackage.Locations. CurrentLocation.Cep}}</div>
                             </li>
                           </ul>
                         </div>
@@ -353,13 +358,13 @@
                         <div class="location-display">
                           <ul role="list" class="w-list-unstyled">
                             <li class="list-item">
-                              <div class="text-block-12"><span class="text-span">Cidade: {{Correios.CachedPackage.Locations.HeadedToLocation.City }}</span></div>
+                              <div class="text-block-12"><span class="text-span">Cidade: {{Correios.CachedPackage. Locations.HeadedToLocation.City }}</span></div>
                             </li>
                             <li class="list-item-2">
-                              <div class="text-block-12"><span class="text-span">Estado:</span>  {{Correios.CachedPackage.Locations.HeadedToLocation.State }}</div>
+                              <div class="text-block-12"><span class="text-span">Estado:</span>  {{Correios.CachedPackage.Locations. HeadedToLocation.State }}</div>
                             </li>
                             <li>
-                              <div class="text-block-12"><span class="text-span">Rua:</span> {{Correios.CachedPackage.Locations.HeadedToLocation.StreetName }} {{Correios.CachedPackage.Locations.HeadedToLocation.StreetNumber }}</div>
+                              <div class="text-block-12"><span class="text-span">Rua:</span> {{Correios.CachedPackage.Locations. HeadedToLocation.StreetName }} {{Correios.CachedPackage.Locations.HeadedToLocation.StreetNumber }}</div>
                             </li>
                             <li class="list-item">
                               <div class="text-block-12"><span class="text-span">CEP:</span> {{Correios.CachedPackage.Locations.HeadedToLocation.Cep}}</div>
@@ -376,6 +381,15 @@
                       <div class="w-form-fail">
                         <div>Oops! Something went wrong while submitting the form.</div>
                       </div>
+                    </div>
+                  </div>
+                  <div data-w-tab="Monitorador" class="w-tab-pane">
+                    <h2 class="heading-25">Monitorador de Pacotes</h2>
+                    <div class="div-block-40">
+                      <div class="text-block-20">Status: <span v-if="Shipping.WatcherState.IsExecuting &amp;&amp; Shipping.WatcherState.IsInitialized" class="text-span-4">Executando</span> <span v-if="Shipping.WatcherState.IsInitialized &amp;&amp; Shipping.WatcherState.IsPaused" class="text-span-5">Pausado</span> <span v-if="!Shipping.WatcherState.IsInitialized" class="text-span-7">Erro</span> <span v-if="Shipping.WatcherState.IsInitialized &amp;&amp; !Shipping.WatcherState.IsPaused &amp;&amp; !Shipping.WatcherState.IsExecuting" class="text-span-6">Normal</span></div>
+                      <div class="text-block-21">Última data de execução: {{ Shipping.WatcherState.LastExecutedAt }}</div>
+                      <div class="text-block-22">Próxima data de execução: {{ Shipping.WatcherState.NextExecutionAt }}</div>
+                      <div class="div-block-41"><a v-on:click="Controllers.Shipping.RunWatcherRoutine()" href="#" class="w-button">Executar</a></div>
                     </div>
                   </div>
                 </div>
@@ -652,7 +666,12 @@
         </div>
       </div>
     </div>
-    <div class="thehiddenactioncontroller"><a id="app-actions-show-confirmation-warning" data-w-id="d00cf800-cdbf-fc25-8e58-e011f75b7fc4" href="#" class="button-8 w-button">AppBlur</a></div>
+    <div class="thehiddenactioncontroller"><a id="app-actions-show-confirmation-warning" data-w-id="d00cf800-cdbf-fc25-8e58-e011f75b7fc4" href="#" class="shownotificationboxbtn w-button">AppBlur</a><a id="show-notification-span-btn" data-w-id="9dc8c0c8-2543-b3c7-210a-8090742b1da3" href="#" class="shownotificationspanbtn w-button">Button Text</a></div>
+    <div id="notification-span" v-bind:class="{ &#x27;notification-span-error&#x27;: Common.NotificationSpan.Type == &#x27;error&#x27; }" data-w-id="b7f31b6c-bcd7-5f7a-763e-17c8c0fec27c" class="notification-span">
+      <h3 v-bind:class="{ &#x27;notification-span-error&#x27;: Common.NotificationSpan.Type == &#x27;error&#x27; }" class="notification-span-title">{{ Common. NotificationSpan. Title }}</h3>
+      <div v-on:click="Controllers.Notification.HideNotificationSpan()" class="html-embed-5 w-embed"><img src="https://img.icons8.com/ios/50/000000/close-window.png"></div>
+      <div class="text-block-24">{{ Common.NotificationSpan.Text }}</div>
+    </div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5edfa191b5ff34226cd2885d" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>

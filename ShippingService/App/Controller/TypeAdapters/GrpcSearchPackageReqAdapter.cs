@@ -28,7 +28,7 @@ namespace ShippingService.App.TypeAdapters
                     Pagination = GrpcPaginationAdapter.Adapt(grpcRequest.Pagination)
                 };
 
-                if(grpcRequest.Name.Length > 0 || grpcRequest.TrackingCode.Length > 0 || grpcRequest.DynamicField.Length > 0)
+                if(grpcRequest.DynamicField.Length > 0)
                 {
                     request.DynamicString.IsActive = true;
                 }

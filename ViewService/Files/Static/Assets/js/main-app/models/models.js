@@ -37,4 +37,13 @@ var SearchFields = {
     }
 }
 
-export { Package, Pagination, Location, SearchFields };
+class Notification {
+    Id = 0;
+    Title = "";
+    Text = "";
+    IsVisible = false;
+    Type = "";
+    Lifetime = 5000;
+}
+
+export { Package, Pagination, Location, SearchFields, Notification };

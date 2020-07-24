@@ -122,5 +122,58 @@ namespace ShippingService.App.Controller
             }
         }
 
+        public static async Task<GrpcStatusResponse> RunPackageWatcherRoutine()
+        {
+            try
+            {
+                RoutineScheduler.RunRoutine("Package Watcher");
+                return StatusResponsePresenter.Present(true, "Rotina executada com sucesso");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcStatusResponse> PauseRoutine(GrpcIdMessage request)
+        {
+            try
+            {
+                RoutineScheduler.PauseRoutine(request.Id);
+                return StatusResponsePresenter.Present(true, "Rotina executada com sucesso");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcStatusResponse> ResumeRoutine(GrpcIdMessage request)
+        {
+            try
+            {
+                RoutineScheduler.ResumeRoutine(request.Id);
+                return StatusResponsePresenter.Present(true, "Rotina executada com sucesso");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcRoutineStates> GetPackageWatcherRoutineState()
+        {
+            try
+            {
+                var states = RoutineScheduler.GetRoutineStates("Package Watcher");
+                var dates = RoutineScheduler.GetRoutineDates("Package Watcher");
+                return RoutineStatePresenter.Present(dates, states);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

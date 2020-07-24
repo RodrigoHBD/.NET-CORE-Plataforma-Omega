@@ -25,6 +25,8 @@ namespace ShippingService.App.RoutineSchedulerRoutines
 
         public Timer RoutineTimer { get; set; }
         public bool IsPaused { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public RoutineStates States { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public RoutineDates Dates { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Callback(object data)
         {

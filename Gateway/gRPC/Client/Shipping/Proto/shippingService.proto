@@ -11,6 +11,8 @@ service Shipping {
 	rpc SearchPackages (GrpcSearchPackageRequest) returns (GrpcPackageList);
 	rpc RunPackageWatcherRoutineManually (GrpcIdMessage) returns (GrpcStatusResponse);
 	rpc HardDeletePackage (GrpcIdMessage) returns (GrpcStatusResponse);
+	rpc RunPackageWatcherRoutine (GrpcVoid) returns (GrpcStatusResponse);
+	rpc GetPackageWatcherRoutineState (GrpcVoid) returns (GrpcRoutineStates);
 }
 
 // requests
@@ -106,4 +108,16 @@ message GrpcPagination {
 message GrpcBooleanSearchField {
 	bool isActive = 1;
 	bool value = 2;
+}
+
+message GrpcVoid {
+
+}
+
+message GrpcRoutineStates {
+	bool isInitialized = 1;
+	bool isExecuting = 2;
+	bool isPaused = 3;
+	string lastExecutedAt = 4;
+	string nextExecutionAt = 5;
 }

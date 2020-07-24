@@ -1,4 +1,5 @@
 import Controllers from "/js/main-app/controllers/controllers.js";
+import ExceptionHandler from "/js/main-app/exception-handler.js";
 
 export default class App {
     IsInitialized = false;
@@ -6,6 +7,7 @@ export default class App {
     Session;
     Computed;
     HttpClient = new HttpClient();
+    ExceptionHandler = new ExceptionHandler();
 
     Initialize() {
         try {

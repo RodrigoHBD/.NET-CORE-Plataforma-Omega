@@ -1,6 +1,7 @@
 ﻿using MercadoLivreService.App.Boundries.MercadoLivreAdapters;
 using MercadoLivreService.App.Boundries.MercadoLivreModels;
 using MercadoLivreService.App.Models;
+using MercadoLivreService.MercadoLivre.Models.In;
 using MercadoLivreService.MercadoLivreModels.In;
 using MercadoLivreService.MercadoLivreModels.Out;
 using System;
@@ -16,6 +17,9 @@ namespace MercadoLivreService.App.Boundries
         {
             try
             {
+                var request = new ExchangeAuthCodeCall() { Code = code };
+                var _json = await MercadoLivreLib.Methods.Tokens.ExchangeAuthCodeForTokens.Execute(request);
+
                 var json = await MercadoLivreLib.ExchangeCodeForTokens(code);
                 return AuthCodeExchangeJsonAdapter.Adapt(json);
             }

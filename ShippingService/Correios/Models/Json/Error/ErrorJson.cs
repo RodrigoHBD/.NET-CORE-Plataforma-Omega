@@ -7,6 +7,7 @@ namespace ShippingService.Correios.Models.Error
 {
     public class ErrorJson
     {
-        public string error { get; set; } = "";
+        public List<string> numero { get; set; } = new List<string>();
+        public List<string> erro { get; set; } = new List<string>();
     }
 }

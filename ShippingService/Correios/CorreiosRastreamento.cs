@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading;
 using ShippingService.Correios.Models.Sro;
 using ShippingService.HttpClientLibrary.Helpers;
+using ShippingService.Correios.Models.Error;
 
 namespace ShippingService.Correios
 {
@@ -52,9 +53,25 @@ namespace ShippingService.Correios
         {
             try
             {
-                //var parseWithDataModelAttempt = JsonHelper.TryDeserialize<SroJsonResponse>(json);
+                var parseWithDataModelAttempt = await JsonHelper.TryDeserialize<SroJsonResponse>(json);
+                var parseWithErrorModelAttempt = await JsonHelper.TryDeserialize<ErrorJson>(json);
 
-                return await JsonHelper.Deserialize<SroJsonResponse>(json);
+                if (parseWithDataModelAttempt.IsDeserialized)
+                {
+                    return (SroJsonResponse) parseWithDataModelAttempt.Content;
+                }
+                else
+                {
+                    if (parseWithErrorModelAttempt.IsDeserialized)
+                    {
+                        var error = parseWithErrorModelAttempt.Content as ErrorJson;
+                        throw new System.Exception(error.erro[0]);
+                    }
+                    else
+                    {
+                        throw parseWithDataModelAttempt.DeserializationException;
+                    }
+                }
             }
             catch (System.Exception)
             {

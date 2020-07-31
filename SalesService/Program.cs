@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using SalesService.App;
 
 namespace SalesService
 {
@@ -13,6 +14,7 @@ namespace SalesService
     {
         public static void Main(string[] args)
         {
+            AppInitializer.InitializeAsync().Wait();
             CreateHostBuilder(args).Build().Run();
         }
 

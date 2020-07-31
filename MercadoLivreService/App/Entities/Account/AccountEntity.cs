@@ -1,4 +1,6 @@
 ﻿using Grpc.Core;
+using MercadoLivreService.App.Boundries.DAO;
+using MercadoLivreService.App.CustomExceptions;
 using MercadoLivreService.App.Entities.AccountDataFields;
 using MercadoLivreService.App.Models;
 using System;
@@ -22,6 +24,40 @@ namespace MercadoLivreService.App.Entities
             }
         }
 
+        public static async Task ValidateMercadoLivreId(long id)
+        {
+            try
+            {
+                var exists = await AccountDAO.CheckIfMercadoLivreIdExists(id);
+
+                if (!exists)
+                {
+                    throw new Exception("Conta nao sincronizada na base de dados");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task ValidateId(string id)
+        {
+            try
+            {
+                var idExists = await AccountDAO.CheckIdExists(id);
+
+                if (!idExists)
+                {
+                    throw new CustomExceptions.InvalidOperationException("Id inexistente");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         private static async Task ValidateDataFieldsForNew(Account account)
         {
             try
@@ -36,5 +72,6 @@ namespace MercadoLivreService.App.Entities
                 throw;
             }
         }
+
     }
 }

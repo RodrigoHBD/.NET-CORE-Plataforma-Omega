@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SalesService.App.Controller.Adapters;
 using SalesService.App.Presenters;
-using SalesService.App.TypeAdapters;
 using SalesService.App.UseCases;
 using SalesService.gRPC.Server.Protos;
 
@@ -15,8 +15,8 @@ namespace SalesService.App.Controller
         {
             try
             {
-                var request = GrpcRegisterSaleRequestAdapter.Adapt(grpcRequest);
-                await UseCaseOperator.RegisterNewSale(request);
+                var request = SaleAdapters.RegisterSaleRequest.Adapt(grpcRequest);
+                await SaleUseCasesController.RegisterNewSaleAsync(request);
                 return Presenter.PresentStatusResponse(true);
             }
             catch (Exception e)

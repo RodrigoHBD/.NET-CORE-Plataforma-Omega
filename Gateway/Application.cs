@@ -1,4 +1,5 @@
-﻿using Gateway.gRPC.Client;
+﻿using Gateway.App;
+using Gateway.gRPC.Client;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -29,6 +30,7 @@ namespace Gateway
         {
             try
             {
+                InitializeDatabase();
                 ViewClient.Initialize();
                 ShippingClient.Initialize();
                 MercadoLivreClient.Initialize();
@@ -57,6 +59,12 @@ namespace Gateway
         {
             var hostBuilder = CreateHostBuilder(args);
             hostBuilder.Build().Start();
+        }
+
+        private static void InitializeDatabase()
+        {
+            Database.Connect().Wait();
+            Collections.InitializeAsync().Wait();
         }
     }
 }

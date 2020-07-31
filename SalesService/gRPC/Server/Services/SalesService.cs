@@ -8,7 +8,7 @@ using SalesService.gRPC.Server.Protos;
 
 namespace SalesService.gRPC.Server.Services
 {
-    public class SalesServiceImplementation : Sale.SaleBase
+    public class SalesServiceImplementation : GrpcSaleService.GrpcSaleServiceBase
     {
         public override async Task<GrpcStatusResponse> RegisterSale(GrpcRegisteSaleRequest request, ServerCallContext context)
         {

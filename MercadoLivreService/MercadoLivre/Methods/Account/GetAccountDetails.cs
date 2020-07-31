@@ -1,4 +1,5 @@
 ﻿using MercadoLivreService.HttpClientLibrary;
+using MercadoLivreService.MercadoLivreModels;
 using MercadoLivreService.MercadoLivreModels.In;
 using MercadoLivreService.MercadoLivreModels.Out;
 using System;
@@ -17,7 +18,7 @@ namespace MercadoLivreService.MercadoLivre.Methods
             {
                 ValidateCall(call);
                 var apiCall = await MakeTheCall(call);
-                return await MercadoLivreLib.ResponseHandler.HandleApiResponse<>(apiCall);
+                return await MercadoLivreLib.ResponseHandler.HandleApiResponse<AccountSelfDataJson>(apiCall);
             }
             catch (Exception)
             {

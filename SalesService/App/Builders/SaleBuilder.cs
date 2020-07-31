@@ -10,7 +10,7 @@ namespace SalesService.App.Builders
 {
     public class SaleBuilder
     {
-        public static Sale BuildSale(IRegisterNewSaleRequest request)
+        public static Sale BuildSale(RegisterSaleRequest request)
         {
             try
             {
@@ -22,9 +22,6 @@ namespace SalesService.App.Builders
                     Inventory = BuildInventory(request)
                 };
 
-                request.IncludedServices.ForEach(
-                    service => sale.Inventory.IncludedServices.Add( BuildIncludedService(service)) );
-
                 return sale;
             }
             catch (Exception e)
@@ -33,19 +30,7 @@ namespace SalesService.App.Builders
             }
         }
 
-        private static SaleIncludedService BuildIncludedService(IIncludedService service)
-        {
-            try
-            {
-                return SaleIncludedServiceFactory.MakeIncludedService(service);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        private static SaleInventory BuildInventory(IRegisterNewSaleRequest request)
+        private static SaleInventory BuildInventory(RegisterSaleRequest request)
         {
             try
             {

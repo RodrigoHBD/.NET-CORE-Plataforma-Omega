@@ -5,6 +5,7 @@ using MercadoLivreService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 
 
@@ -51,6 +52,21 @@ namespace MercadoLivreService.App.Controllers
                 var id = GrpcStringReqAdapter.GetStringData(grpcRequest);
                 await OrderUseCaseController.SearchRecentOrdersAsync(id);
                 return new GrpcVoid();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcOrder> GetOrderDetails(GrpcGetOrderDetailReq grpcRequest)
+        {
+            try
+            {
+                var orderId = grpcRequest.OrderId;
+                var accountId = grpcRequest.AccountId;
+                var json = await OrderUseCaseController.GetOrderDetailById(orderId, accountId);
+                return OrderDetailPresenter.Present(json);
             }
             catch (Exception)
             {

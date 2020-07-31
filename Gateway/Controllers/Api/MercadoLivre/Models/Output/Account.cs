@@ -9,6 +9,8 @@ namespace Gateway.Controllers.Api.MercadoLivreModels.Output
     {
         public string Id { get; set; } = "";
         public string Name { get; set; } = "";
+        public string Email { get; set; } = "";
+        public string Nickname { get; set; } = "";
         public string Description { get; set; } = "";
         public string Owner { get; set; } = "";
         public bool IsSynced { get; set; }

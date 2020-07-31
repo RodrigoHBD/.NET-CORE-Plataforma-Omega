@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="gRPC\Service\**" />
+    <Content Remove="gRPC\Service\**" />
+    <EmbeddedResource Remove="gRPC\Service\**" />
+    <None Remove="gRPC\Service\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Protobuf Include="gRPC\Server\Protos\service.proto" GrpcServices="Server" />
   </ItemGroup>
 
@@ -16,10 +23,6 @@
     <PackageReference Include="MongoDB.Bson" Version="2.10.4" />
     <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
     <PackageReference Include="MongoDB.Driver.Core" Version="2.10.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="gRPC\Service\" />
   </ItemGroup>
 
 </Project>

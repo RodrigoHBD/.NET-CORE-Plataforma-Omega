@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Thu Jul 23 2020 19:23:34 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Wed Jul 29 2020 12:56:41 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 <head>
   <meta charset="utf-8">
@@ -57,7 +57,7 @@
           <a data-w-tab="Tab 3" class="menuoptiontab w-inline-block w-tab-link">
             <div class="text-block-3">Via Varejo</div>
           </a>
-          <a data-w-tab="MercadoLivre" class="menuoptiontab w-inline-block w-tab-link">
+          <a data-w-tab="MercadoLivre" class="menuoptiontab w-inline-block w-tab-link w--current">
             <div>Mercado Livre</div>
           </a>
           <a data-w-tab="Tab 5" class="menuoptiontab w-inline-block w-tab-link">
@@ -72,7 +72,7 @@
           <a data-w-tab="Tab 8" class="menuoptiontab w-inline-block w-tab-link">
             <div>Madeira Madeira</div>
           </a>
-          <a data-w-tab="Correios" class="menuoptiontab w-inline-block w-tab-link w--current">
+          <a data-w-tab="Correios" class="menuoptiontab w-inline-block w-tab-link">
             <div>Correios/SGP</div>
           </a>
           <a data-w-tab="Tab 10" class="menuoptiontab w-inline-block w-tab-link">
@@ -114,7 +114,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
           </div>
           <div data-w-tab="Tab 3" class="w-tab-pane"></div>
-          <div data-w-tab="MercadoLivre" class="w-tab-pane">
+          <div data-w-tab="MercadoLivre" class="w-tab-pane w--tab-active">
             <div class="div-block-38">
               <h2 class="heading-21">Mercado Livre</h2>
               <div id="MercadoLivre-ShowContent-Btn" data-w-id="ed8db1f6-3d20-8b0a-f969-f600f18296c7" class="html-embed-4 w-embed"><img src="https://img.icons8.com/metro/52/000000/settings.png"></div>
@@ -145,7 +145,7 @@
                           <div class="w-form-fail">
                             <div>Oops! Something went wrong while submitting the form.</div>
                           </div>
-                        </div><a href="#" class="button-13 w-button">Atualizar</a>
+                        </div><a v-on:click="Controllers.MercadoLivre.SearchAccounts()" href="#" class="button-13 w-button">Atualizar</a>
                         <div class="div-block-35"><a href="#" class="button-12 w-button">Anterior</a><a href="#" class="button-11 w-button">Próxima</a></div>
                       </div>
                       <div class="mercadolivre-accountstable-body">
@@ -158,10 +158,10 @@
                           <div class="linhaseparadora-semespa-o-white"></div>
                           <div class="text-block-19">Reputação</div>
                         </div>
-                        <div class="mercadolivre-accountstable-iteration">
-                          <div class="text-block-16">Ômega</div>
+                        <div v-for="account in MercadoLivre.AccountsTable.Body" class="mercadolivre-accountstable-iteration">
+                          <div class="text-block-16">{{ account.Nickname }}</div>
                           <div class="linhaseparadora-semespa-o-black"></div>
-                          <div class="text-block-15-copy">antenaemcuritiba@gmail.com</div>
+                          <div class="text-block-15-copy">{{ account.Email }}</div>
                           <div class="linhaseparadora-semespa-o-black"></div>
                           <div class="div-block-36">
                             <div class="checked-embedhtml w-embed"><img src="https://img.icons8.com/fluent/96/000000/checked.png"></div>
@@ -175,7 +175,7 @@
                     </div>
                   </div>
                   <div data-w-tab="Tab 2" class="tab-pane-tab-2 w-tab-pane">
-                    <h2 class="heading-24">Sincornizar uma Nova Conta à Plataforma</h2><a href="#" class="button-14 w-button">Sincronizar Conta</a></div>
+                    <h2 class="heading-24">Sincornizar uma Nova Conta à Plataforma</h2><a v-on:click="Controllers.MercadoLivre.OpenAddAccountWindow()" href="#" class="button-14 w-button">Sincronizar Conta</a></div>
                   <div data-w-tab="Tab 3" class="w-tab-pane"></div>
                 </div>
               </div>
@@ -190,7 +190,7 @@
           <div data-w-tab="Tab 6" class="w-tab-pane"></div>
           <div data-w-tab="Tab 7" class="w-tab-pane"></div>
           <div data-w-tab="Tab 8" class="w-tab-pane"></div>
-          <div data-w-tab="Correios" class="tab-pane-tab-9 w-tab-pane w--tab-active">
+          <div data-w-tab="Correios" class="tab-pane-tab-9 w-tab-pane">
             <div class="div-block-2">
               <div data-duration-in="300" data-duration-out="100" class="tabs-2 w-tabs">
                 <div class="w-tab-menu">

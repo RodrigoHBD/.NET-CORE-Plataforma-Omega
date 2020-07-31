@@ -113,7 +113,7 @@ namespace MercadoLivreService
             {
                 var uri = $"{BaseUri}/users/me?access_token={accessToken}";
                 var response = await HttpClientLibrary.HttpClient.Get(uri);
-                return await HandleApiResponse<UserSelfDataJson>(response);
+                return await HandleApiResponse<AccountSelfDataJson>(response);
             }
             catch (Exception)
             {

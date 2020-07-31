@@ -9,7 +9,7 @@ namespace MercadoLivreService.App.UseCases
 {
     public class GetAccountById
     {
-        public static async Task<Account> Execute(string id)
+        public async Task<Account> Execute(string id)
         {
             try
             {

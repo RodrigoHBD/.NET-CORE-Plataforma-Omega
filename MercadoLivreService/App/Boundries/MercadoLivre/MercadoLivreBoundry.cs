@@ -13,15 +13,12 @@ namespace MercadoLivreService.App.Boundries
 {
     public class MercadoLivreBoundry
     {
-        public static async Task<AuthCodeExchangeResult> ExchangeAuthorizationCodeForAccessTokens(string code)
+        public static async Task<ApiCallResponse> ExchangeAuthorizationCodeForAccessTokens(string code)
         {
             try
             {
                 var request = new ExchangeAuthCodeCall() { Code = code };
-                var _json = await MercadoLivreLib.Methods.Tokens.ExchangeAuthCodeForTokens.Execute(request);
-
-                var json = await MercadoLivreLib.ExchangeCodeForTokens(code);
-                return AuthCodeExchangeJsonAdapter.Adapt(json);
+                return await MercadoLivreLib.Methods.Tokens.ExchangeAuthCodeForTokens.Execute(request);
             }
             catch (Exception)
             {
@@ -81,6 +78,18 @@ namespace MercadoLivreService.App.Boundries
             try
             {
                 return await MercadoLivreLib.GetUserData(accessToken);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<ApiCallResponse> GetAccountData(ApiCall call)
+        {
+            try
+            {
+                return await MercadoLivreLib.Methods.Account.GetAccountDetails.Execute(call);
             }
             catch (Exception)
             {

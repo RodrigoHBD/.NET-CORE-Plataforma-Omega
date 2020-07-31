@@ -9,11 +9,11 @@ namespace MercadoLivreService.App.UseCases
 {
     public class RegisterAccount
     {
-        public static async Task Execute(Account account)
+        public static async Task<string> Execute(Account account)
         {
             try
             {
-                await AccountDAO.RegisterAccount(account);
+                return await AccountDAO.RegisterAccount(account);
             }
             catch (Exception)
             {

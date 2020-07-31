@@ -1,12 +1,46 @@
+import { Pagination } from "/js/main-app/models/models.js";
+
 export default class MercadoLivreController {
     BaseUri = "/api/mercadolivre";
-    AuthCodeExchangeUri = `https://plataforma-omega.brazilsouth.cloudapp.azure.com${this.BaseUri}/process-authcode-exchange`;
+    AuthCodeExchangeUri = `https://omega.brazilsouth.cloudapp.azure.com${this.BaseUri}/process-authcode-exchange`;
     AuthApiUri = "http://auth.mercadolivre.com.br/authorization?response_type=code"
     AddAccountWindow;
 
     async SearchAccounts(){
-        
+        try{
+            var uri = `${this.BaseUri}/search-accounts`;
+            var body = this.BuildSearchAccountsRequestBody();
+            var response = await application.HttpClient.Post(uri, body);
+            this.UpdateAccountsTableFromJsonResponse(response);
+        }
+        catch(erro){
+            application.ExceptionHandler.HandleApiCallException(erro);
+        }
     } 
+
+    BuildSearchAccountsRequestBody(){
+        try{
+            var filters = this.GetAccountsSearchFilters();
+            var body = new SearchAccountsReq();
+            return body;
+        }
+        catch(erro){
+            throw erro;
+        }
+    }
+
+    UpdateAccountsTableFromJsonResponse(json){
+        try {
+            var body = json.body;
+            var accounts = body.Accounts;
+            var pagination = body.Pagination;
+            application.Session.MercadoLivre.AccountsTable.Body = accounts;
+            application.Session.MercadoLivre.AccountsTable.Pagination = pagination;
+        }
+        catch(erro){
+            throw erro;
+        }
+    }
 
     GetAccountsSearchFilters(){
         try {
@@ -47,17 +81,23 @@ export default class MercadoLivreController {
             return response.body;
         }
         catch(erro){
-            throw erro;
+            application.ExceptionHandler.HandleApiCallException(erro);
         }
     }
 
-    async OpenAddAccountUri(){
+    async OpenAddAccountWindow(){
         try {
             var uri = await this.BuildAddAccountUri();
             this.AddAccountWindow = window.open(uri);
         }
         catch(erro){
-            throw erro;
+            application.ExceptionHandler.HandleApiCallException(erro);
         }
     }
+}
+
+class SearchAccountsReq {
+    Pagination = new Pagination();
+    Name = "";
+    Owner = "";
 }

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option csharp_namespace = "Gateway.gRPC.Client.MercadoLivreProto";
 
-service MercadoLivre {
+service MercadoLivreGrpc {
 	rpc AddNewAccount (GrpcAddAccountReq) returns (GrpcStatusResponse);
 	rpc GetAppId (GrpcVoid) returns (GrpcStringResponse);
 	rpc GetAppToken (GrpcVoid) returns (GrpcStringResponse);
@@ -10,6 +10,7 @@ service MercadoLivre {
 	rpc SearchAccounts (GrpcSearchAccountsReq) returns (GrpcAccountList);
 	rpc RefreshAccountTokens (GrpcGetByIdReq) returns (GrpcVoid);
 	rpc SearchRecentOrders (GrpcStringReq) returns (GrpcVoid);
+	rpc GetOrderDetail (GrpcGetOrderDetailReq) returns (GrpcOrder);
 }
 
 message GrpcAddAccountReq {
@@ -38,6 +39,11 @@ message GrpcIntReq {
 	int32 data = 1;
 }
 
+message GrpcGetOrderDetailReq {
+	string order_id = 1;
+	int64 account_id = 2;
+}
+
 // responses
 
 message GrpcStatusResponse {
@@ -63,6 +69,8 @@ message GrpcAccount {
 	bool is_synced = 5;
 	string last_synced_at = 6;
 	string added_at = 7;
+	string email = 8;
+	string nickname = 9;
 }
 
 message GrpcAccountList {
@@ -79,4 +87,12 @@ message GrpcPaginationOut {
 message GrpcPaginationIn {
 	int32 Offset = 1;
 	int32 Limit = 2;
+}
+
+message GrpcOrder {
+	int64 id = 1;
+	string status = 2;
+	double total_amount = 3;
+	int64 shipping_id = 4;
+	string shipping_status = 5;
 }

@@ -9,12 +9,15 @@
   <ItemGroup>
     <PackageReference Include="Grpc.AspNetCore" Version="2.29.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="MongoDB.Bson" Version="2.10.4" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.4" />
   </ItemGroup>
 
     <ItemGroup>
-		<Protobuf Include="gRPC\Client\View\Proto\viewService.proto" GrpcServices="Client" />
-		<Protobuf Include="gRPC\Client\Shipping\Proto\shippingService.proto" GrpcServices="Client" />
-		<Protobuf Include="gRPC\Client\MercadoLivre\Proto\mercadoLivreService.proto" GrpcServices="Client" />
+		<Protobuf Include="gRPC\Client\View\Proto\viewService.proto" GrpcServices="Client"/>
+		<Protobuf Include="gRPC\Client\Shipping\Proto\shippingService.proto" GrpcServices="Client"/>
+		<Protobuf Include="gRPC\Client\MercadoLivre\Proto\mercadoLivreService.proto" GrpcServices="Client"/>
+    <Protobuf Include="gRPC\Client\Sale\Proto\sale.proto" GrpcServices="Client"/>
 	</ItemGroup>
 
     <ItemGroup>

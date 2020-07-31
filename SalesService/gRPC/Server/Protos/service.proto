@@ -2,20 +2,51 @@ syntax = "proto3";
 
 option csharp_namespace = "SalesService.gRPC.Server.Protos";
 
-service Sale {
+service GrpcSaleService {
 	rpc RegisterSale (GrpcRegisteSaleRequest) returns (GrpcStatusResponse);
 }
 
 //requests
 message GrpcRegisteSaleRequest {
-	string productId = 1;
-	double totalSaleValue = 2;
-	int32 quantitySold = 3;
+	string product_id = 1;
+	int32 quantity_sold = 3;
 	string plataform = 4;
+	string platform_sale_id = 5;
+	string status = 6;
 }
 
 //responses
 message GrpcStatusResponse {
 	bool ok = 1;
 	string message = 2;
+}
+
+message GrpcSale {
+	string id = 1;
+	string platform_id = 2;
+	string status = 3;
+	GrpcSaleInventory inventory = 4;
+	string created_at = 5;
+}
+
+message GrpcSaleInventory {
+	string product_id = 1;
+	string add_id = 2;
+	int32 quantity_sold = 3;
+	int32 unitary_price = 4;
+	bool override_unitary_price = 5;
+	repeated GrpcSaleIncludedService included_services = 6;
+	repeated GrpcSaleIncludedTax included_taxes = 7;
+}
+
+message GrpcSaleIncludedService {
+	string name = 1;
+	string description = 2;
+	double value = 3;
+}
+
+message GrpcSaleIncludedTax {
+	string name = 1;
+	string description = 2;
+	double percentage = 3;
 }

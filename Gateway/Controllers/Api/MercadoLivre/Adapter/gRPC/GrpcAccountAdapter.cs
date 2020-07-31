@@ -21,7 +21,9 @@ namespace Gateway.Controllers.Api.MercadoLivreAdapters
                     Owner = account.Owner,
                     IsSynced = account.IsSynced,
                     LastSyncedAt = account.LastSyncedAt,
-                    AddedAt = account.AddedAt
+                    AddedAt = account.AddedAt,
+                    Email = account.Email,
+                    Nickname = account.Nickname
                 };
             }
             catch (Exception)

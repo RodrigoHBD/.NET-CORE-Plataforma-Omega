@@ -12,13 +12,13 @@ namespace Gateway.gRPC.Client
     {
         private static string UriAddress { get; set; } = "http://localhost:5004";
 
-        private static MercadoLivre.MercadoLivreClient Client { get; set; }
+        private static MercadoLivreGrpc.MercadoLivreGrpcClient Client { get; set; }
 
         public static void Initialize()
         {
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
             var channel = GrpcChannel.ForAddress(UriAddress);
-            Client = new MercadoLivre.MercadoLivreClient(channel);
+            Client = new MercadoLivreGrpc.MercadoLivreGrpcClient(channel);
         }
 
         public static async Task<GrpcAccountList> SearchAccounts(GrpcSearchAccountsReq request)

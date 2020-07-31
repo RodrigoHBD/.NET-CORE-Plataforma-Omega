@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,17 +9,18 @@ namespace SalesService.App.Models
 {
     public class Sale
     {
-        //This is actually the ObjectId
+        [BsonId]
         public ObjectId Id { get; set; }
+        public string PlatformSaleId { get; set; }
         public DateTime CreatedAt { get; set; }
         public SaleStatus Status { get; set; }
         public SaleInventory Inventory { get; set; }
-        public SalePlataform Plataform { get; set; }
+        public string Plataform { get; set; }
         public Sale()
         {
             Status = SaleStatus.Pending;
             Inventory = new SaleInventory();
-            Plataform = SalePlataform.NotProvided;
+            Plataform = "Nenhum";
             CreatedAt = DateTime.UtcNow;
         }
     }
@@ -60,6 +62,13 @@ namespace SalesService.App.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Percentage { get; set; }
+    }
+
+    public class BuyerData
+    {
+        public string Name { get; set; }
+        public string Cpf { get; set; }
+        public string Address { get; set; }
     }
 
     //TODO

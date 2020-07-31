@@ -15,7 +15,7 @@ namespace MercadoLivreService.MercadoLivre.Methods.Tokens
     {
         private MercadoLivreAppCredentials Credentials { get { return MercadoLivreLib.Credentials; } }
 
-        private string RedirectUri { get; } = "https://plataforma-omega.brazilsouth.cloudapp.azure.com/api/mercadolivre/process-authcode-exchange";
+        private string RedirectUri { get; } = "https://omega.brazilsouth.cloudapp.azure.com/api/mercadolivre/process-authcode-exchange";
 
         public async Task<ApiCallResponse> Execute(ExchangeAuthCodeCall call)
         {
@@ -36,7 +36,7 @@ namespace MercadoLivreService.MercadoLivre.Methods.Tokens
             try
             {
                 var uri = $"{AuthCodeUri}&client_id={Credentials.AppId}&client_secret={Credentials.AppToken}&code={call.Code}&redirect_uri={RedirectUri}";
-                return await HttpClientLibrary.HttpClient.Get(uri);
+                return await HttpClientLibrary.HttpClient.Post(uri);
             }
             catch (Exception)
             {

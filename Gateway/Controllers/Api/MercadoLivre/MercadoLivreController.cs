@@ -8,6 +8,7 @@ using Gateway.Controllers.Api.MercadoLivreModels.Input;
 using Gateway.Controllers.Api.MercadoLivreAdapters;
 using Gateway.gRPC.Client;
 using Gateway.Controllers.Api.MercadoLivreAdapter;
+using Gateway.Controllers.Api.MercadoLivre;
 
 namespace Gateway.Controllers.Api
 {
@@ -70,6 +71,21 @@ namespace Gateway.Controllers.Api
                 };
                 var grpcRequest = AddAccountReqAdapter.AdaptToGrpc(request);
                 await MercadoLivreClient.AddAccount(grpcRequest);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpPost]
+        [Route("notification")]
+        public async Task HandleNotification(Notification notification)
+        {
+            try
+            {
+                await NotificationHandler.HandleNotification(notification);
+                return;
             }
             catch (Exception)
             {

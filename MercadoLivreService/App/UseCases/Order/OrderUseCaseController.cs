@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MercadoLivreService.App.Entities;
+using MercadoLivreService.MercadoLivreModels.Out;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +14,7 @@ namespace MercadoLivreService.App.UseCases
             try
             {
                 var account = await AccountUseCaseController.GetAccountByIdAsync(id);
-                account.Tokens = await ValidateAccessToken.Execeute(account);
+                account.Tokens = await GetValidAccessToken.Execeute(id);
                 var search = await SearchRecentOrders.Execute(account);
                 Console.WriteLine();
             }
@@ -22,14 +24,13 @@ namespace MercadoLivreService.App.UseCases
             }
         }
 
-        public static async Task GetOrderDetailById(long orderId, long mercadoLivreAccountId)
+        public static async Task<OrderDetailJson> GetOrderDetailById(string orderId, long mercadoLivreAccountId)
         {
             try
             {
-                //var account = await AccountUseCaseController.GetAccountByIdAsync(id);
-                //await ValidateAccessToken.Execeute(account);
-                //var search = await SearchRecentOrders.Execute(account);
-                Console.WriteLine();
+                await AccountEntity.ValidateMercadoLivreId(mercadoLivreAccountId);
+                var details = await OrderUseCases.GetDetails.Execute(mercadoLivreAccountId, orderId);
+                return details;
             }
             catch (Exception)
             {

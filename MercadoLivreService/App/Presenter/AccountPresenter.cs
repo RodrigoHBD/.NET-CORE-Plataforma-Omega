@@ -21,7 +21,9 @@ namespace MercadoLivreService.App.Presenter
                     Description = account.Description,
                     AddedAt = account.Dates.AddedAt.ToString(),
                     LastSyncedAt = account.Dates.LastSyncedAt.ToString(),
-                    IsSynced = account.States.IsSynced
+                    IsSynced = account.States.IsSynced,
+                    Email = account.Email,
+                    Nickname = account.Nickname
                 };
             }
             catch (Exception)

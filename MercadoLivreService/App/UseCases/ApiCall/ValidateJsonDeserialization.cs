@@ -18,6 +18,7 @@ namespace MercadoLivreService.App.UseCases
                 {
                     throw response.DeserializationException;
                 }
+                ValidateJsonDataDeserialization.Execute(response);
             }
             catch (Exception)
             {

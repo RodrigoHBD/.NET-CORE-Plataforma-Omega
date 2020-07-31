@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MercadoLivreService.gRPC.Server
 {
-    public class ServiceImplementation : MercadoLivre.MercadoLivreBase
+    public class ServiceImplementation : MercadoLivreGrpc.MercadoLivreGrpcBase
     {
         public override async Task<GrpcStatusResponse> AddNewAccount(GrpcAddAccountReq request, ServerCallContext context)
         {
@@ -77,6 +77,18 @@ namespace MercadoLivreService.gRPC.Server
             try
             {
                 return await MainController.SearchRecentOrders(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
+        public override async Task<GrpcOrder> GetOrderDetail(GrpcGetOrderDetailReq request, ServerCallContext context)
+        {
+            try
+            {
+                return await MainController.GetOrderDetails(request);
             }
             catch (Exception e)
             {

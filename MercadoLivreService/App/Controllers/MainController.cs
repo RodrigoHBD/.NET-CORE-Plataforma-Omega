@@ -74,6 +74,21 @@ namespace MercadoLivreService.App.Controllers
             }
         }
 
+        public static async Task<GrpcAccount> GetAccountByMarketplaceId(GrpcGetByIdReq grpcRequest)
+        {
+            try
+            {
+                var id = GrpcGetByIdReqAdapter.Adapt(grpcRequest);
+                var parsed = Int64.Parse(id);
+                var account = await AccountUseCases.GetByMercadoLivreId.Execute(parsed);
+                return AccountPresenter.Present(account);
+            }
+            catch (Exception)
+            { 
+                throw;
+            }
+        }
+
         public static async Task<GrpcStringResponse> GetAppId()
         {
             try
@@ -99,6 +114,21 @@ namespace MercadoLivreService.App.Controllers
                 {
                     Data = token
                 };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcShipmentDetail> GetShipmentDetails(GrpcGetShipmentDetailReq grpcRequest)
+        {
+            try
+            {
+                var accountId = grpcRequest.AccountId;
+                var shipmentId = grpcRequest.ShipmentId;
+                var json = await ShipmentUseCases.GetDetails.Execute(accountId, shipmentId);
+                return ShipmentDetailPresenter.Present(json);
             }
             catch (Exception)
             {

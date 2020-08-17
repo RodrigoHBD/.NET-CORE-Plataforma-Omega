@@ -118,8 +118,22 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
+        public override async Task<GrpcBooleanMessage> CheckMarketplaceIdIsRegistered(GrpcStringMessage request, ServerCallContext context)
+        {
+            try
+            {
+                return await Controller.CheckMarketplaceIdIsRegistered(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
         public static RpcException HandleException(Exception exception)
         {
+            Console.WriteLine($"--> EXCEPTION MESSAGE : {exception.Message}");
+            Console.WriteLine($"--> EXCEPTION STACK TRACE : {exception.StackTrace}");
             return new RpcException(new Status(StatusCode.Unknown, exception.Message));
         }
 

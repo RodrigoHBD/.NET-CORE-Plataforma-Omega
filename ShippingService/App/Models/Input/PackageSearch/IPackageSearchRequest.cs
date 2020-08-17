@@ -15,6 +15,7 @@ namespace ShippingService.App.Models.Input
         IBooleanSearchField Rejected { get; set; }
         IBooleanSearchField Delivered { get; set; }
         IBooleanSearchField BeingTransported { get; set; }
+        IBooleanSearchField Posted { get; set; }
         IPaginationIn Pagination { get; }
     }
 }

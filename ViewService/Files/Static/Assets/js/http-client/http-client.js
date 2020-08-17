@@ -1,4 +1,8 @@
-class HttpClient {
+import HttpHelpers from "/js/http-client/http-helpers.js";
+
+export default class HttpClient {
+    Helpers = new HttpHelpers();
+
     async Get(uri, params = []) {
         try {
             if (params.length > 0) {
@@ -6,7 +10,7 @@ class HttpClient {
             }
 
             let response = await axios.get(uri);
-            return this.HandleResponse(response);
+            return response;
         }
         catch (error) {
             this.HandleRequestError(error);
@@ -93,6 +97,8 @@ class HttpClient {
         }
     }
 }
+
+
 //interfaces
 
 class ResponseModel {

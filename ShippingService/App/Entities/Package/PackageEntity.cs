@@ -1,5 +1,6 @@
 ﻿using ShippingService.App.Boundries;
 using ShippingService.App.CustomExceptions;
+using ShippingService.App.Entities.PackageDataField;
 using ShippingService.App.Factories;
 using ShippingService.App.Models;
 using System;
@@ -11,6 +12,8 @@ namespace ShippingService.App.Entities
 {
     public class PackageEntity
     {
+        private static PackageDataFields DataFields { get; } = new PackageDataFields();
+
         public static async Task ValidateNewPackage(Package package)
         {
             try
@@ -77,7 +80,8 @@ namespace ShippingService.App.Entities
         {
             try
             {
-
+                await DataFields.TrackingCode.Valdiate(package.TrackingCode);
+                await DataFields.MarketplaceSaleId.Validate(package.MarketplaceSaleId);
             }
             catch (Exception e)
             {

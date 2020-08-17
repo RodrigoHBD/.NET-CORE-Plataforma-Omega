@@ -18,10 +18,12 @@ namespace ShippingService
         }
         public static IMongoCollection<Package> Packages { get; set; }
         public static IMongoCollection<PackageWatcher> PackageWatcher { get; set; }
+        public static IMongoCollection<Shipment> Shipments { get; set; }
         public static async Task InitializeAsync()
         {
             Packages = Connection.GetCollection<Package>("Packages");
             PackageWatcher = Connection.GetCollection<PackageWatcher>("PackageWatchers");
+            Shipments = Connection.GetCollection<Shipment>("Shipment");
         }
     }
 }

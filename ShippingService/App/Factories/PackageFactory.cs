@@ -21,6 +21,8 @@ namespace ShippingService.App.Factories
                     Weight = request.Weight,
                     BoundPlatform = request.Platform,
                     CreatedManually = request.CreatedManually,
+                    MarketplaceSaleId = request.MarketplaceSaleId,
+                    MarketplaceAccountId = request.MarketplaceAccountId,
                     Content = new PackageContent()
                     {
                         Products = request.Content

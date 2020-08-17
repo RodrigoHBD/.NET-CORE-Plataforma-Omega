@@ -15,6 +15,7 @@ namespace Gateway.Controllers.Shipping.Input
         public BooleanSearchField AwaitingForPickUp { get; set; } = new BooleanSearchField();
         public BooleanSearchField Rejected { get; set; } = new BooleanSearchField();
         public BooleanSearchField Delivered { get; set; } = new BooleanSearchField();
+        public BooleanSearchField Posted { get; set; } = new BooleanSearchField();
         public Pagination Pagination { get; set; } = new Pagination();
     }
 

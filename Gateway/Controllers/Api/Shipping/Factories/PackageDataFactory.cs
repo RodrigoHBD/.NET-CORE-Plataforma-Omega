@@ -18,6 +18,8 @@ namespace Gateway.Controllers.Api.Shipping.Factories
                 Name = data.Name,
                 BoundPlatform = data.BoundPlatform,
                 SaleId = data.SaleId,
+                MarketplaceSaleId = data.MarketplaceSaleId,
+                MarketplaceAccountId = data.MarketplaceAccountId,
                 TrackingCode = data.TrackingCode,
                 Weight = data.Weight,
                 IsWatched = data.IsBeingWatched,
@@ -39,6 +41,12 @@ namespace Gateway.Controllers.Api.Shipping.Factories
                     IsBeingTransported = data.Status.IsBeingTransported,
                     IsDelivered = data.Status.IsDelivered,
                     IsRejected = data.Status.IsRejected
+                },
+                Dates = new PackageDates()
+                {
+                    CreatedAt = data.Dates.CreatedAt,
+                    LastModifiedAt = data.Dates.LastModifiedAt,
+                    PostedAt = data.Dates.PostedAt
                 }
             };
         }

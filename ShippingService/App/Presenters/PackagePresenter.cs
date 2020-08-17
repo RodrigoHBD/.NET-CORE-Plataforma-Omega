@@ -19,6 +19,8 @@ namespace ShippingService.App.Presenters
                     Name = package.Name,
                     TrackingCode = package.TrackingCode,
                     SaleId = package.SaleId,
+                    MarketplaceSaleId = package.MarketplaceSaleId,
+                    MarketplaceAccountId = package.MarketplaceAccountId,
                     IsBeingWatched = package.IsBeingWatched,
                     Weight = package.Weight,
                     BoundPlatform = AdaptPlatform(package),
@@ -32,6 +34,12 @@ namespace ShippingService.App.Presenters
                         IsRejected = package.Status.IsRejected,
                         Message = package.Messages.StatusDescription
                     },
+                    Dates = new GrpcPackageDates()
+                    {
+                        CreatedAt = package.Dates.CreatedAt.ToString(),
+                        LastModifiedAt = package.Dates.LastModifiedAt.ToString(),
+                        PostedAt = package.Dates.PostedAt.ToString()
+                    },
                     Locations = new GrpcPackageLocations()
                     {
                         CurrentLocation = LocationPresenter.PresentLocation(package.Location.CurrentLocation),
@@ -43,7 +51,7 @@ namespace ShippingService.App.Presenters
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 
@@ -54,6 +62,10 @@ namespace ShippingService.App.Presenters
                 if (package.BoundPlatform == AvailablePlatformsToBind.MercadoLivre)
                 {
                     return "mercado livre";
+                }
+                else if(package.BoundPlatform == AvailablePlatformsToBind.B2W)
+                {
+                    return "b2w";
                 }
                 else
                 {

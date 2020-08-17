@@ -9,7 +9,7 @@ namespace MercadoLivreService.App.UseCases.Order
 {
     public class GetDetails
     {
-        public async Task<OrderDetailJson> Execute(long accountId, string orderId)
+        public async Task<OrderDetailJson> Execute(long accountId, long orderId)
         {
 			try
 			{
@@ -29,7 +29,7 @@ namespace MercadoLivreService.App.UseCases.Order
 			return results;
 		}
 
-		private async Task<SearchOrdersApiCall> BuildCall(long accountId, string orderId)
+		private async Task<SearchOrdersApiCall> BuildCall(long accountId, long orderId)
 		{
 			var account = await AccountUseCases.GetByMercadoLivreId.Execute(accountId);
 			var tokens = await GetValidAccessToken.Execeute(account.Id.ToString());

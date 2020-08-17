@@ -14,6 +14,8 @@ namespace ShippingService.App.Models
         public ObjectId Id { get; set; } 
         public string Name { get; set; } = "";
         public string SaleId { get; set; } = "";
+        public string MarketplaceSaleId { get; set; } = "";
+        public string MarketplaceAccountId { get; set; } = "";
         public string TrackingCode { get; set; } = "";
         public AvailablePlatformsToBind BoundPlatform { get; set; } 
         public double Weight { get; set; }
@@ -26,6 +28,8 @@ namespace ShippingService.App.Models
         public bool IsSoftDeleted { get; set; } = false;
         public bool IsBeingWatched { get; set; } = false;
 
+        private PackageTemporaryStates TemporaryStates { get; set; } = new PackageTemporaryStates();
+
         public Package()
         {
             Dates = new PackageDates();
@@ -34,7 +38,22 @@ namespace ShippingService.App.Models
             Messages = new PackageStatusMessages();
             IsSoftDeleted = false;
             BoundPlatform = AvailablePlatformsToBind.None;
+            TemporaryStates = new PackageTemporaryStates();
         }
+
+        public void SetModifiedStateNow()
+        {
+
+            if (TemporaryStates.IsDatesModified)
+            {
+                Dates.SetLastModifiedNow();
+            }
+        }
+    }
+
+    public class PackageTemporaryStates
+    {
+        public bool IsDatesModified { get; set; } = false;
     }
 
     public class PackageStatus
@@ -50,12 +69,19 @@ namespace ShippingService.App.Models
     {
         public DateTime PostedAt { get; set; }
         public DateTime DeliveredAt { get; set; }
-        public DateTime LastUpdated { get; set; }
+        public DateTime LastModifiedAt { get; set; } = DateTime.MinValue;
+        public DateTime CreatedAt { get; private set; } = DateTime.MinValue;
+        public DateTime LastUpdated { get; set; } = DateTime.MinValue;
         public PackageDates()
         {
+            CreatedAt = DateTime.UtcNow;
             PostedAt = DateTime.UtcNow;
             DeliveredAt = DateTime.UtcNow;
-            LastUpdated = DateTime.UtcNow;
+            LastModifiedAt = DateTime.UtcNow;
+        }
+        public void SetLastModifiedNow()
+        {
+            LastModifiedAt = DateTime.UtcNow;
         }
     }
 

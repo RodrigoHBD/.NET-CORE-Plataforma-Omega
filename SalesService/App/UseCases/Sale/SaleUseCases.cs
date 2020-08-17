@@ -10,5 +10,6 @@ namespace SalesService.App.UseCases
         public static CreateNewSale CreateNewSale { get; set; } = new CreateNewSale();
         public static RegisterSale RegisterSale { get; set; } = new RegisterSale();
         public static SearchSales SearchSales { get; set; } = new SearchSales();
+        public static GetSaleByMarketplaceId GetSaleByMarketplaceId { get; } = new GetSaleByMarketplaceId();
     }
 }

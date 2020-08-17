@@ -16,7 +16,19 @@ namespace ViewService.App
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
+            }
+        }
+
+        public static async Task ReadImageAsFileStream(string path)
+        {
+            try
+            {
+                var image = File.OpenRead(path);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

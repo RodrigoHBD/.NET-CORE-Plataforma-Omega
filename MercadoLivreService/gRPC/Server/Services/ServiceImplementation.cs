@@ -96,6 +96,30 @@ namespace MercadoLivreService.gRPC.Server
             }
         }
 
+        public override async Task<GrpcShipmentDetail> GetShipmentDetail(GrpcGetShipmentDetailReq request, ServerCallContext context)
+        {
+            try
+            {
+                return await MainController.GetShipmentDetails(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
+        public override async Task<GrpcAccount> GetAccountByMarketplaceId(GrpcGetByIdReq request, ServerCallContext context)
+        {
+            try
+            {
+                return await MainController.GetAccountByMarketplaceId(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
         private RpcException HandleException(Exception e)
         {
             Console.WriteLine(e);

@@ -20,6 +20,7 @@ namespace SalesService.App.Controller.Adapters
 					ProductId = grpcRequest.ProductId,
 					QuantitySold = grpcRequest.QuantitySold,
 					Plataform = grpcRequest.Plataform,
+					PlatformSaleId = grpcRequest.PlatformSaleId,
 					Status = DetermineStatus(grpcRequest.Status)
 				};
 

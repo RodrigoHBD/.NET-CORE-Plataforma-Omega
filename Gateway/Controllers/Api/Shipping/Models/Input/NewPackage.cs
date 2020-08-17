@@ -11,6 +11,7 @@ namespace Gateway.Controllers.Api.Shipping.Models.Input
         public string Name { get; set; } = "";
         public string SaleId { get; set; } = "";
         public string TrackingCode { get; set; } = "";
+        public string MarketplaceSaleId { get; set; } = "";
         public double Weight { get; set; } = 0;
         public int Platform { get; set; } = -1;
         public bool SetWatcher { get; set; } = false;

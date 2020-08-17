@@ -9,6 +9,8 @@ namespace ShippingService.App.Models.Input
     {
         string Name { get; }
         string SaleId { get; }
+        string MarketplaceSaleId { get; }
+        string MarketplaceAccountId { get; }
         string TrackingCode { get; }
         double Weight { get; }
         AvailablePlatformsToBind Platform { get; }

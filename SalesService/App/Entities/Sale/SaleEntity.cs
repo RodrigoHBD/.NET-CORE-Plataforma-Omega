@@ -55,6 +55,11 @@ namespace SalesService.App.Entities
             }
         }
 
+        public static string StatusToString(SaleStatus status)
+        {
+            return StatusEntity.ToString(status);
+        }
+
         private static async Task ValidateDataFields(Sale sale)
         {
             try

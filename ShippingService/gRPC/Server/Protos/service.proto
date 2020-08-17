@@ -13,6 +13,7 @@ service Shipping {
 	rpc HardDeletePackage (GrpcIdMessage) returns (GrpcStatusResponse);
 	rpc RunPackageWatcherRoutine (GrpcVoid) returns (GrpcStatusResponse);
 	rpc GetPackageWatcherRoutineState (GrpcVoid) returns (GrpcRoutineStates);
+	rpc CheckMarketplaceIdIsRegistered (GrpcStringMessage) returns (GrpcBooleanMessage);
 }
 
 // requests
@@ -26,6 +27,8 @@ message GrpcShipPackageRequest {
 	repeated string content = 7;
 	bool createdManually = 8;
 	bool setWatcher = 9;
+	string marketplace_sale_id = 10;
+	string marketplace_account_id = 11;
 }
 
 message GrpcUpdatePackageRequest {
@@ -44,13 +47,22 @@ message GrpcSearchPackageRequest {
 	GrpcBooleanSearchField rejected = 5;
 	GrpcBooleanSearchField awaitingForPickUp = 6;
 	GrpcBooleanSearchField beingTransported = 7;
-	GrpcPagination pagination = 8;
+	GrpcBooleanSearchField posted = 8;
+	GrpcPagination pagination = 9;
+}
+
+message GrpcStringMessage {
+	string value = 1;
 }
 
 //responses
 message GrpcStatusResponse {
 	bool ok = 1;
 	string message = 2;
+}
+
+message GrpcBooleanMessage {
+	bool value = 1;
 }
 
 message GrpcPackageList {
@@ -62,7 +74,8 @@ message GrpcPackageList {
 message GrpcPackageData {
 	string id = 1;
 	string saleId = 2;
-	string name = 3;
+	string marketplace_sale_id = 3;
+	string name = 4;
 	string trackingCode = 5;
 	string boundPlatform = 6;
 	double weight = 7;
@@ -70,7 +83,15 @@ message GrpcPackageData {
 	bool isBeingWatched = 9;
 	GrpcPackageStatus status = 10;
 	GrpcPackageLocations locations = 11;
-	bool createdManually = 12;
+	GrpcPackageDates dates = 12;
+	bool createdManually = 13;
+	string marketplace_account_id = 14;
+}
+
+message GrpcPackageDates {
+	string created_at = 1;
+	string last_modified_at = 2;
+	string posted_at = 3;
 }
 
 message GrpcPackageStatus {

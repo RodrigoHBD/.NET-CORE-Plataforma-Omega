@@ -9,6 +9,8 @@ using Gateway.Controllers.Api.MercadoLivreAdapters;
 using Gateway.gRPC.Client;
 using Gateway.Controllers.Api.MercadoLivreAdapter;
 using Gateway.Controllers.Api.MercadoLivre;
+using Gateway.gRPC.Client.MercadoLivreProto;
+using System.Text.Json;
 
 namespace Gateway.Controllers.Api
 {
@@ -71,6 +73,28 @@ namespace Gateway.Controllers.Api
                 };
                 var grpcRequest = AddAccountReqAdapter.AdaptToGrpc(request);
                 await MercadoLivreClient.AddAccount(grpcRequest);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("account/by-mercado-livre-id")]
+        public async Task<IActionResult> GetAccountByMarketplaceId(long id)
+        {
+            try
+            {
+                var grpcReq = new GrpcGetByIdReq() { Id = id.ToString() };
+                var grpcResp = await MercadoLivreClient.GetAccountByMarketplaceId(grpcReq);
+                var json = JsonSerializer.Serialize(grpcResp);
+                return new ContentResult() 
+                { 
+                    ContentType = "application/json",
+                    Content = json,
+                    StatusCode = 200
+                };
             }
             catch (Exception)
             {

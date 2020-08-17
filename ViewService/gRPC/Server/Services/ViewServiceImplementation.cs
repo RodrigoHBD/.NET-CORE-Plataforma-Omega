@@ -19,5 +19,11 @@ namespace ViewService.gRPC.Server.Services
         {
             return await Controller.GetStaticFileAsync(request);
         }
+
+        public override async Task GetImageFile(GrpcGetStaticFileRequest request, IServerStreamWriter<GrpcStreamChunk> responseStream, ServerCallContext context)
+        {
+            
+        }
+
     }
 }

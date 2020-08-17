@@ -25,6 +25,7 @@ namespace ShippingService.App.TypeAdapters
                     BeingTransported = GrpcBooleanSearchFieldAdapter.Adapt(grpcRequest.BeingTransported),
                     Delivered = GrpcBooleanSearchFieldAdapter.Adapt(grpcRequest.Delivered),
                     Rejected = GrpcBooleanSearchFieldAdapter.Adapt(grpcRequest.Rejected),
+                    Posted = GrpcBooleanSearchFieldAdapter.Adapt(grpcRequest.Posted),
                     Pagination = GrpcPaginationAdapter.Adapt(grpcRequest.Pagination)
                 };
 

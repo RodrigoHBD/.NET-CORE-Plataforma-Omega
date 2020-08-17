@@ -4,6 +4,7 @@ option csharp_namespace = "SalesService.gRPC.Server.Protos";
 
 service GrpcSaleService {
 	rpc RegisterSale (GrpcRegisteSaleRequest) returns (GrpcStatusResponse);
+	rpc GetSaleByMarketplaceId (GrpcStringMessage) returns (GrpcSale);
 }
 
 //requests
@@ -13,6 +14,10 @@ message GrpcRegisteSaleRequest {
 	string plataform = 4;
 	string platform_sale_id = 5;
 	string status = 6;
+}
+
+message GrpcStringMessage {
+	string value = 1;
 }
 
 //responses

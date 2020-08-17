@@ -1,4 +1,5 @@
-﻿using ShippingService.App.Entities;
+﻿using ShippingService.App.Boundries;
+using ShippingService.App.Entities;
 using ShippingService.App.Entities.NewPackageRequest;
 using ShippingService.App.Entities.PackageSearch;
 using ShippingService.App.Entities.PackageWatcher;
@@ -29,8 +30,7 @@ namespace ShippingService.App.UseCases
                 {
                     await WatchPackage(id);
                 }
-
-                return;
+                var _id = await ShipmentUseCases.RegisterShipment.Execute(package.Id.ToString());
             }
             catch (Exception e)
             {

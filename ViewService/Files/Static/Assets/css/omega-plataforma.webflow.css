@@ -619,9 +619,9 @@ body {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
@@ -636,6 +636,7 @@ body {
   border-style: solid;
   border-width: 1px;
   border-color: rgba(0, 0, 0, 0.58);
+  background-color: rgba(0, 0, 0, 0.04);
   font-size: 1.3em;
 }
 
@@ -714,14 +715,15 @@ body {
 }
 
 .correio-tabela-objetos-filtros {
-  position: fixed;
-  left: 20%;
+  position: relative;
+  left: 0px;
   top: auto;
-  right: 2%;
+  right: 0%;
   bottom: auto;
   z-index: 99;
   display: none;
-  margin: 0.5em 0px 0.5em 1.5em;
+  width: 100%;
+  margin: auto auto 2em;
   padding-top: 1em;
   padding-bottom: 1em;
   clear: none;
@@ -730,8 +732,8 @@ body {
   opacity: 1;
   color: #000;
   font-size: 1.2em;
-  -o-object-fit: fill;
-  object-fit: fill;
+  -o-object-fit: contain;
+  object-fit: contain;
 }
 
 .heading-5 {
@@ -1067,10 +1069,21 @@ body {
 
 .tab-pane-tab-1 {
   width: 100%;
+  -o-object-fit: fill;
+  object-fit: fill;
 }
 
 .div-block-15 {
+  position: relative;
+  top: 0px;
+  bottom: 0px;
+  display: block;
   width: 100%;
+  margin-right: 0px;
+  float: none;
+  clear: none;
+  -o-object-fit: fill;
+  object-fit: fill;
 }
 
 .div-block-16 {
@@ -1650,7 +1663,7 @@ body {
   box-shadow: inset -1px 0 3px 0 #000;
 }
 
-.html-embed-2 {
+.mercadolivreimg {
   display: block;
   margin-right: auto;
   margin-left: auto;
@@ -2742,4 +2755,59 @@ body {
 
 .shownotificationspanbtn {
   display: none;
+}
+
+.div-block-43 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.25em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.27);
+}
+
+.div-block-44 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.text-block-25 {
+  margin-right: 0em;
+  margin-left: 0em;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.text-field-4-copy {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.field-label-6-copy {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
 }

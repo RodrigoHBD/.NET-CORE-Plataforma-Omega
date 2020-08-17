@@ -48,6 +48,7 @@ namespace Gateway.gRPC.Client
                     AwaitingForPickUp = BooleanSearchFieldAdapter.Adapt(search.AwaitingForPickUp),
                     Delivered = BooleanSearchFieldAdapter.Adapt(search.Delivered),
                     Rejected = BooleanSearchFieldAdapter.Adapt(search.Rejected),
+                    Posted = BooleanSearchFieldAdapter.Adapt(search.Posted),
                     Pagination = new GrpcPagination()
                     {
                         Limit = search.Pagination.Limit,
@@ -71,6 +72,7 @@ namespace Gateway.gRPC.Client
                     Name = newPackage.Name,
                     Platform = newPackage.Platform,
                     SaleId = newPackage.SaleId,
+                    MarketplaceSaleId = newPackage.MarketplaceSaleId,
                     TrackingCode = newPackage.TrackingCode,
                     Weight = newPackage.Weight,
                     CreatedManually = newPackage.IsManuallyCreated,
@@ -82,6 +84,18 @@ namespace Gateway.gRPC.Client
             catch(Exception e)
             {
                 throw e;
+            }
+        }
+
+        public static async Task CreateNewPackage(GrpcShipPackageRequest request)
+        {
+            try
+            {
+                await Client.ShipPackageAsync(request);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 
@@ -131,6 +145,18 @@ namespace Gateway.gRPC.Client
                     Id = id
                 };
                 return await Client.RunPackageWatcherRoutineManuallyAsync(request);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcBooleanMessage> CheckMarketplaceIdExists(GrpcStringMessage request)
+        {
+            try
+            {
+                return await Client.CheckMarketplaceIdIsRegisteredAsync(request);
             }
             catch (Exception)
             {

@@ -17,7 +17,7 @@ namespace ShippingService.App.UseCases
             try
             {
                 await ProcessStatusChanges(package, mailerData.Status, report.Status);
-                await ProcessMessagesChanges(package,mailerData.Messages, report.Messages);
+                await ProcessMessagesChanges(package, mailerData.Messages, report.Messages);
                 await ProcessLocationsChanges(package, mailerData.Location, report.Locations);
             }
             catch (Exception e)
@@ -31,6 +31,7 @@ namespace ShippingService.App.UseCases
             try
             {
                 var id = package.Id.ToString();
+                var shipment = await ShipmentUseCases.GetBy.ByPackageId(id);
                 var actionHandlers = PackageStatusEntity.FindCurrentStateActionHandlers(package.Status);
                 var canPost = actionHandlers.Any(handler => !(handler.Actions.SetPosted.IsSet && !handler.Actions.SetPosted.IsExecutable));
                 var canMove = actionHandlers.Any(handler => !(handler.Actions.SetBeingTransported.IsSet && !handler.Actions.SetBeingTransported.IsExecutable));
@@ -40,6 +41,14 @@ namespace ShippingService.App.UseCases
 
                 if (report.PostedMustUpdate && canPost)
                 {
+                    // PERIGOSO!!! NAO TIRE DO IF PELO AMOR DE DEUS
+                    if (shipment != null)
+                    {
+                        await ShipmentUseCases.Set.PostedEvent(shipment.Id.ToString(),
+                        new Models.ShipmentEvents.PostedEvent() { IsPosted = mailerData.HasBeenPosted });
+                    }
+
+
                     await PackageStatusEntity.SetPackageStatusHasBeenPosted(id);
                     package = await GetPackage.Execute(id);
                     actionHandlers = PackageStatusEntity.FindCurrentStateActionHandlers(package.Status);
@@ -49,24 +58,29 @@ namespace ShippingService.App.UseCases
                     var toggler = mailerData.IsBeingTransported;
                     await PackageStatusEntity.SetPackageStatusIsBeingTransported(id, toggler);
 
-                    if(toggler == true)
+                    if (shipment != null)
+                    {
+                        
+                    }
+
+                    if (toggler == true)
                     {
                         await PackageStatusEntity.SetPackageCurrentLocation(id, LocationEntity.ExportLocationForBeingTransported());
                     }
                 }
-                if(report.DeliveredMustUpdate && canDeliver)
+                if (report.DeliveredMustUpdate && canDeliver)
                 {
                     await PackageStatusEntity.SetPackageStatusHasBeenDelivered(id);
                 }
-                if(report.AwaitingForPickUpMustUpdate && canSetAwaitingForPickUp)
+                if (report.AwaitingForPickUpMustUpdate && canSetAwaitingForPickUp)
                 {
                     await PackageStatusEntity.SetPackageStatusIsAwaitingForPickUp(id, mailerData.IsAwaitingForPickUp);
                 }
-                if(report.IsRejectedMustUpdate && canReject)
+                if (report.IsRejectedMustUpdate && canReject)
                 {
                     await PackageStatusEntity.SetPackageStatusHasBeenRejected(id);
                 }
-                
+
             }
             catch (Exception e)
             {
@@ -105,7 +119,7 @@ namespace ShippingService.App.UseCases
                 {
                     await PackageStatusEntity.SetPackageCurrentLocation(id, mailerData.CurrentLocation);
                 }
-                if(report.HeadedToLocationMustUpdate && canSetHeadedToLocation)
+                if (report.HeadedToLocationMustUpdate && canSetHeadedToLocation)
                 {
                     await PackageStatusEntity.SetPackageHeadedToLocation(id, mailerData.HeadedTo);
                 }

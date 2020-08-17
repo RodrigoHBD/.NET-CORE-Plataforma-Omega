@@ -8,7 +8,6 @@ using ShippingService.App.Models.Output;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Intrinsics.X86;
 using System.Threading.Tasks;
 
 namespace ShippingService.App.Boundries
@@ -124,7 +123,7 @@ namespace ShippingService.App.Boundries
                 if (somthingWasChanged)
                 {
                     var update = Builders<Package>.Update
-                        .Set(package => package.Dates.LastUpdated, DateTime.UtcNow);
+                        .Set(package => package.Dates.LastModifiedAt, DateTime.UtcNow);
 
                     await Collections.Packages.UpdateOneAsync(filter, update);
                 }
@@ -132,7 +131,7 @@ namespace ShippingService.App.Boundries
             }
             catch (Exception)
             {
-                throw ;
+                throw;
             }
         }
 
@@ -208,6 +207,9 @@ namespace ShippingService.App.Boundries
                 var beingTransportedFilter = Builders<Package>.Filter.Empty;
                 var deliveredFilter = Builders<Package>.Filter.Empty;
                 var rejectedFilter = Builders<Package>.Filter.Empty;
+                var postedFilter = Builders<Package>.Filter.Empty;
+                var marketplaceSaleIdFilter = Builders<Package>.Filter.Empty;
+                var marketplaceAccountIdFilter = Builders<Package>.Filter.Empty;
 
                 var filter = Builders<Package>.Filter.Empty;
 
@@ -235,12 +237,20 @@ namespace ShippingService.App.Boundries
                         .Where(package => package.Status.IsRejected == request.Rejected.Value);
                 }
 
+                if (request.Posted.IsActive)
+                {
+                    postedFilter = Builders<Package>.Filter
+                        .Where(package => package.Status.HasBeenPosted == request.Posted.Value);
+                }
+
 
                 if (request.DynamicString.IsActive)
                 {
                     nameFilter = Builders<Package>.Filter.Where(package => package.Name.Contains(request.DynamicString.Value));
                     trackingCodeFilter = Builders<Package>.Filter.Where(package => package.TrackingCode == request.DynamicString.Value);
-                    dynamicFilter = Builders<Package>.Filter.Or(nameFilter, trackingCodeFilter);
+                    marketplaceSaleIdFilter = Builders<Package>.Filter.Where(package => package.MarketplaceSaleId == request.DynamicString.Value);
+                    marketplaceAccountIdFilter = Builders<Package>.Filter.Where(package => package.MarketplaceAccountId == request.DynamicString.Value);
+                    dynamicFilter = Builders<Package>.Filter.Or(nameFilter, trackingCodeFilter, marketplaceSaleIdFilter, marketplaceAccountIdFilter);
                 }
                 else
                 {
@@ -248,10 +258,12 @@ namespace ShippingService.App.Boundries
                 }
 
                 filter = Builders<Package>.Filter.And(dynamicFilter, awaitingForPickUpFilter, beingTransportedFilter,
-                    deliveredFilter, rejectedFilter);
+                    deliveredFilter, rejectedFilter, postedFilter);
 
                 var total = await CountPackagesAsync(filter);
-                var query = Collections.Packages.Find(filter).Limit(request.Pagination.Limit).Skip(request.Pagination.Offset);
+                var query = Collections.Packages.Find(filter).Limit(request.Pagination.Limit)
+                    .Skip(request.Pagination.Offset)
+                    .Sort(Builders<Package>.Sort.Descending(package => package.Dates.CreatedAt));
 
                 return new PackageList()
                 {
@@ -292,6 +304,36 @@ namespace ShippingService.App.Boundries
             catch (Exception e)
             {
                 throw ;
+            }
+        }
+
+        public static async Task<bool> CheckTrackingCode(string code)
+        {
+            try
+            {
+                var filter = Builders<Package>.Filter.Where(package => package.TrackingCode == code);
+                var count = await Collections.Packages.CountDocumentsAsync(filter);
+                var exists = count > 0;
+                return exists;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<bool> CheckMarketplaceId(string id)
+        {
+            try
+            {
+                var filter = Builders<Package>.Filter.Where(package => package.MarketplaceSaleId == id);
+                var count = await Collections.Packages.CountDocumentsAsync(filter);
+                var exists = count > 0;
+                return exists;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
 

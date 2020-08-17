@@ -18,6 +18,8 @@ namespace ShippingService.App.TypeAdapters
                 var request = new ShipPackageRequest()
                 {
                     SaleId = grpcRequest.SaleId,
+                    MarketplaceSaleId = grpcRequest.MarketplaceSaleId,
+                    MarketplaceAccountId = grpcRequest.MarketplaceAccountId,
                     Name = grpcRequest.Name,
                     TrackingCode = grpcRequest.TrackingCode,
                     Weight = grpcRequest.Weight,
@@ -69,6 +71,8 @@ namespace ShippingService.App.TypeAdapters
         public bool SetWatcher { get; set; } = false;
         public Location PackageInitialLocation { get; set; } = new Location();
         public string SaleId { get; set; } = "";
+        public string MarketplaceSaleId { get; set; }
+        public string MarketplaceAccountId { get; set; }
         public double Weight { get; set; } 
         public AvailablePlatformsToBind Platform { get; set; }
         public List<string> Content { get; set; } = new List<string>();

@@ -1,5 +1,6 @@
 import Controllers from "/js/main-app/controllers/controllers.js";
 import ExceptionHandler from "/js/main-app/exception-handler.js";
+import HttpClient from "/js/http-client/http-client.js"
 
 export default class App {
     IsInitialized = false;
@@ -27,7 +28,7 @@ export default class App {
         }
     }
 
-    InitialzieControllers(){
+    InitialzieControllers() {
         try {
             this.Controllers = new Controllers();
         }

@@ -1,4 +1,4 @@
-import { Pagination, SearchFields } from "/js/main-app/models/models.js";
+import { Pagination, SearchFields, Location } from "/js/main-app/models/models.js";
 
 export default class CorreiosController {
     BaseUri = "/api/shipping";
@@ -10,9 +10,17 @@ export default class CorreiosController {
             var request = this.BuildSearchPackagesRequest(pagination, filters);
             var response = await application.HttpClient.Post(`${this.BaseUri}/search-package`, request);
             this.UpdateObjectsTable(response.body);
+            await this.SetAllNames(application.Session.Correios.ObjectsTable.Body);
         }
         catch (error) {
             throw error;
+        }
+    }
+
+    async SetAllNames(array) {
+        for (var i of array) {
+            i.MarketplaceAccountId = await application.Controllers.Shipping.
+                GetNameOfMarketplaceAccount(i.MarketplaceAccountId, i.BoundPlatform);
         }
     }
 
@@ -37,9 +45,8 @@ export default class CorreiosController {
 
     GetFilters() {
         try {
-            var filters = new Object();
-            var data = toolbox.Form.GetFormData("correios-search-filters-form");
-            return data;
+            var filters = toolbox.Form.GetFormData("correios-search-filters-form");
+            return filters;
         }
         catch (error) {
             throw error;
@@ -73,23 +80,35 @@ export default class CorreiosController {
             request.Pagination.Limit = pagination.Limit;
             request.Pagination.Offset = pagination.Offset;
 
-            if(filters.BeingTransported){
+            if (filters.BeingTransported) {
                 request.BeingTransported.IsActive = true;
                 request.BeingTransported.Value = true
             }
-            if(filters.AwaitingForPickUp){
+            if (filters.AwaitingForPickUp) {
                 request.AwaitingForPickUp.IsActive = true;
                 request.AwaitingForPickUp.Value = true
             }
-            if(filters.Rejected){
+            if (filters.Rejected) {
                 request.Rejected.IsActive = true;
                 request.Rejected.Value = true
             }
-            if(filters.Delivered){
+            if (filters.Delivered) {
                 request.Delivered.IsActive = true;
                 request.Delivered.Value = true
             }
-            
+            // rejeitdo voltando ao remetente
+            if (filters.RejectedComingBack) {
+                request.Rejected.IsActive = true;
+                request.Rejected.Value = true;
+                request.BeingTransported.IsActive = true;
+                request.BeingTransported.Value = true
+            }
+            // aguardando postagem
+            if (filters.AwaitingForPosting) {
+                request.Posted.IsActive = true;
+                request.Posted.Value = false;
+            }
+
             return request;
         }
         catch (error) {
@@ -206,25 +225,29 @@ export default class CorreiosController {
 
     BuildNewPackageRequest(data) {
         try {
-            data.IsManuallyCreated = true;
-            data.Platform = -1;
-            if (isNaN(parseFloat(data.Weight))) {
-                data.Weight = 0;
-            }
-            else {
-                data.Weight = parseFloat(data.Weight);
-            }
-            //////////////////////
-            if (isNaN(parseInt(data.StreetNumber))) {
-                data.StreetNumber = 0;
-            }
-            else {
-                data.StreetNumber = parseInt(data.StreetNumber);
-            }
-            ////////
-            data.SetWatcher = true;
+            var request = new CreatePackageRequest();
+            // hard coded to true on purpose
+            request.IsManuallyCreated = true;
+            request.SetWatcher = true;
 
-            return data;
+
+            request.Name = data.Name;
+            request.TrackingCode = data.TrackingCode;
+            request.SaleId = data.SaleId;
+            request.MarketplaceSaleId = data.MarketplaceSaleId;
+
+            if (!isNaN(parseInt(data.Platform))) {
+                request.Platform = parseInt(data.Platform);
+            }
+
+            if (!isNaN(parseFloat(data.Weight))) {
+                request.Weight = parseFloat(data.Weight);
+            }
+
+            if (!isNaN(parseInt(data.StreetNumber))) {
+                request.StreetNumber = parseInt(data.StreetNumber);
+            }
+            return request;
         }
         catch (error) {
             throw error;
@@ -276,7 +299,7 @@ export default class CorreiosController {
         }
     }
 
-    OpenCorreiosLinksPage(trackingCode){
+    OpenCorreiosLinksPage(trackingCode) {
         window.open(`https://linkcorreios.com.br/${trackingCode}`);
     }
 
@@ -289,5 +312,19 @@ class SearchPackagesRequestModel {
     AwaitingForPickUp = new SearchFields.Boolean();
     Rejected = new SearchFields.Boolean();
     Delivered = new SearchFields.Boolean();
+    Posted = new SearchFields.Boolean();
     Pagination = new Pagination();
+}
+
+class CreatePackageRequest {
+    Name = "";
+    SaleId = "";
+    MarketplaceSaleId = "";
+    TrackingCode = "";
+    Weight = 0.00;
+    Platform = -1;
+    SetWatcher = true;
+    IsManuallyCreated = true;
+    PostingLocation = new Location();
+    Content = [""];
 }

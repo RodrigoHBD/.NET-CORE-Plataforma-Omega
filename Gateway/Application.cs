@@ -1,5 +1,6 @@
 ﻿using Gateway.App;
 using Gateway.gRPC.Client;
+using Gateway.gRPC.Client.Sale;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -34,6 +35,7 @@ namespace Gateway
                 ViewClient.Initialize();
                 ShippingClient.Initialize();
                 MercadoLivreClient.Initialize();
+                SaleClient.Initialize();
             }
             catch (Exception e)
             {

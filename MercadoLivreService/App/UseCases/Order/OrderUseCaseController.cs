@@ -24,7 +24,7 @@ namespace MercadoLivreService.App.UseCases
             }
         }
 
-        public static async Task<OrderDetailJson> GetOrderDetailById(string orderId, long mercadoLivreAccountId)
+        public static async Task<OrderDetailJson> GetOrderDetailById(long orderId, long mercadoLivreAccountId)
         {
             try
             {

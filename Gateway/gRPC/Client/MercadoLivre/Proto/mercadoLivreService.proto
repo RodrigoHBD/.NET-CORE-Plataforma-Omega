@@ -11,6 +11,8 @@ service MercadoLivreGrpc {
 	rpc RefreshAccountTokens (GrpcGetByIdReq) returns (GrpcVoid);
 	rpc SearchRecentOrders (GrpcStringReq) returns (GrpcVoid);
 	rpc GetOrderDetail (GrpcGetOrderDetailReq) returns (GrpcOrder);
+	rpc GetShipmentDetail (GrpcGetShipmentDetailReq) returns (GrpcShipmentDetail);
+	rpc GetAccountByMarketplaceId (GrpcGetByIdReq) returns (GrpcAccount);
 }
 
 message GrpcAddAccountReq {
@@ -40,8 +42,13 @@ message GrpcIntReq {
 }
 
 message GrpcGetOrderDetailReq {
-	string order_id = 1;
+	int64 order_id = 1;
 	int64 account_id = 2;
+}
+
+message GrpcGetShipmentDetailReq {
+	int64 account_id = 1;
+	int64 shipment_id = 2;
 }
 
 // responses
@@ -95,4 +102,9 @@ message GrpcOrder {
 	double total_amount = 3;
 	int64 shipping_id = 4;
 	string shipping_status = 5;
+}
+
+message GrpcShipmentDetail {
+	string tracking_code = 1;
+	int64 order_id = 2;
 }

@@ -175,5 +175,19 @@ namespace ShippingService.App.Controller
             }
         }
 
+        public static async Task<GrpcBooleanMessage> CheckMarketplaceIdIsRegistered(GrpcStringMessage grpcRequest)
+        {
+            try
+            {
+                var id = grpcRequest.Value;
+                var exists = await CheckMarketplaceId.Execute(id);
+                return new GrpcBooleanMessage() { Value = exists };
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

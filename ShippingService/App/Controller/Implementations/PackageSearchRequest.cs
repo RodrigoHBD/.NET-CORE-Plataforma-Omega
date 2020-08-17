@@ -17,6 +17,7 @@ namespace ShippingService.App.Controller.Implementations
         public IBooleanSearchField Rejected { get; set; } = new BooleanSearchField();
         public IBooleanSearchField Delivered { get; set; } = new BooleanSearchField();
         public IBooleanSearchField BeingTransported { get; set; } = new BooleanSearchField();
+        public IBooleanSearchField Posted { get; set; } = new BooleanSearchField();
     }
 
     public class StringSearchField : IStringSearchField

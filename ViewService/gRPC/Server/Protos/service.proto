@@ -5,6 +5,7 @@ option csharp_namespace = "ViewService.gRPC.Server.Protos";
 service View {
 	rpc GetView (GrpcGetViewRequest) returns (GrpcViewAsString);
 	rpc GetStaticFile (GrpcGetStaticFileRequest) returns (GrpcViewAsString);
+	rpc GetImageFile (GrpcGetStaticFileRequest) returns (stream GrpcStreamChunk);
 }
 
 message GrpcGetViewRequest {
@@ -16,5 +17,9 @@ message GrpcGetStaticFileRequest {
 }
 
 message GrpcViewAsString {
+	string data = 1;
+}
+
+message GrpcStreamChunk {
 	string data = 1;
 }

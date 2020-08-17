@@ -27,10 +27,9 @@
   <ItemGroup>
     <Folder Include="App\Boundries\Mailer\Helpers\" />
     <Folder Include="App\Boundries\Mailer\TypeAdapters\Input\" />
-    <Folder Include="App\Boundries\Mailer\TypeAdapters\Output\" />
     <Folder Include="App\Entities\Pagination\" />
     <Folder Include="App\Entities\PackageWatcherSearch\DataFields\" />
-    <Folder Include="App\Entities\Package\DataFields\" />
+    <Folder Include="App\Entities\Shipment\DataField\" />
     <Folder Include="gRPC\Client\" />
   </ItemGroup>
 

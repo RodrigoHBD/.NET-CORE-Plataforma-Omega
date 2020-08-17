@@ -16,12 +16,26 @@ namespace SalesService.App.Controller
             try
             {
                 var request = SaleAdapters.RegisterSaleRequest.Adapt(grpcRequest);
-                await SaleUseCasesController.RegisterNewSaleAsync(request);
-                return Presenter.PresentStatusResponse(true);
+                var id = await SaleUseCasesController.RegisterNewSaleAsync(request);
+                return Presenter.PresentStatusResponse(true, id);
             }
             catch (Exception e)
             {
                 throw e;
+            }
+        }
+
+        public static async Task<GrpcSale> GetSaleByMarketplaceId(GrpcStringMessage grpcRequest)
+        {
+            try
+            {
+                var id = grpcRequest.Value;
+                var sale = await SaleUseCases.GetSaleByMarketplaceId.Execute(id);
+                return SalePresenter.Present(sale);
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

@@ -10,6 +10,8 @@ namespace Gateway.Controllers.Api.Shipping.Models.Output
         public string Id { get; set; }
         public string Name { get; set; }
         public string SaleId { get; set; }
+        public string MarketplaceSaleId { get; set; } 
+        public string MarketplaceAccountId { get; set; }
         public string TrackingCode { get; set; }
         public string BoundPlatform { get; set; }
         public double Weight { get; set; }
@@ -19,6 +21,7 @@ namespace Gateway.Controllers.Api.Shipping.Models.Output
         public PackageStatus Status { get; set; } = new PackageStatus();
         public PackageMessages Messages { get; set; } = new PackageMessages();
         public PackageLocations Locations { get; set; } = new PackageLocations();
+        public PackageDates Dates { get; set; } = new PackageDates();
     }
 
     public class PackageStatus
@@ -28,6 +31,13 @@ namespace Gateway.Controllers.Api.Shipping.Models.Output
         public bool IsAwaitingForPickUp { get; set; }
         public bool IsRejected { get; set; }
         public bool IsBeingTransported { get; set; }
+    }
+
+    public class PackageDates
+    {
+        public string CreatedAt { get; set; }
+        public string PostedAt { get; set; }
+        public string LastModifiedAt { get; set; }
     }
 
     public class PackageMessages

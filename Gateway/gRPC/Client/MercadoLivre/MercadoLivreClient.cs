@@ -58,5 +58,41 @@ namespace Gateway.gRPC.Client
             }
         }
 
+        public static async Task<GrpcOrder> GetOrderDetail(GrpcGetOrderDetailReq request)
+        {
+            try
+            {
+                return await Client.GetOrderDetailAsync(request);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcShipmentDetail> GetShipmentDetail(GrpcGetShipmentDetailReq request)
+        {
+            try
+            {
+                return await Client.GetShipmentDetailAsync(request);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcAccount> GetAccountByMarketplaceId(GrpcGetByIdReq request)
+        {
+            try
+            {
+                return await Client.GetAccountByMarketplaceIdAsync(request);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

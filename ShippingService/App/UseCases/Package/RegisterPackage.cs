@@ -9,7 +9,7 @@ namespace ShippingService.App.UseCases
 {
     public class RegisterPackage
     {
-        public static async Task<string> Execute(Package package)
+        public async Task<string> Execute(Package package)
         {
             try
             {

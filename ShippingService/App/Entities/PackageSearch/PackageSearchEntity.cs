@@ -9,7 +9,7 @@ namespace ShippingService.App.Entities.PackageSearch
 {
     public class PackageSearchEntity
     {
-        public static void ValidateRequest(IPackageSearchRequest request)
+        public static void ValidateRequest(SearchPackageRequest request)
         {
             try
             {
@@ -21,11 +21,11 @@ namespace ShippingService.App.Entities.PackageSearch
             }
         }
 
-        private static void ValidateDataFields(IPackageSearchRequest request)
+        private static void ValidateDataFields(SearchPackageRequest request)
         {
             try
             {
-                Pagination.Validate(request.Pagination);
+                Pagination.ValidateIn(request.Pagination);
             }
             catch (Exception e)
             {

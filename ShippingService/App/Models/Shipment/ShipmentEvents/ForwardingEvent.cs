@@ -10,11 +10,18 @@ namespace ShippingService.App.Models.ShipmentEvents
     {
         // public props
         public string Title { get; set; } 
+
         public string Description { get; set; }
+
+        public string BoundryMessage { get; set; }
+
         public bool PackageHasArrived { get; set; }
+
         public ForwardedToLocations Locations { get; set; } = new ForwardedToLocations();
+
         public ShipmentEventDates Dates { get; set; } = new ShipmentEventDates();
-        public DateTime ArrivedAt { get; private set; }
+
+        public DateTime ArrivedAt { get; set; }
 
         //public methods
         public ShipmentModifier GetModifiers()
@@ -32,11 +39,6 @@ namespace ShippingService.App.Models.ShipmentEvents
         public void SetForwardedToLocation(Location location)
         {
             Locations.ForwardedTo = location;
-        }
-
-        public void SetArrivedInLocation(Location location)
-        {
-            Locations.ArrivedIn = location;
         }
 
         public void SetArrived(DateTime time)
@@ -81,8 +83,8 @@ namespace ShippingService.App.Models.ShipmentEvents
 
     public class ForwardedToLocations
     {
+        public Location ForwardedFrom { get; set; }
         public Location ForwardedTo { get; set; }
-        public Location ArrivedIn { get; set; }
     }
 
 }

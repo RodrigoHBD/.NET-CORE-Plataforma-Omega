@@ -21,9 +21,9 @@ namespace ShippingService.App.Models.ShipmentEvents
             }
         }
 
-        public ShipmentEventDates Dates { get; private set; }
+        public ShipmentEventDates Dates { get; set; }
 
-        public bool IsRejected { get; private set; } = false;
+        public bool IsRejected { get; set; } = false;
 
         public ShipmentModifier GetModifiers()
         {

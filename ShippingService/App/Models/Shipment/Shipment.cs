@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using ShippingService.App.Boundries;
 using ShippingService.App.Models;
 using ShippingService.App.Models.ShipmentEvents;
 using System;
@@ -18,6 +19,14 @@ namespace ShippingService.App.Models
 
         public string PackageId { get; set; }
 
+        public string TrackingCode { get; set; }
+
+        public bool AutoUpdate { get; set; } = false;
+
+        public ShippingBoundry.Implementation BoundryImplementation { get; set; } = ShippingBoundry.Implementation.Unset;
+
+        public ShipmentMarketplaceData MarketplaceData { get; set; } = new ShipmentMarketplaceData();
+
         public CreatedEvent CreatedEvent { get; set; } = new CreatedEvent();
 
         public PostedEvent PostedEvent { get; set; } = new PostedEvent();
@@ -30,23 +39,20 @@ namespace ShippingService.App.Models
 
         public List<ForwardingEvent> ForwardingEvents { get; set; } = new List<ForwardingEvent>();
 
-        // public methods
+        public Shipment()
+        {
+            
+        }
 
-        // private properties
         private Package Package { get; set; }
+
         private bool PackageIsCached { get; set; } = false;
 
-        // private methods
         private async Task CachePackage()
         {
             Package = await UseCases.GetPackage.Execute(PackageId);
         }
 
-        // constructor
-        public Shipment()
-        {
-            ForwardingEvents = new List<ForwardingEvent>();
-        }
     }
 
 }

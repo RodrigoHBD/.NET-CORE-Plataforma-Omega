@@ -9,8 +9,8 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
 {
     public class ShipmentDAOMethod
     {
-        public FilterDefinitionBuilder<Shipment> FilterBuilder { get { return Builders<Shipment>.Filter; } }
+        public static FilterDefinitionBuilder<Shipment> FilterBuilder { get { return Builders<Shipment>.Filter; } }
 
-        public UpdateDefinitionBuilder<Shipment> UpdateBuilder { get { return Builders<Shipment>.Update; } }
+        public static UpdateDefinitionBuilder<Shipment> UpdateBuilder { get { return Builders<Shipment>.Update; } }
     }
 }

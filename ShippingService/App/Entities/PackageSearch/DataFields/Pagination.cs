@@ -1,4 +1,5 @@
 ﻿using ShippingService.App.CustomExceptions;
+using ShippingService.App.Models;
 using ShippingService.App.Models.Input;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace ShippingService.App.Entities.PackageSearchDataFields
         private static int LimitMax { get; } = 40;
         private static int LimitMin { get; } = 0;
         private static int DefaultLimit { get; } = 30;
-        public static void Validate(IPaginationIn pagination)
+        public static void ValidateIn(PaginationIn pagination)
         {
             try
             {

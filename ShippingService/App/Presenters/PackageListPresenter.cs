@@ -9,7 +9,7 @@ namespace ShippingService.App.Presenters
 {
     public class PackageListPresenter
     {
-        public static GrpcPackageList PresentPackageList(IPackageList list)
+        public static GrpcPackageList PresentPackageList(PackageList list)
         {
             var grpcList = new GrpcPackageList()
             {
@@ -21,7 +21,7 @@ namespace ShippingService.App.Presenters
                 }
             };
 
-            list.Packages.ForEach(package => 
+            list.Data.ForEach(package => 
             {
                 grpcList.Data.Add(PackagePresenter.PresentePackage(package));
             });

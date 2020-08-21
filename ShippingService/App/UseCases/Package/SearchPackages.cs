@@ -10,7 +10,7 @@ namespace ShippingService.App.UseCases
 {
     public class SearchPackages
     {
-        public static async Task<IPackageList> Execute(IPackageSearchRequest request)
+        public static async Task<PackageList> Execute(SearchPackageRequest request)
         {
             try
             {

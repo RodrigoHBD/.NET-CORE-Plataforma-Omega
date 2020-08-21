@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShippingService.App.Controller.TypeAdapters;
 using ShippingService.App.Presenters;
 using ShippingService.App.TypeAdapters;
 using ShippingService.App.UseCases;
@@ -11,55 +12,25 @@ namespace ShippingService.App.Controller
 {
     public class Controller
     {
-        public static async Task<GrpcStatusResponse> ShipNewPackage(GrpcShipPackageRequest grpcRequest)
+        public static async Task<GrpcStatusResponse> CreateNewShipment(GrpcNewShipmentRequest grpcRequest)
         {
             try
             {
-                var request = ShipNewPackageRequestAdapter.AdaptFromGrpc(grpcRequest);
-                await UseCaseOperator.ShipNewPackage(request);
+                var request = GrpcNewShipmentRequestAdapter.GetAdapted(grpcRequest);
+                await UseCaseOperator.CreateNewShipment(request);
                 return StatusResponsePresenter.Present(true);
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 
-        public static async Task<GrpcStatusResponse> SetPackageToPosted(GrpcUpdatePackageRequest grpcRequest)
+        public static async Task<GrpcStatusResponse> SetShipmentAutoUpdate(GrpcSetBoolByIdRequest grpcRequest)
         {
             try
             {
-                var id = GrpcUpdatePackageAdapter.GetId(grpcRequest);
-                await UseCaseOperator.SetPackagePosted(id);
-                return StatusResponsePresenter.Present(true);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task<GrpcStatusResponse> SetPackageToDelivered(GrpcUpdatePackageRequest grpcRequest)
-        {
-            try
-            {
-                var id = GrpcUpdatePackageAdapter.GetId(grpcRequest);
-                await UseCaseOperator.SetPackageDelivered(id);
-                return StatusResponsePresenter.Present(true);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task<GrpcStatusResponse> WatchPackage(GrpcWatchPackageRequest grpcRequest)
-        {
-            try
-            {
-                var id = GrpcWatchPackageRequestAdapter.GetId(grpcRequest);
-                await UseCaseOperator.WatchPackage(id);
-                return StatusResponsePresenter.Present(true);
+                return new GrpcStatusResponse();
             }
             catch (Exception e)
             {
@@ -85,9 +56,7 @@ namespace ShippingService.App.Controller
         {
             try
             {
-                var request = GrpcSearchPackageReqAdapter.Adapt(grpcRequest);
-                var packageList = await UseCaseOperator.SearchPackagesAsync(request);
-                return PackageListPresenter.PresentPackageList(packageList);
+                return new GrpcPackageList();
             }
             catch (Exception e)
             {
@@ -179,9 +148,8 @@ namespace ShippingService.App.Controller
         {
             try
             {
-                var id = grpcRequest.Value;
-                var exists = await CheckMarketplaceId.Execute(id);
-                return new GrpcBooleanMessage() { Value = exists };
+                
+                return new GrpcBooleanMessage() { Value = true };
             }
             catch (Exception)
             {

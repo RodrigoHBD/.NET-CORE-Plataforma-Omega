@@ -51,5 +51,34 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             var update = UpdateBuilder.Push(shipment => shipment.ForwardingEvents, @event);
             await Collections.Shipments.UpdateOneAsync(filter, update);
         }
+
+        public async Task PackageId(string id, string packageId)
+        {
+            try
+            {
+                var filter = FilterBuilder.Where(shipment => shipment.Id == ObjectId.Parse(id));
+                var update = UpdateBuilder.Set(shipment => shipment.PackageId, packageId);
+                await Collections.Shipments.UpdateOneAsync(filter, update);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task AutoUpdate(string id, bool toggle)
+        {
+            try
+            {
+                var filter = FilterBuilder.Where(shipment => shipment.Id == ObjectId.Parse(id));
+                var update = UpdateBuilder.Set(shipment => shipment.AutoUpdate, toggle);
+                await Collections.Shipments.UpdateOneAsync(filter, update);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
     }
 }

@@ -25,11 +25,11 @@ namespace ShippingService.App.Models.ShipmentEvents
             }
         }
 
-        public bool IsDelivered { get; private set; } = false;
+        public bool IsDelivered { get; set; } = false;
 
         public bool IsDeliveredToDestination { get; set; } = false;
 
-        public ShipmentEventDates Dates { get; private set; }
+        public ShipmentEventDates Dates { get; set; }
 
         public ShipmentModifier GetModifiers()
         {

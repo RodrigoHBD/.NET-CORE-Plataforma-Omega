@@ -7,7 +7,6 @@ namespace ShippingService.App.Entities.PackageDataField
 {
     public class PackageDataFields
     {
-        public TrackingCode TrackingCode { get; } = new TrackingCode();
-        public MarketplaceSaleId MarketplaceSaleId { get; } = new MarketplaceSaleId();
+     
     }
 }

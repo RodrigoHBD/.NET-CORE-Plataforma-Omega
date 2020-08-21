@@ -16,13 +16,14 @@ namespace ShippingService
                 return Database.Connection;
             }
         }
+
         public static IMongoCollection<Package> Packages { get; set; }
-        public static IMongoCollection<PackageWatcher> PackageWatcher { get; set; }
+
         public static IMongoCollection<Shipment> Shipments { get; set; }
+
         public static async Task InitializeAsync()
         {
-            Packages = Connection.GetCollection<Package>("Packages");
-            PackageWatcher = Connection.GetCollection<PackageWatcher>("PackageWatchers");
+            Packages = Connection.GetCollection<Package>("Packages_Dev");
             Shipments = Connection.GetCollection<Shipment>("Shipment");
         }
     }

@@ -10,23 +10,11 @@ namespace ShippingService.gRPC.Server.Services
 {
     public class ShippingServiceImplementation : Shipping.ShippingBase
     {
-        public override async Task<GrpcStatusResponse> ShipPackage(GrpcShipPackageRequest request, ServerCallContext context)
+        public override async Task<GrpcStatusResponse> CreateNewShipment(GrpcNewShipmentRequest request, ServerCallContext context)
         {
             try
             {
-                return await Controller.ShipNewPackage(request);
-            }
-            catch (Exception e)
-            {
-                throw HandleException(e);
-            }
-        }
-
-        public override async Task<GrpcStatusResponse> SetPackagePosted(GrpcUpdatePackageRequest request, ServerCallContext context)
-        {
-            try
-            {
-                return await Controller.SetPackageToPosted(request);
+                return await Controller.CreateNewShipment(request);
             }
             catch (Exception e)
             {

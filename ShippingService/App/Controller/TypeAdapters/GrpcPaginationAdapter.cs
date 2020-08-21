@@ -1,5 +1,4 @@
-﻿using ShippingService.App.Controller.Implementations;
-using ShippingService.App.Models.Input;
+﻿using ShippingService.App.Models;
 using ShippingService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;

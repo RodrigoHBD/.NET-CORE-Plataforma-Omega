@@ -1,19 +1,23 @@
 ﻿using ShippingService.App.Boundries;
-using ShippingService.App.Factories;
+using ShippingService.App.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShippingService.App.UseCases
 {
     public class RegisterShipment
     {
-        public async Task<string> Execute(string packageId)
+        public async Task<string> Execute(Shipment shipment)
         {
-            var shipment = ShipmentFactory.CreateShipment(packageId);
-            await ShipmentDAO.Methods.Register.Execute(shipment);
-            return shipment.Id.ToString();
+            try
+            {
+                await ShipmentDAO.Methods.Register.Execute(shipment);
+                return shipment.Id.ToString();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

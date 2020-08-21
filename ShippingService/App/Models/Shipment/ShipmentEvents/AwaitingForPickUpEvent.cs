@@ -21,11 +21,11 @@ namespace ShippingService.App.Models.ShipmentEvents
             }
         }
 
+        public bool IsSet { get; set; } = false;
+
         public ShipmentEventDates Dates { get; set; } = new ShipmentEventDates();
 
         public Location Location { get; set; } = new Location();
-
-        public bool IsSet { get; private set; } = false;
 
         public void SetAwaiting(Location location, DateTime time)
         {

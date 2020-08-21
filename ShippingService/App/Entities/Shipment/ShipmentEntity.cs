@@ -1,4 +1,5 @@
-﻿using ShippingService.App.Entities.ShipmentDataField;
+﻿using ShippingService.App.Boundries;
+using ShippingService.App.Entities.ShipmentDataField;
 using ShippingService.App.Entities.ShipmentMethods;
 using ShippingService.App.Models;
 using System;
@@ -12,15 +13,47 @@ namespace ShippingService.App.Entities
     {
         public static ShipmentDataFields DataFields { get; private set; } = new ShipmentDataFields();
 
+        public static async Task ValidateNew(Shipment shipment)
+        {
+            try
+            {
+                var method = new ValidateNewShipment(shipment);
+                await method.Execute();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public static ShipmentModifier GetActiveModifierFrom(Shipment shipment)
         {
-            var method = new GetActiveModifier(shipment);
-            return method.Execute();
+            try
+            {
+                var method = new GetActiveModifier(shipment);
+                return method.Execute();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public static async Task ValidateId(string id)
         {
+            try
+            {
+                var exists = await ShipmentDAO.Methods.GetBy.IdBool(id);
 
+                if (!exists)
+                {
+                    throw new Exception("Esse envio nao existe");
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public static ShipmentModifier GetEmpityModifier()

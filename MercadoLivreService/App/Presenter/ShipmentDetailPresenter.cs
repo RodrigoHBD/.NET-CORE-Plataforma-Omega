@@ -14,7 +14,8 @@ namespace MercadoLivreService.App.Presenter
             return new GrpcShipmentDetail()
             {
                 TrackingCode = json.tracking_number,
-                OrderId = json.order_id
+                OrderId = json.order_id,
+                TrackingMethod = json.tracking_method
             };
         }
     }

@@ -1,8 +1,11 @@
+import System from "/js/main-app/system/system.js";
 import Controllers from "/js/main-app/controllers/controllers.js";
 import ExceptionHandler from "/js/main-app/exception-handler.js";
-import HttpClient from "/js/http-client/http-client.js"
+import HttpClient from "/js/http-client/http-client.js";
+import Session from "/js/main-app/session/session.js";
 
 export default class App {
+    System = new System();
     IsInitialized = false;
     Controllers;
     Session;
@@ -39,8 +42,7 @@ export default class App {
 
     InitializeSession() {
         try {
-            this.Controllers.Session.Initialize();
-            this.Session = this.Controllers.Session.ExportSession();
+            this.Session = new Session();
         }
         catch (error) {
             throw error;
@@ -48,6 +50,7 @@ export default class App {
     }
 
     InitializeComputed() {
+        s
         try {
             this.Controllers.Computed.Initialize();
             this.Computed = this.Controllers.Computed.ExportComputed();

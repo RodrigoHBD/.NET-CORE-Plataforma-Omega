@@ -1,4 +1,5 @@
 ﻿using ShippingService.App.Boundries;
+using ShippingService.App.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace ShippingService.App.UseCases
         {
             try
             {
+                await PackageEntity.ValidatePackageId(id);
                 await PackageDAO.HardDeletePackage(id);
             }
             catch (Exception e)

@@ -13,6 +13,7 @@ namespace Gateway.gRPC.Client
     public class ShippingClient
     {
         private static string UriAddress { get; set; } = "http://localhost:5000";
+
         private static Shipping.ShippingClient Client { get; set; }
 
         public static void Initialize()
@@ -22,76 +23,11 @@ namespace Gateway.gRPC.Client
             Client = new Shipping.ShippingClient(channel);
         }
 
-        public static async Task<GrpcPackageData> GetPackageDataAsync(string id)
+        public static async Task<GrpcVoid> CreateShipment(GrpcNewShipmentRequest req)
         {
             try
             {
-                var request = new GrpcIdMessage() { Id = id };
-                return await Client.GetPackageDataAsync(request);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task<GrpcPackageList> SearchPackagesAsync(PackageSearch search)
-        {
-            try
-            {
-                var request = new GrpcSearchPackageRequest() 
-                {
-                    TrackingCode = search.TrackingCode,
-                    Name = search.Name,
-                    DynamicField = search.DynamicString,
-                    BeingTransported = BooleanSearchFieldAdapter.Adapt(search.BeingTransported),
-                    AwaitingForPickUp = BooleanSearchFieldAdapter.Adapt(search.AwaitingForPickUp),
-                    Delivered = BooleanSearchFieldAdapter.Adapt(search.Delivered),
-                    Rejected = BooleanSearchFieldAdapter.Adapt(search.Rejected),
-                    Posted = BooleanSearchFieldAdapter.Adapt(search.Posted),
-                    Pagination = new GrpcPagination()
-                    {
-                        Limit = search.Pagination.Limit,
-                        Offset = search.Pagination.Offset
-                    }
-                };
-                return await Client.SearchPackagesAsync(request);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task<GrpcStatusResponse> CreateNewPackage(NewPackage newPackage)
-        {
-            try
-            {
-                var request = new GrpcShipPackageRequest()
-                {
-                    Name = newPackage.Name,
-                    Platform = newPackage.Platform,
-                    SaleId = newPackage.SaleId,
-                    MarketplaceSaleId = newPackage.MarketplaceSaleId,
-                    TrackingCode = newPackage.TrackingCode,
-                    Weight = newPackage.Weight,
-                    CreatedManually = newPackage.IsManuallyCreated,
-                    SetWatcher = newPackage.SetWatcher,
-                    InitialLocation = LocationAdapter.Adapt(newPackage.PostingLocation)
-                };
-                return await Client.ShipPackageAsync(request);
-            }
-            catch(Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task CreateNewPackage(GrpcShipPackageRequest request)
-        {
-            try
-            {
-                await Client.ShipPackageAsync(request);
+                return await Client.CreateNewShipmentAsync(req);
             }
             catch (Exception)
             {
@@ -99,24 +35,11 @@ namespace Gateway.gRPC.Client
             }
         }
 
-        public static async Task<GrpcStatusResponse> DeletePackage(string id)
+        public static async Task<GrpcShipment> GetShipmentById(GrpcString req)
         {
             try
             {
-                var request = new GrpcIdMessage() { Id = id };
-                return await Client.HardDeletePackageAsync(request);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static  async Task<GrpcRoutineStates> GetPackageWatcherRoutineState()
-        {
-            try
-            {
-                return await Client.GetPackageWatcherRoutineStateAsync(new GrpcVoid());
+                return await Client.GetShipmentByIdAsync(req);
             }
             catch (Exception)
             {
@@ -124,11 +47,11 @@ namespace Gateway.gRPC.Client
             }
         }
 
-        public static async Task<GrpcStatusResponse> RunPackageWatcherRoutine()
+        public static async Task<GrpcVoid> DeleteShipment(GrpcString req)
         {
             try
             {
-                return await Client.RunPackageWatcherRoutineAsync(new GrpcVoid());
+                return await Client.DeleteShipmentAsync(req);
             }
             catch (Exception)
             {
@@ -136,15 +59,11 @@ namespace Gateway.gRPC.Client
             }
         }
 
-        public static async Task<GrpcStatusResponse> RunWatcherRoutineOnOnePackage(string id)
+        public static async Task<GrpcVoid> SetShipmentAutoUpdate(GrpcSetAutoUpdateRequest req)
         {
             try
             {
-                var request = new GrpcIdMessage()
-                {
-                    Id = id
-                };
-                return await Client.RunPackageWatcherRoutineManuallyAsync(request);
+                return await Client.SetShipmentAutoUpdateAsync(req);
             }
             catch (Exception)
             {
@@ -152,11 +71,47 @@ namespace Gateway.gRPC.Client
             }
         }
 
-        public static async Task<GrpcBooleanMessage> CheckMarketplaceIdExists(GrpcStringMessage request)
+        public static async Task<GrpcShipmentList> SearchShipments(GrpcShipmentSearchRequest req)
         {
             try
             {
-                return await Client.CheckMarketplaceIdIsRegisteredAsync(request);
+                return await Client.SearchShipmentsAsync(req);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcVoid> RunAutoUpdate(GrpcVoid req)
+        {
+            try
+            {
+                return await Client.RunAutoUpdateAsync(req);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcVoid> RunAutoUpdateById(GrpcString req)
+        {
+            try
+            {
+                return await Client.RunAutoUpdateByIdAsync(req);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcBoolean> GetIsMarketplaceSaleIdRegistered(GrpcString req)
+        {
+            try
+            {
+                return await Client.GetIsMarketplaceSaleIdRegisteredAsync(req);
             }
             catch (Exception)
             {

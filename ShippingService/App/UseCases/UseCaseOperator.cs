@@ -32,91 +32,11 @@ namespace ShippingService.App.UseCases
             }
         }
 
-        public static async Task<Package> GetPackageData(string id)
+        public static async Task RunShipmentAutoUpdate()
         {
             try
             {
-                await PackageEntity.ValidatePackageId(id);
-                return await GetPackage.Execute(id);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task WatchPackage(string id)
-        {
-            try
-            {
-                
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task StopWatchingPackage(string id)
-        {
-            try
-            {
-             
-               
-               
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task<PackageList> SearchPackagesAsync(SearchPackageRequest request)
-        {
-            try
-            {
-                //PackageSearchEntity.ValidateRequest(request);
-                //return await SearchPackages.Execute(request);
-                return new PackageList();
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-        }
-
-        public static async Task HardDeletePackage(string id)
-        {
-            try
-            {
-                await PackageEntity.ValidatePackageId(id);
-                await DeletePackage.Execute(id);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        //TODO
-        public static async Task SoftDeletePackage(string id)
-        {
-            try
-            {
-                await PackageEntity.ValidatePackageId(id);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public static async Task RunWatcherRoutine(string packageId)
-        {
-            try
-            {
-                var shipment = await ShipmentUseCases.Get.ByPackageId(packageId);
-                await ShipmentUseCases.UpdateShipmentWithBoundry(shipment);
+                await ShipmentUseCases.RunAutoUpdate.Execute();
             }
             catch (Exception e)
             {

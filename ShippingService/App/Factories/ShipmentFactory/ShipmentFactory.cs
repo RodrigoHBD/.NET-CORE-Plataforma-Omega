@@ -26,7 +26,8 @@ namespace ShippingService.App.Factories
                 BoundryImplementation = GetBoundryImplementation(),
                 MarketplaceData = GetMarketplaceData(),
                 PackageId = GetPackageId(),
-                CreatedEvent = GetCreatedEvent()
+                CreatedEvent = GetCreatedEvent(),
+                CreatedManually = GetCreatedManually()
             };
         }
 
@@ -57,6 +58,11 @@ namespace ShippingService.App.Factories
         private bool GetAutoUpdate()
         {
             return Request.SetAutoUpdate;
+        }
+
+        private bool GetCreatedManually()
+        {
+            return Request.SetManuallyCreated;
         }
 
         private ShippingBoundry.Implementation GetBoundryImplementation()

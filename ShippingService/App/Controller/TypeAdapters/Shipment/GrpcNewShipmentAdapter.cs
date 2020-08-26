@@ -23,6 +23,7 @@ namespace ShippingService.App.Controller.TypeAdapters
                 MarketplaceAccountId = GetMarketplaceAccountId(),
                 MarketplaceSaleId = GetMarketplaceSaleId(),
                 SetAutoUpdate = GetSetAutoUpdate(),
+                SetManuallyCreated = GetSetManuallyCreated(),
                 PackageData = GrpcNewPackageRequestAdapter.GetAdapted(Request.PackageData)
             };
         }
@@ -62,6 +63,11 @@ namespace ShippingService.App.Controller.TypeAdapters
         private bool GetSetAutoUpdate()
         {
             return Request.SetAutoUpdate;
+        }
+
+        private bool GetSetManuallyCreated()
+        {
+            return Request.SetCreatedManually;
         }
 
     }

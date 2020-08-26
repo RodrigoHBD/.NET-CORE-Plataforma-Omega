@@ -1,4 +1,5 @@
 ﻿using Gateway.Controllers.Api.Shipping.Models.Output;
+using Gateway.Controllers.Common.Models;
 using Gateway.gRPC.Client.ShippingClientProto;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,12 @@ namespace Gateway.Controllers.Api.Shipping.Factories
 {
     public class PaginationFactory
     {
-        public static Pagination Make(GrpcPagination data)
+        public static GrpcPagination GetFrom(PaginationIn data)
         {
-            return new Pagination()
+            return new GrpcPagination()
             {
                 Limit = data.Limit,
-                Offset = data.Offset,
-                Total = data.Total
+                Offset = data.Offset
             };
         }
     }

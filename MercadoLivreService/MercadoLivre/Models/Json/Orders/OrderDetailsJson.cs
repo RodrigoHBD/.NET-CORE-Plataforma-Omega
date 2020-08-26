@@ -21,15 +21,23 @@ namespace MercadoLivreService.MercadoLivreModels.Out
     public class OrderDetailJson
     {
         public long id { get; set; }
+
         public string status { get; set; } = "";
-        //public string status_detail { get; set; } = "";
+
         public string date_created { get; set; } = "";
+
         public string date_closed { get; set; } = "";
+
         public OrderDetailShipping shipping { get; set; } = new OrderDetailShipping();
+
         public List<OrderDetailsJsonItems> order_items { get; set; } = new List<OrderDetailsJsonItems>();
+
         public double total_amount { get; set; }
+
         public string currency_id { get; set; } = "";
+
         public OrderDetailsJsonBuyer buyer { get; set; } = new OrderDetailsJsonBuyer();
+
         public List<OrderDetailsJsonPayment> payments { get; set; } = new List<OrderDetailsJsonPayment>();
     }
 

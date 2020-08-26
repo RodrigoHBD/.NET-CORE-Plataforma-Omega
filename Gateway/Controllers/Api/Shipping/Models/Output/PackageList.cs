@@ -15,6 +15,6 @@ namespace Gateway.Controllers.Api.Shipping.Models.Output
     {
         public int Offset { get; set; }
         public int Limit { get; set; }
-        public int Total { get; set; }
+        public long Total { get; set; }
     }
 }

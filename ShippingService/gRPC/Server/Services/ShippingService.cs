@@ -10,7 +10,7 @@ namespace ShippingService.gRPC.Server.Services
 {
     public class ShippingServiceImplementation : Shipping.ShippingBase
     {
-        public override async Task<GrpcStatusResponse> CreateNewShipment(GrpcNewShipmentRequest request, ServerCallContext context)
+        public override async Task<GrpcVoid> CreateNewShipment(GrpcNewShipmentRequest request, ServerCallContext context)
         {
             try
             {
@@ -22,11 +22,11 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
-        public override async Task<GrpcStatusResponse> WatchPackage(GrpcWatchPackageRequest request, ServerCallContext context)
+        public override async Task<GrpcVoid> SetShipmentAutoUpdate(GrpcSetAutoUpdateRequest request, ServerCallContext context)
         {
             try
             {
-                return await Controller.WatchPackage(request);
+                return await Controller.SetShipmentAutoUpdate(request);
             }
             catch (Exception e)
             {
@@ -34,11 +34,12 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
-        public override async Task<GrpcPackageData> GetPackageData(GrpcIdMessage request, ServerCallContext context)
+        public override async Task<GrpcShipmentList> SearchShipments(GrpcShipmentSearchRequest request, ServerCallContext context)
         {
+
             try
             {
-                return await Controller.GetPackageData(request);
+                return await Controller.SearchShipments(request);
             }
             catch (Exception e)
             {
@@ -46,11 +47,11 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
-        public override async Task<GrpcPackageList> SearchPackages(GrpcSearchPackageRequest request, ServerCallContext context)
+        public override async Task<GrpcPackage> GetPackageById(GrpcString request, ServerCallContext context)
         {
             try
             {
-                return await Controller.SearchPackages(request);
+                return await Controller.GetPackageById(request);
             }
             catch (Exception e)
             {
@@ -58,11 +59,12 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
-        public override async Task<GrpcStatusResponse> RunPackageWatcherRoutineManually(GrpcIdMessage request, ServerCallContext context)
+       
+        public override async Task<GrpcVoid> RunAutoUpdate(GrpcVoid request, ServerCallContext context)
         {
             try
             {
-                return await Controller.RunPackageStatusUpdateRoutine(request);
+                return await Controller.RunAutoUpdate();
             }
             catch (Exception e)
             {
@@ -70,11 +72,11 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
-        public override async Task<GrpcStatusResponse> HardDeletePackage(GrpcIdMessage request, ServerCallContext context)
+        public override async Task<GrpcVoid> RunAutoUpdateById(GrpcString request, ServerCallContext context)
         {
             try
             {
-                return await Controller.HardDeletePackage(request);
+                return await Controller.RunAutoUpdateById(request);
             }
             catch (Exception e)
             {
@@ -82,11 +84,11 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
-        public override async Task<GrpcStatusResponse> RunPackageWatcherRoutine(GrpcVoid request, ServerCallContext context)
+        public override async Task<GrpcBoolean> GetIsMarketplaceSaleIdRegistered(GrpcString request, ServerCallContext context)
         {
             try
             {
-                return await Controller.RunPackageWatcherRoutine();
+                return await Controller.GetIsMarketplaceSaleIdRegistered(request);
             }
             catch (Exception e)
             {
@@ -94,23 +96,11 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
-        public override async Task<GrpcRoutineStates> GetPackageWatcherRoutineState(GrpcVoid request, ServerCallContext context)
+        public override async Task<GrpcVoid> DeleteShipment(GrpcString request, ServerCallContext context)
         {
             try
             {
-                return await Controller.GetPackageWatcherRoutineState();
-            }
-            catch (Exception e)
-            {
-                throw HandleException(e);
-            }
-        }
-
-        public override async Task<GrpcBooleanMessage> CheckMarketplaceIdIsRegistered(GrpcStringMessage request, ServerCallContext context)
-        {
-            try
-            {
-                return await Controller.CheckMarketplaceIdIsRegistered(request);
+                return await Controller.DeleteShipment(request);
             }
             catch (Exception e)
             {

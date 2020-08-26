@@ -13,8 +13,6 @@ namespace ShippingService.App.Presenters
             return new GrpcRoutineStates()
             {
                 IsPaused = states.IsPaused,
-                IsExecuting = states.IsExecuting,
-                IsInitialized = states.IsInitialized,
                 LastExecutedAt = dates.LastExecutedAt.ToString(),
                 NextExecutionAt = dates.NextExecutionAt.ToString()
             };

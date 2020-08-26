@@ -35,17 +35,23 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.Output
         private bool GetIsSet()
         {
             var isAwaitingForPickUp = false;
-            var evento = Json.evento[0];
-            var awaitingBDE = evento.tipo[0] == "BDE" && (evento.status[0] == "24");
-            var awaitingBDI = evento.tipo[0] == "BDI" && (evento.status[0] == "24");
-            var awaitingBDR = evento.tipo[0] == "BDR" && (evento.status[0] == "24");
-            var awaitingLDI = evento.tipo[0] == "LDI" && (evento.status[0] == "01" || evento.status[0] == "02"
-                || evento.status[0] == "03" || evento.status[0] == "04" || evento.status[0] == "11" || evento.status[0] == "13");
+            var hasOneEvent = Json.evento.Count > 0;
 
-            if (awaitingBDE || awaitingBDI || awaitingBDR || awaitingLDI)
+            if (hasOneEvent)
             {
-                isAwaitingForPickUp = true;
+                var evento = Json.evento[0];
+                var awaitingBDE = evento.tipo[0] == "BDE" && (evento.status[0] == "24");
+                var awaitingBDI = evento.tipo[0] == "BDI" && (evento.status[0] == "24");
+                var awaitingBDR = evento.tipo[0] == "BDR" && (evento.status[0] == "24");
+                var awaitingLDI = evento.tipo[0] == "LDI" && (evento.status[0] == "01" || evento.status[0] == "02"
+                    || evento.status[0] == "03" || evento.status[0] == "04" || evento.status[0] == "11" || evento.status[0] == "13");
+
+                if (awaitingBDE || awaitingBDI || awaitingBDR || awaitingLDI)
+                {
+                    isAwaitingForPickUp = true;
+                }
             }
+
             return isAwaitingForPickUp;
         }
 

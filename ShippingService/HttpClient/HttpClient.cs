@@ -2,13 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ShippingService.HttpClientLibrary
 {
     public class HttpClient
     {
-        private static readonly System.Net.Http.HttpClient Client = new System.Net.Http.HttpClient();
+        private static System.Net.Http.HttpClient Client { get; set; }
 
         public static async Task<T> GetJson<T>(string uri)
         {
@@ -64,9 +66,15 @@ namespace ShippingService.HttpClientLibrary
             }
             catch (Exception)
             {
-
                 throw;
             }
+        }
+
+        public static void Initialize()
+        {
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
+            Client = new System.Net.Http.HttpClient(handler);
         }
 
     }

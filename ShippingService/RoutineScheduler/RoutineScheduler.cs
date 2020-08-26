@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShippingService.RoutineSchedulerRoutines;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -14,7 +15,7 @@ namespace ShippingService
         {
             try
             {
-                //CreateRoutine(new PackageWatcherRoutine2());
+                CreateRoutine(new AutoUpdateRoutine());
             }
             catch (Exception e)
             {

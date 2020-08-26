@@ -1,4 +1,4 @@
-import { Pagination, SearchFields, Location } from "/js/main-app/models/models.js";
+import { Pagination, SearchFields, Location } from "/js/main-app/models/common.js";
 
 export default class CorreiosController {
     BaseUri = "/api/shipping";

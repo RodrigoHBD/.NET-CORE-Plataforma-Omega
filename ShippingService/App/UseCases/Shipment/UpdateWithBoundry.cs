@@ -1,4 +1,5 @@
 ﻿using ShippingService.App.Boundries;
+using ShippingService.App.Entities;
 using ShippingService.App.Entities.PackageDataField;
 using ShippingService.App.Models;
 using ShippingService.App.Models.ShipmentEvents;
@@ -42,32 +43,67 @@ namespace ShippingService.App.UseCases
 
         private async Task UpdatePostedEvent()
         {
-            var @event = await ShippingBoundry.GetPostedEventAsync(TrackingCode, Implementation);
-            await ShipmentDAO.Methods.UpdateSet.SetPostedEvent(Id, @event);
+            try
+            {
+                var @event = await ShippingBoundry.GetPostedEventAsync(TrackingCode, Implementation);
+                await ShipmentDAO.Methods.UpdateSet.SetPostedEvent(Id, @event);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private async Task UpdateDelvieredEvent()
         {
-            var @event = await ShippingBoundry.GetDeliveredEventAsync(TrackingCode, Implementation);
-            await ShipmentDAO.Methods.UpdateSet.SetDeliveredEvent(Id, @event);
+            try
+            {
+                var @event = await ShippingBoundry.GetDeliveredEventAsync(TrackingCode, Implementation);
+                await ShipmentDAO.Methods.UpdateSet.SetDeliveredEvent(Id, @event);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private async Task UpdateAwaitingForPickUpEvent()
         {
-            var @event = await ShippingBoundry.GetAwaitingForPickUpEventAsync(TrackingCode, Implementation);
-            await ShipmentDAO.Methods.UpdateSet.SetAwaitingForPickUpEvent(Id, @event);
+            try
+            {
+                var @event = await ShippingBoundry.GetAwaitingForPickUpEventAsync(TrackingCode, Implementation);
+                await ShipmentDAO.Methods.UpdateSet.SetAwaitingForPickUpEvent(Id, @event);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private async Task UpdateRejectedEvent()
         {
-            var @event = await ShippingBoundry.GetRejectedEventAsync(TrackingCode, Implementation);
-            await ShipmentDAO.Methods.UpdateSet.SetRejectedEvent(Id, @event);
+            try
+            {
+                var @event = await ShippingBoundry.GetRejectedEventAsync(TrackingCode, Implementation);
+                await ShipmentDAO.Methods.UpdateSet.SetRejectedEvent(Id, @event);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private async Task UpdateForwardingEvents()
         {
-            var @eventList = await ShippingBoundry.GetForwardingEventListAsync(TrackingCode, Implementation);
-            await ShipmentDAO.Methods.UpdateSet.SetForwardingEventList(Id, @eventList);
+            try
+            {
+                var @eventList = await ShippingBoundry.GetForwardingEventListAsync(TrackingCode, Implementation);
+                await ShipmentDAO.Methods.UpdateSet.SetForwardingEventList(Id, @eventList);
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
     }

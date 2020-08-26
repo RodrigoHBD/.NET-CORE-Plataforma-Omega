@@ -22,8 +22,7 @@ namespace ShippingService
     public class RoutineStates 
     {
         public bool IsPaused { get; set; }
-        public bool IsExecuting { get; set; }
-        public bool IsInitialized { get; set; }
+        public bool IsRunning { get; set; }
     }
 
     public class RoutineDates

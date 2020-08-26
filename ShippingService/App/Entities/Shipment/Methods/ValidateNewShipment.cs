@@ -1,4 +1,5 @@
-﻿using ShippingService.App.Models;
+﻿using ShippingService.App.Entities.ShipmentDataField;
+using ShippingService.App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ShippingService.App.Entities.ShipmentMethods
     {
         public async Task Execute()
         {
-            ValidateTrackingCode();
+            await ValidateTrackingCode();
             await ValidatePackageId();
         }
 
@@ -21,11 +22,12 @@ namespace ShippingService.App.Entities.ShipmentMethods
 
         private Shipment Shipment { get; }
 
-        private void ValidateTrackingCode()
+        private async Task ValidateTrackingCode()
         {
             var code = Shipment.TrackingCode;
+            await new ShipmentTrackingCode().ValidateNew(code);
 
-            if(code == null)
+            if (code == null)
             {
                 throw new Exception("Codigo de rastreio nao pode ser vazio");
             }

@@ -1,27 +1,34 @@
 ﻿using ShippingService.App.Entities;
+using ShippingService.App.Models.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ShippingService.App.Models.ShipmentSearch
+namespace ShippingService.App.Models.Input
 {
     public class ShipmentSearch
     {
-        public BoolSearchField IsPosted { get; set; }
+        public BoolSearchFilter AutoUpdate { get; set; } = new BoolSearchFilter();
 
-        public BoolSearchField IsBeingTransported { get; set; }
+        public BoolSearchFilter IsPosted { get; set; } = new BoolSearchFilter();
 
-        public BoolSearchField IsAwaitingForPickUp { get; set; }
+        public BoolSearchFilter IsBeingTransported { get; set; } = new BoolSearchFilter();
 
-        public BoolSearchField IsDelivered { get; set; }
+        public BoolSearchFilter IsAwaitingForPickUp { get; set; } = new BoolSearchFilter();
 
-        public BoolSearchField IsRejected { get; set; }
+        public BoolSearchFilter IsDelivered { get; set; } = new BoolSearchFilter();
 
-        public StringSearchField DynamicString { get; set; }
+        public BoolSearchFilter IsDeliveredToDestination { get; set; } = new BoolSearchFilter();
 
-        public StringSearchField BoundMarketplace { get; set; }
+        public BoolSearchFilter IsRejected { get; set; } = new BoolSearchFilter();
+
+        public StringSearchFilter DynamicString { get; set; } = new StringSearchFilter();
+
+        public StringSearchFilter BoundMarketplace { get; set; } = new StringSearchFilter();
 
         public PaginationIn Pagination { get; set; } = PaginationEntity.PaginationInDefault;
+
+        public ShipmentSearchSorting Sorting { get; set; } = ShipmentSearchSorting.None;
     }
 }

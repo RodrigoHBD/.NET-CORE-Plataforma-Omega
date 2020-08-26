@@ -1,11 +1,12 @@
 ﻿using MongoDB.Driver;
 using ShippingService.App.Models;
 using ShippingService.App.Models.Output;
-using ShippingService.App.Models.ShipmentSearch;
+using ShippingService.App.Models.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShippingService.App.Models.ShipmentEvents;
 
 namespace ShippingService.App.Boundries.ShipmentDAOMethods
 {
@@ -38,13 +39,23 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
 
         private FilterDefinition<Shipment> Filter { get; set; } = FilterBuilder.Empty;
 
+        private void SetAutoUpdateFilter()
+        {
+            if (Request.AutoUpdate.IsSet)
+            {
+                var value = Request.AutoUpdate.Value;
+                var filter = FilterBuilder.Where(shipment => shipment.AutoUpdate == value);
+                Filter = FilterBuilder.And(Filter, filter);
+            }
+        }
+
         private void SetBoundMarketplaceFilter()
         {
             if (Request.BoundMarketplace.IsSet)
             {
                 var value = Request.BoundMarketplace.Value;
                 var filter = FilterBuilder.Where(shipment => shipment.MarketplaceData.BoundMarketplace == value);
-                Filter = FilterBuilder.Or(Filter, filter);
+                Filter = FilterBuilder.And(Filter, filter);
             }
         }
 
@@ -54,7 +65,7 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             {
                 var value = Request.DynamicString.Value;
                 var filter = FilterBuilder.Where(shipment => shipment.TrackingCode == value);
-                Filter = FilterBuilder.Or(Filter, filter);
+                Filter = FilterBuilder.And(Filter, filter);
             }
         }
 
@@ -64,7 +75,7 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             {
                 var value = Request.IsPosted.Value;
                 var filter = FilterBuilder.Where(shipment => shipment.PostedEvent.IsPosted == value);
-                Filter = FilterBuilder.Or(Filter, filter);
+                Filter = FilterBuilder.And(Filter, filter);
             }
         }
 
@@ -72,9 +83,7 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
         {
             if (Request.IsBeingTransported.IsSet)
             {
-                var value = Request.IsBeingTransported.Value;
-                var filter = FilterBuilder.Where(shipment => shipment.ForwardingEvents.Last().PackageHasArrived == value);
-                Filter = FilterBuilder.Or(Filter, filter);
+                
             }
         }
 
@@ -84,7 +93,17 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             {
                 var value = Request.IsDelivered.Value;
                 var filter = FilterBuilder.Where(shipment => shipment.DeliveredEvent.IsDelivered == value);
-                Filter = FilterBuilder.Or(Filter, filter);
+                Filter = FilterBuilder.And(Filter, filter);
+            }
+        }
+
+        private void SetDeliveredToDestinationFilter()
+        {
+            if (Request.IsDeliveredToDestination.IsSet)
+            {
+                var value = Request.IsDeliveredToDestination.Value;
+                var filter = FilterBuilder.Where(shipment => shipment.DeliveredEvent.IsDeliveredToDestination == value);
+                Filter = FilterBuilder.And(Filter, filter);
             }
         }
 
@@ -94,7 +113,17 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             {
                 var value = Request.IsAwaitingForPickUp.Value;
                 var filter = FilterBuilder.Where(shipment => shipment.AwaitingForPickUpEvent.IsSet == value);
-                Filter = FilterBuilder.Or(Filter, filter);
+                Filter = FilterBuilder.And(Filter, filter);
+            }
+        }
+
+        private void SetRejectedFilter()
+        {
+            if (Request.IsRejected.IsSet)
+            {
+                var value = Request.IsAwaitingForPickUp.Value;
+                var filter = FilterBuilder.Where(shipment => shipment.RejectedEvent.IsRejected == value);
+                Filter = FilterBuilder.And(Filter, filter);
             }
         }
 
@@ -104,8 +133,11 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             SetDynamicStringFilter();
             SetPostedFilter();
             SetDeliveredFilter();
+            SetDeliveredToDestinationFilter();
             SetAwaitingForPickUpFilter();
-            SetBeingTransportedFilter();
+            SetRejectedFilter();
+            //SetBeingTransportedFilter();
+            SetAutoUpdateFilter();
         }
 
         private async Task<List<Shipment>> GetSearchData()

@@ -4,17 +4,18 @@ option csharp_namespace = "ShippingService.gRPC.Server.Protos";
 
 service Shipping {
 	//Done
-	rpc CreateNewShipment (GrpcNewShipmentRequest) returns (GrpcStatusResponse);
-	//TODO
-	rpc SetShipmentAutoUpdate (GrpcSetBoolByIdRequest) returns (GrpcStatusResponse);
+	rpc CreateNewShipment (GrpcNewShipmentRequest) returns (GrpcVoid);
+	rpc GetShipmentById (GrpcString) returns (GrpcShipment);
+	rpc SetShipmentAutoUpdate (GrpcSetAutoUpdateRequest) returns (GrpcVoid);
+	rpc SearchShipments (GrpcShipmentSearchRequest) returns (GrpcShipmentList);
+	rpc DeleteShipment (GrpcString) returns (GrpcVoid);
 
-	rpc GetPackageData (GrpcIdMessage) returns (GrpcPackageData);
-	rpc SearchPackages (GrpcSearchPackageRequest) returns (GrpcPackageList);
-	rpc RunPackageWatcherRoutineManually (GrpcIdMessage) returns (GrpcStatusResponse);
-	rpc HardDeletePackage (GrpcIdMessage) returns (GrpcStatusResponse);
-	rpc RunPackageWatcherRoutine (GrpcVoid) returns (GrpcStatusResponse);
-	rpc GetPackageWatcherRoutineState (GrpcVoid) returns (GrpcRoutineStates);
-	rpc CheckMarketplaceIdIsRegistered (GrpcStringMessage) returns (GrpcBooleanMessage);
+	rpc GetPackageById (GrpcString) returns (GrpcPackage);
+
+	rpc RunAutoUpdate (GrpcVoid) returns (GrpcVoid);
+	rpc RunAutoUpdateById (GrpcString) returns (GrpcVoid);
+
+	rpc GetIsMarketplaceSaleIdRegistered (GrpcString) returns (GrpcBoolean);
 }
 
 // requests
@@ -25,7 +26,8 @@ message GrpcNewShipmentRequest {
 	string marketplace_sale_id = 4;
 	string shipping_implementation = 5;
 	bool set_auto_update = 6;
-	GrpcNewPackageRequest package_data = 7;
+	bool set_created_manually = 7;
+	GrpcNewPackageRequest package_data = 8;
 }
 
 message GrpcNewPackageRequest {
@@ -37,78 +39,83 @@ message GrpcNewPackageRequest {
 	repeated string content_ids = 6;
 }
 
-message GrpcSetBoolByIdRequest {
+message GrpcShipmentSearchRequest {
+	GrpcPagination pagination = 1;
+	int32 sorting = 2;
+	GrpcBooleanFilter is_posted = 3;
+	GrpcBooleanFilter is_being_transported = 4;
+	GrpcBooleanFilter is_awaiting_for_pick_up = 5;
+	GrpcBooleanFilter is_delivered = 6;
+	GrpcBooleanFilter is_delivered_to_destination = 7;
+	GrpcBooleanFilter is_rejected = 8;
+	GrpcBooleanFilter auto_update = 9;
+	GrpcStringFilter dynamic_string = 10;
+	GrpcStringFilter bound_marketplace = 11;
+}
+
+message GrpcSetAutoUpdateRequest {
 	string id = 1;
-	bool toggle = 2;
-}
-
-message GrpcSearchPackageRequest {
-	string name = 1;
-	string trackingCode = 2;
-	string dynamicField = 3;
-	GrpcBooleanSearchField delivered = 4;
-	GrpcBooleanSearchField rejected = 5;
-	GrpcBooleanSearchField awaitingForPickUp = 6;
-	GrpcBooleanSearchField beingTransported = 7;
-	GrpcBooleanSearchField posted = 8;
-	GrpcPagination pagination = 9;
-}
-
-message GrpcStringMessage {
-	string value = 1;
+	bool toggler = 2;
 }
 
 //responses
-message GrpcStatusResponse {
-	bool ok = 1;
-	string message = 2;
+
+// models
+message GrpcVoid {
+
 }
 
-message GrpcBooleanMessage {
+message GrpcString {
+	string value = 1;
+}
+
+
+message GrpcBoolean {
 	bool value = 1;
 }
 
-message GrpcPackageList {
-	repeated GrpcPackageData data = 1;
-	GrpcPagination pagination = 2;
-}
 
-// models
-message GrpcPackageData {
+message GrpcShipment {
 	string id = 1;
-	string saleId = 2;
-	string marketplace_sale_id = 3;
-	string name = 4;
-	string trackingCode = 5;
-	string boundPlatform = 6;
-	double weight = 7;
-	repeated string content = 8;
-	bool isBeingWatched = 9;
-	GrpcPackageStatus status = 10;
-	GrpcPackageLocations locations = 11;
-	GrpcPackageDates dates = 12;
-	bool createdManually = 13;
-	string marketplace_account_id = 14;
+	string package_id = 2;
+	string tracking_code = 3;
+	string boundry_implementation = 4;
+	string bound_marketplace = 5;
+	string marketplace_account_id = 6;
+	string marketplace_sale_id = 7;
+	bool auto_update = 8;
+	bool created_manually = 9;
+	GrpcShipmentStates states = 10;
 }
 
-message GrpcPackageDates {
-	string created_at = 1;
-	string last_modified_at = 2;
-	string posted_at = 3;
+message GrpcShipmentStates {
+	bool is_posted = 1;
+	bool is_delivered = 2;
+	bool is_delivered_to_destination = 3;
+	bool is_rejected = 4;
+	bool is_awaiting_for_pick_up = 5;
+	bool is_being_transported = 6;
 }
 
-message GrpcPackageStatus {
-	bool isPosted = 1;
-	bool isDelivered = 2;
-	bool isAwaitingForPickUp = 3;
-	bool isRejected = 4;
-	bool isBeingTransported = 5;
-	string message = 6;
+message GrpcShipmentList {
+	GrpcPagination pagination = 1;
+	string sorting = 2;
+	repeated GrpcShipment data = 3;
 }
 
-message GrpcPackageLocations {
-	GrpcLocation currentLocation = 1;
-	GrpcLocation headedToLocation = 2;
+message GrpcPackage {
+	string id = 1;
+	string name = 2;
+	int32 weight_in_grams = 3;
+	int32 width_in_mm = 4;
+	int32 height_in_mm = 5;
+	int32 length_in_mm = 6;
+	repeated string content_ids = 7;
+}
+
+message GrpcPackageList {
+	repeated GrpcPackage data = 1;
+	GrpcPagination pagination = 2;
 }
 
 message GrpcLocation {
@@ -119,23 +126,10 @@ message GrpcLocation {
 	int32 streetNumber = 5;
 }
 
-message GrpcIdMessage {
-	string id = 1;
-}
-
 message GrpcPagination {
 	int32 offset = 1;
 	int32 limit = 2;
 	int64 total = 3;
-}
-
-message GrpcBooleanSearchField {
-	bool isActive = 1;
-	bool value = 2;
-}
-
-message GrpcVoid {
-
 }
 
 message GrpcRoutineStates {
@@ -144,4 +138,15 @@ message GrpcRoutineStates {
 	bool isPaused = 3;
 	string lastExecutedAt = 4;
 	string nextExecutionAt = 5;
+}
+
+// search filters
+message GrpcBooleanFilter {
+	bool isActive = 1;
+	bool value = 2;
+}
+
+message GrpcStringFilter {
+	bool is_active = 1;
+	string value = 2;
 }

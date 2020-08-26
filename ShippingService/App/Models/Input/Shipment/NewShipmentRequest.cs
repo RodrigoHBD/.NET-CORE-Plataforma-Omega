@@ -18,6 +18,8 @@ namespace ShippingService.App.Models.Input
 
         public bool SetAutoUpdate { get; set; }
 
+        public bool SetManuallyCreated { get; set; }
+
         public ShippingBoundry.Implementation ShippingImplementation { get; set; }
 
         public NewPackageRequest PackageData { get; set; } = new NewPackageRequest();

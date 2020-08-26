@@ -17,11 +17,13 @@ namespace ShippingService.App.Models
         [BsonId]
         public ObjectId Id { get; set; }
 
-        public string PackageId { get; set; }
+        public string PackageId { get; set; } = "";
 
-        public string TrackingCode { get; set; }
+        public string TrackingCode { get; set; } = "";
 
         public bool AutoUpdate { get; set; } = false;
+
+        public bool CreatedManually { get; set; } = false;
 
         public ShippingBoundry.Implementation BoundryImplementation { get; set; } = ShippingBoundry.Implementation.Unset;
 

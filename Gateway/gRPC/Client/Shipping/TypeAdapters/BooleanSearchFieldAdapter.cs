@@ -1,4 +1,4 @@
-﻿using Gateway.Controllers.Api.Models;
+﻿using Gateway.Controllers.Common.Models;
 using Gateway.gRPC.Client.ShippingClientProto;
 using System;
 using System.Collections.Generic;
@@ -9,9 +9,9 @@ namespace Gateway.gRPC.Client.ShippingTypeAdapters
 {
     public class BooleanSearchFieldAdapter
     {
-        public static GrpcBooleanSearchField Adapt(BooleanSearchField field)
+        public static GrpcBooleanFilter Adapt(BooleanSearchFilter field)
         {
-            return new GrpcBooleanSearchField()
+            return new GrpcBooleanFilter()
             {
                 IsActive = field.IsActive,
                 Value = field.Value

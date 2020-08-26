@@ -34,12 +34,9 @@
   <ItemGroup>
     <Folder Include="App\Boundries\Shipping\Models\Intercafe\" />
     <Folder Include="App\Boundries\Shipping\TypeAdapters\Input\" />
-    <Folder Include="App\Controller\TypeAdapters\SearchFields\" />
     <Folder Include="App\Entities\Package\DataFields\" />
-    <Folder Include="App\Entities\Shipment\DataField\" />
     <Folder Include="gRPC\Client\" />
     <Folder Include="MercadoEnvios\Methods\" />
-    <Folder Include="RoutineScheduler\Routines\" />
   </ItemGroup>
 
   <ItemGroup>

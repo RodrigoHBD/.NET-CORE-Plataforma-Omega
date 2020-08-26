@@ -9,17 +9,7 @@ namespace ShippingService.App.Models.ShipmentEvents
     {
         public string Title { get; set; }
 
-        public string Description
-        {
-            get
-            {
-                if (IsSet)
-                {
-                    return "O pacote esta esperando ser buscado manualmente";
-                }
-                return "O pacote nao esta esperando ser buscado manualmente";
-            }
-        }
+        public string Description { get; set; }
 
         public bool IsSet { get; set; } = false;
 

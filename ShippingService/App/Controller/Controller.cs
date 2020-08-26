@@ -4,21 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using ShippingService.App.Controller.TypeAdapters;
 using ShippingService.App.Presenters;
-using ShippingService.App.TypeAdapters;
 using ShippingService.App.UseCases;
+using ShippingService.Correios.Models.Sro;
 using ShippingService.gRPC.Server.Protos;
 
 namespace ShippingService.App.Controller
 {
     public class Controller
     {
-        public static async Task<GrpcStatusResponse> CreateNewShipment(GrpcNewShipmentRequest grpcRequest)
+        public static async Task<GrpcVoid> CreateNewShipment(GrpcNewShipmentRequest grpcRequest)
         {
             try
             {
                 var request = GrpcNewShipmentRequestAdapter.GetAdapted(grpcRequest);
                 await UseCaseOperator.CreateNewShipment(request);
-                return StatusResponsePresenter.Present(true);
+                return GrpcVoid;
             }
             catch (Exception e)
             {
@@ -26,24 +26,70 @@ namespace ShippingService.App.Controller
             }
         }
 
-        public static async Task<GrpcStatusResponse> SetShipmentAutoUpdate(GrpcSetBoolByIdRequest grpcRequest)
+        public static async Task<GrpcVoid> DeleteShipment(GrpcString grpcRequest)
         {
             try
             {
-                return new GrpcStatusResponse();
+                var id = GrpcStringAdapter.GetFrom(grpcRequest);
+                await ShipmentUseCases.Delete.Execute(id);
+                return GrpcVoid;
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 
-        public static async Task<GrpcPackageData> GetPackageData(GrpcIdMessage grpcRequest)
+        public static async Task<GrpcShipment> GetShipmentById(GrpcString grpcRequest)
         {
             try
             {
-                var id = grpcRequest.Id;
-                var package = await UseCaseOperator.GetPackageData(id);
+                var id = GrpcStringAdapter.GetFrom(grpcRequest);
+                var shipment = await ShipmentUseCases.Get.ById(id);
+                return ShipmentPresenter.Present(shipment);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcShipmentList> SearchShipments(GrpcShipmentSearchRequest grpcRequest)
+        {
+            try
+            {
+                var req = GrpcShipmentSearchRequestAdapter.Adapt(grpcRequest);
+                var resp = await ShipmentUseCases.Search.Execute(req);
+                return ShipmentListPresenter.Present(resp);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcVoid> SetShipmentAutoUpdate(GrpcSetAutoUpdateRequest grpcRequest)
+        {
+            try
+            {
+                var adapter = new GrpcSetAutoUpdateRequestAdapter(grpcRequest);
+                var id = adapter.GetId();
+                var toggle = adapter.GetBool();
+                await ShipmentUseCases.Set.AutoUpdate(id, toggle);
+                return GrpcVoid;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcPackage> GetPackageById(GrpcString grpcRequest)
+        {
+            try
+            {
+                var id = GrpcStringAdapter.GetFrom(grpcRequest);
+                var package = await GetPackage.Execute(id);
                 return PackagePresenter.PresentePackage(package);
             }
             catch (Exception e)
@@ -52,25 +98,12 @@ namespace ShippingService.App.Controller
             }
         }
 
-        public static async Task<GrpcPackageList> SearchPackages(GrpcSearchPackageRequest grpcRequest)
+        public static async Task<GrpcVoid> RunAutoUpdate()
         {
             try
             {
-                return new GrpcPackageList();
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-        }
-
-        public static async Task<GrpcStatusResponse> RunPackageStatusUpdateRoutine(GrpcIdMessage grpcRequest)
-        {
-            try
-            {
-                var id = grpcRequest.Id;
-                await UseCaseOperator.RunWatcherRoutine(id);
-                return StatusResponsePresenter.Present(true, "Rotina executada com sucesso");
+                await UseCaseOperator.RunShipmentAutoUpdate();
+                return GrpcVoid;
             }
             catch (Exception e)
             {
@@ -78,55 +111,17 @@ namespace ShippingService.App.Controller
             }
         }
 
-        public static async Task<GrpcStatusResponse> HardDeletePackage(GrpcIdMessage grpcRequest)
+        public static async Task<GrpcVoid> RunAutoUpdateById(GrpcString req)
         {
             try
             {
-                await UseCaseOperator.HardDeletePackage(grpcRequest.Id);
-                return StatusResponsePresenter.Present(true, "Pacote deletado");
+                var id = GrpcStringAdapter.GetFrom(req);
+                await ShipmentUseCaseController.RunAutoUpdateById(id);
+                return GrpcVoid;
             }
             catch (Exception e)
             {
                 throw e;
-            }
-        }
-
-        public static async Task<GrpcStatusResponse> RunPackageWatcherRoutine()
-        {
-            try
-            {
-                RoutineScheduler.RunRoutine("Package Watcher");
-                return StatusResponsePresenter.Present(true, "Rotina executada com sucesso");
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public static async Task<GrpcStatusResponse> PauseRoutine(GrpcIdMessage request)
-        {
-            try
-            {
-                RoutineScheduler.PauseRoutine(request.Id);
-                return StatusResponsePresenter.Present(true, "Rotina executada com sucesso");
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public static async Task<GrpcStatusResponse> ResumeRoutine(GrpcIdMessage request)
-        {
-            try
-            {
-                RoutineScheduler.ResumeRoutine(request.Id);
-                return StatusResponsePresenter.Present(true, "Rotina executada com sucesso");
-            }
-            catch (Exception)
-            {
-                throw;
             }
         }
 
@@ -144,18 +139,21 @@ namespace ShippingService.App.Controller
             }
         }
 
-        public static async Task<GrpcBooleanMessage> CheckMarketplaceIdIsRegistered(GrpcStringMessage grpcRequest)
+        public static async Task<GrpcBoolean> GetIsMarketplaceSaleIdRegistered(GrpcString req)
         {
             try
             {
-                
-                return new GrpcBooleanMessage() { Value = true };
+                var id = GrpcStringAdapter.GetFrom(req);
+                var isRegistered = await ShipmentUseCases.GetIsMarketplaceSaleIdRegistered(id);
+                return new GrpcBoolean() { Value = isRegistered };
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
+        private static GrpcVoid GrpcVoid { get; } = new GrpcVoid();
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShippingService.HttpClientLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace ShippingService.App
             try
             {
                 await InitializeDatabaseAsync();
+                InitializeHttpClient();
                 InitializeRoutines();
             }
             catch (Exception e)
@@ -43,6 +45,11 @@ namespace ShippingService.App
             {
                 throw e;
             }
+        }
+
+        private static void InitializeHttpClient()
+        {
+            HttpClient.Initialize();
         }
     }
 }

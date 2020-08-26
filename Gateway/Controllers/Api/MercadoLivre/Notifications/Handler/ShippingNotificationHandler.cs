@@ -14,14 +14,6 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
 {
     public class ShippingNotificationHandler : INotificationHandler
     {
-        private Notification Notification { get; set; }
-        private long AccountId { get; set; }
-        private long ShipmentId { get; set; }
-        private string OrderId { get; set; }
-        private string SaleId { get; set; }
-        private GrpcShipmentDetail ShipmentDetail { get; set; }
-        private GrpcSale SaleDetail { get; set; }
-
         public bool TestShouldHandle(Notification notification)
         {
             if(notification.topic == "shipments")
@@ -40,12 +32,12 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
             {
                 await SetProperties(notification);
 
-                var saleIsRegistered = await CheckIfSaleIsRegistered(ShipmentDetail.OrderId.ToString());
-                var trackingCodeAvailable = ShipmentDetail.TrackingCode.Length > 0;
+                var saleIsRegistered = await CheckIfSaleIsRegistered(MLShipment.OrderId.ToString());
+                var trackingCodeAvailable = MLShipment.TrackingCode.Length > 0;
 
                 if (!saleIsRegistered)
                 {
-                    SaleId = await RegisterSale(AccountId, ShipmentDetail.OrderId);
+                    SaleId = await RegisterSale(AccountId, MLShipment.OrderId);
                 }
                 else
                 {
@@ -55,7 +47,7 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
 
                 if (trackingCodeAvailable)
                 {
-                    await CreatePackage();
+                    await CreateShipment();
                 }
             }
             catch (Exception)
@@ -64,28 +56,73 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
             }
         }
 
+        private Notification Notification { get; set; }
+
+        private long AccountId { get; set; }
+
+        private long ShipmentId { get; set; }
+
+        private string SaleId { get; set; }
+
+        private GrpcShipmentDetail MLShipment { get; set; }
+
+        private GrpcSale SaleDetail { get; set; }
+
         private async Task GetSaleDetail()
         {
             var request = new gRPC.Client.SaleClientProto.GrpcStringMessage()
             {
-                Value = OrderId
+                Value = SaleId
             };
             SaleDetail = await SaleClient.GetByMarketplaceId(request);
         }
 
-        private async Task CreatePackage()
+        private async Task CreateShipment()
         {
-            var request = new GrpcShipPackageRequest()
+            try
             {
-                CreatedManually = false,
-                MarketplaceSaleId = ShipmentDetail.OrderId.ToString(),
-                SaleId = SaleId,
-                SetWatcher = true,
-                TrackingCode = ShipmentDetail.TrackingCode,
-                InitialLocation = new GrpcLocation(),
-                MarketplaceAccountId = AccountId.ToString()
-            };
-            await ShippingClient.CreateNewPackage(request);
+                var req = new GrpcNewShipmentRequest()
+                {
+                    TrackingCode = MLShipment.TrackingCode,
+                    SetAutoUpdate = true,
+                    MarketplaceAccountId = AccountId.ToString(),
+                    MarketplaceSaleId = SaleId,
+                    BoundMarketplace = "mercado livre",
+                    SetCreatedManually = false,
+                    ShippingImplementation = GetShipmentImplementation(),
+                    PackageData = new GrpcNewPackageRequest()
+                };
+                await ShippingClient.CreateShipment(req);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        private string GetShipmentImplementation()
+        {
+            try
+            {
+                var shippingMethod = MLShipment.TrackingMethod;
+
+                if(shippingMethod == "Jadlog Normal")
+                {
+                    return "Mercado Envios";
+                }
+                else if(shippingMethod == "PAC")
+                {
+                    return "Correios";
+                }
+                else
+                {
+                    return $"Indefinido - {shippingMethod}";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private async Task SetProperties(Notification notification)
@@ -93,28 +130,20 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
             Notification = notification;
             ShipmentId = Int64.Parse(Regex.Replace(Notification.resource, "[^.0-9]", ""));
             AccountId = Notification.user_id;
-            ShipmentDetail = await GetShipmentDetails();
-            OrderId = ShipmentDetail.OrderId.ToString();
+            MLShipment = await GetBoundryShipmentDetails();
+            SaleId = MLShipment.OrderId.ToString();
         }
 
         private async Task<bool> CheckIfSaleIsRegistered(string id)
         {
-            var request = CreateCheckMarketplaceSaleIdRequest(id);
-            var response = await ShippingClient.CheckMarketplaceIdExists(request);
-            return response.Value;
-        }
-
-        private gRPC.Client.ShippingClientProto.GrpcStringMessage CreateCheckMarketplaceSaleIdRequest(string id)
-        {
-            return new gRPC.Client.ShippingClientProto.GrpcStringMessage()
-            {
-                Value = id
-            };
+            var req = new GrpcString() { Value = id };
+            var isRegistered = await ShippingClient.GetIsMarketplaceSaleIdRegistered(req);
+            return isRegistered.Value;
         }
 
         private async Task<string> RegisterSale(long accountId, long orderId)
         {
-            var orderDetails = await GetOrderDetails(accountId, orderId);
+            var orderDetails = await GetSaleDetails(accountId, orderId);
             var request = CreateRegisterSaleRequest(orderDetails);
             var response = await SaleClient.RegisterNewSale(request);
             return response.Message;
@@ -131,7 +160,7 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
             };
         }
 
-        private async Task<GrpcOrder> GetOrderDetails(long accountId, long orderId)
+        private async Task<GrpcOrder> GetSaleDetails(long accountId, long orderId)
         {
             var request = new GrpcGetOrderDetailReq()
             {
@@ -141,7 +170,7 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
             return await MercadoLivreClient.GetOrderDetail(request);
         }
 
-        private async Task<GrpcShipmentDetail> GetShipmentDetails()
+        private async Task<GrpcShipmentDetail> GetBoundryShipmentDetails()
         {
             var request = new GrpcGetShipmentDetailReq() { AccountId = AccountId, ShipmentId = ShipmentId };
             var shipmentDetails = await MercadoLivreClient.GetShipmentDetail(request);

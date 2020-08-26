@@ -7,14 +7,14 @@ namespace ShippingService.App.Models.Input
 {
     public class SearchPackageRequest
     {
-        public StringSearchField Name { get; set; }
-        public StringSearchField TrackingCode { get; set; }
-        public StringSearchField DynamicString { get; }
-        public BoolSearchField AwaitingForPickUp { get; set; }
-        public BoolSearchField Rejected { get; set; }
-        public BoolSearchField Delivered { get; set; }
-        public BoolSearchField BeingTransported { get; set; }
-        public BoolSearchField Posted { get; set; }
+        public StringSearchFilter Name { get; set; }
+        public StringSearchFilter TrackingCode { get; set; }
+        public StringSearchFilter DynamicString { get; }
+        public BoolSearchFilter AwaitingForPickUp { get; set; }
+        public BoolSearchFilter Rejected { get; set; }
+        public BoolSearchFilter Delivered { get; set; }
+        public BoolSearchFilter BeingTransported { get; set; }
+        public BoolSearchFilter Posted { get; set; }
         public PaginationIn Pagination { get; }
     }
 }

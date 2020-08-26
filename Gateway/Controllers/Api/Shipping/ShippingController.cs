@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Gateway.Controllers.Api.Shipping.Factories;
 using Gateway.Controllers.Api.Shipping.Models.Input;
+using Gateway.Controllers.Api.Shipping.Presenter;
 using Gateway.Controllers.Shipping.Input;
 using Gateway.gRPC.Client;
-using Microsoft.AspNetCore.Http;
+using Gateway.gRPC.Client.ShippingClientProto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Gateway.Controllers
@@ -15,57 +16,59 @@ namespace Gateway.Controllers
     [ApiController]
     public class ShippingController : ControllerBase
     {
-        [Route("get-package")]
-        [HttpGet]
-        public async Task<IActionResult> GetPackageDataAsync(string id)
+        [Route("new-shipment")]
+        [HttpPost]
+        public async Task CreateShipment(NewShipment json)
         {
             try
             {
-                var packageData = await ShippingClient.GetPackageDataAsync(id);
+                var req = GrpcNewShipmentRequestFactory.GetFrom(json);
+                await ShippingClient.CreateShipment(req);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        [Route("shipment")]
+        [HttpGet]
+        public async Task<IActionResult> GetShipment(string id)
+        {
+            try
+            {
+                var req = new GrpcString() { Value = id };
+                var shipment = await ShippingClient.GetShipmentById(req);
+                
                 return new ContentResult()
                 {
-                    Content = PackageDataFactory.MakeSerialized(packageData),
+                    Content = ShipmentPresenter.PresentSerialized(shipment),
                     ContentType = "application/json"
                 };
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 
-        [Route("search-package")]
+        [Route("search-shipments")]
         [HttpPost]
-        public async Task<IActionResult> SearchPackageData(PackageSearch search)
+        public async Task<IActionResult> SearchShipments(ShipmentSearch search)
         {
             try
             {
-                var results = await ShippingClient.SearchPackagesAsync(search);
-                return new ContentResult() 
+                var req = GrpcShipmentSearchRequestFactory.GetFrom(search);
+                var resp = await ShippingClient.SearchShipments(req);
+                return new ContentResult()
                 {
-                    Content = PackageListFactory.MakeSerialized(results),
+                    Content = ShipmentListPresenter.GetSerializedFrom(resp),
                     ContentType = "application/json"
                 };
             }
             catch (Exception e)
             {
-                throw e;
-            }
-        }
-
-        [Route("new-package")]
-        [HttpPost]
-        public async Task CreateNewPackage(NewPackage newPackage)
-        {
-            try
-            {
-                var response = await ShippingClient.CreateNewPackage(newPackage);
-                var isOk = response.Ok == true;
-                return;
-            }
-            catch (Exception e)
-            {
-                throw e;
+                throw;
             }
         }
 
@@ -75,24 +78,56 @@ namespace Gateway.Controllers
         {
             try
             {
-                await ShippingClient.DeletePackage(id);
+                var req = GrpcStringFactory.From(id);
+                await ShippingClient.DeleteShipment(req);
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 
         [HttpGet]
-        [Route("package-watcher-routine-state")]
-        public async Task<IActionResult> GetPackageWatcherRoutineState()
+        [Route("run-auto-update")]
+        public async Task RunAutoUpdate()
         {
             try
             {
-                var grpcResponse = await ShippingClient.GetPackageWatcherRoutineState();
+                var req = new GrpcVoid();
+                await ShippingClient.RunAutoUpdate(req);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("run-auto-update-by-id")]
+        public async Task RunAutoUpdateById(string id)
+        {
+            try
+            {
+                var req = GrpcStringFactory.From(id);
+                await ShippingClient.RunAutoUpdateById(req);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("is-marketplace-sale-id-registered")]
+        public async Task<IActionResult> GetIsMarketplaceSaleIdRegistered(string id)
+        {
+            try
+            {
+                var req = GrpcStringFactory.From(id);
+                var resp = await ShippingClient.GetIsMarketplaceSaleIdRegistered(req);
                 return new ContentResult()
                 {
-                    Content = PackageWatcherRoutineStateFactory.MakeSerialized(grpcResponse),
+                    Content = $"{{ 'IsRegistered': {resp.Value} }}",
                     ContentType = "application/json"
                 };
             }
@@ -103,26 +138,13 @@ namespace Gateway.Controllers
         }
 
         [HttpGet]
-        [Route("run-package-watcher-routine")]
-        public async Task RunPackageWatcherRoutine()
+        [Route("package-watcher-routine-state")]
+        public async Task<IActionResult> GetPackageWatcherRoutineState()
         {
             try
             {
-                await ShippingClient.RunPackageWatcherRoutine();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        [HttpGet]
-        [Route("run-package-watcher-routine-by-id")]
-        public async Task RunPackageWatcherRoutineById(string id)
-        {
-            try
-            {
-                await ShippingClient.RunWatcherRoutineOnOnePackage(id);
+                var req = new GrpcVoid();
+                return new ContentResult();
             }
             catch (Exception)
             {

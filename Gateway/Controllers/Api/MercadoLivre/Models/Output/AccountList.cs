@@ -1,4 +1,4 @@
-﻿using Gateway.Controllers.Api.Models;
+﻿using Gateway.Controllers.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

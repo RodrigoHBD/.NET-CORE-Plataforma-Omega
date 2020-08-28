@@ -208,7 +208,7 @@ namespace ShippingService.App.Boundries.Shipping
 
             _event.PackageHasArrived = GetIsPackageArrivedFrom(@event);
             _event.BoundryMessage = GetBoundryMessageFrom(@event);
-            _event.Dates.OccuredAt = SroResponseJsonAdapter.GetDateTimeFrom(@event);
+            _event.Dates.OccurredAt = SroResponseJsonAdapter.GetDateTimeFrom(@event);
             _event.Locations.ForwardedFrom = SroResponseJsonAdapter.GetLocationFrom(@event);
             _event.Locations.ForwardedTo = GetForwardedToLocationFrom(@event);
             _event.ArrivedAt = GetArrivalDateTimeFrom(_event.Locations.ForwardedTo);

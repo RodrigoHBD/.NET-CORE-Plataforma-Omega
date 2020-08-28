@@ -21,7 +21,7 @@ namespace Gateway.Controllers.Api.Shipping.Factories
                 MarketplaceAccountId = Req.MarketpalceAccountId,
                 MarketplaceSaleId = Req.MarketpalceSaleId,
                 ShippingImplementation = Req.ShippingService,
-                SetAutoUpdate = Req.SetAutUpdate,
+                SetAutoUpdate = Req.SetAutoUpdate,
                 SetCreatedManually = Req.SetCreatedManually,
                 PackageData = GetPackageData()
             };

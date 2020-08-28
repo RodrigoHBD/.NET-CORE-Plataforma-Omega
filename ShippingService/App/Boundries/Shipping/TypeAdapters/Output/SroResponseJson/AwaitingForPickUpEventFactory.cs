@@ -20,7 +20,7 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.Output
                 Location = GetLocation(),
                 Dates = new Models.ShipmentEventDates()
                 {
-                    OccuredAt = GetDateTime()
+                    OccurredAt = GetDateTime()
                 }
             };
         }

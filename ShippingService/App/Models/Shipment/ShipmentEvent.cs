@@ -15,7 +15,7 @@ namespace ShippingService.App.Models
 
     public class ShipmentEventDates
     {
-        public DateTime OccuredAt { get; set; }
+        public DateTime OccurredAt { get; set; }
     }
 
 }

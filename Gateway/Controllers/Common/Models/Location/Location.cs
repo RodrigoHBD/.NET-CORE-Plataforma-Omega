@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gateway.Controllers.Api.Shipping.Models.Output
+namespace Gateway.Controllers.Common.Models
 {
     public class Location
     {

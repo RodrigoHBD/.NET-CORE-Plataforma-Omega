@@ -1,15 +1,14 @@
 import System from "/js/main-app/system/system.js";
 import Controllers from "/js/main-app/controllers/controllers.js";
-import ExceptionHandler from "/js/main-app/exception-handler.js";
+import ExceptionHandler from "/js/main-app/system/exception-handler-system/exception-handler-system.js";
 import HttpClient from "/js/http-client/http-client.js";
-import Session from "/js/main-app/session/session.js";
+import Session from "/js/main-app/models/session/session.js";
 
 export default class App {
     System = new System();
     IsInitialized = false;
     Controllers;
     Session;
-    Computed;
     HttpClient = new HttpClient();
     ExceptionHandler = new ExceptionHandler();
 
@@ -21,9 +20,6 @@ export default class App {
             }
             this.InitialzieControllers();
             this.InitializeSession();
-            //this.InitializeComputed();
-            this.InitializeVue();
-            //this.SetWhenClickedAttribute();
             this.IsInitialized = true;
         }
         catch (erro) {
@@ -43,26 +39,6 @@ export default class App {
     InitializeSession() {
         try {
             this.Session = new Session();
-        }
-        catch (error) {
-            throw error;
-        }
-    }
-
-    InitializeComputed() {
-        s
-        try {
-            this.Controllers.Computed.Initialize();
-            this.Computed = this.Controllers.Computed.ExportComputed();
-        }
-        catch (error) {
-            throw error;
-        }
-    }
-
-    InitializeVue() {
-        try {
-            this.Controllers.Vue.Initialize();
         }
         catch (error) {
             throw error;
@@ -105,10 +81,3 @@ export default class App {
     }
 
 }
-
-window.temp = {
-    Common: new Object(),
-    Correios: new Object()
-}
-window.application = new App();
-window.application.Initialize();

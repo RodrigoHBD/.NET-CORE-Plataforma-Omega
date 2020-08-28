@@ -1,4 +1,4 @@
-import { Notification } from "/js/main-app/models/models.js";
+import { Notification } from "/js/main-app/models/common.js";
 
 export default class CommonSession {
     UserData = new UserData();
@@ -11,7 +11,7 @@ class ConfirmationWarning {
     Message = "";
     Toggler = false;
     Params = {};
-    Callback = function(){};
+    Callback = function () { };
 }
 
 class UserData {
@@ -21,4 +21,10 @@ class UserData {
 
 class NotificationBox {
     Body = new Array();
+}
+
+class AppMetadata {
+    Version = "";
+    Build = "";
+    DebugMode = false;
 }

@@ -7,9 +7,9 @@ namespace ShippingService.App.Models.ShipmentEvents
 {
     public class AwaitingForPickUpEvent : IShipmentEvent
     {
-        public string Title { get; set; }
+        public string Title { get; set; } = "";
 
-        public string Description { get; set; }
+        public string Description { get; set; } = "";
 
         public bool IsSet { get; set; } = false;
 
@@ -21,14 +21,14 @@ namespace ShippingService.App.Models.ShipmentEvents
         {
             IsSet = true;
             Location = location;
-            Dates.OccuredAt = time;
+            Dates.OccurredAt = time;
         }
 
         public void SetNotAwaiting()
         {
             IsSet = false;
             Location = new Location();
-            Dates.OccuredAt = new DateTime();
+            Dates.OccurredAt = new DateTime();
         }
 
         public ShipmentModifier GetModifiers()

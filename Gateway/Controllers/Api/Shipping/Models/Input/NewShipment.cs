@@ -18,7 +18,7 @@ namespace Gateway.Controllers.Api.Shipping.Models.Input
 
         public string ShippingService { get; set; } = "";
 
-        public bool SetAutUpdate { get; set; } = false;
+        public bool SetAutoUpdate { get; set; } = false;
 
         public bool SetCreatedManually { get; set; } = false;
 

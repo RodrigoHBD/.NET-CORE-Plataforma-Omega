@@ -30,22 +30,22 @@ class Location {
     Cep = "";
 }
 
-var SearchFilters = {
-    Boolean: BooleanFilter,
-    String: StringFilter
-}
-
 // filters
 class SearchFilter {
     IsActive = false;
 }
 
-class StringFilter extends SearchFields {
+class StringFilter extends SearchFilter {
     Value = "";
 }
 
-class BooleanFilter extends SearchFields {
+class BooleanFilter extends SearchFilter {
     Value = false;
+}
+
+var SearchFilters = {
+    Boolean: BooleanFilter,
+    String: StringFilter
 }
 
 class Notification {

@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Folder Include="App\Models\" />
-    <Folder Include="App\Views\" />
     <Folder Include="Files\Static\Assets\images\" />
     <Folder Include="Files\Views\Pages\NovaPasta\" />
   </ItemGroup>
@@ -26,6 +25,13 @@
 		<Content Include="Files\**">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="App\Views\**" />
+	  <Content Remove="App\Views\**" />
+	  <EmbeddedResource Remove="App\Views\**" />
+	  <None Remove="App\Views\**" />
 	</ItemGroup>
 
 </Project>

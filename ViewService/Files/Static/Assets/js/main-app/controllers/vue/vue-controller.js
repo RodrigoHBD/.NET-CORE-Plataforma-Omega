@@ -1,10 +1,7 @@
 export default class VueController {
-    isInitialized = false;
-    VueInstance;
-
-    Initialize(){
+    Initialize() {
         try {
-            this.VueInstance = new Vue({
+            application.VueInstance = new Vue({
                 el: "#app",
                 data: application.Session,
                 // WebFlow Animations FIX 
@@ -17,9 +14,9 @@ export default class VueController {
                     });
                 }
             })
-        } 
+        }
         catch (error) {
-            throw error;    
+            throw error;
         }
     }
 }

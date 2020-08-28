@@ -4,13 +4,18 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>329ac48c-0170-4281-8bde-ed86ef1cdd7d</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="App\Boundries\Shipping\Helpers\**" />
+    <Compile Remove="gRPC\Client\**" />
     <Content Remove="App\Boundries\Shipping\Helpers\**" />
+    <Content Remove="gRPC\Client\**" />
     <EmbeddedResource Remove="App\Boundries\Shipping\Helpers\**" />
+    <EmbeddedResource Remove="gRPC\Client\**" />
     <None Remove="App\Boundries\Shipping\Helpers\**" />
+    <None Remove="gRPC\Client\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +40,6 @@
     <Folder Include="App\Boundries\Shipping\Models\Intercafe\" />
     <Folder Include="App\Boundries\Shipping\TypeAdapters\Input\" />
     <Folder Include="App\Entities\Package\DataFields\" />
-    <Folder Include="gRPC\Client\" />
     <Folder Include="MercadoEnvios\Methods\" />
   </ItemGroup>
 

@@ -5,4 +5,5 @@ export default class NotificationSystem {
         var method = new Notify(notification);
         await method.Run();
     }
+
 }

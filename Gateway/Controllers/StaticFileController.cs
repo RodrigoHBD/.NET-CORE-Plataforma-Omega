@@ -27,7 +27,7 @@ namespace Gateway.Controllers
             }
             catch (Exception e)
             {
-                throw e;
+                throw;
             }
         }
 

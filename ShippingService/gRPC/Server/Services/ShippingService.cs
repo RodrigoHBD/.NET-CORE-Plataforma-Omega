@@ -22,6 +22,30 @@ namespace ShippingService.gRPC.Server.Services
             }
         }
 
+        public override async Task<GrpcShipment> GetShipmentById(GrpcString request, ServerCallContext context)
+        {
+            try
+            {
+                return await Controller.GetShipmentById(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
+        public override async Task<GrpcShipmentEvents> GetShipmentEvents(GrpcString request, ServerCallContext context)
+        {
+            try
+            {
+                return await Controller.GetShipmentEvents(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
         public override async Task<GrpcVoid> SetShipmentAutoUpdate(GrpcSetAutoUpdateRequest request, ServerCallContext context)
         {
             try

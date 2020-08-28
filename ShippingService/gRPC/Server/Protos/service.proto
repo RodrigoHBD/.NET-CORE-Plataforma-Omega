@@ -6,6 +6,7 @@ service Shipping {
 	//Done
 	rpc CreateNewShipment (GrpcNewShipmentRequest) returns (GrpcVoid);
 	rpc GetShipmentById (GrpcString) returns (GrpcShipment);
+	rpc GetShipmentEvents (GrpcString) returns (GrpcShipmentEvents);
 	rpc SetShipmentAutoUpdate (GrpcSetAutoUpdateRequest) returns (GrpcVoid);
 	rpc SearchShipments (GrpcShipmentSearchRequest) returns (GrpcShipmentList);
 	rpc DeleteShipment (GrpcString) returns (GrpcVoid);
@@ -96,6 +97,63 @@ message GrpcShipmentStates {
 	bool is_awaiting_for_pick_up = 5;
 	bool is_being_transported = 6;
 }
+//shipment events
+message GrpcShipmentEvents {
+	GrpcCreatedEvent created_event = 1;
+	GrpcPostedEvent posted_event = 2;
+	GrpcAwaitingForPickUpEvent awaiting_for_pick_up_event = 3;
+	GrpcRejectedEvent rejected_event = 4;
+	GrpcDeliveredEvent delivered_event = 5;
+	repeated GrpcForwardingEvent forwarding_events = 6;
+}
+
+message GrpcCreatedEvent {
+	string title = 1;
+	string description = 2;
+	string occurred_at = 3;
+}
+
+message GrpcPostedEvent {
+	string title = 1;
+	string description = 2;
+	string occurred_at = 3;
+	bool is_posted = 4;
+}
+
+message GrpcAwaitingForPickUpEvent {
+	string title = 1;
+	string description = 2;
+	string occurred_at = 3;
+	bool is_set = 4;
+	GrpcLocation location = 5;
+}
+
+message GrpcRejectedEvent {
+	string title = 1;
+	string description = 2;
+	string occurred_at = 3;
+	bool is_rejected = 4;
+}
+
+message GrpcDeliveredEvent {
+	string title = 1;
+	string description = 2;
+	string occurred_at = 3;
+	bool is_delivered = 4;
+	bool is_delivered_to_destination = 5;
+}
+
+message GrpcForwardingEvent {
+	string title = 1;
+	string description = 2;
+	string boundry_message = 3;
+	bool package_has_arrived = 4;
+	string occurred_at = 5;
+	string arrived_at = 6;
+	GrpcLocation forwarded_from = 7;
+	GrpcLocation forwarded_to = 8;
+}
+
 
 message GrpcShipmentList {
 	GrpcPagination pagination = 1;

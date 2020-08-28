@@ -17,7 +17,7 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.Output
                 IsPosted = GetIsPosted(),
                 Dates = new Models.ShipmentEventDates() 
                 { 
-                    OccuredAt = GetPostingDateTime()
+                    OccurredAt = GetPostingDateTime()
                 }
             };
         }

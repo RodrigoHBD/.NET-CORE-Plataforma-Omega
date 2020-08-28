@@ -17,11 +17,14 @@ namespace ShippingService.App.Models.ShipmentEvents
         }
 
         public string Title { get; private set; }
+
         public string Description { get; private set; }
+
         public ShipmentEventDates Dates { get; private set; }
+
         public void SetOccuredAtToNow()
         {
-            Dates.OccuredAt = DateTime.UtcNow;
+            Dates.OccurredAt = DateTime.UtcNow;
         }
 
         public ShipmentModifier GetModifiers()

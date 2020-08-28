@@ -9,10 +9,15 @@ export default class ShippingController {
             var data = toolbox.Form.GetFormData("");
             var method = new Methods.Create(data);
             await method.Run();
+            this.FlushShipmentForm();
         }
         catch (erro) {
             application.ExceptionHandler.HandleApiCallException(erro);
         }
+    }
+
+    FlushShipmentForm() {
+
     }
 
     async SearchShipments() {

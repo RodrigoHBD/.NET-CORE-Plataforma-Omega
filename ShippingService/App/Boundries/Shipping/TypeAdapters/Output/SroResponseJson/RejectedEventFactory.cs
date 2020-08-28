@@ -17,7 +17,7 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.Output
                 IsRejected = GetIsRejected(),
                 Dates = new Models.ShipmentEventDates()
                 {
-                    OccuredAt = GetDateTime()
+                    OccurredAt = GetDateTime()
                 }
             };
         }

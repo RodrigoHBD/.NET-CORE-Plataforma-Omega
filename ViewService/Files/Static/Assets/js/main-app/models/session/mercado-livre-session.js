@@ -1,4 +1,4 @@
-import { Pagination } from "/js/main-app/models/models.js";
+import { Pagination } from "/js/main-app/models/common.js";
 
 export default class MercadoLivreSession {
     AccountsTable = new AccountsTable();

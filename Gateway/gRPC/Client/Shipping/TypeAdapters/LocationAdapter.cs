@@ -1,4 +1,4 @@
-﻿using Gateway.Controllers.Api.Shipping.Models.Output;
+﻿using Gateway.Controllers.Common.Models;
 using Gateway.gRPC.Client.ShippingClientProto;
 using System;
 using System.Collections.Generic;

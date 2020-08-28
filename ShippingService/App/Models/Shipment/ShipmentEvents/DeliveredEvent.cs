@@ -7,7 +7,7 @@ namespace ShippingService.App.Models.ShipmentEvents
 {
     public class DeliveredEvent : IShipmentEvent
     {
-        public string Title { get; private set; }
+        public string Title { get; private set; } = "";
 
         public string Description
         {

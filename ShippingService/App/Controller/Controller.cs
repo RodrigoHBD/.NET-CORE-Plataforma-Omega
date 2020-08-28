@@ -54,6 +54,20 @@ namespace ShippingService.App.Controller
             }
         }
 
+        public static async Task<GrpcShipmentEvents> GetShipmentEvents(GrpcString grpcRequest)
+        {
+            try
+            {
+                var id = GrpcStringAdapter.GetFrom(grpcRequest);
+                var shipment = await ShipmentUseCases.Get.ById(id);
+                return ShipmentEventsPresenter.Present(shipment);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
         public static async Task<GrpcShipmentList> SearchShipments(GrpcShipmentSearchRequest grpcRequest)
         {
             try

@@ -18,7 +18,7 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.Output
                 IsDeliveredToDestination = GetIsDeliveredToDestination(),
                 Dates = new Models.ShipmentEventDates()
                 {
-                    OccuredAt = GetDeliveredDate()
+                    OccurredAt = GetDeliveredDate()
                 }
             };
         }

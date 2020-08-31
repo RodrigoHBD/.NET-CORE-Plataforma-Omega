@@ -50,7 +50,7 @@ namespace ShippingService.App.Presenters
             };
             if(Shipment.ForwardingEvents.Count > 0)
             {
-                states.IsBeingTransported = !Shipment.ForwardingEvents.Last().PackageHasArrived;
+                states.IsBeingTransported = !Shipment.ForwardingEvents.First().PackageHasArrived;
             }
             return states;
         }

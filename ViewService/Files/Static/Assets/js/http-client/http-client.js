@@ -40,7 +40,7 @@ export default class HttpClient {
                         "Content-Type": "application/json"
                     }
                 });
-            return this.HandleResponse(response);
+            return response;
         }
         catch (error) {
             this.HandleRequestError(error);

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Fri Aug 28 2020 03:23:01 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Mon Aug 31 2020 04:40:11 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
 
 <head>
@@ -51,7 +51,12 @@
         <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navbar-2 w-nav">
           <img src="images/Untitled-removebg-preview.png" loading="lazy" width="275"
             srcset="images/Untitled-removebg-preview-p-500.png 500w, images/Untitled-removebg-preview.png 550w"
-            sizes="(max-width: 479px) 71vw, 143.93333435058594px" alt="" class="image-7">
+            sizes="100vw" alt="" class="image-7">
+          <div class="html-embed-8 w-embed">
+            <image
+              src="https://uploads-ssl.webflow.com/5edfa191b5ff34226cd2885d/5f470ec5f2c29e5640a4a550_Untitled-removebg-preview-p-500.png">
+            </image>
+          </div>
           <div class="container w-container">
             <nav role="navigation" class="nav-menu w-nav-menu"><a href="#" class="navmenu-option w-nav-link">Home</a><a
                 href="#" class="navmenu-option w-nav-link">Sobre nós</a><a href="#"
@@ -198,15 +203,13 @@
                         </div>
                         <div vfor="account in MercadoLivre.AccountsTable.Body"
                           class="mercadolivre-accountstable-iteration">
-                          <div class="text-block-16"> account. Nickname</div>
+                          <div class="text-block-16">{{ account. Nickname</div>
                           <div class="linhaseparadora-semespa-o-black"></div>
-                          <div class="text-block-15-copy"> account.Email </div>
+                          <div class="text-block-15-copy">{{ account.Email </div>
                           <div class="linhaseparadora-semespa-o-black"></div>
                           <div class="div-block-36">
-                            <div class="checked-embedhtml w-embed"><img
-                                src="https://img.icons8.com/fluent/96/000000/checked.png"></div>
-                            <div class="x-embedhtml w-embed"><img
-                                src="https://img.icons8.com/fluent/96/000000/cancel.png"></div>
+                            <div class="checked-embedhtml w-embed"><img src="https://img.icons8.com/fluent/96/000000/checked.png"></div>
+                            <div class="x-embedhtml w-embed"><img src="https://img.icons8.com/fluent/96/000000/cancel.png"></div>
                           </div>
                           <div class="linhaseparadora-semespa-o-black"></div>
                           <div class="text-block-16">Cor</div>
@@ -216,10 +219,7 @@
                     </div>
                   </div>
                   <div data-w-tab="Tab 2" class="tab-pane-tab-2 w-tab-pane">
-                    <h2 class="heading-24">Sincornizar uma Nova Conta à Plataforma</h2><a
-                      v-on:click="Controllers.MercadoLivre.OpenAddAccountWindow()" href="#"
-                      class="button-14 w-button">Sincronizar Conta</a>
-                  </div>
+                    <h2 class="heading-24">Sincornizar uma Nova Conta à Plataforma</h2><a v-on:click="Controllers.MercadoLivre.OpenAddAccountWindow()" href="#" class="button-14 w-button">Sincronizar Conta</a></div>
                   <div data-w-tab="Tab 3" class="w-tab-pane"></div>
                 </div>
               </div>
@@ -238,155 +238,81 @@
             <div class="div-block-2">
               <div data-duration-in="300" data-duration-out="100" class="tabs-2 w-tabs">
                 <div class="w-tab-menu">
-                  <a data-w-tab="Tabela de Envios" class="shipment-tab w-inline-block w-tab-link">
+                  <a data-w-tab="Tabela de Envios" class="shipment-tab w-inline-block w-tab-link w--current">
                     <div>Envios Cadastrados</div>
                   </a>
                   <a data-w-tab="Cadastro Manual" class="shipment-tab w-inline-block w-tab-link">
                     <div>Cadastro Manual</div>
                   </a>
-                  <a data-w-tab="Detalhes" id="CorreiosTab-InnerTabs-DetailsTab"
-                    class="correiostab-innertabs-detailstab shipment-tab w-inline-block w-tab-link w--current">
+                  <a data-w-tab="Detalhes" id="CorreiosTab-InnerTabs-DetailsTab" class="correiostab-innertabs-detailstab shipment-tab w-inline-block w-tab-link">
                     <div>Detalhe</div>
                   </a>
-                  <a data-w-tab="Monitorador" v-on:click="Controllers.Shipping.UpdateWatcherState()"
-                    class="shipment-tab w-inline-block w-tab-link">
+                  <a data-w-tab="Monitorador" v-on:click="Controllers.Shipping.UpdateWatcherState()" class="shipment-tab w-inline-block w-tab-link">
                     <div>Monitorador</div>
                   </a>
                 </div>
                 <div class="tabs-content-2 w-tab-content">
-                  <div data-w-tab="Tabela de Envios" class="tab-pane-tab-1 w-tab-pane">
+                  <div data-w-tab="Tabela de Envios" class="tab-pane-tab-1 w-tab-pane w--tab-active">
                     <div class="div-block-15">
                       <h2 class="heading">Envios Cadastrados</h2>
                       <div class="correio-tabela-objetos-head">
                         <div class="div-block-4">
                           <h3 class="heading-2">Total de Páginas: {{ Shipping. ShipmentTable. TotalPages }}</h3>
-                          <h3 class="heading-2"> Exibindo página {{ Shipping. ShipmentTable. CurrentPage }} de
-                            {{ Shipping. ShipmentTable. TotalPages }}</h3>
-                        </div>
-                        <div class="correio-tabela-objetos-actionmenu"><a id="correios-open-detailbtn" href="#"
-                            class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a><a
-                            data-w-id="aaa6591d-d6f7-e20b-ae2a-9012e5144d09" href="#" class="button-2 w-button">Mostrar
-                            Filtros</a><a v-on:click="methods.UpdateShipmentTable()" href="#"
-                            class="btn-standard w-button">Atualizar</a>
-                          <div class="div-block-46"><a v-on:click="Controllers.Correios.PaginateBackwards()"
-                              class="button-10 w-button">&lt;</a>
-                            <div class="div-block-47"></div><a v-on:click="Controllers.Correios.PaginateBackwards()"
-                              class="button-10 w-button">&gt;</a>
+                            <h3 class="heading-2"> Exibindo página {{ Shipping. ShipmentTable. CurrentPage }} de
+                              {{ Shipping. ShipmentTable. TotalPages }}</h3>
+                          </div>
+                          <div class="correio-tabela-objetos-actionmenu"><a id="correios-open-detailbtn" href="#"
+                              class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a><a
+                              data-w-id="aaa6591d-d6f7-e20b-ae2a-9012e5144d09" href="#"
+                              class="button-2 w-button">Mostrar Filtros</a><a
+                              v-on:click="methods.Shipping.UpdateShipmentTable()" href="#"
+                              class="btn-standard w-button">Atualizar</a>
+                            <div class="div-block-46"><a v-on:click="Controllers.Correios.PaginateBackwards()" href="#"
+                                class="button-10 w-button">&lt;</a>
+                              <div class="div-block-47"></div><a v-on:click="Controllers.Correios.PaginateBackwards()"
+                                href="#" class="button-10 w-button">&gt;</a>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div id="correios-objects-table-filters" data-w-id="95b68b7b-9779-2892-b254-a277b68ec11c"
-                        style="opacity:0" class="correio-tabela-objetos-filtros">
-                        <h1 class="heading-5">Filtros</h1>
-                        <div class="form-block-3 w-form">
-                          <form id="correios-search-filters-form" name="email-form-3" data-name="Email Form 3"
-                            class="form-6">
-                            <div class="div-block-48"><label for="DynamicString">Serviço de envio</label><select
-                                id="field-25" name="field-25" class="select-field-3 w-select">
-                                <option value="">Selecione um...</option>
-                                <option value="Correios">Correios</option>
-                                <option value="mercado envios">Mercado Envios</option>
-                              </select><label for="DynamicString-2">Pesquisar por texto </label><input type="text"
-                                class="w-input" maxlength="256" name="DynamicString" data-name="DynamicString"
-                                placeholder="" id="DynamicString"></div>
-                            <div class="div-block-17"><label for="status" class="field-label-4">Status</label><label
-                                class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                  id="AwaitingForPickUp" name="AwaitingForPickUp" data-name="AwaitingForPickUp"
-                                  class="w-checkbox-input checkbox"><span for="AwaitingForPickUp"
-                                  class="checkbox-label w-form-label">Aguardando Retirada</span></label><label
-                                class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                  id="Rejected" name="Rejected" data-name="Rejected"
-                                  class="w-checkbox-input checkbox"><span for="Rejected"
-                                  class="checkbox-label w-form-label">Rejeitado</span></label><label
-                                class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                  id="Delivered" name="Delivered" data-name="Delivered"
-                                  class="w-checkbox-input checkbox"><span for="Delivered"
-                                  class="checkbox-label w-form-label">Entregue</span></label><label
-                                class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                  data-name="RejectedComingBack" name="RejectedComingBack" id="RejectedComingBack"
-                                  class="w-checkbox-input checkbox"><span for="RejectedComingBack"
-                                  class="checkbox-label w-form-label">Rejeitado Voltando</span></label><label
-                                class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                  data-name="AwaitingForPosting" name="AwaitingForPosting" id="AwaitingForPosting"
-                                  class="w-checkbox-input checkbox"><span for="AwaitingForPosting"
-                                  class="checkbox-label w-form-label">Aguardando Postagem</span></label></div>
-                            <div class="div-block-23"><label for="PageOffset">Ir para página</label><input type="number"
-                                class="w-input" maxlength="256" name="PageOffset" data-name="PageOffset"
-                                placeholder="Pular para página...." id="PageOffset" required=""></div><a
-                              id="shipping-apply-filters-btn" href="#" class="btn-standard w-button">Aplicar</a>
-                          </form>
-                          <div class="w-form-done">
-                            <div>Thank you! Your submission has been received!</div>
-                          </div>
-                          <div class="w-form-fail">
-                            <div>Oops! Something went wrong while submitting the form.</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="correio-tabela-objeto-body">
-                        <div class="div-block-16">
-                          <div class="form-block-2 w-form">
-                            <form id="correios-objects-table" name="email-form-2" data-name="Email Form 2"
-                              class="form-2">
-                              <div class="correio-tabela-objetos-iteration-template">
-                                <div class="text-block-8">Plataforma</div>
-                                <div class="linhaseparadora-semespa-o-white"></div>
-                                <div class="text-block-9">Pedido</div>
-                                <div class="linhaseparadora-semespa-o-white"></div>
-                                <div class="text-block-10">Código de Rastreamento</div>
-                                <div class="linhaseparadora-semespa-o-white"></div>
-                                <h5 class="item-text">Peso</h5>
-                                <div class="linhaseparadora-semespa-o-white"></div>
-                                <h5 class="item-text">Status</h5>
-                                <div class="linhaseparadora-semespa-o-white"></div>
-                                <div class="text-block-11">Ações</div>
-                              </div>
-                              <div v-for="shipment in Shipping.ShipmentTable.Body"
-                                class="correio-tabela-objetos-iteration">
-                                <div class="invisible-data-div"></div>
-                                <div class="div-block-43">
-                                  <div class="div-block-14">
-                                    <div v-if="package.IsManuallyCreated" class="mercadolivreimg w-embed"><img
-                                        src="https://img.icons8.com/pastel-glyph/64/000000/hand-box.png"></div>
-                                    <div v-if="package.BoundPlatform == &#x27;mercado livre&#x27;"
-                                      class="mercadolivreimg w-embed"><img
-                                        src="https://s2.glbimg.com/FGXio_G5LAoAVWJK4-R1NEedURo=/607x607/smart/e.glbimg.com/og/ed/f/original/2020/03/17/novo-logo-mercado-livre.jpg">
-                                    </div>
-                                    <div v-if="package.BoundPlatform == &#x27;b2w&#x27;" class="b2w-img w-embed"><img
-                                        src="data:image/png;base64,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">
-                                    </div>
-                                  </div>
-                                  <div class="linhaseparadora-semespa-o-black"></div>
-                                  <div class="text-block-5">{{ shipment. MarketplaceSaleId }}</div>
-                                  <div class="linhaseparadora-semespa-o-black"></div>
-                                  <div v-on:click="Controllers.Correios.OpenCorreiosLinksPage(package.TrackingCode)"
-                                    class="text-block-6">{{ shipment .TrackingCode}}</div>
-                                  <div class="linhaseparadora-semespa-o-black"></div>
-                                  <div class="div-block-22">
-                                    <div class="text-block-4">V 12,000 </div>
-                                    <div class="text-block-4-copy">P {{ shipment. Weight }}</div>
-                                  </div>
-                                  <div class="linhaseparadora-semespa-o-black"></div>
-                                  <div class="div-block-8">
-                                    <div v-bind:class="Controllers.Correios.GetPackageStatusCssClass(package.Id)"
-                                      class="div-block-45"></div>
-                                  </div>
-                                  <div class="linhaseparadora-semespa-o-black"></div>
-                                  <div class="div-block-13">
-                                    <div v-on:click="Controllers.Correios.ShowPackageDetail(package.Id)"
-                                      class="correio-tabela-objetos-abrirdetalhesbtn-copy w-embed"><img
-                                        src="https://img.icons8.com/ios/40/000000/show-property.png"></div>
-                                    <div v-on:click="Controllers.Correios.DeletePackageWithPrompt(package.Id)"
-                                      class="html-embed w-embed"><img
-                                        src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
-                                  </div>
-                                </div>
-                                <div class="div-block-44">
-                                  <div class="text-block-25">Serviço: {{ shipment. ShippingService }}</div>
-                                  <div class="text-block-25">Criado em: </div>
-                                  <div class="text-block-25">Id da Conta: {{ shipment. MarketplaceAccountId }}</div>
-                                </div>
-                              </div>
+                        <div id="correios-objects-table-filters" data-w-id="95b68b7b-9779-2892-b254-a277b68ec11c"
+                          style="opacity:0" class="correio-tabela-objetos-filtros">
+                          <h1 class="heading-5">Filtros</h1>
+                          <div class="form-block-3 w-form">
+                            <form id="correios-search-filters-form" name="email-form-3" data-name="Email Form 3"
+                              class="form-6">
+                              <div class="div-block-48"><label for="DynamicString">Serviço de envio</label><select
+                                  id="field-25" name="field-25" class="select-field-3 w-select">
+                                  <option value="">Selecione um...</option>
+                                  <option value="Correios">Correios</option>
+                                  <option value="mercado envios">Mercado Envios</option>
+                                </select><label for="DynamicString-2">Pesquisar por texto </label><input type="text"
+                                  class="w-input" maxlength="256" name="DynamicString" data-name="DynamicString"
+                                  placeholder="" id="DynamicString"></div>
+                              <div class="div-block-17"><label for="status" class="field-label-4">Status</label><label
+                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
+                                    id="AwaitingForPickUp" name="AwaitingForPickUp" data-name="AwaitingForPickUp"
+                                    class="w-checkbox-input checkbox"><span for="AwaitingForPickUp"
+                                    class="checkbox-label w-form-label">Aguardando Retirada</span></label><label
+                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
+                                    id="Rejected" name="Rejected" data-name="Rejected"
+                                    class="w-checkbox-input checkbox"><span for="Rejected"
+                                    class="checkbox-label w-form-label">Rejeitado</span></label><label
+                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
+                                    id="Delivered" name="Delivered" data-name="Delivered"
+                                    class="w-checkbox-input checkbox"><span for="Delivered"
+                                    class="checkbox-label w-form-label">Entregue</span></label><label
+                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
+                                    data-name="RejectedComingBack" name="RejectedComingBack" id="RejectedComingBack"
+                                    class="w-checkbox-input checkbox"><span for="RejectedComingBack"
+                                    class="checkbox-label w-form-label">Rejeitado Voltando</span></label><label
+                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
+                                    data-name="AwaitingForPosting" name="AwaitingForPosting" id="AwaitingForPosting"
+                                    class="w-checkbox-input checkbox"><span for="AwaitingForPosting"
+                                    class="checkbox-label w-form-label">Aguardando Postagem</span></label></div>
+                              <div class="div-block-23"><label for="PageOffset">Ir para página</label><input
+                                  type="number" class="w-input" maxlength="256" name="PageOffset" data-name="PageOffset"
+                                  placeholder="Pular para página...." id="PageOffset" required=""></div><a
+                                id="shipping-apply-filters-btn" href="#" class="btn-standard w-button">Aplicar</a>
                             </form>
                             <div class="w-form-done">
                               <div>Thank you! Your submission has been received!</div>
@@ -396,117 +322,248 @@
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="correio-tabela-objeto-footer">
-                        <div class="div-block-46"><a v-on:click="Controllers.Correios.PaginateBackwards()"
-                            class="button-10 w-button">&lt;</a>
-                          <div class="div-block-47"></div><a v-on:click="Controllers.Correios.PaginateBackwards()"
-                            class="button-10 w-button">&gt;</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div data-w-tab="Cadastro Manual" class="w-tab-pane">
-                    <h2 class="heading-8">Cadastro Manual de Entrega</h2>
-                    <div v-on:keyup="Controllers.Correios.CreateNewPackageOnEnterPressed($event)" class="w-form">
-                      <form id="correios-new-package-form" name="email-form-4" data-name="Email Form 4" class="form-4">
-                        <label for="Name-4" class="field-label-7">Nome</label><input type="text"
-                          class="text-field-6 w-input" maxlength="256" name="Name" data-name="Name"
-                          placeholder="Campo opcional, dê um nome ao pacote..." id="Name-4"><label for="email"
-                          class="field-label-5">Código de Rastreio</label><label for="TrackingCode"
-                          class="field-label-6">Id da Venda ( Interno )</label><input type="email"
-                          class="text-field-4 w-input" maxlength="256" name="TrackingCode" data-name="TrackingCode"
-                          placeholder="Código de Rastreio..." id="TrackingCode" required=""><input type="text"
-                          class="text-field-5 w-input" maxlength="256" name="SaleId" data-name="SaleId"
-                          placeholder="Código Id..." id="SaleId" required=""><label for="MarketplaceSaleId"
-                          class="field-label-6-copy">Id da Venda/Pedido ( Marketplace )</label><input type="text"
-                          class="text-field-4-copy w-input" maxlength="256" name="MarketplaceSaleId"
-                          data-name="MarketplaceSaleId" placeholder="Id de venda marketplace..." id="MarketplaceSaleId"
-                          required=""><label class="field-label-12">Peso em Gramas</label><label for="Weight"
-                          class="field-label-13">Plataforma</label><input type="number" class="text-field-11 w-input"
-                          maxlength="256" name="Weight" data-name="Weight" placeholder="Peso ..." id="Weight"
-                          required=""><select id="Platform" name="Platform" data-name="Platform"
-                          class="select-field-2 w-select">
-                          <option value="">Select one...</option>
-                          <option value="0">Mercado Livre</option>
-                          <option value="1">B2W</option>
-                        </select><label class="w-checkbox checkbox-field"><input type="checkbox" id="SetWatcher"
-                            name="SetWatcher" data-name="SetWatcher" class="w-checkbox-input"><span for="SetWatcher"
-                            class="checkbox-label-2 w-form-label">Monitorar</span></label>
-                        <h4 class="heading-10">Localização Inicial de Postagem</h4><label
-                          class="field-label-8">CEP</label><label for="Cep-2" class="field-label-9">Número da
-                          Rua</label><input type="tel" class="text-field-7 w-input" maxlength="256" name="Cep"
-                          data-name="Cep" placeholder="CEP" id="Cep-2" required=""><input type="number"
-                          class="text-field-8 w-input" maxlength="256" name="StreetNumber" data-name="StreetNumber"
-                          placeholder="Número" id="StreetNumber-2" required=""><a
-                          v-on:click="Controllers.Correios.CreateNewPackage()" href="#"
-                          class="button-4 w-button">Cadastrar</a>
-                      </form>
-                      <div class="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div class="w-form-fail">
-                        <div>Oops! Something went wrong while submitting the form.</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div data-w-tab="Detalhes" class="w-tab-pane w--tab-active">
-                    <div class="div-block-49">
-                      <p class="paragraph-6">Eventos</p>
-                      <div data-duration-in="300" data-duration-out="100" class="tabs-4 w-tabs">
-                        <div class="tabs-menu-4 w-tab-menu">
-                          <a data-w-tab="Criação" class="shipment-event-tab w-inline-block w-tab-link w--current">
-                            <div>Criação</div>
-                          </a>
-                          <a data-w-tab="Postagem" class="shipment-event-tab w-inline-block w-tab-link">
-                            <div>Postagem</div>
-                          </a>
-                          <a data-w-tab="AguardandoRetirada" class="shipment-event-tab w-inline-block w-tab-link">
-                            <div>Aguardando Carona</div>
-                          </a>
-                          <a data-w-tab="Rejeição" class="shipment-event-tab w-inline-block w-tab-link">
-                            <div>Recusado</div>
-                          </a>
-                          <a data-w-tab="Entrega" class="shipment-event-tab w-inline-block w-tab-link">
-                            <div>Entrega</div>
-                          </a>
-                        </div>
-                        <div class="tabs-content-4 w-tab-content">
-                          <div data-w-tab="Criação" class="w-tab-pane w--tab-active"></div>
-                          <div data-w-tab="Postagem" class="w-tab-pane"></div>
-                          <div data-w-tab="AguardandoRetirada" class="w-tab-pane"></div>
-                          <div data-w-tab="Rejeição" class="w-tab-pane"></div>
-                          <div data-w-tab="Entrega" class="w-tab-pane"></div>
-                        </div>
-                      </div>
-                      <p class="paragraph-6">Encaminhamentos</p>
-                      <div class="div-block-53">
-                        <div v-for="event in Shipping.CachedEvents.ForwardingEvents" class="shipment-forwarding">
-                          <div class="div-block-52">
-                            <div class="html-embed-7 w-embed">
-                              <image src="https://image.flaticon.com/icons/svg/592/592268.svg"></image>
-                            </div>
-                            <p class="paragraph-7">➟</p>
-                            <div class="html-embed-7 w-embed">
-                              <image src="https://image.flaticon.com/icons/svg/594/594852.svg"></image>
-                            </div>
-                            <div class="html-embed-7 w-embed">
-                              <image src="https://image.flaticon.com/icons/svg/1742/1742960.svg"></image>
+                        <div class="correio-tabela-objeto-body">
+                          <div class="div-block-16">
+                            <div class="form-block-2 w-form">
+                              <form id="correios-objects-table" name="email-form-2" data-name="Email Form 2"
+                                class="form-2">
+                                <div class="correio-tabela-objetos-iteration-template">
+                                  <div class="text-block-8">Plataforma</div>
+                                  <div class="linhaseparadora-semespa-o-white"></div>
+                                  <div class="text-block-9">Pedido</div>
+                                  <div class="linhaseparadora-semespa-o-white"></div>
+                                  <div class="text-block-10">Código de Rastreamento</div>
+                                  <div class="linhaseparadora-semespa-o-white"></div>
+                                  <h5 class="item-text">Peso</h5>
+                                  <div class="linhaseparadora-semespa-o-white"></div>
+                                  <h5 class="item-text">Status</h5>
+                                  <div class="linhaseparadora-semespa-o-white"></div>
+                                  <div class="text-block-11">Ações</div>
+                                </div>
+                                <div v-for="shipment in Shipping.ShipmentTable.Body"
+                                  class="white-bg correio-tabela-objetos-iteration">
+                                  <div class="invisible-data-div"></div>
+                                  <div class="div-block-43">
+                                    <div class="div-block-14">
+                                      <div v-if="shipment.CreatedManually" class="manualimg w-embed"><img
+                                          src="https://img.icons8.com/pastel-glyph/64/000000/hand-box.png"></div>
+                                      <div v-if="shipment.BoundPlatform == &#x27;mercado livre&#x27;"
+                                        class="mercadolivreimg w-embed"><img
+                                          src="https://s2.glbimg.com/FGXio_G5LAoAVWJK4-R1NEedURo=/607x607/smart/e.glbimg.com/og/ed/f/original/2020/03/17/novo-logo-mercado-livre.jpg">
+                                      </div>
+                                      <div v-if="shipment.BoundPlatform == &#x27;b2w&#x27;" class="b2w-img w-embed"><img
+                                          src="data:image/png;base64,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">
+                                      </div>
+                                    </div>
+                                    <div class="linhaseparadora-semespa-o-black"></div>
+                                    <div class="text-block-5">{{ shipment. MarketplaceSaleId }}</div>
+                                    <div class="linhaseparadora-semespa-o-black"></div>
+                                    <div v-on:click="Controllers.Correios.OpenCorreiosLinksPage(package.TrackingCode)"
+                                      class="text-block-6">{{ shipment .TrackingCode}}</div>
+                                    <div class="linhaseparadora-semespa-o-black"></div>
+                                    <div class="div-block-22">
+                                      <div class="text-block-4">V 12,000 </div>
+                                      <div class="text-block-4-copy">P {{ shipment. Weight }}</div>
+                                    </div>
+                                    <div class="linhaseparadora-semespa-o-black"></div>
+                                    <div class="div-block-8">
+                                      <div v-bind:style="{ &#x27;background-color&#x27; : shipment.StatusOuterColor }"
+                                        class="shipment-status-yellow">
+                                        <div v-bind:style="{ &#x27;background-color&#x27; : shipment.StatusInnerColor }"
+                                          class="shipment-delivery"></div>
+                                      </div>
+                                    </div>
+                                    <div class="linhaseparadora-semespa-o-black"></div>
+                                    <div class="div-block-13">
+                                      <div v-on:click="methods.Shipping.ShowShipmentDetail(shipment.Id)"
+                                        class="correio-tabela-objetos-abrirdetalhesbtn-copy w-embed"><img
+                                          src="https://img.icons8.com/ios/40/000000/show-property.png"></div>
+                                      <div v-on:click="methods.Shipping.DeleteShipment(shipment.Id)"
+                                        class="html-embed w-embed"><img
+                                          src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
+                                    </div>
+                                  </div>
+                                  <div class="div-block-44">
+                                    <div class="text-block-25">Serviço: {{ shipment. ShippingService }}</div>
+                                    <div class="text-block-25">Criado em: </div>
+                                    <div class="text-block-25">Id da Conta: {{ shipment. MarketplaceAccountId }}</div>
+                                  </div>
+                                </div>
+                              </form>
+                              <div class="w-form-done">
+                                <div>Thank you! Your submission has been received!</div>
+                              </div>
+                              <div class="w-form-fail">
+                                <div>Oops! Something went wrong while submitting the form.</div>
+                              </div>
                             </div>
                           </div>
-                          <div class="div-block-50">
-                            <p class="paragraph-8">
-                              {{ event. Matesich 65<br>82410-370</p>
-                            <p class="paragraph-9">Avenida Iguaçu 3001 apt 1604<br>89410-960</p>
+                        </div>
+                        <div class="correio-tabela-objeto-footer">
+                          <div class="div-block-46"><a v-on:click="Controllers.Correios.PaginateBackwards()" href="#"
+                              class="button-10 w-button">&lt;</a>
+                            <div class="div-block-47"></div><a v-on:click="Controllers.Correios.PaginateBackwards()"
+                              href="#" class="button-10 w-button">&gt;</a>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="div-block-21">
-                      <div class="correio-detalhe-objeto-data-field">
-                        <div class="correio-detalheobjeto-titulodecampo">Pedido</div>
-                        <div id="correio-detalheobjeto-nome" class="text-block-12">{{ Shipping. CachedShipment. MarketplaceSaleId }}
+                    <div data-w-tab="Cadastro Manual" class="w-tab-pane">
+                      <h2 class="heading-8">Cadastro Manual de Envio</h2>
+                      <div v-on:keyup="Controllers.Correios.CreateNewPackageOnEnterPressed($event)" class="w-form">
+                        <form id="correios-new-package-form" name="email-form-4" data-name="Email Form 4"
+                          class="form-4">
+                          <div class="div-block-55"><label for="email" class="field-label-5">Código de
+                              Rastreio</label><label for="TrackingCode" class="field-label-6">Id da Venda ( Interno
+                              )</label><input type="email" class="text-field-4 w-input" maxlength="256"
+                              name="TrackingCode" data-name="TrackingCode" placeholder="Código de Rastreio..."
+                              id="TrackingCode" required=""><input type="text" class="text-field-5 w-input"
+                              maxlength="256" name="SaleId" data-name="SaleId" placeholder="Código Id..." id="SaleId"
+                              required=""></div>
+                          <div class="div-block-55"><label for="email-6" class="field-label-5">ID da Conta do
+                              Marketplace</label><label for="MarketplaceAccontId" class="field-label-6">ID da Venda do
+                              Marketplace</label><input type="text" class="text-field-4 w-input" maxlength="256"
+                              name="MarketplaceAccontId" data-name="MarketplaceAccontId" placeholder="Id da conta..."
+                              id="MarketplaceAccontId"><input type="text" class="text-field-5 w-input" maxlength="256"
+                              name="MarketplaceSaleId" data-name="MarketplaceSaleId" placeholder="Id da venda..."
+                              id="MarketplaceSaleId-2"><label for="BoundMarketplace"
+                              class="field-label-6-copy">Marketplace Atrelado</label><select id="BoundMarketplace"
+                              name="BoundMarketplace" data-name="BoundMarketplace" class="select-field-4 w-select">
+                              <option value="">Marketplace Atrelado</option>
+                              <option value="mercado livre">Mercado Livre</option>
+                            </select></div>
+                          <div class="div-block-55"><label for="ShippingImplementation" class="field-label-20">Serviço
+                              de Envio</label><select id="ShippingImplementation" name="ShippingImplementation"
+                              data-name="ShippingImplementation" class="w-select">
+                              <option value="">Selecione o serviço de envio...</option>
+                              <option value="correios">Correios</option>
+                            </select></div>
+                          <div class="div-block-55"><label for="Name-4" class="field-label-7">Nome</label><input
+                              type="text" class="text-field-6 w-input" maxlength="256" name="Name" data-name="Name"
+                              placeholder="Campo opcional, dê um nome ao pacote..." id="Name-4"></div><a
+                            v-on:click="methods.Shipping.CreateShipment()" href="#"
+                            class="btn-standard w-button">Cadastrar</a>
+                        </form>
+                        <div class="w-form-done">
+                          <div>Thank you! Your submission has been received!</div>
+                        </div>
+                        <div class="w-form-fail">
+                          <div>Oops! Something went wrong while submitting the form.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div data-w-tab="Detalhes" class="w-tab-pane">
+                      <div class="div-block-49">
+                        <p class="paragraph-6">Eventos</p>
+                        <div data-duration-in="300" data-duration-out="100" class="tabs-4 w-tabs">
+                          <div class="tabs-menu-4 w-tab-menu">
+                            <a data-w-tab="Criação" class="shipment-event-tab w-inline-block w-tab-link">
+                              <div>Criação</div>
+                            </a>
+                            <a data-w-tab="Postagem" v-if="Shipping.CachedEvents.PostedEvent.IsPosted"
+                              class="shipment-event-tab w-inline-block w-tab-link">
+                              <div>Postagem</div>
+                            </a>
+                            <a data-w-tab="AguardandoRetirada" v-if="Shipping.CachedEvents.AwaitingForPickUpEvent.IsSet"
+                              class="shipment-event-tab w-inline-block w-tab-link">
+                              <div>Aguardando Carona</div>
+                            </a>
+                            <a data-w-tab="Rejeição" v-if="Shipping.CachedEvents.RejectedEvent.IsRejected"
+                              class="shipment-event-tab w-inline-block w-tab-link">
+                              <div>Recusado</div>
+                            </a>
+                            <a data-w-tab="Entrega" v-if="Shipping.CachedEvents.DeliveredEvent.IsDelivered"
+                              class="shipment-event-tab w-inline-block w-tab-link">
+                              <div>Entrega</div>
+                            </a>
                           </div>
+                          <div class="tabs-content-4 w-tab-content">
+                            <div data-w-tab="Criação" class="tab-pane-cria-o w-tab-pane">
+                              <div class="div-block-56">
+                                <p class="shipment-event-title">{{ Shipping. CachedEvents. CreatedEvent. Title }}</p>
+                                <p class="shipment-event-description">
+                                  {{ Shipping. CachedEvents. CreatedEvent. Description }}</p>
+                                <p class="shipment-event-description">Data de criação:
+                                  {{ Shipping. CachedEvents. CreatedEvent. OccurredAt }}</p>
+                              </div>
+                            </div>
+                            <div data-w-tab="Postagem" class="tab-pane-postagem w-tab-pane">
+                              <div class="div-block-56">
+                                <p class="shipment-event-title">{{ Shipping. CachedEvents. PostedEvent. Title }}</p>
+                                <p class="shipment-event-description">
+                                  {{ Shipping. CachedEvents. PostedEvent. Description }}</p>
+                                <p class="shipment-event-description">Postado em:
+                                  {{ Shipping. CachedEvents. PostedEvent. OccurredAt }}</p>
+                              </div>
+                            </div>
+                            <div data-w-tab="AguardandoRetirada" class="tab-pane-aguardandoretirada w-tab-pane">
+                              <div class="div-block-56">
+                                <p class="shipment-event-title">
+                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Title }}</p>
+                                <p class="shipment-event-description">
+                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Description }}</p>
+                                <p class="shipment-event-description">Data de criação:
+                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. OccurredAt }}</p>
+                                <p class="shipment-event-description">Aguardando ser buscado no endereço:
+                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. StreetName }}
+                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. StreetNumber }},
+                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. City }},
+                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. State }} -
+                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. Cep }}</p>
+                              </div>
+                            </div>
+                            <div data-w-tab="Rejeição" class="tab-pane-rejei-o w-tab-pane">
+                              <div class="div-block-56">
+                                <p class="shipment-event-title">{{ Shipping. CachedEvents. RejectedEvent. Title }}</p>
+                                <p class="shipment-event-description">
+                                  {{ Shipping. CachedEvents. RejectedEvent. Description }}</p>
+                                <p class="shipment-event-description">Ocorrido em:
+                                  {{ Shipping. CachedEvents. RejectedEvent. OccurredAt }}</p>
+                              </div>
+                            </div>
+                            <div data-w-tab="Entrega" class="tab-pane-entrega w-tab-pane">
+                              <div class="div-block-56">
+                                <p class="shipment-event-title">{{ Shipping. CachedEvents. DeliveredEvent. Title }}</p>
+                                <p class="shipment-event-description">
+                                  {{ Shipping. CachedEvents. DeliveredEvent. Description }}</p>
+                                <p class="shipment-event-description">Entregue para:
+                                  {{ Shipping. CachedEvents. DeliveredEvent. IsDeliveredToDestination ? &#x27;DESTINATÁRIO&#x27; : &#x27;REMETENTE&#x27; }}
+                                </p>
+                                <p class="shipment-event-description">Entregue em:
+                                  {{ Shipping. CachedEvents. DeliveredEvent. OccurredAt }}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="paragraph-6">Encaminhamentos</p>
+                        <div class="div-block-53">
+                          <div v-for="event in Shipping.CachedEvents.ForwardingEvents" class="shipment-forwarding">
+                            <div class="div-block-52">
+                              <div class="html-embed-7 w-embed">
+                                <image src="https://image.flaticon.com/icons/svg/592/592268.svg"></image>
+                              </div>
+                              <p class="paragraph-7">➟</p>
+                              <div v-if="event.PackageHasArrived" class="html-embed-7 w-embed">
+                                <image src="https://image.flaticon.com/icons/svg/594/594852.svg"></image>
+                              </div>
+                              <div class="html-embed-7 w-embed">
+                                <image src="https://image.flaticon.com/icons/svg/1742/1742960.svg"></image>
+                              </div>
+                            </div>
+                            <div class="div-block-50">
+                              <p class="paragraph-8">
+                                {{ event. ForwardedFrom. StreetName }}<br>{{ event. ForwardedFrom. Cep }}</p>
+                              <p class="paragraph-9">
+                                {{ event. ForwardedTo. StreetName }}<br>{{ event. ForwardedTo. Cep }}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="div-block-21">
+                        <div class="correio-detalhe-objeto-data-field">
+                          <div class="correio-detalheobjeto-titulodecampo">Pedido</div>
+                          <div id="correio-detalheobjeto-nome" class="text-block-12">
+                            {{ Shipping. CachedShipment. MarketplaceSaleId }}</div>
                         </div>
                         <div class="correio-detalhe-objeto-data-field">
                           <div class="correio-detalheobjeto-titulodecampo">Marketplace</div>
@@ -562,20 +619,6 @@
                     </div>
                     <div data-w-tab="Monitorador" class="w-tab-pane">
                       <h2 class="heading-25">Monitorador de Pacotes</h2>
-                      <div class="div-block-40">
-                        <div class="text-block-20">Status: <span
-                            v-if="Shipping.WatcherState.IsExecuting &amp;&amp; Shipping.WatcherState.IsInitialized"
-                            class="text-span-4">Executando</span> <span
-                            v-if="Shipping.WatcherState.IsInitialized &amp;&amp; Shipping.WatcherState.IsPaused"
-                            class="text-span-5">Pausado</span> <span v-if="!Shipping.WatcherState.IsInitialized"
-                            class="text-span-7">Erro</span> <span
-                            v-if="Shipping.WatcherState.IsInitialized &amp;&amp; !Shipping.WatcherState.IsPaused &amp;&amp; !Shipping.WatcherState.IsExecuting"
-                            class="text-span-6">Normal</span></div>
-                        <div class="text-block-21">Última data de execução: {{  }}</div>
-                        <div class="text-block-22">Próxima data de execução: {{  }}</div>
-                        <div class="div-block-41"><a v-on:click="Controllers.Shipping.RunWatcherRoutine()" href="#"
-                            class="w-button">Executar</a></div>
-                      </div>
                     </div>
                   </div>
                 </div>

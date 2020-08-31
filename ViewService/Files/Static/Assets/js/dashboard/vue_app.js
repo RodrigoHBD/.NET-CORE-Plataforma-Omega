@@ -1,4 +1,5 @@
 import ReactiveData from "/js/dashboard/reactive_data.js";
+import Methods from "/js/dashboard/methods.js";
 
 export default class VueApp {
     ReactiveData = new ReactiveData();
@@ -25,6 +26,7 @@ export default class VueApp {
     _ElementId = "#app";
 
     _GetData() {
+        this.ReactiveData.methods = new Methods();
         return this.ReactiveData;
     }
 

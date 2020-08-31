@@ -56,22 +56,27 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.Output
 
         private bool GetIsDeliveredToDestination()
         {
-            var isDeliveredToDestination = true;
+            var isDelviered = GetIsDelivered();
+            var isDeliveredToDestination = false;
 
-            Json.evento.ForEach(evento =>
+            if (isDelviered)
             {
-                var deliveredBDE = evento.tipo[0] == "BDE" && (evento.status[0] == "23");
-
-                var deliveredBDI = evento.tipo[0] == "BDI" && (evento.status[0] == "23");
-
-                var deliveredBDR = evento.tipo[0] == "BDR" && (evento.status[0] == "23");
-
-                if (deliveredBDE || deliveredBDI || deliveredBDR)
+                isDeliveredToDestination = true;
+                Json.evento.ForEach(evento =>
                 {
-                    isDeliveredToDestination = false;
-                }
-            });
+                    var deliveredBDE = evento.tipo[0] == "BDE" && (evento.status[0] == "23");
 
+                    var deliveredBDI = evento.tipo[0] == "BDI" && (evento.status[0] == "23");
+
+                    var deliveredBDR = evento.tipo[0] == "BDR" && (evento.status[0] == "23");
+
+                    if (deliveredBDE || deliveredBDI || deliveredBDR)
+                    {
+                        isDeliveredToDestination = false;
+                    }
+                });
+            }
+           
             return isDeliveredToDestination;
         }
 

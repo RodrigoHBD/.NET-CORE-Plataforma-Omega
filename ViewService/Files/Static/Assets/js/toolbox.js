@@ -51,7 +51,7 @@ class StringUtil {
 
 class EventsUtil {
     Click = (id) => {
-
+        $(`#${id}`).click();
     }
 }
 

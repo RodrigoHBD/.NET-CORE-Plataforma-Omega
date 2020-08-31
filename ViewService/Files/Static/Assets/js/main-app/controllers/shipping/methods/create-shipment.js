@@ -16,6 +16,7 @@ export default class CreateShipment extends ShippingMethod {
     }
 
     constructor(form_data) {
+        super();
         this._FormData = form_data;
     }
 

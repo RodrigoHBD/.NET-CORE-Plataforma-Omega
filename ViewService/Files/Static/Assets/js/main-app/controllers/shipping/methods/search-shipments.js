@@ -1,49 +1,26 @@
 import ShippingMethod from "/js/main-app/controllers/shipping/base-method.js";
 import { SearchFilters } from "/js/main-app/models/common.js";
 
-export default class SearchShipments extends ShippingMethod {
+class SearchShipmentsMethod extends ShippingMethod {
 
     async Run() {
         var uri = this._GetUri();
-        var req = this._GetSearchRequest();
-        var response = await application.HttpClient.Post(uri, request);
-        await application.HttpClient.Helpers.ResponseHanlder.HandleResponse(response);
+        var req = this._Search;
+        var response = await application.HttpClient.Post(uri, req);
+        return await application.HttpClient.Helpers.ResponseHandler.HandleResponse(response);
     }
 
-    constructor(form_data) {
-        this._FormData = form_data;
+    constructor(search) {
+        super();
+        this._Search = search;
     }
 
-    _FormData;
+    _Search;
 
     _GetUri() {
-        return "";
+        return "/api/shipping/search-shipments";
     }
 
-    _GetSearchRequest() {
-        var req = new ShipmentSearch();
-        req.DynamicString = this._GetDynamicString();
-        req.IsPosted = this._GetIsPosted();
-    }
-
-    _GetIsPosted() {
-        var filter = new SearchFilters.Boolean();
-        filter.IsActive = this._FormData.IsPosted;
-        filter.Value = this._FormData.IsPosted;
-    }
-
-    _GetDynamicString() {
-        var filter = new SearchFilters.String();
-
-        if (this._FormData.DynamicString.length > 0) {
-            filter.IsActive = true;
-            filter.Value = this._FormData.DynamicString;
-        }
-        return filter;
-    }
 }
 
-class ShipmentSearch {
-    DynamicString = new SearchFilters.String();
-    IsPosted = new SearchFilters.Boolean();
-}
+export default SearchShipmentsMethod;

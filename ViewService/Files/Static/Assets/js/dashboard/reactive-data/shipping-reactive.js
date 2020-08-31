@@ -1,5 +1,4 @@
 import { Shipment, ShipmentEvents } from "/js/main-app/models/shipping/shipping-models.js";
-import { Pagination } from "/js/main-app/models/common.js";
 
 export default class ShippingReactive {
     ShipmentTable = new ShipmentTable();
@@ -11,5 +10,4 @@ class ShipmentTable {
     TotalPages = 0;
     CurrentPage = 0;
     Body = [];
-    Pagination = new Pagination();
 }

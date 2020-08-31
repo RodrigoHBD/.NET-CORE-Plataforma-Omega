@@ -6,6 +6,7 @@ using Grpc.Net.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 
 namespace Gateway.gRPC.Client
@@ -40,6 +41,18 @@ namespace Gateway.gRPC.Client
             try
             {
                 return await Client.GetShipmentByIdAsync(req);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public static async Task<GrpcShipmentEvents> GetShipmentEvents(GrpcString req)
+        {
+            try
+            {
+                return await Client.GetShipmentEventsAsync(req);
             }
             catch (Exception)
             {

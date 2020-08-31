@@ -52,6 +52,27 @@ namespace Gateway.Controllers
             }
         }
 
+        [Route("shipment-events")]
+        [HttpGet]
+        public async Task<IActionResult> GetShipmentEvents(string id)
+        {
+            try
+            {
+                var req = new GrpcString() { Value = id };
+                var events = await ShippingClient.GetShipmentEvents(req);
+
+                return new ContentResult()
+                {
+                    Content = ShipmentEventsPresenter.PresentSerialized(events),
+                    ContentType = "application/json"
+                };
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
         [Route("search-shipments")]
         [HttpPost]
         public async Task<IActionResult> SearchShipments(ShipmentSearch search)

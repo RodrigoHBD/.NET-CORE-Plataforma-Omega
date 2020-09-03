@@ -1,24 +1,24 @@
 class FormUtil {
     GetFormData(id) {
         try {
-            return this.GetFormDataAndParseIt(id);
+            return this._GetFormDataAndParseIt(id);
         }
         catch (error) {
             throw error;
         }
     }
 
-    GetFormDataAndParseIt(id) {
+    _GetFormDataAndParseIt(id) {
         try {
-            let data = this.GetSerializedData(id);
-            return this.ParseSerializedDataToObject(data);
+            let data = this._GetSerializedData(id);
+            return this._ParseSerializedDataToObject(data);
         }
         catch (error) {
 
         }
     }
 
-    GetSerializedData(id) {
+    _GetSerializedData(id) {
         try {
             return $(`#${id}`).serializeArray();
         }
@@ -27,7 +27,7 @@ class FormUtil {
         }
     }
 
-    ParseSerializedDataToObject(array) {
+    _ParseSerializedDataToObject(array) {
         try {
             let object = new Object();
             for (let prop of array) {
@@ -38,6 +38,10 @@ class FormUtil {
         catch (error) {
             throw error;
         }
+    }
+
+    Clear(id) {
+        document.getElementById(id).reset();
     }
 }
 

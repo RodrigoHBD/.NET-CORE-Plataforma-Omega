@@ -1,9 +1,9 @@
-import { Notification } from "/js/main-app/models/common.js";
+import { NotificationSpan } from "/js/dashboard/models/notification_span.js";
 
 export default class CommonReactive {
     ConfirmationWarning = new ConfirmationWarning();
     NotificationBox = new NotificationBox();
-    NotificationSpan = new Notification();
+    NotificationSpan = new NotificationSpan();
 }
 
 class NotificationBox {

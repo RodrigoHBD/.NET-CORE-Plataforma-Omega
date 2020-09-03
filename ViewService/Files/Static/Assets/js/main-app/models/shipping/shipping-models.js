@@ -68,4 +68,26 @@ class ShipmentSearch {
     IsPosted = new SearchFilters.Boolean();
 }
 
-export { Shipment, ShipmentEvents, ShipmentSearch };
+class NewShipmentRequest {
+    TrackingCode = "";
+    BoundMarketplace = "";
+    MarketplaceAccountId = "";
+    MarketplaceSaleId = "";
+    ShippingService = "";
+    SetAutoUpdate = true;
+    Package = new NewShipmentPackageData();
+}
+
+class NewShipmentPackageData {
+    Name = "";
+    WeightInGrams;
+    WidthInMm;
+    LengthInMm;
+    HeightInMm;
+    Content = new Array();
+}
+
+export {
+    Shipment, ShipmentEvents, ShipmentSearch, NewShipmentRequest,
+    NewShipmentPackageData
+};

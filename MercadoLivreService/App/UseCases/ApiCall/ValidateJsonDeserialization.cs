@@ -12,13 +12,10 @@ namespace MercadoLivreService.App.UseCases
         {
             try
             {
-                var hasError = response.HasDeserializationException;
-
-                if (hasError)
+                if (!response.IsOk)
                 {
-                    throw response.DeserializationException;
+                    throw response.Exception;
                 }
-                ValidateJsonDataDeserialization.Execute(response);
             }
             catch (Exception)
             {

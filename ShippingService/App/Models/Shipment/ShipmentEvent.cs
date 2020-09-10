@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace ShippingService.App.Models
 
     public class ShipmentEventDates
     {
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime OccurredAt { get; set; }
     }
 

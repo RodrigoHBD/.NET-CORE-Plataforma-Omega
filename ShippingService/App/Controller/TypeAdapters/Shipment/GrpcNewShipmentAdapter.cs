@@ -47,7 +47,14 @@ namespace ShippingService.App.Controller.TypeAdapters
 
         private ShippingBoundry.Implementation GetShippingImplementation()
         {
-            return ShippingBoundry.Implementation.Correios;
+            if(Request.ShippingImplementation == "correios")
+            {
+                return ShippingBoundry.Implementation.Correios;
+            }
+            else
+            {
+                return ShippingBoundry.Implementation.Unset;
+            }
         }
 
         private string GetMarketplaceAccountId()

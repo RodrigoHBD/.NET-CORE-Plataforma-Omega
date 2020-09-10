@@ -1,4 +1,5 @@
-﻿using Gateway.ServerGrid.Models;
+﻿using Gateway.Controllers.Api.MercadoLivreModels.Input;
+using Gateway.ServerGrid.Models;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Gateway
     {
         public static IMongoCollection<Platform> Platforms { get; set; }
 
-        public static IMongoCollection<MLNotification> MLNotifications { get; set; }
+        public static IMongoCollection<Notification> MLNotifications { get; set; }
   
         public static async Task InitializeAsync()
         {
@@ -21,7 +22,7 @@ namespace Gateway
 
         private static void InitializeServerCollections()
         {
-            MLNotifications = Database.ServerConnection.GetCollection<MLNotification>("ML-Notifications");
+            MLNotifications = Database.ServerConnection.GetCollection<Notification>("ML-Notifications");
         }
 
         private static void InitializeCommonCollections()

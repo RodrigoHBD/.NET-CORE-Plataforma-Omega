@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MercadoLivreService.gRPC.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace MercadoLivreService.App
             try
             {
                 await InitializeDatabaseAsync();
+                InitializeRoutines();
             }
             catch (Exception e)
             {
@@ -36,7 +38,7 @@ namespace MercadoLivreService.App
         {
             try
             {
-                //RoutineScheduler.Initialize();
+                ShippingClient.Initialize();
             }
             catch (Exception e)
             {

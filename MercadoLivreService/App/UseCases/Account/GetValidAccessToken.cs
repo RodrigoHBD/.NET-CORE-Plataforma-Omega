@@ -14,18 +14,15 @@ namespace MercadoLivreService.App.UseCases
             try
             {
                 var account = await AccountUseCases.GetById.Execute(id);
-                var tokens = account.Tokens;
-                var response = await MercadoLivreBoundry.GetUserData(account.Tokens.AccessToken);
-                //ValidateJsonDeserialization.Execute(response);
+                var token = account.Tokens.AccessToken;
+                var tokenIsValid = await MercadoLivreBoundry.ValidateAccessToken(token);
                 
-                var isOk = response.IsDeserializedWithDataModel;
-                
-                if (!isOk)
+                if (!tokenIsValid)
                 {
-                    tokens = account.Tokens = await AccountUseCaseController.RefreshAndUpdateTokens(account.Id.ToString());
+                    return await AccountUseCaseController.RefreshAndUpdateTokens(account.Id.ToString());
                 }
-                
-                return tokens;
+
+                return account.Tokens;
             }
             catch (Exception)
             {

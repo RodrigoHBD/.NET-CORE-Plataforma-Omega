@@ -85,7 +85,7 @@ namespace MercadoLivreService.HttpClientLibrary
         {
             try
             {
-                return await JsonHelper.Deserialize<T>(serializedResponse);
+                return JsonHelper.TryDeserialize<T>(serializedResponse);
             }
             catch (Exception)
             {

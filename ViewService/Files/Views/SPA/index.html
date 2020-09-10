@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Mon Aug 31 2020 04:40:11 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Thu Sep 10 2020 18:58:05 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="5edfa191b5ff3472c3d2885e" data-wf-site="5edfa191b5ff34226cd2885d">
-
 <head>
   <meta charset="utf-8">
   <title>Omega Plataforma</title>
@@ -12,33 +11,24 @@
   <link href="css/webflow.css" rel="stylesheet" type="text/css">
   <link href="css/omega-plataforma.webflow.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-  <script
-    type="text/javascript">WebFont.load({ google: { families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic"] } });</script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic","Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic"]  }});</script>
   <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
-  <script
-    type="text/javascript">!function (o, c) { var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
   <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
-
 <body class="body">
   <div id="app" class="app">
     <div pointer-events="none" class="app-wrapper"></div>
     <div id="warning-box" data-w-id="af9d9941-5066-77dd-7609-4c276d5d6d4f" class="warning-box">
       <div class="div-block-24">
         <div class="div-block-25">
-          <h3 class="heading-13">{{ Common.ConfirmationWarning.Message}}</h3><a id="close-warning-box-btn"
-            data-w-id="d05fbbf4-91ef-ee66-6294-d27679a65b75" href="#" class="button-6 w-button">Cancelar</a><a
-            id="execute-warning-callback-btn" v-on:click="Controllers.Common.ExecuteWarningCallback()" href="#"
-            class="button-7 w-button">Confirmar</a>
-        </div>
+          <h3 class="heading-13">{{ Warning.Title }}</h3>
+          <p class="paragraph-10">{{ Warning.Text }}</p><a id="close-warning-box-btn" data-w-id="d05fbbf4-91ef-ee66-6294-d27679a65b75" href="#" class="button-6 w-button">Cancelar</a><a id="execute-warning-callback-btn" v-on:click="methods.Warning.RunAction()" href="#" class="button-7 w-button">Confirmar</a></div>
       </div>
     </div>
     <div id="app-notification-box" data-w-id="13844d19-ee3f-5530-6fca-23b82df19b83" class="notificationbox">
-      <div class="div-block-19"><img src="images/icons8-lembrete-de-compromissos-96.png" id="open-notification-box-btn"
-          data-w-id="f6688854-1985-7b16-d3fe-b6cd9a2099ec" alt="" class="open-notification-box-btn"><img
-          src="images/dismiss.png" id="close-notification-box-btn" data-w-id="33b59e6d-5123-9ade-dded-7c36cc1bbbbb"
-          alt="" class="close-notification-box-btn"></div>
+      <div class="div-block-19"><img src="images/icons8-lembrete-de-compromissos-96.png" id="open-notification-box-btn" data-w-id="f6688854-1985-7b16-d3fe-b6cd9a2099ec" alt="" class="open-notification-box-btn"><img src="images/dismiss.png" id="close-notification-box-btn" data-w-id="33b59e6d-5123-9ade-dded-7c36cc1bbbbb" alt="" class="close-notification-box-btn"></div>
       <h3 class="heading-9">Notificações</h3>
       <div class="notification">
         <h3 class="notification-title">Notificação</h3>
@@ -48,19 +38,12 @@
     </div>
     <div id="app-body" data-w-id="dcbc9561-d1f2-1b21-d0c3-bcd452b6bdc9" class="app-body">
       <div id="navbar" class="navbar">
-        <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navbar-2 w-nav">
-          <img src="images/Untitled-removebg-preview.png" loading="lazy" width="275"
-            srcset="images/Untitled-removebg-preview-p-500.png 500w, images/Untitled-removebg-preview.png 550w"
-            sizes="100vw" alt="" class="image-7">
+        <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="navbar-2 w-nav"><img src="images/Untitled-removebg-preview.png" loading="lazy" width="275" srcset="images/Untitled-removebg-preview-p-500.png 500w, images/Untitled-removebg-preview.png 550w" sizes="100vw" alt="" class="image-7">
           <div class="html-embed-8 w-embed">
-            <image
-              src="https://uploads-ssl.webflow.com/5edfa191b5ff34226cd2885d/5f470ec5f2c29e5640a4a550_Untitled-removebg-preview-p-500.png">
-            </image>
+            <image src="https://uploads-ssl.webflow.com/5edfa191b5ff34226cd2885d/5f470ec5f2c29e5640a4a550_Untitled-removebg-preview-p-500.png" style="max-height:4em;"></image>
           </div>
           <div class="container w-container">
-            <nav role="navigation" class="nav-menu w-nav-menu"><a href="#" class="navmenu-option w-nav-link">Home</a><a
-                href="#" class="navmenu-option w-nav-link">Sobre nós</a><a href="#"
-                class="navmenu-option w-nav-link">FAQ</a><a href="#" class="navmenu-option w-nav-link">Nav Link</a>
+            <nav role="navigation" class="nav-menu w-nav-menu"><a href="#" class="navmenu-option w-nav-link">Home</a><a href="#" class="navmenu-option w-nav-link">Sobre nós</a><a href="#" class="navmenu-option w-nav-link">FAQ</a><a href="#" class="navmenu-option w-nav-link">Nav Link</a>
               <div data-hover="" data-delay="0" class="dropdown w-dropdown">
                 <div class="navmenu-profile w-dropdown-toggle">
                   <div class="html-embed-6 w-embed">
@@ -69,8 +52,7 @@
                   <div class="text-block-26">RodrigoHBD</div>
                   <p class="paragraph-4">▼</p>
                 </div>
-                <nav class="w-dropdown-list"><a href="#" class="w-dropdown-link">Link 1</a><a href="#"
-                    class="w-dropdown-link">Link 2</a><a href="#" class="w-dropdown-link">Link 3</a></nav>
+                <nav class="w-dropdown-list"><a href="#" class="w-dropdown-link">Link 1</a><a href="#" class="w-dropdown-link">Link 2</a><a href="#" class="w-dropdown-link">Link 3</a></nav>
               </div>
             </nav>
             <div class="w-nav-button">
@@ -145,20 +127,15 @@
             <h1>tab 1</h1>
           </div>
           <div data-w-tab="Tab 2" class="w-tab-pane">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum
-              tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae
-              erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique
-              posuere.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum lorem imperdiet. Nunc ut sem vitae risus tristique posuere.</p>
           </div>
           <div data-w-tab="Tab 3" class="w-tab-pane"></div>
           <div data-w-tab="MercadoLivre" class="w-tab-pane">
             <div class="div-block-38">
               <h2 class="heading-21">Mercado Livre</h2>
-              <div id="MercadoLivre-ShowContent-Btn" data-w-id="ed8db1f6-3d20-8b0a-f969-f600f18296c7"
-                class="html-embed-4 w-embed"><img src="https://img.icons8.com/metro/52/000000/settings.png"></div>
+              <div id="MercadoLivre-ShowContent-Btn" data-w-id="ed8db1f6-3d20-8b0a-f969-f600f18296c7" class="html-embed-4 w-embed"><img src="https://img.icons8.com/metro/52/000000/settings.png"></div>
             </div>
-            <div id="MercadoLivreTabContent" data-w-id="823e6e38-ca34-c47b-a36c-245e0afcc771"
-              class="mercadolivre-tab-content">
+            <div id="MercadoLivreTabContent" data-w-id="823e6e38-ca34-c47b-a36c-245e0afcc771" class="mercadolivre-tab-content">
               <div data-duration-in="300" data-duration-out="100" class="w-tabs">
                 <div class="tabs-menu-3 w-tab-menu">
                   <a data-w-tab="Tab 1" class="mercadolivretaboption w-inline-block w-tab-link w--current">
@@ -177,19 +154,15 @@
                     <div class="mercadolivre-accountstable">
                       <div class="mercadolivre-accountstable-head">
                         <div class="form-block-6 w-form">
-                          <form id="wf-form-Email-Form-10" name="wf-form-Email-Form-10" data-name="Email Form 10"
-                            class="form-8"><label for="name-9">Pesquisar</label><input type="text" class="w-input"
-                              maxlength="256" name="name-9" data-name="Name 9" placeholder="" id="name-9"></form>
+                          <form id="wf-form-Email-Form-10" name="wf-form-Email-Form-10" data-name="Email Form 10" class="form-8"><label for="name-9">Pesquisar</label><input type="text" class="w-input" maxlength="256" name="name-9" data-name="Name 9" placeholder="" id="name-9"></form>
                           <div class="w-form-done">
                             <div>Thank you! Your submission has been received!</div>
                           </div>
                           <div class="w-form-fail">
                             <div>Oops! Something went wrong while submitting the form.</div>
                           </div>
-                        </div><a v-on:click="Controllers.MercadoLivre.SearchAccounts()" href="#"
-                          class="button-13 w-button">Atualizar</a>
-                        <div class="div-block-35"><a href="#" class="button-12 w-button">Anterior</a><a href="#"
-                            class="button-11 w-button">Próxima</a></div>
+                        </div><a v-on:click="Controllers.MercadoLivre.SearchAccounts()" href="#" class="button-13 w-button">Atualizar</a>
+                        <div class="div-block-35"><a href="#" class="button-12 w-button">Anterior</a><a href="#" class="button-11 w-button">Próxima</a></div>
                       </div>
                       <div class="mercadolivre-accountstable-body">
                         <div class="mercadolivre-accountstable-iteration-template">
@@ -201,8 +174,7 @@
                           <div class="linhaseparadora-semespa-o-white"></div>
                           <div class="text-block-19">Reputação</div>
                         </div>
-                        <div vfor="account in MercadoLivre.AccountsTable.Body"
-                          class="mercadolivre-accountstable-iteration">
+                        <div vfor="account in MercadoLivre.AccountsTable.Body" class="mercadolivre-accountstable-iteration">
                           <div class="text-block-16">{{ account. Nickname</div>
                           <div class="linhaseparadora-semespa-o-black"></div>
                           <div class="text-block-15-copy">{{ account.Email </div>
@@ -258,61 +230,81 @@
                       <div class="correio-tabela-objetos-head">
                         <div class="div-block-4">
                           <h3 class="heading-2">Total de Páginas: {{ Shipping. ShipmentTable. TotalPages }}</h3>
-                            <h3 class="heading-2"> Exibindo página {{ Shipping. ShipmentTable. CurrentPage }} de
-                              {{ Shipping. ShipmentTable. TotalPages }}</h3>
+                          <h3 class="heading-2"> Exibindo página {{ Shipping. ShipmentTable. CurrentPage }} de {{ Shipping. ShipmentTable. TotalPages }}</h3>
+                        </div>
+                        <div class="correio-tabela-objetos-actionmenu"><a id="correios-open-detailbtn" href="#" class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a><a data-w-id="aaa6591d-d6f7-e20b-ae2a-9012e5144d09" href="#" class="button-2 w-button">Mostrar Filtros</a><a v-on:click="methods.Shipping.UpdateShipmentTable()" href="#" class="btn-standard w-button">Atualizar</a>
+                          <div class="div-block-46"><a v-on:click="methods.Shipping.PaginateShipmentTableBackwards()" v-show="Shipping.ShipmentTable.Pagination.Offset != 0" href="#" class="button-10 w-button">&lt;</a>
+                            <div class="div-block-47"></div><a v-on:click="methods.Shipping.PaginateShipmentTableForward()" href="#" class="button-10 w-button">&gt;</a></div>
+                        </div>
+                      </div>
+                      <div id="correios-objects-table-filters" data-w-id="95b68b7b-9779-2892-b254-a277b68ec11c" style="opacity:0" class="correio-tabela-objetos-filtros">
+                        <h1 class="heading-5">Filtros</h1>
+                        <div class="form-block-3 w-form">
+                          <form id="shipment-filters-form" name="email-form-3" data-name="Email Form 3" class="form-6">
+                            <div class="div-block-48"><label for="ShippingService-2">Serviço de envio</label><select id="ShippingService-2" name="ShippingService" data-name="ShippingService" class="select-field-3 w-select"><option value="">Selecione um...</option><option value="Correios">Correios</option><option value="mercado envios">Mercado Envios</option></select><label for="DynamicString-2">Pesquisar por texto </label><input type="text" class="w-input" maxlength="256" name="DynamicString" data-name="DynamicString" placeholder="" id="DynamicString"></div>
+                            <div class="div-block-17"><label for="status" class="field-label-4">Status</label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="AwaitingForPickUp" name="AwaitingForPickUp" data-name="AwaitingForPickUp" class="w-checkbox-input checkbox"><span for="AwaitingForPickUp" class="checkbox-label w-form-label">Aguardando Retirada</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" id="Delivered" name="Delivered" data-name="Delivered" class="w-checkbox-input checkbox"><span for="Delivered" class="checkbox-label w-form-label">Entregue</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" data-name="RejectedComingBack" name="RejectedComingBack" id="RejectedComingBack" class="w-checkbox-input checkbox"><span for="RejectedComingBack" class="checkbox-label w-form-label">Rejeitado Voltando</span></label><label class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox" data-name="AwaitingForPosting" name="AwaitingForPosting" id="AwaitingForPosting" class="w-checkbox-input checkbox"><span for="AwaitingForPosting" class="checkbox-label w-form-label">Aguardando Postagem</span></label></div>
+                            <div class="div-block-23"><label for="PageOffset">Ir para página</label><input type="number" class="w-input" maxlength="256" name="PageOffset" data-name="PageOffset" placeholder="Pular para página...." id="PageOffset" required=""></div><a id="shipping-apply-filters-btn" href="#" class="btn-standard w-button">Aplicar</a></form>
+                          <div class="w-form-done">
+                            <div>Thank you! Your submission has been received!</div>
                           </div>
-                          <div class="correio-tabela-objetos-actionmenu"><a id="correios-open-detailbtn" href="#"
-                              class="correio-tabela-objetos-abrirdetalhesbtn w-button">Detalhes</a><a
-                              data-w-id="aaa6591d-d6f7-e20b-ae2a-9012e5144d09" href="#"
-                              class="button-2 w-button">Mostrar Filtros</a><a
-                              v-on:click="methods.Shipping.UpdateShipmentTable()" href="#"
-                              class="btn-standard w-button">Atualizar</a>
-                            <div class="div-block-46"><a v-on:click="Controllers.Correios.PaginateBackwards()" href="#"
-                                class="button-10 w-button">&lt;</a>
-                              <div class="div-block-47"></div><a v-on:click="Controllers.Correios.PaginateBackwards()"
-                                href="#" class="button-10 w-button">&gt;</a>
-                            </div>
+                          <div class="w-form-fail">
+                            <div>Oops! Something went wrong while submitting the form.</div>
                           </div>
                         </div>
-                        <div id="correios-objects-table-filters" data-w-id="95b68b7b-9779-2892-b254-a277b68ec11c"
-                          style="opacity:0" class="correio-tabela-objetos-filtros">
-                          <h1 class="heading-5">Filtros</h1>
-                          <div class="form-block-3 w-form">
-                            <form id="correios-search-filters-form" name="email-form-3" data-name="Email Form 3"
-                              class="form-6">
-                              <div class="div-block-48"><label for="DynamicString">Serviço de envio</label><select
-                                  id="field-25" name="field-25" class="select-field-3 w-select">
-                                  <option value="">Selecione um...</option>
-                                  <option value="Correios">Correios</option>
-                                  <option value="mercado envios">Mercado Envios</option>
-                                </select><label for="DynamicString-2">Pesquisar por texto </label><input type="text"
-                                  class="w-input" maxlength="256" name="DynamicString" data-name="DynamicString"
-                                  placeholder="" id="DynamicString"></div>
-                              <div class="div-block-17"><label for="status" class="field-label-4">Status</label><label
-                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                    id="AwaitingForPickUp" name="AwaitingForPickUp" data-name="AwaitingForPickUp"
-                                    class="w-checkbox-input checkbox"><span for="AwaitingForPickUp"
-                                    class="checkbox-label w-form-label">Aguardando Retirada</span></label><label
-                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                    id="Rejected" name="Rejected" data-name="Rejected"
-                                    class="w-checkbox-input checkbox"><span for="Rejected"
-                                    class="checkbox-label w-form-label">Rejeitado</span></label><label
-                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                    id="Delivered" name="Delivered" data-name="Delivered"
-                                    class="w-checkbox-input checkbox"><span for="Delivered"
-                                    class="checkbox-label w-form-label">Entregue</span></label><label
-                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                    data-name="RejectedComingBack" name="RejectedComingBack" id="RejectedComingBack"
-                                    class="w-checkbox-input checkbox"><span for="RejectedComingBack"
-                                    class="checkbox-label w-form-label">Rejeitado Voltando</span></label><label
-                                  class="w-checkbox correio-tabela-objeto-filter-status"><input type="checkbox"
-                                    data-name="AwaitingForPosting" name="AwaitingForPosting" id="AwaitingForPosting"
-                                    class="w-checkbox-input checkbox"><span for="AwaitingForPosting"
-                                    class="checkbox-label w-form-label">Aguardando Postagem</span></label></div>
-                              <div class="div-block-23"><label for="PageOffset">Ir para página</label><input
-                                  type="number" class="w-input" maxlength="256" name="PageOffset" data-name="PageOffset"
-                                  placeholder="Pular para página...." id="PageOffset" required=""></div><a
-                                id="shipping-apply-filters-btn" href="#" class="btn-standard w-button">Aplicar</a>
+                      </div>
+                      <div class="correio-tabela-objeto-body">
+                        <div class="div-block-16">
+                          <div class="form-block-2 w-form">
+                            <form id="correios-objects-table" name="email-form-2" data-name="Email Form 2" class="form-2">
+                              <div class="correio-tabela-objetos-iteration-template">
+                                <div class="text-block-8">Plataforma</div>
+                                <div class="linhaseparadora-semespa-o-white"></div>
+                                <div class="text-block-9">Pedido</div>
+                                <div class="linhaseparadora-semespa-o-white"></div>
+                                <div class="text-block-10">Código de Rastreamento</div>
+                                <div class="linhaseparadora-semespa-o-white"></div>
+                                <h5 class="item-text">Peso</h5>
+                                <div class="linhaseparadora-semespa-o-white"></div>
+                                <h5 class="item-text">Status</h5>
+                                <div class="linhaseparadora-semespa-o-white"></div>
+                                <div class="text-block-11">Ações</div>
+                              </div>
+                              <p v-show="Shipping.ShipmentTable.Body.length == 0" class="paragraph-11">Parece que não tem nada por aqui...</p>
+                              <div v-for="shipment in Shipping.ShipmentTable.Body" class="white-bg correio-tabela-objetos-iteration">
+                                <div class="invisible-data-div"></div>
+                                <div class="div-block-43">
+                                  <div class="div-block-14">
+                                    <div v-if="shipment.CreatedManually" class="manualimg w-embed"><img src="https://img.icons8.com/pastel-glyph/64/000000/hand-box.png"></div>
+                                    <div v-if="shipment.BoundPlatform == &#x27;mercado livre&#x27;" class="mercadolivreimg w-embed"><img src="https://s2.glbimg.com/FGXio_G5LAoAVWJK4-R1NEedURo=/607x607/smart/e.glbimg.com/og/ed/f/original/2020/03/17/novo-logo-mercado-livre.jpg"></div>
+                                    <div v-if="shipment.BoundPlatform == &#x27;b2w&#x27;" class="b2w-img w-embed"><img src="data:image/png;base64,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"></div>
+                                  </div>
+                                  <div class="linhaseparadora-semespa-o-black"></div>
+                                  <div class="text-block-5">{{ shipment. MarketplaceSaleId }}</div>
+                                  <div class="linhaseparadora-semespa-o-black"></div>
+                                  <div v-on:click="methods.Shipping.OpenTrackingWebsite()" class="text-block-6">{{ shipment .TrackingCode}}</div>
+                                  <div class="linhaseparadora-semespa-o-black"></div>
+                                  <div class="div-block-22">
+                                    <div class="text-block-4">V 12,000 </div>
+                                    <div class="text-block-4-copy">P {{ shipment. Weight }}</div>
+                                  </div>
+                                  <div class="linhaseparadora-semespa-o-black"></div>
+                                  <div class="div-block-8">
+                                    <div v-bind:style="{ &#x27;background-color&#x27; : shipment.StatusOuterColor }" class="shipment-status-yellow">
+                                      <div v-bind:style="{ &#x27;background-color&#x27; : shipment.StatusInnerColor }" class="shipment-delivery"></div>
+                                    </div>
+                                  </div>
+                                  <div class="linhaseparadora-semespa-o-black"></div>
+                                  <div class="div-block-13">
+                                    <div v-on:click="methods.Shipping.ShowShipmentDetail(shipment.Id)" class="correio-tabela-objetos-abrirdetalhesbtn-copy w-embed"><img src="https://img.icons8.com/ios/40/000000/show-property.png"></div>
+                                    <div v-on:click="methods.Shipping.DeleteShipmentWithWarning(shipment.Id)" class="html-embed w-embed"><img src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
+                                  </div>
+                                </div>
+                                <div class="div-block-44">
+                                  <div class="text-block-25">Serviço: {{ shipment. ShippingService }}</div>
+                                  <div class="text-block-25">Criado em: {{ shipment.CreatedAt }}</div>
+                                  <div class="text-block-25">Id da Conta: {{ shipment. MarketplaceAccountId }}</div>
+                                </div>
+                              </div>
                             </form>
                             <div class="w-form-done">
                               <div>Thank you! Your submission has been received!</div>
@@ -322,540 +314,229 @@
                             </div>
                           </div>
                         </div>
-                        <div class="correio-tabela-objeto-body">
-                          <div class="div-block-16">
-                            <div class="form-block-2 w-form">
-                              <form id="correios-objects-table" name="email-form-2" data-name="Email Form 2"
-                                class="form-2">
-                                <div class="correio-tabela-objetos-iteration-template">
-                                  <div class="text-block-8">Plataforma</div>
-                                  <div class="linhaseparadora-semespa-o-white"></div>
-                                  <div class="text-block-9">Pedido</div>
-                                  <div class="linhaseparadora-semespa-o-white"></div>
-                                  <div class="text-block-10">Código de Rastreamento</div>
-                                  <div class="linhaseparadora-semespa-o-white"></div>
-                                  <h5 class="item-text">Peso</h5>
-                                  <div class="linhaseparadora-semespa-o-white"></div>
-                                  <h5 class="item-text">Status</h5>
-                                  <div class="linhaseparadora-semespa-o-white"></div>
-                                  <div class="text-block-11">Ações</div>
-                                </div>
-                                <div v-for="shipment in Shipping.ShipmentTable.Body"
-                                  class="white-bg correio-tabela-objetos-iteration">
-                                  <div class="invisible-data-div"></div>
-                                  <div class="div-block-43">
-                                    <div class="div-block-14">
-                                      <div v-if="shipment.CreatedManually" class="manualimg w-embed"><img
-                                          src="https://img.icons8.com/pastel-glyph/64/000000/hand-box.png"></div>
-                                      <div v-if="shipment.BoundPlatform == &#x27;mercado livre&#x27;"
-                                        class="mercadolivreimg w-embed"><img
-                                          src="https://s2.glbimg.com/FGXio_G5LAoAVWJK4-R1NEedURo=/607x607/smart/e.glbimg.com/og/ed/f/original/2020/03/17/novo-logo-mercado-livre.jpg">
-                                      </div>
-                                      <div v-if="shipment.BoundPlatform == &#x27;b2w&#x27;" class="b2w-img w-embed"><img
-                                          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAllBMVEUA7ML///8A674A6rzA/fmE9+YA7MOa+OoA7cb0///8///3///w///S+/IA7cfC+/KG9N4s8tWa9eJW8dNn89s478y4+e9S89nh/vzs///b/fqq+e3X/fqx+vB39eB79eG+/fmi+OpB783O/flF8dWN9ubI/fnW+/NS9N7C+vCO9uOY+OyP+Oxg89mA9+dY9N8H8tV59NyUXSjuAAAU3UlEQVR4nO1d52KjuhK2RwbX4Hht3Escl717dp2TvP/LXao0owICg03u3fmVGBD60Gi6pFbrL/2lv/R/Q6DSs7tUDQEwBi3PP7++Oh/H+UtIvzaO47wuJp4bXfy+FIBz32/OrrNqm2jwNnZm0x58P5whC/r7zalvxIapv979M3G/E9cymDgn88DpabW9nFvfYSyBeV/zYUF0nDoHH9izIWQRgOecBmXhxbTs+o3lV9Y7nO5Dl4K8eA1kV9Za7CqBF9N232sWtzLPKSpZ8miw8ZuDkfm7Oyefnq7nZjArTDt1wItoOXu+1IHptkCPh/2ICoz4ctZ6KkY2sZKe1/FvZ7aYTn3P83o9z/Pfp4vb62XcGVk8vFo8DyLz8/hzue0eJoHZGRrYtJ/B/8GvzPVnl5dlXiu358gc6B2zujVYbvZ+K99JCu/wbsdtph10fYZcZYcMs3qwm/mFHAbGvNkmayw3j56O7N0sYJbHSavEJw+41ruYWx3OHjuMf0wdGW0md3xtAP9iHMlx72HDyN5NvbjOyowebRzOG0PrgwcNI0DXMHzdigxm5u4Nn/AhwwjeWvvy5b5CWQCthV7RjupXjmymNUjWlZtXbKJXtt26OVU7R9aLOkxk5o91L9t6NQ4jeDreWdVlHgOcddpjeK5tGGGi49BLnboYZjq/c18TRLbXvGxXsy8OcNF81t+1fFSmURLLc/3Sm3lX9cXbGl4EGhlTK4OiV3+pJvCyV/lr1Dm/fJjBD64qVUd+xV9XNTKO1b4gm2CmvH9YKURXAThcPNbUZ57Shf57dRBVgNvH2fkpwVEZxmlVnVAB1iOtc0ijraoaRQVgXRo3h5gvy9SK5qIMcFC1FLMmcGWrsQqITFYT6zot3zwCWW307xYITFb0p0p6WpoUebO8s0HFVHt5drqEOTJP3TWIivjaPT2NoPZpc8dHh4nc2PMBaiD+U75XnuS43PO1KiQF4q00REk2N4BFY5IhDv2S7Uhi9NQUgKq4WZdiLtmcbxBAVcaXYS/w6SRcV9/NewjmFOKsOESggd+BV0M37yE43dk/dqTf6Gm2qJloAnlbdCq+U4BP8iYySZpG/xTsInUofjcQYAtud7AZ+005oHksGpIkUIsYqEB5dFB95K4aAurZHew5jVE5+sRyjxzyhuVGAg4EYEOsUR1JU3Fu29MeCYfc62LWSowWRJ4tn6L2aEmr9lFERsNS2PgEYO051/sIFlTY2EBkJNizqr2PdxIjBurQ5hHq11cWVq6NesS0sfD3qUVrLZ2eR0Dc4WG+xpiSIWyqrsdEtXeu3KBmwqX5QxjQGXc5T+0DGcLGi5mYqGzMGUT2hm8u4ThrqP7FeES/ZYtTIPcu7+8UMHfy+rH7Nf/jzLzaFvzQGoNMnQjECOIWd1SwrKOcgWG9Pa6jWB1RrQ9v09REcjn7anK9RwYmq0seuTNtHRbHroF+LHzjsjpwu0opzHaaNAr7tAlH//Q5fucfN+tqt3uMjEpqaN7MAIGEIfkshIvcUUyr697VfWl20y6j2SVtCv9FG0PisbSJ7vuhAtD4C5ChuWbMBtwnMQtBTvco9NtTGjVVobZHcf5RONl6eZZ25ajrrggEvsWXqY9hdhaIt3UogLA9uEjdlGN1BCL9mtp0Dxd52ghKj8fZUiuNiMijcW7jD9FHXywfoZw5ZVmMvXLJy3QiG36kV7WBUGE7T9MHsE7smxASidQVd1khbC+RTIBz5q1jhpMGOgzItJpphuKYXhzx34ipYoi7UBMWvdYOIXE/0YTub2a+709+YOsxTIcJ4aCRfSivt1MnInAdJDwDwPHPuQEh9iqwPLJEKKxYHOhx3FjjMbYQQerwY4guaYQJygppWM7ljr0jhMU/qCdDvY4hEhfzhkB4/XAQfWykJUtchvEhHE2Qjkf5yDOuOVAD8kQifCo9FRyJpCZJ535pdQz+CCNyhSP8YPLGD++4LynPiB5QB1qEuHaA42SKOwBYbSlOregpNl+I/T3WamjMpIT5BUJH+TTAfMF8icwQFobkQAvpEn7BjIlI2EnRF4xX8eP5RiKLWkeYjPKEdCwDYch84oPv4ynHhYrCYPzWd1yL1JWapRNf9fj4JWIsuDgZpTMjvtB1arxmI8TaNh4zlzcj84qYezecdpCDgFJuUB5ioQ2JniExKY0EJtepUZCHECTlzRErswG+UEuCrWSeoiFpubdCUtMvSNh0pPYUcApgQi/lIEQf1SX/KrfDZ3rpI+hcj79SilXTGGh7JS0/5SMs5xvwQ8oEIcVBA6nJPIScLWO2mVw7EV3VycCHN6xQFYqbakSlaP6dNsIns8S+RJq+Kl8XT26ZLfIQMi6k4olh3kWII/zD8Ky80lkh13tSr523IZt7xChTSkfI5JZMwVyEQn3l1AuIGHzYkuAbOhFpWqEtOXxCGypZCvygEkVzkY4dSP5VPkL+aB5C7nLM6Eun+CY+FFzrYCNM2DuKk0QGX3YSMXzZnclFKBR03sJt3ucIkmAc7F7yeN+Kj/gCN8LVnpJLIxNYmoiEhWURlast+MOdnGgad6piq1DIfcKHvB9uOr/xaPHggGq3kDIuWZhg9PuCYyicuZzkFpLz8Y1cebR1n+HGrR7EVeJzarz/DE4kRqnMwTkIWU5QSdO5VP4LJSw0MA/wDHsi1iMaFpaJHDgJCU3EPh1iF1kRihTKRsj+5U9qTCXcjPjCY5C7ixy9tJcB53Jhi4JGXDpNNK94QQM1JZdweYky+hkIgfWE+5RTWybCR3xIxKi+8Ja52Aq9phTtG1Mut5UXSHFPovOISSdb+tg/BOI8u95sjjyS7DQHmgiCv/iwcsYRoH0UNR2l7xXCRBcVJTlvokyIRaOIC8sohjayKQCKsT4hv5/zXDr5OeOGkkLg4TE13oxWJmDHkgh24lgo/G2HUBl6ClBImRFiZoGbe/IpL0dDwMN/ac5MKPWp/IqIUIeIMGV47bsym2wQDrNZFOcl8cpaMUipu85vjLQ8Z+00lsMHaSS/okXuD4l0AMdF1EhFPkInOwsFvvDNaCGn3GPhFscPciPUk7+Idk4Q94IMFfpdncEWCEcfWQCxnpIMJmHHxSqSK/nEe+ZCPuYRYZko3lHcHN50BU83PEHVMJXVPFxmrAUUjqDi1AgPKrak+MRL5V3KXbEKFdNQn30hJXk4pIitHXX1pKUs/deYzRTVqkoKWuipiO0EFyYIeNwuVic8XGZKg2K1h4cZO/iaiKFlzPs/Bv8YWfXvylU+aFFsG7CuoF2ekP9Myw9w+gIhgVf0u5oJEQh/+4Tep7MjdsnU/reIsdbWbKEjpF8kGNLmeMqNB3NCfSFSMtqgdoty49yAUM3bIKtNCZ6RdISWdVAcVleeI4RnOBF5B7mU4P5IaEyKEKvJQPSQgf3TkD5TNWlORBgtXdVdF1dPuomKJiIIv4JbaeLlodXLWVqJxKaEXQgk1eDjDoQBcYmvRimRgjIIB86GwXWWCt2xaIjL+UBf8K9hrltGCJELQZaeqmI4F6Fg/oV0BeWCh4b1wxxV2wfO0cgJZ+nU3DHhLxrX4wFCiCJVeBHRUOXw/Ggif14KDuGwgqmOUyS0Z4yPEc7Ppp9/BNw8MPtpOBiFlmrBL/FzvwRCkdCUAnxIyihCirfOVdWOKz+cURQT9dNNGdq8AASQhY2mBXaNSyHkSKT4gLBGs9z/1GxZsvQvUn3HhYfDv4XZUcMIUWcIQjXzlo+QdwJ7RjjKnLXqht824IEpIu24sHrhk9pck2+DsMwYCgmGfT8RvzPk1ZPmuS2Zaru+/voovZ5RCFwXwp4GIQrB6YJGiEjGNySJpZXrGRwBqHwUz8N7JQ33cVb86+KSmq/sQDHIG3pIAVuQd/nTxRE192KEKB4sJy1sEAqlIBgDLUnKK71m0opX2SRTSuQyWAJQqhtrC2y1qeZzvj7k5qLgH6GXskoFY5LWVCs5JXnjg4ymwGDT3GOXklhkqvFRvMRi3ZSUTlOYEOj1zOyIwS4lCLN8Cx1CQPZ8Yk3hwj2LdVNAK1EVJpTYOCs70jP4Fth7UqvMcqL674j1k5+Qz2uzZx2tDtWUeVE2zlqhhmtmfiGEOFSshniM/mG0jzMWA7HJj2sCrNYf080NNOYPqfXRxxETwj4+4nZSpqAakALh5nOC6fb6sSWl3J7cnw3T63rpV4JAU25J9EXWSiUyVpjjKoi1hRSHvQnPm4gOFEag8xvImubMJCWue8Lc6KLfVUllizDZrtEKIXVhsYOqNViwtM0SXaSrWGIB4hJ1olsiTI3PEghxEFCf/xDSNlP7GGPeZDGQMnMsq6BTg60MQsRE2iFCPnrmNiYMr2AhFRwYuvIKK4Q7vtNnGYTCQtAPEZK2mSkgbBsQZiQYlCYsEG7xep8yCLkoMZRoiyr7zESzMX9IVKpqNOUgXO7I3sVlEAo9ZogxcfYzxhEjwmsEqLjGivJFQThLSvE0ND8ewjMebG/n9CG9pPeWVPsZnFvYGx6kd5lz2dic08wEzdF+CenWnpnvzjgaMHeVos0yRrKuhHIDMRqatp2QPWVYDsT2lcO634ew9SfX3eKlCNlFFU0mbJXK5iu2vQtvudQUIgstf0gzFpfyW6zabyaRpfby0kwiaqpZw/14wtNQiWyTirAG77mTRcSRVl0UbA2svidCohA0MVV0VbNc7DsQiSyrwRziQGUElRtMJKyqXiYm3X178z6JSCZbF1MlYdlvabjhwhe5Vj0kslih4btD6YisrtamwckK+oKbfqgeA/o7+lP6t6V6GcRtKLEXCpGk+vwbYVPLnc+S/hx/RkeKH1/TvRVmP19+JkYFLObr5fLkuEmoMbjyDpP4gZB+Jq8a/3zhH94NbpKtrjzClTSG7aIIm2aX3UuEwjydqKYkcvOjYB6c01YHUWFpVHkxJRwV+3FhtE2I8LYxnGEiwJFSgxyhG3xk5aUzELaHYRUmR0hi0D+YGWHku67uQEj2/zcliUk2WSeMshAOnY9N9JLQIEwRJkjW43GULw3s3QQhBh5ZwfEU4Z5pcYS+TedJkXSR7RJDhKtwU5zoTK8rE2MYBnKH53CfnUMMIEYYihIWojwnm/gk6TieUSiMkKavTAxIt40o4OlHCCNbPnLC/BRh1GBS7cVmg4h/E4SJnZwWQqbJ6XT+FEZI9qUzC5EeXgusrSTMQxhtJb5PEUaWIA8IxTJIizDi2sNA1GcWRUhliDlnSTcjyi4R0SOMpsOOpWPYTjUr130GhNd2exSGRNPcYOExxGvxs2xOMl3frAcRIfRG4WyKEUKYjYiS6X4SQf0NeoShjOuy8IdbKYQ0Zp2VfgNyxJn15soY4UqLMGmxo0cYyRk/GoikcKMoQqztR5kFWGQfm7wVoTqEIZY559JBIpNzEIbQgodYGPDzSiAkkcK89Vdkobit6SYQRuxygFTSdBIQXrj52CAaXR3C0J5Zv3U6oa6J61WKISQ7YuQt8yQ1A7ZhRY4w3gWEaouIaQL1t4+xaxCSpF9cVVUIIa2Zyg0ykUG0DLrFGj8QlX749FjS+CM/wBeZjQFYHUJamRe9s13EMqbP59XvUK2/skc46HaPkU0Ulv5xqy3OXp+OmyhY+aXVFtEQnKPijs9VYlMGvwz6/f7wzaYah2x9abGnLKlPstvAlFjeZ2J54w+2Y3qNvwpFaJzJSoQqD4vZCDu6r1h+CRbdBNzu2AiEcCx5T2yWSoGBI7wnghCpwSimG06ktLn8qj9pFw2bUC8Vp1cbPmV/Io0+3l2SFQdhkvQa20TgOqeA3a6X+Pgw2AdXYhm9iP+C4OE57+7vTucaCMd0d5Q/uR2WNnW0GhG6k7tpgRF9TZIuNUQxWm6LgXol+St8kLQkGrQIZVAxYxdfIktmdZXtTSJ68F2mOYOIlnuOC1hPDyfpkANbt13a4+dBp9KXIjoYBQLZ5NiIJp8dQGvc7dMt0mFWFeyYXA9JpzgUSQpSL6qpiX3p/A5bMRMT3Y6/kYchKcchFTvkAKTT6Rp4oJVkXxY+eo1RPs1cuPQcYnTrwX7+ExL16KFfjTo5LyR5K+ZCiZaI5BOxGqb4JVWfs7OKoQ3pIzVKoLJKDmeUzzo2Lj58PNGIWflTxeiJWMWSNbUSTKQN+8ueKqbsyt0QtQifVArecZQKO8gQmzCK8Cnx1j3H/UinBDZiFGEijeB9pTEgn6xuXFb/KIKpNAdH97ro8m6pZRRPhSSf4dse3G1QSrZN4exztaRIhioOFfPlldan/GfqIvXUDMO+RoUIFIirp3kaJwVgJWJBOpU05P3bM+QN+MrBNVVpL9lGaj+l7o3dlJOHqhPs8D6UG98a9tOpi6Alb/JdrXLGuwImNHzoCbPMl7VWNUJGEPiy0sArDmsnVUlUJWQEQU/9iP3FY2Yj82TLKhB2dRyuKe8wEtC894BhhIsiYsK8ch1vUud6e1h7yJ+9q8zTXtb0ZZluLen6vU6M4Mk7u4RUNHBoT2yh8kvAqrUpDnC1R3/VeXYo+JrJ2G5venW8E8BRBXggY+qVb0DPgOR0VA/Pu5OYe1B0cEin2oUbzHScGoxjpdINetrxe8xqHtBop4g6Z+OJmwXfwD53+s/Yt9ntpgLSytSQVo53N0gAd6Y4SQk9zooC3zCM7cHbzXguqVXLrfNOdkdTGk0f6NCAnDbAHZnfWqVGEhhMjhr1ntDGfaw3w3o6VZxSZ+8XXNbDwJvt9MIloq3/eI8UziZWjWi5mfktK5jhZlOLzVYvWxK+eFIoGg6mKZOiPF1uXivcWELXQQj3WQbv7MzXWegC6j6YQXEfHa1WpnQa/zncpr7nogVrrZ43XXw5407+4+1N5dZEIYxu1wJjRP2AllE93noU/JkzbJzmT5iAEsbexRZjCdo9HV9IrLU3y/h7aFS9tVuWoHUzmSHlaX14mnzRETD/mCNYi9HufI9pVA8B3OYVgTzpT2t/PgVG835uKyNNNDg5XvOGTxCwXqbxlUfj/f3eSe0UGNCfzlVJouRSf3s5lzPZn0EBm/mH3dJ2Wg5X8x+TXpN5U0vBWPamX8dxtq7sd3aHmwfs28HjFK5Q8CZfr8785bRdr5er1Wq5XG9PP39dnNeJ54bG97cFJ0hZPWG7mOIv/aW/9L9B/wVLjhHNlFXgyAAAAABJRU5ErkJggg==">
-                                      </div>
-                                    </div>
-                                    <div class="linhaseparadora-semespa-o-black"></div>
-                                    <div class="text-block-5">{{ shipment. MarketplaceSaleId }}</div>
-                                    <div class="linhaseparadora-semespa-o-black"></div>
-                                    <div v-on:click="Controllers.Correios.OpenCorreiosLinksPage(package.TrackingCode)"
-                                      class="text-block-6">{{ shipment .TrackingCode}}</div>
-                                    <div class="linhaseparadora-semespa-o-black"></div>
-                                    <div class="div-block-22">
-                                      <div class="text-block-4">V 12,000 </div>
-                                      <div class="text-block-4-copy">P {{ shipment. Weight }}</div>
-                                    </div>
-                                    <div class="linhaseparadora-semespa-o-black"></div>
-                                    <div class="div-block-8">
-                                      <div v-bind:style="{ &#x27;background-color&#x27; : shipment.StatusOuterColor }"
-                                        class="shipment-status-yellow">
-                                        <div v-bind:style="{ &#x27;background-color&#x27; : shipment.StatusInnerColor }"
-                                          class="shipment-delivery"></div>
-                                      </div>
-                                    </div>
-                                    <div class="linhaseparadora-semespa-o-black"></div>
-                                    <div class="div-block-13">
-                                      <div v-on:click="methods.Shipping.ShowShipmentDetail(shipment.Id)"
-                                        class="correio-tabela-objetos-abrirdetalhesbtn-copy w-embed"><img
-                                          src="https://img.icons8.com/ios/40/000000/show-property.png"></div>
-                                      <div v-on:click="methods.Shipping.DeleteShipment(shipment.Id)"
-                                        class="html-embed w-embed"><img
-                                          src="https://img.icons8.com/fluent/48/000000/delete-sign.png"></div>
-                                    </div>
-                                  </div>
-                                  <div class="div-block-44">
-                                    <div class="text-block-25">Serviço: {{ shipment. ShippingService }}</div>
-                                    <div class="text-block-25">Criado em: </div>
-                                    <div class="text-block-25">Id da Conta: {{ shipment. MarketplaceAccountId }}</div>
-                                  </div>
-                                </div>
-                              </form>
-                              <div class="w-form-done">
-                                <div>Thank you! Your submission has been received!</div>
-                              </div>
-                              <div class="w-form-fail">
-                                <div>Oops! Something went wrong while submitting the form.</div>
-                              </div>
+                      </div>
+                      <div class="correio-tabela-objeto-footer">
+                        <div class="div-block-46"><a v-on:click="Controllers.Correios.PaginateBackwards()" href="#" class="button-10 w-button">&lt;</a>
+                          <div class="div-block-47"></div><a v-on:click="Controllers.Correios.PaginateBackwards()" href="#" class="button-10 w-button">&gt;</a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-w-tab="Cadastro Manual" class="w-tab-pane">
+                    <h2 class="heading-8">Cadastro Manual de Envio</h2>
+                    <div v-if="Shipping.NewShipmentForm.IsLoading" class="html-embed-9 w-embed"><img src="https://redepara.com.br/Content/images/load.gif">
+                    </div>
+                    <div v-on:keyup="Controllers.Correios.CreateNewPackageOnEnterPressed($event)" class="w-form">
+                      <form id="new-shipment-form" name="email-form-4" data-name="Email Form 4" v-show="!Shipping.NewShipmentForm.IsLoading" class="form-4">
+                        <div class="div-block-55"><label for="email" class="field-label-5">Código de Rastreio</label><label for="TrackingCode" class="field-label-6">Id da Venda ( Interno )</label><input type="email" class="text-field-4 w-input" maxlength="256" name="TrackingCode" data-name="TrackingCode" placeholder="Código de Rastreio..." id="TrackingCode" required=""><input type="text" class="text-field-5 w-input" maxlength="256" name="SaleId" data-name="SaleId" placeholder="Código Id..." id="SaleId" required=""></div>
+                        <div class="div-block-55"><label for="email-6" class="field-label-5">ID da Conta do Marketplace</label><label for="MarketplaceAccontId" class="field-label-6">ID da Venda do Marketplace</label><input type="text" class="text-field-4 w-input" maxlength="256" name="MarketplaceAccontId" data-name="MarketplaceAccontId" placeholder="Id da conta..." id="MarketplaceAccontId"><input type="text" class="text-field-5 w-input" maxlength="256" name="MarketplaceSaleId" data-name="MarketplaceSaleId" placeholder="Id da venda..." id="MarketplaceSaleId-2"><label for="BoundMarketplace" class="field-label-6-copy">Marketplace Atrelado</label><select id="BoundMarketplace" name="BoundMarketplace" data-name="BoundMarketplace" class="select-field-4 w-select"><option value="">Marketplace Atrelado</option><option value="mercado livre">Mercado Livre</option></select></div>
+                        <div class="div-block-55"><label for="ShippingService" class="field-label-20">Serviço de Envio</label><select id="ShippingService" name="ShippingService" data-name="ShippingService" class="w-select"><option value="">Selecione o serviço de envio...</option><option value="correios">Correios</option></select></div>
+                        <div class="div-block-55"><label for="Name-4" class="field-label-7">Nome</label><input type="text" class="text-field-6 w-input" maxlength="256" name="Name" data-name="Name" placeholder="Campo opcional, dê um nome ao pacote..." id="Name-4"></div><a v-on:click="methods.Shipping.CreateShipment()" href="#" class="btn-standard w-button">Cadastrar</a></form>
+                      <div class="w-form-done">
+                        <div>Thank you! Your submission has been received!</div>
+                      </div>
+                      <div class="w-form-fail">
+                        <div>Oops! Something went wrong while submitting the form.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-w-tab="Detalhes" class="w-tab-pane">
+                    <div class="div-block-49">
+                      <p class="paragraph-6">Eventos</p>
+                      <div data-duration-in="300" data-duration-out="100" class="tabs-4 w-tabs">
+                        <div class="tabs-menu-4 w-tab-menu">
+                          <a data-w-tab="Criação" class="shipment-event-tab w-inline-block w-tab-link w--current">
+                            <div>Criação</div>
+                          </a>
+                          <a data-w-tab="Postagem" v-if="Shipping.CachedEvents.PostedEvent.IsPosted" class="shipment-event-tab w-inline-block w-tab-link">
+                            <div>Postagem</div>
+                          </a>
+                          <a data-w-tab="AguardandoRetirada" v-if="Shipping.CachedEvents.AwaitingForPickUpEvent.IsSet" class="shipment-event-tab w-inline-block w-tab-link">
+                            <div>Aguardando Carona</div>
+                          </a>
+                          <a data-w-tab="Rejeição" v-if="Shipping.CachedEvents.RejectedEvent.IsRejected" class="shipment-event-tab w-inline-block w-tab-link">
+                            <div>Recusado</div>
+                          </a>
+                          <a data-w-tab="Entrega" v-if="Shipping.CachedEvents.DeliveredEvent.IsDelivered" class="shipment-event-tab w-inline-block w-tab-link">
+                            <div>Entrega</div>
+                          </a>
+                        </div>
+                        <div class="tabs-content-4 w-tab-content">
+                          <div data-w-tab="Criação" class="tab-pane-cria-o w-tab-pane w--tab-active">
+                            <div class="div-block-56">
+                              <p class="shipment-event-title">{{ Shipping. CachedEvents. CreatedEvent. Title }}</p>
+                              <p class="shipment-event-description">{{ Shipping. CachedEvents. CreatedEvent. Description }}</p>
+                              <p class="shipment-event-description">Data de criação: {{ Shipping. CachedEvents. CreatedEvent. OccurredAt }}</p>
+                            </div>
+                          </div>
+                          <div data-w-tab="Postagem" class="tab-pane-postagem w-tab-pane">
+                            <div class="div-block-56">
+                              <p class="shipment-event-title">{{ Shipping. CachedEvents. PostedEvent. Title }}</p>
+                              <p class="shipment-event-description">{{ Shipping. CachedEvents. PostedEvent. Description }}</p>
+                              <p class="shipment-event-description">Postado em: {{ Shipping. CachedEvents. PostedEvent. OccurredAt }}</p>
+                            </div>
+                          </div>
+                          <div data-w-tab="AguardandoRetirada" class="tab-pane-aguardandoretirada w-tab-pane">
+                            <div class="div-block-56">
+                              <p class="shipment-event-title">{{ Shipping. CachedEvents. AwaitingForPickUpEvent. Title }}</p>
+                              <p class="shipment-event-description">{{ Shipping. CachedEvents. AwaitingForPickUpEvent. Description }}</p>
+                              <p class="shipment-event-description">Data de criação: {{ Shipping. CachedEvents. AwaitingForPickUpEvent. OccurredAt }}</p>
+                              <p class="shipment-event-description">Aguardando ser buscado no endereço: {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. StreetName }} {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. StreetNumber }}, {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. City }}, {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. State }} - {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. Cep }}</p>
+                            </div>
+                          </div>
+                          <div data-w-tab="Rejeição" class="tab-pane-rejei-o w-tab-pane">
+                            <div class="div-block-56">
+                              <p class="shipment-event-title">{{ Shipping. CachedEvents. RejectedEvent. Title }}</p>
+                              <p class="shipment-event-description">{{ Shipping. CachedEvents. RejectedEvent. Description }}</p>
+                              <p class="shipment-event-description">Ocorrido em: {{ Shipping. CachedEvents. RejectedEvent. OccurredAt }}</p>
+                            </div>
+                          </div>
+                          <div data-w-tab="Entrega" class="tab-pane-entrega w-tab-pane">
+                            <div class="div-block-56">
+                              <p class="shipment-event-title">{{ Shipping. CachedEvents. DeliveredEvent. Title }}</p>
+                              <p class="shipment-event-description">{{ Shipping. CachedEvents. DeliveredEvent. Description }}</p>
+                              <p class="shipment-event-description">Entregue para: {{ Shipping. CachedEvents. DeliveredEvent. IsDeliveredToDestination ? &#x27;DESTINATÁRIO&#x27; : &#x27;REMETENTE&#x27; }}</p>
+                              <p class="shipment-event-description">Entregue em: {{ Shipping. CachedEvents. DeliveredEvent. OccurredAt }}</p>
                             </div>
                           </div>
                         </div>
-                        <div class="correio-tabela-objeto-footer">
-                          <div class="div-block-46"><a v-on:click="Controllers.Correios.PaginateBackwards()" href="#"
-                              class="button-10 w-button">&lt;</a>
-                            <div class="div-block-47"></div><a v-on:click="Controllers.Correios.PaginateBackwards()"
-                              href="#" class="button-10 w-button">&gt;</a>
+                      </div>
+                      <p class="paragraph-6">Encaminhamentos</p>
+                      <div class="div-block-53">
+                        <div v-for="event in Shipping.CachedEvents.ForwardingEvents" class="shipment-forwarding">
+                          <div class="div-block-52">
+                            <div class="html-embed-7 w-embed">
+                              <image src="https://image.flaticon.com/icons/svg/592/592268.svg"></image>
+                            </div>
+                            <p class="paragraph-7">➟</p>
+                            <div v-if="event.PackageHasArrived" class="html-embed-7 w-embed">
+                              <image src="https://image.flaticon.com/icons/svg/594/594852.svg"></image>
+                            </div>
+                            <div class="html-embed-7 w-embed">
+                              <image src="https://image.flaticon.com/icons/svg/1742/1742960.svg"></image>
+                            </div>
+                          </div>
+                          <div class="div-block-50">
+                            <p class="paragraph-8">{{ event. ForwardedFrom. StreetName }}<br>{{ event. ForwardedFrom. Cep }}</p>
+                            <p class="paragraph-9">{{ event. ForwardedTo. StreetName }}<br>{{ event. ForwardedTo. Cep }}</p>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div data-w-tab="Cadastro Manual" class="w-tab-pane">
-                      <h2 class="heading-8">Cadastro Manual de Envio</h2>
-                      <div v-on:keyup="Controllers.Correios.CreateNewPackageOnEnterPressed($event)" class="w-form">
-                        <form id="correios-new-package-form" name="email-form-4" data-name="Email Form 4"
-                          class="form-4">
-                          <div class="div-block-55"><label for="email" class="field-label-5">Código de
-                              Rastreio</label><label for="TrackingCode" class="field-label-6">Id da Venda ( Interno
-                              )</label><input type="email" class="text-field-4 w-input" maxlength="256"
-                              name="TrackingCode" data-name="TrackingCode" placeholder="Código de Rastreio..."
-                              id="TrackingCode" required=""><input type="text" class="text-field-5 w-input"
-                              maxlength="256" name="SaleId" data-name="SaleId" placeholder="Código Id..." id="SaleId"
-                              required=""></div>
-                          <div class="div-block-55"><label for="email-6" class="field-label-5">ID da Conta do
-                              Marketplace</label><label for="MarketplaceAccontId" class="field-label-6">ID da Venda do
-                              Marketplace</label><input type="text" class="text-field-4 w-input" maxlength="256"
-                              name="MarketplaceAccontId" data-name="MarketplaceAccontId" placeholder="Id da conta..."
-                              id="MarketplaceAccontId"><input type="text" class="text-field-5 w-input" maxlength="256"
-                              name="MarketplaceSaleId" data-name="MarketplaceSaleId" placeholder="Id da venda..."
-                              id="MarketplaceSaleId-2"><label for="BoundMarketplace"
-                              class="field-label-6-copy">Marketplace Atrelado</label><select id="BoundMarketplace"
-                              name="BoundMarketplace" data-name="BoundMarketplace" class="select-field-4 w-select">
-                              <option value="">Marketplace Atrelado</option>
-                              <option value="mercado livre">Mercado Livre</option>
-                            </select></div>
-                          <div class="div-block-55"><label for="ShippingImplementation" class="field-label-20">Serviço
-                              de Envio</label><select id="ShippingImplementation" name="ShippingImplementation"
-                              data-name="ShippingImplementation" class="w-select">
-                              <option value="">Selecione o serviço de envio...</option>
-                              <option value="correios">Correios</option>
-                            </select></div>
-                          <div class="div-block-55"><label for="Name-4" class="field-label-7">Nome</label><input
-                              type="text" class="text-field-6 w-input" maxlength="256" name="Name" data-name="Name"
-                              placeholder="Campo opcional, dê um nome ao pacote..." id="Name-4"></div><a
-                            v-on:click="methods.Shipping.CreateShipment()" href="#"
-                            class="btn-standard w-button">Cadastrar</a>
-                        </form>
-                        <div class="w-form-done">
-                          <div>Thank you! Your submission has been received!</div>
-                        </div>
-                        <div class="w-form-fail">
-                          <div>Oops! Something went wrong while submitting the form.</div>
-                        </div>
+                    <div class="div-block-21">
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Pedido</div>
+                        <div id="correio-detalheobjeto-nome" class="text-block-12">{{ Shipping. CachedShipment. MarketplaceSaleId }}</div>
+                      </div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Marketplace</div>
+                        <div id="correio-detalheobjeto-nome" class="text-block-12">{{ Shipping. CachedShipment. BoundMarketplace }}</div>
+                      </div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Link do Anúncio</div><a href="#">https://mercadodibre.com/498415215</a></div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Última Atualização {{ Shipping. CachedShipment. ShippingService }}</div>
+                        <div id="correio-detalheobjeto-nome" class="text-block-12">{{ Shipping. CachedShipment. BoundryMessage }}</div>
+                      </div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Código de Rastreamento</div>
+                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">{{ Shipping. CachedShipment. TrackingCode }}</div>
+                      </div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Plataforma</div>
+                        <div class="html-embed-3 w-embed"><img src="https://s2.glbimg.com/FGXio_G5LAoAVWJK4-R1NEedURo=/607x607/smart/e.glbimg.com/og/ed/f/original/2020/03/17/novo-logo-mercado-livre.jpg"></div>
+                      </div>
+                      <div class="correio-detalhe-objeto-data-field">
+                        <div class="correio-detalheobjeto-titulodecampo">Estimativa Prometido</div>
+                        <div id="correio-detalheobjeto-nome-codigo" class="text-block-12-copy">25/07/2020</div>
+                      </div>
+                      <div class="div-block-42">
+                        <div class="text-block-23">Ações</div><a v-on:click="methods.Shipping.RunAutoUpdateById(Shipping.CachedShipment.Id)" href="#" class="btn-standard w-button">Atualizar Status</a></div>
+                    </div>
+                    <div class="form-block-4 w-form">
+                      <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-5"><label for="name-3" class="field-label-10">Name</label><label for="email-2" class="field-label-11">Email Address</label><input type="email" class="text-field-10 w-input" maxlength="256" name="email-2" data-name="Email 2" placeholder="" id="email-2" required=""><input type="text" class="text-field-9 w-input" maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3"><input type="submit" value="Submit" data-wait="Please wait..." class="w-button"></form>
+                      <div class="w-form-done">
+                        <div>Thank you! Your submission has been received!</div>
+                      </div>
+                      <div class="w-form-fail">
+                        <div>Oops! Something went wrong while submitting the form.</div>
                       </div>
                     </div>
-                    <div data-w-tab="Detalhes" class="w-tab-pane">
-                      <div class="div-block-49">
-                        <p class="paragraph-6">Eventos</p>
-                        <div data-duration-in="300" data-duration-out="100" class="tabs-4 w-tabs">
-                          <div class="tabs-menu-4 w-tab-menu">
-                            <a data-w-tab="Criação" class="shipment-event-tab w-inline-block w-tab-link">
-                              <div>Criação</div>
-                            </a>
-                            <a data-w-tab="Postagem" v-if="Shipping.CachedEvents.PostedEvent.IsPosted"
-                              class="shipment-event-tab w-inline-block w-tab-link">
-                              <div>Postagem</div>
-                            </a>
-                            <a data-w-tab="AguardandoRetirada" v-if="Shipping.CachedEvents.AwaitingForPickUpEvent.IsSet"
-                              class="shipment-event-tab w-inline-block w-tab-link">
-                              <div>Aguardando Carona</div>
-                            </a>
-                            <a data-w-tab="Rejeição" v-if="Shipping.CachedEvents.RejectedEvent.IsRejected"
-                              class="shipment-event-tab w-inline-block w-tab-link">
-                              <div>Recusado</div>
-                            </a>
-                            <a data-w-tab="Entrega" v-if="Shipping.CachedEvents.DeliveredEvent.IsDelivered"
-                              class="shipment-event-tab w-inline-block w-tab-link">
-                              <div>Entrega</div>
-                            </a>
-                          </div>
-                          <div class="tabs-content-4 w-tab-content">
-                            <div data-w-tab="Criação" class="tab-pane-cria-o w-tab-pane">
-                              <div class="div-block-56">
-                                <p class="shipment-event-title">{{ Shipping. CachedEvents. CreatedEvent. Title }}</p>
-                                <p class="shipment-event-description">
-                                  {{ Shipping. CachedEvents. CreatedEvent. Description }}</p>
-                                <p class="shipment-event-description">Data de criação:
-                                  {{ Shipping. CachedEvents. CreatedEvent. OccurredAt }}</p>
-                              </div>
-                            </div>
-                            <div data-w-tab="Postagem" class="tab-pane-postagem w-tab-pane">
-                              <div class="div-block-56">
-                                <p class="shipment-event-title">{{ Shipping. CachedEvents. PostedEvent. Title }}</p>
-                                <p class="shipment-event-description">
-                                  {{ Shipping. CachedEvents. PostedEvent. Description }}</p>
-                                <p class="shipment-event-description">Postado em:
-                                  {{ Shipping. CachedEvents. PostedEvent. OccurredAt }}</p>
-                              </div>
-                            </div>
-                            <div data-w-tab="AguardandoRetirada" class="tab-pane-aguardandoretirada w-tab-pane">
-                              <div class="div-block-56">
-                                <p class="shipment-event-title">
-                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Title }}</p>
-                                <p class="shipment-event-description">
-                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Description }}</p>
-                                <p class="shipment-event-description">Data de criação:
-                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. OccurredAt }}</p>
-                                <p class="shipment-event-description">Aguardando ser buscado no endereço:
-                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. StreetName }}
-                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. StreetNumber }},
-                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. City }},
-                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. State }} -
-                                  {{ Shipping. CachedEvents. AwaitingForPickUpEvent. Location. Cep }}</p>
-                              </div>
-                            </div>
-                            <div data-w-tab="Rejeição" class="tab-pane-rejei-o w-tab-pane">
-                              <div class="div-block-56">
-                                <p class="shipment-event-title">{{ Shipping. CachedEvents. RejectedEvent. Title }}</p>
-                                <p class="shipment-event-description">
-                                  {{ Shipping. CachedEvents. RejectedEvent. Description }}</p>
-                                <p class="shipment-event-description">Ocorrido em:
-                                  {{ Shipping. CachedEvents. RejectedEvent. OccurredAt }}</p>
-                              </div>
-                            </div>
-                            <div data-w-tab="Entrega" class="tab-pane-entrega w-tab-pane">
-                              <div class="div-block-56">
-                                <p class="shipment-event-title">{{ Shipping. CachedEvents. DeliveredEvent. Title }}</p>
-                                <p class="shipment-event-description">
-                                  {{ Shipping. CachedEvents. DeliveredEvent. Description }}</p>
-                                <p class="shipment-event-description">Entregue para:
-                                  {{ Shipping. CachedEvents. DeliveredEvent. IsDeliveredToDestination ? &#x27;DESTINATÁRIO&#x27; : &#x27;REMETENTE&#x27; }}
-                                </p>
-                                <p class="shipment-event-description">Entregue em:
-                                  {{ Shipping. CachedEvents. DeliveredEvent. OccurredAt }}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <p class="paragraph-6">Encaminhamentos</p>
-                        <div class="div-block-53">
-                          <div v-for="event in Shipping.CachedEvents.ForwardingEvents" class="shipment-forwarding">
-                            <div class="div-block-52">
-                              <div class="html-embed-7 w-embed">
-                                <image src="https://image.flaticon.com/icons/svg/592/592268.svg"></image>
-                              </div>
-                              <p class="paragraph-7">➟</p>
-                              <div v-if="event.PackageHasArrived" class="html-embed-7 w-embed">
-                                <image src="https://image.flaticon.com/icons/svg/594/594852.svg"></image>
-                              </div>
-                              <div class="html-embed-7 w-embed">
-                                <image src="https://image.flaticon.com/icons/svg/1742/1742960.svg"></image>
-                              </div>
-                            </div>
-                            <div class="div-block-50">
-                              <p class="paragraph-8">
-                                {{ event. ForwardedFrom. StreetName }}<br>{{ event. ForwardedFrom. Cep }}</p>
-                              <p class="paragraph-9">
-                                {{ event. ForwardedTo. StreetName }}<br>{{ event. ForwardedTo. Cep }}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="div-block-21">
-                        <div class="correio-detalhe-objeto-data-field">
-                          <div class="correio-detalheobjeto-titulodecampo">Pedido</div>
-                          <div id="correio-detalheobjeto-nome" class="text-block-12">
-                            {{ Shipping. CachedShipment. MarketplaceSaleId }}</div>
-                        </div>
-                        <div class="correio-detalhe-objeto-data-field">
-                          <div class="correio-detalheobjeto-titulodecampo">Marketplace</div>
-                          <div id="correio-detalheobjeto-nome" class="text-block-12">
-                            {{ Shipping. CachedShipment. BoundMarketplace }}</div>
-                        </div>
-                        <div class="correio-detalhe-objeto-data-field">
-                          <div class="correio-detalheobjeto-titulodecampo">Link do Anúncio</div><a
-                            href="#">https://mercadodibre.com/498415215</a>
-                        </div>
-                        <div class="correio-detalhe-objeto-data-field">
-                          <div class="correio-detalheobjeto-titulodecampo">Última Atualização
-                            {{ Shipping. CachedShipment. ShippingService }}</div>
-                          <div id="correio-detalheobjeto-nome" class="text-block-12">
-                            {{ Shipping. CachedEvents. ForwardingEvents[0]. BoundryMessage }}</div>
-                        </div>
-                        <div class="correio-detalhe-objeto-data-field">
-                          <div class="correio-detalheobjeto-titulodecampo">Código de Rastreamento</div>
-                          <div id="correio-detalheobjeto-nome-codigo" class="text-block-12">
-                            {{ Shipping. CachedShipment. TrackingCode }}</div>
-                        </div>
-                        <div class="correio-detalhe-objeto-data-field">
-                          <div class="correio-detalheobjeto-titulodecampo">Plataforma</div>
-                          <div class="html-embed-3 w-embed"><img
-                              src="https://s2.glbimg.com/FGXio_G5LAoAVWJK4-R1NEedURo=/607x607/smart/e.glbimg.com/og/ed/f/original/2020/03/17/novo-logo-mercado-livre.jpg">
-                          </div>
-                        </div>
-                        <div class="correio-detalhe-objeto-data-field">
-                          <div class="correio-detalheobjeto-titulodecampo">Estimativa Prometido</div>
-                          <div id="correio-detalheobjeto-nome-codigo" class="text-block-12-copy">25/07/2020</div>
-                        </div>
-                        <div class="div-block-42">
-                          <div class="text-block-23">Ações</div><a
-                            v-on:click="Controllers.Shipping.RunPackageWatcherRoutineById(Correios.CachedPackage.Id)"
-                            href="#" class="w-button">Atualizar Status</a>
-                        </div>
-                      </div>
-                      <div class="form-block-4 w-form">
-                        <form id="email-form-5" name="email-form-5" data-name="Email Form 5" class="form-5"><label
-                            for="name-3" class="field-label-10">Name</label><label for="email-2"
-                            class="field-label-11">Email Address</label><input type="email"
-                            class="text-field-10 w-input" maxlength="256" name="email-2" data-name="Email 2"
-                            placeholder="" id="email-2" required=""><input type="text" class="text-field-9 w-input"
-                            maxlength="256" name="name-3" data-name="Name 3" placeholder="" id="name-3"><input
-                            type="submit" value="Submit" data-wait="Please wait..." class="w-button"></form>
-                        <div class="w-form-done">
-                          <div>Thank you! Your submission has been received!</div>
-                        </div>
-                        <div class="w-form-fail">
-                          <div>Oops! Something went wrong while submitting the form.</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div data-w-tab="Monitorador" class="w-tab-pane">
-                      <h2 class="heading-25">Monitorador de Pacotes</h2>
-                    </div>
+                  </div>
+                  <div data-w-tab="Monitorador" class="w-tab-pane">
+                    <h2 class="heading-25">Monitorador de Pacotes</h2>
                   </div>
                 </div>
               </div>
             </div>
-            <div data-w-tab="Tab 10" class="w-tab-pane"><a data-w-id="610209b2-12cb-77f4-6ff7-48e7de8b2d74" href="#"
-                class="w-button">Mostrar/Esconder Caixa de Notificação</a></div>
-            <div data-w-tab="Tab 11" class="w-tab-pane"></div>
-            <div data-w-tab="Tab 12" class="w-tab-pane">
-              <h2 class="heading-15">Mensagens</h2>
-              <div>
-                <div data-duration-in="300" data-duration-out="100" class="w-tabs">
-                  <div class="w-tab-menu">
-                    <a data-w-tab="Tab 1" class="w-inline-block w-tab-link">
-                      <div>Rastreamento</div>
-                    </a>
-                    <a data-w-tab="Tab 2" class="w-inline-block w-tab-link">
-                      <div>Publicidade</div>
-                    </a>
-                    <a data-w-tab="Res" class="w-inline-block w-tab-link w--current">
-                      <div>Resposta Automática</div>
-                    </a>
-                  </div>
-                  <div class="w-tab-content">
-                    <div data-w-tab="Tab 1" class="w-tab-pane">
-                      <h1>Heading</h1>
-                      <div data-duration-in="300" data-duration-out="100" class="tabs-3 w-tabs">
-                        <div class="tabs-menu-2 w-tab-menu">
-                          <a data-w-tab="Tab 1" class="menuoptiontab w-inline-block w-tab-link w--current">
-                            <div>Postado</div>
-                          </a>
-                          <a data-w-tab="Tab 2" class="menuoptiontab w-inline-block w-tab-link">
-                            <div>Problema</div>
-                          </a>
-                          <a data-w-tab="Tab 3" class="menuoptiontab w-inline-block w-tab-link">
-                            <div>Saiu Para Entrega</div>
-                          </a>
-                        </div>
-                        <div class="tabs-content-3 w-tab-content">
-                          <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
-                            <h1>Heading</h1>
-                          </div>
-                          <div data-w-tab="Tab 2" class="w-tab-pane"></div>
-                          <div data-w-tab="Tab 3" class="w-tab-pane"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div data-w-tab="Tab 2" class="w-tab-pane">
-                      <h2>Heading</h2>
-                      <div data-duration-in="300" data-duration-out="100" class="tabs-3 w-tabs">
-                        <div class="tabs-menu-2 w-tab-menu">
-                          <a data-w-tab="Tab 1" class="menuoptiontab w-inline-block w-tab-link">
-                            <div>Email Marketing</div>
-                          </a>
-                          <a data-w-tab="Tab 2" class="menuoptiontab w-inline-block w-tab-link">
-                            <div>WhatsApp</div>
-                          </a>
-                          <a data-w-tab="Tab 3" class="menuoptiontab w-inline-block w-tab-link w--current">
-                            <div>Facebook</div>
-                          </a>
-                        </div>
-                        <div class="tabs-content-3 w-tab-content">
-                          <div data-w-tab="Tab 1" class="w-tab-pane">
-                            <h1>Heading</h1>
-                          </div>
-                          <div data-w-tab="Tab 2" class="w-tab-pane"></div>
-                          <div data-w-tab="Tab 3" class="w-tab-pane w--tab-active"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div data-w-tab="Res" class="w-tab-pane w--tab-active">
-                      <h2>Heading</h2>
-                      <div class="w-form">
-                        <form id="email-form-7" name="email-form-7" data-name="Email Form 7"><label
-                            for="name-6">Pergunta</label><input type="text" class="w-input" maxlength="256"
-                            name="name-6" data-name="Name 6" placeholder="" id="name-6"><label
-                            for="email-4">Resposta</label><input type="email" class="w-input" maxlength="256"
-                            name="email-4" data-name="Email 4" placeholder="" id="email-4" required=""><input
-                            type="submit" value="Submit" data-wait="Please wait..." class="w-button"></form>
-                        <div class="w-form-done">
-                          <div>Thank you! Your submission has been received!</div>
-                        </div>
-                        <div class="w-form-fail">
-                          <div>Oops! Something went wrong while submitting the form.</div>
-                        </div>
-                      </div>
-                      <div>
-                        <div>Lista das perguntas cadastradas</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div data-w-tab="Tab 13" class="w-tab-pane">
-              <h2 class="heading-16">Produtos</h2>
+          </div>
+          <div data-w-tab="Tab 10" class="w-tab-pane"><a data-w-id="610209b2-12cb-77f4-6ff7-48e7de8b2d74" href="#" class="w-button">Mostrar/Esconder Caixa de Notificação</a></div>
+          <div data-w-tab="Tab 11" class="w-tab-pane"></div>
+          <div data-w-tab="Tab 12" class="w-tab-pane">
+            <h2 class="heading-15">Mensagens</h2>
+            <div>
               <div data-duration-in="300" data-duration-out="100" class="w-tabs">
                 <div class="w-tab-menu">
                   <a data-w-tab="Tab 1" class="w-inline-block w-tab-link">
-                    <div>Cadastrados</div>
+                    <div>Rastreamento</div>
                   </a>
                   <a data-w-tab="Tab 2" class="w-inline-block w-tab-link">
-                    <div>Cadastrar</div>
+                    <div>Publicidade</div>
                   </a>
-                  <a data-w-tab="Tab 3" class="w-inline-block w-tab-link">
-                    <div>Anúncios</div>
-                  </a>
-                  <a data-w-tab="Tab 4" class="tab-link-tab-4 w-inline-block w-tab-link">
-                    <div>SKU</div>
-                  </a>
-                  <a data-w-tab="Tab 5" class="w-inline-block w-tab-link w--current">
-                    <div>Preços</div>
+                  <a data-w-tab="Res" class="w-inline-block w-tab-link w--current">
+                    <div>Resposta Automática</div>
                   </a>
                 </div>
                 <div class="w-tab-content">
                   <div data-w-tab="Tab 1" class="w-tab-pane">
-                    <div class="div-block-33">
-                      <div class="div-block-32">
-                        <h3 class="heading-18">Suporte TV</h3>
-                        <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
-                          <div class="w-slider-mask">
-                            <div class="w-slide"></div>
-                            <div class="w-slide"></div>
-                          </div>
-                          <div class="w-slider-arrow-left">
-                            <div class="w-icon-slider-left"></div>
-                          </div>
-                          <div class="w-slider-arrow-right">
-                            <div class="w-icon-slider-right"></div>
-                          </div>
-                          <div class="w-slider-nav w-round"></div>
-                        </div>
-                        <h3 class="heading-17">R$ 59,90</h3>
+                    <h1>Heading</h1>
+                    <div data-duration-in="300" data-duration-out="100" class="tabs-3 w-tabs">
+                      <div class="tabs-menu-2 w-tab-menu">
+                        <a data-w-tab="Tab 1" class="menuoptiontab w-inline-block w-tab-link w--current">
+                          <div>Postado</div>
+                        </a>
+                        <a data-w-tab="Tab 2" class="menuoptiontab w-inline-block w-tab-link">
+                          <div>Problema</div>
+                        </a>
+                        <a data-w-tab="Tab 3" class="menuoptiontab w-inline-block w-tab-link">
+                          <div>Saiu Para Entrega</div>
+                        </a>
                       </div>
-                      <div class="div-block-32">
-                        <h3>Nome Titulo </h3>
-                        <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
-                          <div class="w-slider-mask">
-                            <div class="w-slide"></div>
-                            <div class="w-slide"></div>
-                          </div>
-                          <div class="w-slider-arrow-left">
-                            <div class="w-icon-slider-left"></div>
-                          </div>
-                          <div class="w-slider-arrow-right">
-                            <div class="w-icon-slider-right"></div>
-                          </div>
-                          <div class="w-slider-nav w-round"></div>
+                      <div class="tabs-content-3 w-tab-content">
+                        <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active">
+                          <h1>Heading</h1>
                         </div>
+                        <div data-w-tab="Tab 2" class="w-tab-pane"></div>
+                        <div data-w-tab="Tab 3" class="w-tab-pane"></div>
                       </div>
-                      <div class="div-block-32">
-                        <h3>Nome Titulo </h3>
-                        <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
-                          <div class="w-slider-mask">
-                            <div class="w-slide"></div>
-                            <div class="w-slide"></div>
-                          </div>
-                          <div class="w-slider-arrow-left">
-                            <div class="w-icon-slider-left"></div>
-                          </div>
-                          <div class="w-slider-arrow-right">
-                            <div class="w-icon-slider-right"></div>
-                          </div>
-                          <div class="w-slider-nav w-round"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="div-block-27">
-                      <div>Bloco de pesquisa</div>
                     </div>
                   </div>
                   <div data-w-tab="Tab 2" class="w-tab-pane">
+                    <h2>Heading</h2>
+                    <div data-duration-in="300" data-duration-out="100" class="tabs-3 w-tabs">
+                      <div class="tabs-menu-2 w-tab-menu">
+                        <a data-w-tab="Tab 1" class="menuoptiontab w-inline-block w-tab-link">
+                          <div>Email Marketing</div>
+                        </a>
+                        <a data-w-tab="Tab 2" class="menuoptiontab w-inline-block w-tab-link">
+                          <div>WhatsApp</div>
+                        </a>
+                        <a data-w-tab="Tab 3" class="menuoptiontab w-inline-block w-tab-link w--current">
+                          <div>Facebook</div>
+                        </a>
+                      </div>
+                      <div class="tabs-content-3 w-tab-content">
+                        <div data-w-tab="Tab 1" class="w-tab-pane">
+                          <h1>Heading</h1>
+                        </div>
+                        <div data-w-tab="Tab 2" class="w-tab-pane"></div>
+                        <div data-w-tab="Tab 3" class="w-tab-pane w--tab-active"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-w-tab="Res" class="w-tab-pane w--tab-active">
+                    <h2>Heading</h2>
                     <div class="w-form">
-                      <form id="email-form-8" name="email-form-8" data-name="Email Form 8">
-                        <h3>Cadastro de Produtos</h3><label for="name-7">Nome do Produto Interno
-                          Plataforma</label><input type="text" class="w-input" maxlength="256" name="name-7"
-                          data-name="Name 7" placeholder="" id="name-7"><label for="email-5">Descrição</label><input
-                          type="email" class="w-input" maxlength="256" name="email-5" data-name="Email 5" placeholder=""
-                          id="email-5" required=""><label>Categoria</label><select id="field-6" name="field-6"
-                          class="w-select">
-                          <option value="">Select one...</option>
-                          <option value="First">First Choice</option>
-                          <option value="Second">Second Choice</option>
-                          <option value="Third">Third Choice</option>
-                        </select><label>Marca</label><input type="text" class="w-input" maxlength="256" name="field-7"
-                          data-name="Field 7" placeholder="Example Text" id="field-7"
-                          required=""><label>Modelo</label><input type="text" class="w-input" maxlength="256"
-                          name="field-8" data-name="Field 8" placeholder="Example Text" id="field-8"
-                          required=""><label>Peso</label><input type="text" class="w-input" maxlength="256"
-                          name="field-16" data-name="Field 16" placeholder="Example Text" id="field-16"
-                          required=""><label>Medidas</label>
-                        <div class="div-block-31"><label class="field-label-17">Altura</label><label
-                            class="field-label-18">Comprimento</label><label
-                            class="field-label-19">Largura</label><input type="text" class="text-field-14 w-input"
-                            maxlength="256" name="field-21" data-name="Field 21" placeholder="Example Text"
-                            id="field-21" required=""><input type="text" class="text-field-15 w-input" maxlength="256"
-                            name="field-22" data-name="Field 22" placeholder="Example Text" id="field-22"
-                            required=""><input type="text" class="text-field-16 w-input" maxlength="256" name="field-23"
-                            data-name="Field 23" placeholder="Example Text" id="field-23" required=""></div>
-                        <label>Cor</label><input type="text" class="w-input" maxlength="256" name="field-9"
-                          data-name="Field 9" placeholder="Example Text" id="field-9" required=""><label>Garantia Em
-                          Meses</label><input type="text" class="w-input" maxlength="256" name="field-10"
-                          data-name="Field 10" placeholder="Example Text" id="field-10"
-                          required=""><label>Condição</label><select id="field-11" name="field-11" class="w-select">
-                          <option value="">Select one...</option>
-                          <option value="First">First Choice</option>
-                          <option value="Second">Second Choice</option>
-                          <option value="Third">Third Choice</option>
-                        </select><label>Video</label><input type="text" class="w-input" maxlength="256" name="field-14"
-                          data-name="Field 14" placeholder="URL Video" id="field-14" required=""><label>Imagens</label>
-                        <div>
-                          <p>TODO</p><input type="text" class="w-input" maxlength="256" name="field-13"
-                            data-name="Field 13" placeholder="URL Imagem" id="field-13" required=""><input type="text"
-                            class="w-input" maxlength="256" name="field-13" data-name="Field 13"
-                            placeholder="URL Imagem" id="field-13" required=""><input type="text" class="w-input"
-                            maxlength="256" name="field-13" data-name="Field 13" placeholder="URL Imagem" id="field-13"
-                            required=""><input type="text" class="w-input" maxlength="256" name="field-13"
-                            data-name="Field 13" placeholder="URL Imagem" id="field-13" required=""><input type="text"
-                            class="w-input" maxlength="256" name="field-13" data-name="Field 13"
-                            placeholder="URL Imagem" id="field-13" required=""><input type="text" class="w-input"
-                            maxlength="256" name="field-13" data-name="Field 13" placeholder="URL Imagem" id="field-13"
-                            required=""><label>Preço</label>
-                          <div class="div-block-30"><label class="field-label-15">De</label><label
-                              class="field-label-16">Por</label><input type="number" class="text-field-12 w-input"
-                              maxlength="256" name="field-17" data-name="Field 17" placeholder="Example Text"
-                              id="field-17" required=""><input type="number" class="text-field-13 w-input"
-                              maxlength="256" name="field-18" data-name="Field 18" placeholder="Example Text"
-                              id="field-18" required=""></div><label>Código de Barras</label><input type="text"
-                            class="w-input" maxlength="256" name="field-19" data-name="Field 19"
-                            placeholder="Example Text" id="field-19" required=""><label>Cross Doc</label><input
-                            type="text" class="w-input" maxlength="256" name="field-20" data-name="Field 20"
-                            placeholder="Example Text" id="field-20" required=""><label>Quantidade Inicial
-                            Disponivel</label><input type="number" class="w-input" maxlength="256" name="field-24"
-                            data-name="Field 24" placeholder="Example Text" id="field-24" required="">
-                        </div><input type="submit" value="Submit" data-wait="Please wait..."
-                          class="submit-button-2 w-button">
-                      </form>
+                      <form id="email-form-7" name="email-form-7" data-name="Email Form 7"><label for="name-6">Pergunta</label><input type="text" class="w-input" maxlength="256" name="name-6" data-name="Name 6" placeholder="" id="name-6"><label for="email-4">Resposta</label><input type="email" class="w-input" maxlength="256" name="email-4" data-name="Email 4" placeholder="" id="email-4" required=""><input type="submit" value="Submit" data-wait="Please wait..." class="w-button"></form>
                       <div class="w-form-done">
                         <div>Thank you! Your submission has been received!</div>
                       </div>
@@ -863,165 +544,225 @@
                         <div>Oops! Something went wrong while submitting the form.</div>
                       </div>
                     </div>
-                  </div>
-                  <div data-w-tab="Tab 3" class="w-tab-pane"></div>
-                  <div data-w-tab="Tab 4" class="w-tab-pane"></div>
-                  <div data-w-tab="Tab 5" class="w-tab-pane w--tab-active">
-                    <div class="form-block-5 w-form">
-                      <form id="email-form-9" name="email-form-9" data-name="Email Form 9" class="form-7">
-                        <div class="div-block-34">
-                          <h3 class="heading-19">Todos</h3>
-                          <p class="paragraph">De: R$</p><input type="text" class="text-field-17 w-input"
-                            maxlength="256" name="name-8" data-name="Name 8" placeholder="69,90" id="name-8">
-                          <p class="paragraph-2">Por: R$</p><input type="text" class="text-field-17 w-input"
-                            maxlength="256" name="name-8" data-name="Name 8" placeholder="59,90" id="name-8">
-                        </div>
-                        <div class="div-block-34">
-                          <h3 class="heading-19">B2W</h3>
-                          <p class="paragraph">De: R$</p><input type="text" class="text-field-17 w-input"
-                            maxlength="256" name="name-8" data-name="Name 8" placeholder="69,90" id="name-8">
-                          <p class="paragraph-2">Por: R$</p><input type="text" class="text-field-17 w-input"
-                            maxlength="256" name="name-8" data-name="Name 8" placeholder="59,90" id="name-8">
-                        </div>
-                        <div class="div-block-34">
-                          <h3 class="heading-19">Mercado Livre</h3>
-                          <p class="paragraph">De: R$</p><input type="text" class="text-field-17 w-input"
-                            maxlength="256" name="name-8" data-name="Name 8" placeholder="69,90" id="name-8">
-                          <p class="paragraph-2">Por: R$</p><input type="text" class="text-field-17 w-input"
-                            maxlength="256" name="name-8" data-name="Name 8" placeholder="59,90" id="name-8">
-                        </div>
-                        <div class="div-block-34">
-                          <h3 class="heading-19">Leroy Merlin</h3>
-                          <p class="paragraph">De: R$</p><input type="text" class="text-field-17 w-input"
-                            maxlength="256" name="name-8" data-name="Name 8" placeholder="69,90" id="name-8">
-                          <p class="paragraph-2">Por: R$</p><input type="text" class="text-field-17 w-input"
-                            maxlength="256" name="name-8" data-name="Name 8" placeholder="59,90" id="name-8">
-                        </div>
-                      </form>
-                      <div class="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div class="w-form-fail">
-                        <div>Oops! Something went wrong while submitting the form.</div>
-                      </div>
+                    <div>
+                      <div>Lista das perguntas cadastradas</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div data-w-tab="Tab 14" class="w-tab-pane"></div>
-            <div data-w-tab="Tab 15" class="w-tab-pane"></div>
-            <div data-w-tab="Tab 16" class="w-tab-pane"></div>
-            <div data-w-tab="Tab 17" class="w-tab-pane">
-              <h2 class="heading-14">Configurações Internas</h2>
-              <div class="div-block-26">
-                <div class="text-block-13">Dados Cadastrais</div>
-                <div class="w-form">
-                  <form id="email-form-6" name="email-form-6" data-name="Email Form 6"><label for="name-5">Nome da
-                      Loja</label><input type="text" class="w-input" maxlength="256" name="name-5" data-name="Name 5"
-                      placeholder="" id="name-5"><label for="email-3">CNPJ</label><input type="email" class="w-input"
-                      maxlength="256" name="email-3" data-name="Email 3" placeholder="" id="email-3"
-                      required=""><label>CEP</label><input type="text" class="w-input" maxlength="256" name="field"
-                      data-name="Field" placeholder="Example Text" id="field" required=""><label>Rua</label><input
-                      type="text" class="w-input" maxlength="256" name="field-2" data-name="Field 2"
-                      placeholder="Example Text" id="field-2" required=""><label>Número</label><input type="text"
-                      class="w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Example Text"
-                      id="field-3" required=""><label>Email</label><input type="text" class="w-input" maxlength="256"
-                      name="field-4" data-name="Field 4" placeholder="Example Text" id="field-4"
-                      required=""><label>Telefone com DDD</label><input type="text" class="w-input" maxlength="256"
-                      name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""></form>
-                  <div class="w-form-done">
-                    <div>Thank you! Your submission has been received!</div>
+          </div>
+          <div data-w-tab="Tab 13" class="w-tab-pane">
+            <h2 class="heading-16">Produtos</h2>
+            <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+              <div class="w-tab-menu">
+                <a data-w-tab="Tab 1" class="w-inline-block w-tab-link">
+                  <div>Cadastrados</div>
+                </a>
+                <a data-w-tab="Tab 2" class="w-inline-block w-tab-link">
+                  <div>Cadastrar</div>
+                </a>
+                <a data-w-tab="Tab 3" class="w-inline-block w-tab-link">
+                  <div>Anúncios</div>
+                </a>
+                <a data-w-tab="Tab 4" class="tab-link-tab-4 w-inline-block w-tab-link">
+                  <div>SKU</div>
+                </a>
+                <a data-w-tab="Tab 5" class="w-inline-block w-tab-link w--current">
+                  <div>Preços</div>
+                </a>
+              </div>
+              <div class="w-tab-content">
+                <div data-w-tab="Tab 1" class="w-tab-pane">
+                  <div class="div-block-33">
+                    <div class="div-block-32">
+                      <h3 class="heading-18">Suporte TV</h3>
+                      <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
+                        <div class="w-slider-mask">
+                          <div class="w-slide"></div>
+                          <div class="w-slide"></div>
+                        </div>
+                        <div class="w-slider-arrow-left">
+                          <div class="w-icon-slider-left"></div>
+                        </div>
+                        <div class="w-slider-arrow-right">
+                          <div class="w-icon-slider-right"></div>
+                        </div>
+                        <div class="w-slider-nav w-round"></div>
+                      </div>
+                      <h3 class="heading-17">R$ 59,90</h3>
+                    </div>
+                    <div class="div-block-32">
+                      <h3>Nome Titulo </h3>
+                      <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
+                        <div class="w-slider-mask">
+                          <div class="w-slide"></div>
+                          <div class="w-slide"></div>
+                        </div>
+                        <div class="w-slider-arrow-left">
+                          <div class="w-icon-slider-left"></div>
+                        </div>
+                        <div class="w-slider-arrow-right">
+                          <div class="w-icon-slider-right"></div>
+                        </div>
+                        <div class="w-slider-nav w-round"></div>
+                      </div>
+                    </div>
+                    <div class="div-block-32">
+                      <h3>Nome Titulo </h3>
+                      <div data-animation="slide" data-duration="500" data-infinite="1" class="w-slider">
+                        <div class="w-slider-mask">
+                          <div class="w-slide"></div>
+                          <div class="w-slide"></div>
+                        </div>
+                        <div class="w-slider-arrow-left">
+                          <div class="w-icon-slider-left"></div>
+                        </div>
+                        <div class="w-slider-arrow-right">
+                          <div class="w-icon-slider-right"></div>
+                        </div>
+                        <div class="w-slider-nav w-round"></div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="w-form-fail">
-                    <div>Oops! Something went wrong while submitting the form.</div>
+                  <div class="div-block-27">
+                    <div>Bloco de pesquisa</div>
+                  </div>
+                </div>
+                <div data-w-tab="Tab 2" class="w-tab-pane">
+                  <div class="w-form">
+                    <form id="email-form-8" name="email-form-8" data-name="Email Form 8">
+                      <h3>Cadastro de Produtos</h3><label for="name-7">Nome do Produto Interno Plataforma</label><input type="text" class="w-input" maxlength="256" name="name-7" data-name="Name 7" placeholder="" id="name-7"><label for="email-5">Descrição</label><input type="email" class="w-input" maxlength="256" name="email-5" data-name="Email 5" placeholder="" id="email-5" required=""><label>Categoria</label><select id="field-6" name="field-6" class="w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select><label>Marca</label><input type="text" class="w-input" maxlength="256" name="field-7" data-name="Field 7" placeholder="Example Text" id="field-7" required=""><label>Modelo</label><input type="text" class="w-input" maxlength="256" name="field-8" data-name="Field 8" placeholder="Example Text" id="field-8" required=""><label>Peso</label><input type="text" class="w-input" maxlength="256" name="field-16" data-name="Field 16" placeholder="Example Text" id="field-16" required=""><label>Medidas</label>
+                      <div class="div-block-31"><label class="field-label-17">Altura</label><label class="field-label-18">Comprimento</label><label class="field-label-19">Largura</label><input type="text" class="text-field-14 w-input" maxlength="256" name="field-21" data-name="Field 21" placeholder="Example Text" id="field-21" required=""><input type="text" class="text-field-15 w-input" maxlength="256" name="field-22" data-name="Field 22" placeholder="Example Text" id="field-22" required=""><input type="text" class="text-field-16 w-input" maxlength="256" name="field-23" data-name="Field 23" placeholder="Example Text" id="field-23" required=""></div><label>Cor</label><input type="text" class="w-input" maxlength="256" name="field-9" data-name="Field 9" placeholder="Example Text" id="field-9" required=""><label>Garantia Em Meses</label><input type="text" class="w-input" maxlength="256" name="field-10" data-name="Field 10" placeholder="Example Text" id="field-10" required=""><label>Condição</label><select id="field-11" name="field-11" class="w-select"><option value="">Select one...</option><option value="First">First Choice</option><option value="Second">Second Choice</option><option value="Third">Third Choice</option></select><label>Video</label><input type="text" class="w-input" maxlength="256" name="field-14" data-name="Field 14" placeholder="URL Video" id="field-14" required=""><label>Imagens</label>
+                      <div>
+                        <p>TODO</p><input type="text" class="w-input" maxlength="256" name="field-13" data-name="Field 13" placeholder="URL Imagem" id="field-13" required=""><input type="text" class="w-input" maxlength="256" name="field-13" data-name="Field 13" placeholder="URL Imagem" id="field-13" required=""><input type="text" class="w-input" maxlength="256" name="field-13" data-name="Field 13" placeholder="URL Imagem" id="field-13" required=""><input type="text" class="w-input" maxlength="256" name="field-13" data-name="Field 13" placeholder="URL Imagem" id="field-13" required=""><input type="text" class="w-input" maxlength="256" name="field-13" data-name="Field 13" placeholder="URL Imagem" id="field-13" required=""><input type="text" class="w-input" maxlength="256" name="field-13" data-name="Field 13" placeholder="URL Imagem" id="field-13" required=""><label>Preço</label>
+                        <div class="div-block-30"><label class="field-label-15">De</label><label class="field-label-16">Por</label><input type="number" class="text-field-12 w-input" maxlength="256" name="field-17" data-name="Field 17" placeholder="Example Text" id="field-17" required=""><input type="number" class="text-field-13 w-input" maxlength="256" name="field-18" data-name="Field 18" placeholder="Example Text" id="field-18" required=""></div><label>Código de Barras</label><input type="text" class="w-input" maxlength="256" name="field-19" data-name="Field 19" placeholder="Example Text" id="field-19" required=""><label>Cross Doc</label><input type="text" class="w-input" maxlength="256" name="field-20" data-name="Field 20" placeholder="Example Text" id="field-20" required=""><label>Quantidade Inicial Disponivel</label><input type="number" class="w-input" maxlength="256" name="field-24" data-name="Field 24" placeholder="Example Text" id="field-24" required=""></div><input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button"></form>
+                    <div class="w-form-done">
+                      <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="w-form-fail">
+                      <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                  </div>
+                </div>
+                <div data-w-tab="Tab 3" class="w-tab-pane"></div>
+                <div data-w-tab="Tab 4" class="w-tab-pane"></div>
+                <div data-w-tab="Tab 5" class="w-tab-pane w--tab-active">
+                  <div class="form-block-5 w-form">
+                    <form id="email-form-9" name="email-form-9" data-name="Email Form 9" class="form-7">
+                      <div class="div-block-34">
+                        <h3 class="heading-19">Todos</h3>
+                        <p class="paragraph">De: R$</p><input type="text" class="text-field-17 w-input" maxlength="256" name="name-8" data-name="Name 8" placeholder="69,90" id="name-8">
+                        <p class="paragraph-2">Por: R$</p><input type="text" class="text-field-17 w-input" maxlength="256" name="name-8" data-name="Name 8" placeholder="59,90" id="name-8"></div>
+                      <div class="div-block-34">
+                        <h3 class="heading-19">B2W</h3>
+                        <p class="paragraph">De: R$</p><input type="text" class="text-field-17 w-input" maxlength="256" name="name-8" data-name="Name 8" placeholder="69,90" id="name-8">
+                        <p class="paragraph-2">Por: R$</p><input type="text" class="text-field-17 w-input" maxlength="256" name="name-8" data-name="Name 8" placeholder="59,90" id="name-8"></div>
+                      <div class="div-block-34">
+                        <h3 class="heading-19">Mercado Livre</h3>
+                        <p class="paragraph">De: R$</p><input type="text" class="text-field-17 w-input" maxlength="256" name="name-8" data-name="Name 8" placeholder="69,90" id="name-8">
+                        <p class="paragraph-2">Por: R$</p><input type="text" class="text-field-17 w-input" maxlength="256" name="name-8" data-name="Name 8" placeholder="59,90" id="name-8"></div>
+                      <div class="div-block-34">
+                        <h3 class="heading-19">Leroy Merlin</h3>
+                        <p class="paragraph">De: R$</p><input type="text" class="text-field-17 w-input" maxlength="256" name="name-8" data-name="Name 8" placeholder="69,90" id="name-8">
+                        <p class="paragraph-2">Por: R$</p><input type="text" class="text-field-17 w-input" maxlength="256" name="name-8" data-name="Name 8" placeholder="59,90" id="name-8"></div>
+                    </form>
+                    <div class="w-form-done">
+                      <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="w-form-fail">
+                      <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div data-w-tab="Tab 18" class="w-tab-pane"></div>
-            <div data-w-tab="Pedidos" class="w-tab-pane">
-              <h2 class="heading-23">Pedidos</h2>
-              <div>
-                <div class="orderstable">
-                  <div class="orderstable-head">
-                    <div class="form-block-6 w-form">
-                      <form id="wf-form-Email-Form-10" name="wf-form-Email-Form-10" data-name="Email Form 10"
-                        class="form-8"><label for="name-10">Pesquisar por Nome</label><input type="text" class="w-input"
-                          maxlength="256" name="name-9" data-name="Name 9" placeholder="" id="name-9"></form>
-                      <div class="w-form-done">
-                        <div>Thank you! Your submission has been received!</div>
-                      </div>
-                      <div class="w-form-fail">
-                        <div>Oops! Something went wrong while submitting the form.</div>
-                      </div>
-                    </div><a href="#" class="button-13 w-button">Atualizar</a>
-                    <div class="div-block-35"><a href="#" class="button-12 w-button">Anterior</a><a href="#"
-                        class="button-11 w-button">Próxima</a></div>
-                  </div>
-                  <div class="orderstable-body">
-                    <div class="mercadolivre-accountstable-iteration-template">
-                      <div class="text-block-15">Nome </div>
-                      <div class="linhaseparadora-semespa-o-white"></div>
-                      <div class="text-block-16">Usuario Dono</div>
-                      <div class="linhaseparadora-semespa-o-white"></div>
-                      <div class="text-block-18">Sync</div>
-                    </div>
-                    <div class="orderstable-iterationtemplate">
-                      <div class="text-block-15">Nome Conta</div>
-                      <div class="linhaseparadora-semespa-o-black"></div>
-                      <div class="text-block-16">OmegaAntenas</div>
-                      <div class="linhaseparadora-semespa-o-black"></div>
-                      <div class="div-block-36">
-                        <div class="checked-embedhtml w-embed"><img
-                            src="https://img.icons8.com/fluent/96/000000/checked.png"></div>
-                        <div class="x-embedhtml w-embed"><img src="https://img.icons8.com/fluent/96/000000/cancel.png">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="orderstable-footer"></div>
+          </div>
+          <div data-w-tab="Tab 14" class="w-tab-pane"></div>
+          <div data-w-tab="Tab 15" class="w-tab-pane"></div>
+          <div data-w-tab="Tab 16" class="w-tab-pane"></div>
+          <div data-w-tab="Tab 17" class="w-tab-pane">
+            <h2 class="heading-14">Configurações Internas</h2>
+            <div class="div-block-26">
+              <div class="text-block-13">Dados Cadastrais</div>
+              <div class="w-form">
+                <form id="email-form-6" name="email-form-6" data-name="Email Form 6"><label for="name-5">Nome da Loja</label><input type="text" class="w-input" maxlength="256" name="name-5" data-name="Name 5" placeholder="" id="name-5"><label for="email-3">CNPJ</label><input type="email" class="w-input" maxlength="256" name="email-3" data-name="Email 3" placeholder="" id="email-3" required=""><label>CEP</label><input type="text" class="w-input" maxlength="256" name="field" data-name="Field" placeholder="Example Text" id="field" required=""><label>Rua</label><input type="text" class="w-input" maxlength="256" name="field-2" data-name="Field 2" placeholder="Example Text" id="field-2" required=""><label>Número</label><input type="text" class="w-input" maxlength="256" name="field-3" data-name="Field 3" placeholder="Example Text" id="field-3" required=""><label>Email</label><input type="text" class="w-input" maxlength="256" name="field-4" data-name="Field 4" placeholder="Example Text" id="field-4" required=""><label>Telefone com DDD</label><input type="text" class="w-input" maxlength="256" name="field-5" data-name="Field 5" placeholder="Example Text" id="field-5" required=""></form>
+                <div class="w-form-done">
+                  <div>Thank you! Your submission has been received!</div>
                 </div>
+                <div class="w-form-fail">
+                  <div>Oops! Something went wrong while submitting the form.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div data-w-tab="Tab 18" class="w-tab-pane"></div>
+          <div data-w-tab="Pedidos" class="w-tab-pane">
+            <h2 class="heading-23">Pedidos</h2>
+            <div>
+              <div class="orderstable">
+                <div class="orderstable-head">
+                  <div class="form-block-6 w-form">
+                    <form id="wf-form-Email-Form-10" name="wf-form-Email-Form-10" data-name="Email Form 10" class="form-8"><label for="name-10">Pesquisar por Nome</label><input type="text" class="w-input" maxlength="256" name="name-9" data-name="Name 9" placeholder="" id="name-9"></form>
+                    <div class="w-form-done">
+                      <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="w-form-fail">
+                      <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                  </div><a href="#" class="button-13 w-button">Atualizar</a>
+                  <div class="div-block-35"><a href="#" class="button-12 w-button">Anterior</a><a href="#" class="button-11 w-button">Próxima</a></div>
+                </div>
+                <div class="orderstable-body">
+                  <div class="mercadolivre-accountstable-iteration-template">
+                    <div class="text-block-15">Nome </div>
+                    <div class="linhaseparadora-semespa-o-white"></div>
+                    <div class="text-block-16">Usuario Dono</div>
+                    <div class="linhaseparadora-semespa-o-white"></div>
+                    <div class="text-block-18">Sync</div>
+                  </div>
+                  <div class="orderstable-iterationtemplate">
+                    <div class="text-block-15">Nome Conta</div>
+                    <div class="linhaseparadora-semespa-o-black"></div>
+                    <div class="text-block-16">OmegaAntenas</div>
+                    <div class="linhaseparadora-semespa-o-black"></div>
+                    <div class="div-block-36">
+                      <div class="checked-embedhtml w-embed"><img src="https://img.icons8.com/fluent/96/000000/checked.png"></div>
+                      <div class="x-embedhtml w-embed"><img src="https://img.icons8.com/fluent/96/000000/cancel.png"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="orderstable-footer"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="thehiddenactioncontroller"><a id="app-actions-show-confirmation-warning"
-          data-w-id="d00cf800-cdbf-fc25-8e58-e011f75b7fc4" href="#"
-          class="shownotificationboxbtn w-button">AppBlur</a><a id="show-notification-span-btn"
-          data-w-id="9dc8c0c8-2543-b3c7-210a-8090742b1da3" href="#" class="shownotificationspanbtn w-button">Button
-          Text</a></div>
-      <div id="notification-span"
-        v-bind:class="{ &#x27;notification-span-error&#x27;: Common.NotificationSpan.Type == &#x27;error&#x27; }"
-        data-w-id="b7f31b6c-bcd7-5f7a-763e-17c8c0fec27c" class="notification-span">
-        <h3 v-bind:class="{ &#x27;notification-span-error&#x27;: Common.NotificationSpan.Type == &#x27;error&#x27; }"
-          class="notification-span-title">{{ Common. NotificationSpan. Title }}</h3>
-        <div v-on:click="Controllers.Notification.HideNotificationSpan()" class="html-embed-5 w-embed"><img
-            src="https://img.icons8.com/ios/50/000000/close-window.png"></div>
-        <div class="text-block-24">{{ Common.NotificationSpan.Text }}</div>
-      </div>
     </div>
-    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5edfa191b5ff34226cd2885d"
-      type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"></script>
-    <script src="js/webflow.js" type="text/javascript"></script>
-    <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
-    <!--  Dependencies  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!--  Common  -->
-    <script src="js/toolbox.js" type="text/javascript"></script>
-    <!--  App  -->
-    <script type="module" src="/js/dashboard/dashboard_spa.js"></script>
-    <!--  End App   -->
-    <script>
-      $('.correio-tabela-objetos-abrirdetalhesbtn').on('click', function (evt) {
-        $('#CorreiosTab-InnerTabs-DetailsTab').triggerHandler('click');
-        console.log("looooooo");
-        evt.preventDefault();
-      });
-    </script>
+    <div class="thehiddenactioncontroller"><a id="app-actions-show-confirmation-warning" data-w-id="d00cf800-cdbf-fc25-8e58-e011f75b7fc4" href="#" class="shownotificationboxbtn w-button">AppBlur</a><a id="show-notification-span-btn" data-w-id="9dc8c0c8-2543-b3c7-210a-8090742b1da3" href="#" class="shownotificationspanbtn w-button">Button Text</a><a id="show-warning-span" data-w-id="9e850ce6-375b-dc8f-c00d-9ff327837075" href="#" class="show-warning-span w-button">Show Warning Span</a><a id="hide-warning-span" data-w-id="25365027-0eb3-8973-962d-308d4dcdf1e5" href="#" class="hide-warning-span w-button">Button Text</a><a id="show-notification-span" data-w-id="b857afe4-9274-1173-ff16-4c09188bdae6" href="#" class="w-button">Show Notification Span</a></div>
+    <div id="notification-span" v-bind:class="{ &#x27;notification-span-error&#x27;: Common.NotificationSpan.Type == &#x27;error&#x27; }" data-w-id="b7f31b6c-bcd7-5f7a-763e-17c8c0fec27c" class="notification-span">
+      <h3 v-bind:class="{ &#x27;notification-span-error&#x27;: Common.NotificationSpan.Type == &#x27;error&#x27; }" class="notification-span-title">{{ NotificationSpan. Title }}</h3>
+      <div id="hide-notification-span" data-w-id="25cc0d00-895a-98ce-f9d8-092c5ccc40b5" class="html-embed-5 w-embed"><img src="https://img.icons8.com/ios/50/000000/close-window.png"></div>
+      <div class="text-block-24">{{ NotificationSpan. Text }}</div>
+    </div>
+  </div>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5edfa191b5ff34226cd2885d" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="js/webflow.js" type="text/javascript"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <!--  Dependencies  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!--  Common  -->
+  <script src="js/toolbox.js" type="text/javascript"></script>
+  <!--  App  -->
+  <script type="module" src="/js/dashboard/dashboard_spa.js"></script>
+  <!--  End App   -->
+  <script>
+  $('.correio-tabela-objetos-abrirdetalhesbtn').on('click', function (evt) {
+    $('#CorreiosTab-InnerTabs-DetailsTab').triggerHandler('click');
+    console.log("looooooo");
+    evt.preventDefault();
+  });
+</script>
 </body>
-
 </html>

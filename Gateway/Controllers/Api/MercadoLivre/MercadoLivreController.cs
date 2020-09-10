@@ -108,6 +108,7 @@ namespace Gateway.Controllers.Api
         {
             try
             {
+                Collections.MLNotifications.InsertOne(notification);
                 await NotificationHandler.HandleNotification(notification);
                 return;
             }

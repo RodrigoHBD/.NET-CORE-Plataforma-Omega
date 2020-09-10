@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="gRPC\Client\Shipping\Proto\shippingService.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="gRPC\Client\Shipping\Proto\shippingService.proto" GrpcServices="Client" />
     <Protobuf Include="gRPC\Server\Protos\service.proto" GrpcServices="Server" />
   </ItemGroup>
 

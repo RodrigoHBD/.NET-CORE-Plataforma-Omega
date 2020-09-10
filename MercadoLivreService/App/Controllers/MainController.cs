@@ -50,7 +50,7 @@ namespace MercadoLivreService.App.Controllers
             try
             {
                 var id = GrpcStringReqAdapter.GetStringData(grpcRequest);
-                await OrderUseCaseController.SearchRecentOrdersAsync(id);
+                await OrderUseCaseController.CheckAllRecentOrders(id);
                 return new GrpcVoid();
             }
             catch (Exception)

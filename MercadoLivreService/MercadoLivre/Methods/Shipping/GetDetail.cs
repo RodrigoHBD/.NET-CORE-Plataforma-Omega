@@ -17,7 +17,7 @@ namespace MercadoLivreService.MercadoLivre.Methods.Shipping
             {
                 var uri = BuildUri(call);
                 var response = await HttpClient.Get(uri);
-                return await MercadoLivreLib.ResponseHandler.HandleApiResponse<ShipmentJson>(response);
+                return MercadoLivreLib.ResponseHandler.HandleApiResponse<ShipmentJson>(response);
             }
             catch (Exception)
             {

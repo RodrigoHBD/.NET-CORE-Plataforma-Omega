@@ -7,7 +7,7 @@ export default class CreateShipmentMethod extends ShippingMethod {
             var uri = this._GetUri();
             var request = this._Request;
             var response = await application.HttpClient.Post(uri, request);
-            return application.HttpClient.Helpers.ResponseHanlder.HandleResponse(response);
+            return application.HttpClient.Helpers.ResponseHandler.HandleResponse(response);
         }
         catch (error) {
             throw error;

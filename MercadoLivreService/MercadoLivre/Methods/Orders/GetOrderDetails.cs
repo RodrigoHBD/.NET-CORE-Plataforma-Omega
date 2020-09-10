@@ -16,7 +16,8 @@ namespace MercadoLivreService.MercadoLivre.Methods.Orders
             {
                 var uri = GetUri(call);
                 var response = await HttpClient.Get(uri);
-                return await MercadoLivreLib.ResponseHandler.HandleApiResponse<OrderDetailJson>(response);
+                var data = MercadoLivreLib.ResponseHandler.HandleApiResponse<OrderDetailJson>(response);
+                return data;
             }
             catch (Exception)
             {

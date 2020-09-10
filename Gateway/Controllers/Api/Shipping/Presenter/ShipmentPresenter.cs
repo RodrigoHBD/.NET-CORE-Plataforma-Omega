@@ -29,7 +29,9 @@ namespace Gateway.Controllers.Api.Shipping.Presenter
                 CreatedManually = Shipment.CreatedManually,
                 ShippingService = Shipment.BoundryImplementation,
                 TrackingCode = Shipment.TrackingCode,
-                States = GetStates()
+                States = GetStates(),
+                BoundryMessage = Shipment.BoundryMessage,
+                CreatedAt = Shipment.CreatedAt
             };
         }
 

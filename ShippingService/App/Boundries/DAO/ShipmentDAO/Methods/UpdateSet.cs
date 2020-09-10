@@ -52,6 +52,13 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             await Collections.Shipments.UpdateOneAsync(filter, update);
         }
 
+        public async Task BoundryMessage(string id, string message)
+        {
+            var filter = FilterBuilder.Where(shipment => shipment.Id == ObjectId.Parse(id));
+            var update = UpdateBuilder.Set(shipment => shipment.BoundryMessage, message);
+            await Collections.Shipments.UpdateOneAsync(filter, update);
+        }
+
         public async Task PackageId(string id, string packageId)
         {
             try

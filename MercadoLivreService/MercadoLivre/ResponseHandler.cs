@@ -10,54 +10,60 @@ namespace MercadoLivreService.MercadoLivre
 {
     public class ResponseHandler
     {
-        public async Task<ApiCallResponse> HandleApiResponse<T>(HttpResponseMessage response)
+        public ApiCallResponse HandleApiResponse<T>(HttpResponseMessage response)
         {
             try
             {
-                var json = await response.Content.ReadAsStringAsync();
-                var parsedJson = new JsonDeserialized();
-                var apiCallResponse = new ApiCallResponse();
-                var isOkStatus = response.StatusCode == System.Net.HttpStatusCode.OK;
-                var isUnauthorizedStatus = response.StatusCode == System.Net.HttpStatusCode.Unauthorized;
-
-                if (isOkStatus)
-                {
-                    parsedJson = await JsonHelper.TryDeserialize<T>(json);
-                    apiCallResponse = HandleJsonDeserialization(parsedJson);
-                    apiCallResponse.IsDeserializedWithDataModel = true;
-                }
-                else
-                {
-                    parsedJson = await JsonHelper.TryDeserialize<ErrorJson>(json);
-                    apiCallResponse = HandleJsonDeserialization(parsedJson);
-                    apiCallResponse.IsDeserializedWithErrorModel = true;
-
-                }
-
-                return apiCallResponse;
+                HandleHttpStatus(response);
+                return HandleDeserialization<T>(response);
             }
-            catch (Exception)
+            catch (Exception e)
+            {
+                return GetExceptionResponse(e);
+            }
+        }
+
+        private void HandleHttpStatus(HttpResponseMessage resp)
+        {
+            var isOkStatus = resp.StatusCode == System.Net.HttpStatusCode.OK;
+            var isUnauthorizedStatus = resp.StatusCode == System.Net.HttpStatusCode.Unauthorized;
+
+            if (isUnauthorizedStatus)
+            {
+                throw new Exception("Mercado Livre não autorizou essa requisição");
+            }
+            else if(isOkStatus == false)
+            {
+                //throw new Exception("resposta não foi 200 " + resp.StatusCode);
+            }
+        }
+
+        private ApiCallResponse HandleDeserialization<T>(HttpResponseMessage resp)
+        {
+            try
+            {
+                var json = resp.Content.ReadAsStringAsync().Result;
+                return new ApiCallResponse()
+                {
+                    DeserializedJson = JsonHelper.TryDeserialize<T>(json),
+                    IsOk = true
+                };
+            }
+            catch (Exception e)
             {
                 throw;
             }
         }
 
-        public ApiCallResponse HandleJsonDeserialization(JsonDeserialized json)
+        private ApiCallResponse GetExceptionResponse(Exception e)
         {
             try
             {
-                var response = new ApiCallResponse();
-
-                if (json.IsDeserialized)
+                return new ApiCallResponse()
                 {
-                    response.DeserializedJson = json.Content;
-                }
-                else
-                {
-                    response.HasDeserializationException = true;
-                    response.DeserializationException = json.DeserializationException;
-                }
-                return response;
+                    IsOk = false,
+                    Exception = e
+                };
             }
             catch (Exception)
             {

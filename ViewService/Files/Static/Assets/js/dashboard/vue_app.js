@@ -2,6 +2,7 @@ import ReactiveData from "/js/dashboard/reactive_data.js";
 import Methods from "/js/dashboard/methods.js";
 
 export default class VueApp {
+    Methods = new Methods();
     ReactiveData = new ReactiveData();
     Instance;
 
@@ -15,12 +16,18 @@ export default class VueApp {
                 el: this._ElementId,
                 data: this._GetData(),
                 // WebFlow Animations FIX 
-                mounted: this._WebfloxAnimationsFix
+                mounted: this._WebflowAnimationsFix
             })
         }
         catch (error) {
             throw error;
         }
+    }
+
+    RunWebflowFix() {
+        Webflow.destroy();
+        Webflow.ready();
+        Webflow.require('ix2').init();
     }
 
     _ElementId = "#app";
@@ -30,7 +37,7 @@ export default class VueApp {
         return this.ReactiveData;
     }
 
-    _WebfloxAnimationsFix() {
+    _WebflowAnimationsFix() {
         this.$nextTick(function () {
             //RE-INIT WF as Vue.js init breaks WF interactions
             Webflow.destroy();
@@ -38,4 +45,6 @@ export default class VueApp {
             Webflow.require('ix2').init();
         });
     }
+
+
 }

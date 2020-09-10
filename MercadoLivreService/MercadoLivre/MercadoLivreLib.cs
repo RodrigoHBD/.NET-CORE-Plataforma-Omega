@@ -72,7 +72,7 @@ namespace MercadoLivreService
             {
                 var uri = $"{BaseUri}/orders/{id}?access_token={accessToken}";
                 var response = await HttpClientLibrary.HttpClient.Post(uri, null);
-                return await HandleApiResponse<OrderDetailsJson>(response);
+                return ResponseHandler.HandleApiResponse<OrderDetailsJson>(response);
             }
             catch (Exception)
             {
@@ -99,7 +99,7 @@ namespace MercadoLivreService
             {
                 var uri = $"{BaseUri}/orders/search/recent?seller={call.SellerId}&access_token={call.AccessToken}";
                 var response = await HttpClientLibrary.HttpClient.Get(uri);
-                return await HandleApiResponse<OrderSearchJson>(response);
+                return ResponseHandler.HandleApiResponse<OrderSearchJson>(response);
             }
             catch (Exception)
             {
@@ -113,62 +113,7 @@ namespace MercadoLivreService
             {
                 var uri = $"{BaseUri}/users/me?access_token={accessToken}";
                 var response = await HttpClientLibrary.HttpClient.Get(uri);
-                return await HandleApiResponse<AccountSelfDataJson>(response);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        private static async Task<ApiCallResponse> HandleApiResponse<T>(HttpResponseMessage response)
-        {
-            try
-            {
-                var json = await response.Content.ReadAsStringAsync();
-                var parsedJson = new JsonDeserialized();
-                var apiCallResponse = new ApiCallResponse();
-                var isOkStatus = response.StatusCode == System.Net.HttpStatusCode.OK;
-                var isUnauthorizedStatus = response.StatusCode == System.Net.HttpStatusCode.Unauthorized;
-
-                if (isOkStatus)
-                {
-                    parsedJson = await JsonHelper.TryDeserialize<T>(json);
-                    apiCallResponse = HandleJsonDeserialization(parsedJson);
-                    apiCallResponse.IsDeserializedWithDataModel = true;
-                }
-                else
-                {
-                    parsedJson = await JsonHelper.TryDeserialize<ErrorJson>(json);
-                    apiCallResponse = HandleJsonDeserialization(parsedJson);
-                    apiCallResponse.IsDeserializedWithErrorModel = true;
-
-                }
-
-                return apiCallResponse;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        private static ApiCallResponse HandleJsonDeserialization(JsonDeserialized json)
-        {
-            try
-            {
-                var response = new ApiCallResponse();
-
-                if (json.IsDeserialized)
-                {
-                    response.DeserializedJson = json.Content;
-                }
-                else
-                {
-                    response.HasDeserializationException = true;
-                    response.DeserializationException = json.DeserializationException;
-                }
-                return response;
+                return ResponseHandler.HandleApiResponse<AccountSelfDataJson>(response);
             }
             catch (Exception)
             {

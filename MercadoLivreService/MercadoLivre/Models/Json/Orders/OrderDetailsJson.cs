@@ -8,19 +8,24 @@ namespace MercadoLivreService.MercadoLivreModels.Out
     public class OrderDetailsJson
     {
         public List<OrderDetailJson> results { get; set; } = new List<OrderDetailJson>();
+
         public OrderDetailsPaging paging { get; set; } = new OrderDetailsPaging();
     }
 
     public class OrderDetailsPaging
     {
         public int total { get; set; }
+
         public int offset { get; set; }
+
         public int limit { get; set; }
     }
 
     public class OrderDetailJson
     {
         public long id { get; set; }
+
+        public long? pack_id { get; set; } 
 
         public string status { get; set; } = "";
 

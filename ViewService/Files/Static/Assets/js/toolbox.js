@@ -55,7 +55,8 @@ class StringUtil {
 
 class EventsUtil {
     Click = (id) => {
-        $(`#${id}`).click();
+        var element = document.getElementById(id);
+        element.click();
     }
 }
 

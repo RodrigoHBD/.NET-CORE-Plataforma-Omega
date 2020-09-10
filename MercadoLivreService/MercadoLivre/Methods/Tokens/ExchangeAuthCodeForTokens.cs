@@ -23,7 +23,7 @@ namespace MercadoLivreService.MercadoLivre.Methods.Tokens
             {
                 ValidateCall(call);
                 var response = await MakeTheCall(call);
-                return await MercadoLivreLib.ResponseHandler.HandleApiResponse<AccessTokensJson>(response);
+                return MercadoLivreLib.ResponseHandler.HandleApiResponse<AccessTokensJson>(response);
             }
             catch (Exception)
             {

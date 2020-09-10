@@ -9,7 +9,7 @@ namespace MercadoLivreService.App.UseCases
 {
     public class UpdateAccountTokens
     {
-        public static async Task Execute(string id, AccountTokens tokens)
+        public async Task Execute(string id, AccountTokens tokens)
         {
             try
             {

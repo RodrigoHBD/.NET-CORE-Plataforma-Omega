@@ -57,11 +57,13 @@ namespace MercadoLivreService.App.Boundries.DAO
         {
             try
             {
+                var timezone = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+                var now = TimeZoneInfo.ConvertTime(DateTime.Now, timezone);
                 var filter = Builders<Account>.Filter.Where(acc => acc.Id == ObjectId.Parse(id));
                 var update = Builders<Account>.Update
                     .Set(acc => acc.Tokens.AccessToken, newTokens.AccessToken)
                     .Set(acc => acc.Tokens.RefreshToken, newTokens.RefreshToken)
-                    .Set(acc => acc.Dates.TokensLastRefreshedAt, DateTime.UtcNow);
+                    .Set(acc => acc.Dates.TokensLastRefreshedAt, now);
 
                 await Collections.Accounts.FindOneAndUpdateAsync(filter, update);
             }

@@ -1,5 +1,5 @@
-export default class NotificationSpan {
+export class NotificationSpan {
     Title = "";
     Text = "";
-    Lifetime = "";
+    Lifetime = 5000;
 }

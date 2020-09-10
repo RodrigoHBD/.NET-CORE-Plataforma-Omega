@@ -3,6 +3,7 @@ import SearchShipmentsMethod from "/js/main-app/controllers/shipping/methods/sea
 import GetShipmentStatusColor from "/js/dashboard/view-model/shipping/get_shipment_status_color.js";
 import { ShipmentSearch } from "/js/main-app/models/shipping/shipping-models.js";
 import { SearchFilters } from "/js/main-app/models/common.js";
+import SetBoundryAccountNames from "/js/dashboard/view-model/shipping/set_boundry_account_names.js";
 
 export default class UpdateShipmentTable extends BaseMethod {
 
@@ -22,9 +23,21 @@ export default class UpdateShipmentTable extends BaseMethod {
         super();
     }
 
+    _FormData;
+
+    _GetFormData() {
+        return toolbox.Form.GetFormData("shipment-filters-form");
+    }
+
     _GetRequest() {
+        this._FormData = this._GetFormData();
         var req = new ShipmentSearch();
         req.DynamicString = this._GetDynamicString();
+        req.Posted = this._GetPostedFilter();
+        req.Pagination = this._GetPagination();
+        req.AwaitingForPickUp = this._GetAwaitingForPickUpFilter();
+        req.Rejected = this._GetRejectedFilter();
+        req.Delivered = this._GetDeliveredFilter();
         return req;
     }
 
@@ -34,12 +47,71 @@ export default class UpdateShipmentTable extends BaseMethod {
 
     _GetDynamicString() {
         var filter = new SearchFilters.Boolean();
+        var value = this._FormData.DynamicString;
+        if (value.length > 0) {
+            filter.IsActive = true;
+        }
+        filter.Value = value;
+        return filter;
+    }
+    _GetPostedFilter() {
+        var filter = new SearchFilters.Boolean();
+        var awaitingForPosted = this._FormData.AwaitingForPosting;
+
+        if (awaitingForPosted) {
+            filter.IsActive = true;
+        }
+        filter.Value = false;
+        return filter;
+    }
+
+    _GetAwaitingForPickUpFilter() {
+        var filter = new SearchFilters.Boolean();
+        var value = this._FormData.AwaitingForPickUp;
+
+        if (value) {
+            filter.IsActive = true;
+        }
+        filter.Value = true;
+        return filter;
+    }
+
+    _GetRejectedFilter() {
+        var filter = new SearchFilters.Boolean();
+        var value = this._FormData.RejectedComingBack;
+
+        if (value) {
+            filter.IsActive = true;
+        }
+        filter.Value = true;
+        return filter;
+    }
+
+    _GetDeliveredFilter() {
+        var filter = new SearchFilters.Boolean();
+        var rejectedReturning = this._FormData.RejectedComingBack;
+        var delivered = this._FormData.Delivered;
+
+        if (rejectedReturning) {
+            filter.IsActive = true;
+            filter.Value = false;
+        }
+        else if (delivered) {
+            filter.IsActive = true;
+            filter.Value = true;
+        }
+        else {
+            filter.IsActive = false;
+        }
+
+        return filter;
     }
 
     _HandleResponse(resp) {
         this._SetShipmentProperties(resp);
         this._SetTableBody(resp);
         this._SetTablePagination(resp);
+        new SetBoundryAccountNames().Run();
     }
 
     _SetTableBody(resp) {

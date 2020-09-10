@@ -5,6 +5,7 @@ export default class ShippingReactive {
     ShipmentTable = new ShipmentTable();
     CachedShipment = new Shipment();
     CachedEvents = new ShipmentEvents();
+    NewShipmentForm = new NewShipmentForm();
 }
 
 class ShipmentTable {
@@ -12,4 +13,8 @@ class ShipmentTable {
     CurrentPage = 0;
     Body = [];
     Pagination = new Pagination();
+}
+
+class NewShipmentForm {
+    IsLoading = false;
 }

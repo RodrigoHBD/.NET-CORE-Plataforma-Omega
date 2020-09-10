@@ -21,6 +21,8 @@ namespace ShippingService.App.Models
 
         public string TrackingCode { get; set; } = "";
 
+        public string BoundryMessage { get; set; } = "";
+
         public bool AutoUpdate { get; set; } = false;
 
         public bool CreatedManually { get; set; } = false;

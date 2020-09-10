@@ -13,9 +13,8 @@ namespace MercadoLivreService.App.UseCases
             try
             {
                 var isNull = response.DeserializedJson == null;
-                var isDeserialized = response.IsDeserializedWithDataModel;
 
-                if(isNull || !isDeserialized)
+                if(isNull || !response.IsOk)
                 {
                     throw new Exception("Erro de deserializacao, houve um problema com a resposta do mercado livre.");
                 }

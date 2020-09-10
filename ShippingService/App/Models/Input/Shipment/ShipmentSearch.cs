@@ -1,4 +1,5 @@
-﻿using ShippingService.App.Entities;
+﻿using ShippingService.App.Boundries;
+using ShippingService.App.Entities;
 using ShippingService.App.Models.Input;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace ShippingService.App.Models.Input
         public StringSearchFilter DynamicString { get; set; } = new StringSearchFilter();
 
         public StringSearchFilter BoundMarketplace { get; set; } = new StringSearchFilter();
+
+        public ShippingBoundry.Implementation ShippingImplementation { get; set; } = ShippingBoundry.Implementation.Unset;
 
         public PaginationIn Pagination { get; set; } = PaginationEntity.PaginationInDefault;
 

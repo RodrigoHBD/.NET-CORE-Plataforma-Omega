@@ -25,7 +25,10 @@ namespace ShippingService.App.Presenters
                     States = GetStates(),
                     MarketplaceSaleId = Shipment.MarketplaceData.SaleId,
                     MarketplaceAccountId = Shipment.MarketplaceData.AccountId,
-                    BoundryImplementation = GetBoundryImplementationName()
+                    BoundryImplementation = GetBoundryImplementationName(),
+                    BoundMarketplace = Shipment.MarketplaceData.BoundMarketplace,
+                    BoundryMessage = Shipment.BoundryMessage,
+                    CreatedAt = Shipment.CreatedEvent.Dates.OccurredAt.ToString()
                 };
             }
             catch (Exception)

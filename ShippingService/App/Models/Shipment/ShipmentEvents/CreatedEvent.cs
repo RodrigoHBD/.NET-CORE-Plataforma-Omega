@@ -24,7 +24,8 @@ namespace ShippingService.App.Models.ShipmentEvents
 
         public void SetOccuredAtToNow()
         {
-            Dates.OccurredAt = DateTime.UtcNow;
+            var timezone = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+            Dates.OccurredAt = TimeZoneInfo.ConvertTime(DateTime.Now, timezone);
         }
 
         public ShipmentModifier GetModifiers()

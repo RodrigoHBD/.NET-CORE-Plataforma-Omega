@@ -9,14 +9,12 @@ namespace MercadoLivreService.App.UseCases
 {
     public class OrderUseCaseController
     {
-        public static async Task SearchRecentOrdersAsync(string id)
+        public static async Task CheckAllRecentOrders(string id)
         {
             try
             {
-                var account = await AccountUseCaseController.GetAccountByIdAsync(id);
-                account.Tokens = await GetValidAccessToken.Execeute(id);
-                var search = await SearchRecentOrders.Execute(account);
-                Console.WriteLine();
+                await AccountUseCases.RefreshTokensDynamically.Execute(id);
+                await OrderUseCases.CheckAllRecentOrders.Execute(id);
             }
             catch (Exception)
             {
@@ -28,6 +26,7 @@ namespace MercadoLivreService.App.UseCases
         {
             try
             {
+                await AccountUseCases.RefreshTokensDynamically.ExecuteByMercadoLivreId(mercadoLivreAccountId);
                 await AccountEntity.ValidateMercadoLivreId(mercadoLivreAccountId);
                 var details = await OrderUseCases.GetDetails.Execute(mercadoLivreAccountId, orderId);
                 return details;

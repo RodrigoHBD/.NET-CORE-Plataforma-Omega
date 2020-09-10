@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ShippingService.Correios;
 using ShippingService.App.Models.ShipmentEvents;
 using ShippingService.App.Boundries.MailerTypeAdapters.Output;
+using ShippingService.App.Boundries.Shipping;
 
 namespace ShippingService.App.Boundries
 {
@@ -20,8 +21,14 @@ namespace ShippingService.App.Boundries
         {
             try
             {
-                var json = await CorreiosRastreamento.PegarDadosDeRastreamento(trackingCode);
-                return SroResponseJsonAdapter.GetPostedEventFrom(json);
+                if(implementation == Implementation.Correios)
+                {
+                    return await CorreiosImplementation.GetPostedEventAsync(trackingCode);
+                }
+                else
+                {
+                    return new PostedEvent();
+                }
             }
             catch (Exception e)
             {
@@ -31,53 +38,61 @@ namespace ShippingService.App.Boundries
 
         public static async Task<DeliveredEvent> GetDeliveredEventAsync(string trackingCode, Implementation implementation)
         {
-            try
+            if (implementation == Implementation.Correios)
             {
-                var json = await CorreiosRastreamento.PegarDadosDeRastreamento(trackingCode);
-                return SroResponseJsonAdapter.GetDeliveredEventFrom(json);
+                return await CorreiosImplementation.GetDeliveredEventAsync(trackingCode);
             }
-            catch (Exception e)
+            else
             {
-                throw;
+                return new DeliveredEvent();
             }
         }
 
         public static async Task<AwaitingForPickUpEvent> GetAwaitingForPickUpEventAsync(string trackingCode, Implementation implementation)
         {
-            try
+            if (implementation == Implementation.Correios)
             {
-                var json = await CorreiosRastreamento.PegarDadosDeRastreamento(trackingCode);
-                return SroResponseJsonAdapter.GetAwaitingForPickUpEventFrom(json);
+                return await CorreiosImplementation.GetAwaitingForPickUpEventAsync(trackingCode);
             }
-            catch (Exception e)
+            else
             {
-                throw;
+                return new AwaitingForPickUpEvent();
             }
         }
 
         public static async Task<RejectedEvent> GetRejectedEventAsync(string trackingCode, Implementation implementation)
         {
-            try
+            if (implementation == Implementation.Correios)
             {
-                var json = await CorreiosRastreamento.PegarDadosDeRastreamento(trackingCode);
-                return SroResponseJsonAdapter.GetRejectedEventFrom(json);
+                return await CorreiosImplementation.GetRejectedEventAsync(trackingCode);
             }
-            catch (Exception e)
+            else
             {
-                throw;
+                return new RejectedEvent();
             }
         }
 
         public static async Task<List<ForwardingEvent>> GetForwardingEventListAsync(string trackingCode, Implementation implementation)
         {
-            try
+            if (implementation == Implementation.Correios)
             {
-                var json = await CorreiosRastreamento.PegarDadosDeRastreamento(trackingCode);
-                return SroResponseJsonAdapter.GetForwardingEventListFrom(json);
+                return await CorreiosImplementation.GetForwardingEventListAsync(trackingCode);
             }
-            catch (Exception e)
+            else
             {
-                throw;
+                return new List<ForwardingEvent>();
+            }
+        }
+
+        public static async Task<string> GetShipmentLastMessageAsync(string trackingCode, Implementation implementation)
+        {
+            if (implementation == Implementation.Correios)
+            {
+                return await CorreiosImplementation.GetShipmentLastMessageAsync(trackingCode);
+            }
+            else
+            {
+                return "";
             }
         }
 

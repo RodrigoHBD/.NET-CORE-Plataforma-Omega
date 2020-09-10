@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MercadoLivreService.App.UseCases
 {
-    public class RefreshAccountTokens
+    public class GetRefreshedTokens
     {
-        public static async Task<AccountTokens> Execute(string refreshToken)
+        public async Task<AccountTokens> Execute(string refreshToken)
         {
             try
             {

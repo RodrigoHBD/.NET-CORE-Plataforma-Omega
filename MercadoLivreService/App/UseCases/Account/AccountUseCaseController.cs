@@ -43,8 +43,8 @@ namespace MercadoLivreService.App.UseCases
             try
             {
                 var account = await AccountUseCases.GetById.Execute(id);
-                var newTokens = await RefreshAccountTokens.Execute(account.Tokens.RefreshToken);
-                await UpdateAccountTokens.Execute(id, newTokens);
+                var newTokens = await new GetRefreshedTokens().Execute(account.Tokens.RefreshToken);
+                await new UpdateAccountTokens().Execute(id, newTokens);
                 return newTokens;
             }
             catch (Exception)
@@ -69,10 +69,7 @@ namespace MercadoLivreService.App.UseCases
         {
             try
             {
-                await AccountEntity.ValidateId(id);
-                var data = await GetAccountDataWithBoundry.Execute(id);
-                var update = BuildAccountUpdate.BuildFromBoundryData(data);
-                await UpdateAccount.Execute(id, update);
+                
             }
             catch (Exception)
             {

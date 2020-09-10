@@ -8,6 +8,8 @@ class Shipment {
     MarketplaceSaleId = "";
     MarketplaceAccountId = "";
     ShippingService = "";
+    BoundryMessage = "";
+    CreatedAt = "";
     States = new ShipmentStates();
 }
 

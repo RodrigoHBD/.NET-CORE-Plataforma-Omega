@@ -17,6 +17,6 @@ namespace MercadoLivreService.MercadoLivre.Models
 
         public string substatus { get; set; } = "";
 
-        public string tracking_number { get; set; } = "";
+        public string? tracking_number { get; set; } 
     }
 }

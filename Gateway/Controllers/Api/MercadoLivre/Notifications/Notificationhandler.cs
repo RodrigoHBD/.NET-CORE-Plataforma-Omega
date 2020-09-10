@@ -24,7 +24,8 @@ namespace Gateway.Controllers.Api.MercadoLivre
             {
                 return new List<INotificationHandler>()
                 {
-                    new ShippingNotificationHandler()
+                    new ShippingNotificationHandler(),
+
                 };
             }
         }

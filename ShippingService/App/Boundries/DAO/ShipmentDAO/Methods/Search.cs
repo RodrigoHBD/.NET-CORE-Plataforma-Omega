@@ -33,11 +33,14 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
         {
             Request = request;
             SetFilter();
+            SetSorting();
         }
 
         private ShipmentSearch Request { get; }
 
         private FilterDefinition<Shipment> Filter { get; set; } = FilterBuilder.Empty;
+
+        private SortDefinition<Shipment> Sort { get; set; }
 
         private void SetAutoUpdateFilter()
         {
@@ -127,6 +130,16 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             }
         }
 
+        private void SetShippingImplementationFilter()
+        {
+            if (Request.ShippingImplementation != ShippingBoundry.Implementation.Unset)
+            {
+                var value = Request.ShippingImplementation;
+                var filter = FilterBuilder.Where(shipment => shipment.BoundryImplementation == value);
+                Filter = FilterBuilder.And(Filter, filter);
+            }
+        }
+
         private void SetFilter()
         {
             SetBoundMarketplaceFilter();
@@ -138,12 +151,20 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             SetRejectedFilter();
             //SetBeingTransportedFilter();
             SetAutoUpdateFilter();
+            SetShippingImplementationFilter();
+        }
+
+        private void SetSorting()
+        {
+            Sort = Builders<Shipment>.Sort
+                .Descending(shipment => shipment.CreatedEvent.Dates.OccurredAt);
         }
 
         private async Task<List<Shipment>> GetSearchData()
         {
             var pagination = Request.Pagination;
-            return Collections.Shipments.Find(Filter).Limit(pagination.Limit).Skip(pagination.Offset).ToList();
+            return Collections.Shipments.Find(Filter)
+                .Sort(Sort).Limit(pagination.Limit).Skip(pagination.Offset).ToList();
         }
 
         private async Task<PaginationOut> GetPagination()

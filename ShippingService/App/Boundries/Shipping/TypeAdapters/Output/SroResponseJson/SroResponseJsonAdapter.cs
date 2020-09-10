@@ -42,6 +42,12 @@ namespace ShippingService.App.Boundries.MailerTypeAdapters.Output
             return factory.GetEventList();
         }
 
+        public static string GetLastMessageFrom(SroJsonResponse json)
+        {
+            var factory = new BoundryMessageFactory(json);
+            return factory.GetMessage();
+        }
+
         public static DateTime GetDateTimeFrom(SroEvent @event)
         {
             var hours = @event.hora[0];

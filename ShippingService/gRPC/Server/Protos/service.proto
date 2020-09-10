@@ -52,6 +52,7 @@ message GrpcShipmentSearchRequest {
 	GrpcBooleanFilter auto_update = 9;
 	GrpcStringFilter dynamic_string = 10;
 	GrpcStringFilter bound_marketplace = 11;
+	string shipping_implementation = 12;
 }
 
 message GrpcSetAutoUpdateRequest {
@@ -87,6 +88,8 @@ message GrpcShipment {
 	bool auto_update = 8;
 	bool created_manually = 9;
 	GrpcShipmentStates states = 10;
+	string created_at = 11;
+	string boundry_message = 12;
 }
 
 message GrpcShipmentStates {

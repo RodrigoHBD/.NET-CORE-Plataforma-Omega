@@ -31,7 +31,7 @@ namespace ShippingService.App.Models.ShipmentEvents
 
         public bool IsDeliveryConfirmed { get; set; } = false;
 
-        public ShipmentEventDates Dates { get; set; }
+        public ShipmentEventDates Dates { get; set; } = new ShipmentEventDates();
 
         public ShipmentModifier GetModifiers()
         {

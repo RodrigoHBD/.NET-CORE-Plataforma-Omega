@@ -24,7 +24,8 @@ namespace Gateway.Controllers.Api.Shipping.Factories
                 DynamicString = GrpcStringFilterFactory.GetFrom(Search.DynamicString),
                 Pagination = PaginationFactory.GetFrom(Search.Pagination),
                 AutoUpdate = new GrpcBooleanFilter(),
-                BoundMarketplace = new GrpcStringFilter(),
+                BoundMarketplace = GrpcStringFilterFactory.GetFrom(Search.BoundMarketplace),
+                ShippingImplementation = Search.ShippingService,
                 Sorting = 1,
                 IsBeingTransported = new GrpcBooleanFilter()
             };

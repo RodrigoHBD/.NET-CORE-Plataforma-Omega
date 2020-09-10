@@ -15,9 +15,9 @@ namespace SalesService.App.Boundries.SaleDAOQueries
 			{
 				var filter = Builders<Sale>.Filter.Where(sale => sale.PlatformSaleId == id);
 				var query = await Collections.Sales.FindAsync(filter);
-				return query.First();
+				return query.FirstOrDefault();
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 				throw;
 			}

@@ -13,6 +13,8 @@ namespace Gateway.Controllers.Api.Shipping.Models
 
         public string BoundMarketplace { get; set; }
 
+        public string BoundryMessage { get; set; } = "";
+
         public string TrackingCode { get; set; }
 
         public string MarketplaceAccountId { get; set; }
@@ -20,6 +22,8 @@ namespace Gateway.Controllers.Api.Shipping.Models
         public string MarketplaceSaleId { get; set; }
 
         public string ShippingService { get; set; }
+
+        public string CreatedAt { get; set; } 
 
         public bool AutoUpdate { get; set; }
 

@@ -39,7 +39,14 @@ namespace ShippingService.RoutineSchedulerRoutines
 
         public async Task Run()
         {
-            await UseCaseOperator.RunShipmentAutoUpdate();
+            try
+            {
+                await UseCaseOperator.RunShipmentAutoUpdate();
+            }
+            catch (Exception)
+            {
+                //throw;
+            }
         }
 
 

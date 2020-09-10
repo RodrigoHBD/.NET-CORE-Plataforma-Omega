@@ -57,15 +57,15 @@ namespace MercadoLivreService.App.Boundries
             try
             {
                 var apiCallResponse = await MercadoLivreLib.GetUserData(accessToken);
-                var isOk = apiCallResponse.IsDeserializedWithDataModel;
-                var hasError = apiCallResponse.HasDeserializationException;
 
-                if (hasError)
+                if (apiCallResponse.IsOk)
                 {
-                    throw apiCallResponse.DeserializationException;
+                    return true;
                 }
-
-                return isOk;
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {

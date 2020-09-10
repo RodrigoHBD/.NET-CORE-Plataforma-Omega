@@ -7,8 +7,10 @@ namespace MercadoLivreService.App.Models
 {
     public class Pagination
     {
-        public int Offset { get; set; }
-        public int Limit { get; set; }
+        public int Offset { get; set; } = 0;
+
+        public int Limit { get; set; } = 50;
+
         public int Total { get; set; }
     }
 }

@@ -18,12 +18,13 @@ namespace Gateway.Controllers
     {
         [Route("new-shipment")]
         [HttpPost]
-        public async Task CreateShipment(NewShipment json)
+        public async Task<IActionResult> CreateShipment(NewShipment json)
         {
             try
             {
                 var req = GrpcNewShipmentRequestFactory.GetFrom(json);
                 await ShippingClient.CreateShipment(req);
+                return EmpityAnswer;
             }
             catch (Exception e)
             {
@@ -39,7 +40,7 @@ namespace Gateway.Controllers
             {
                 var req = new GrpcString() { Value = id };
                 var shipment = await ShippingClient.GetShipmentById(req);
-                
+
                 return new ContentResult()
                 {
                     Content = ShipmentPresenter.PresentSerialized(shipment),
@@ -93,9 +94,9 @@ namespace Gateway.Controllers
             }
         }
 
-        [Route("delete-package")]
+        [Route("shipment")]
         [HttpDelete]
-        public async Task DeletePackageAsync(string id)
+        public async Task DeleteShipment(string id)
         {
             try
             {
@@ -172,6 +173,12 @@ namespace Gateway.Controllers
                 throw;
             }
         }
+
+        private ContentResult EmpityAnswer = new ContentResult()
+        {
+            ContentType = "application/json",
+            Content = ""
+        };
 
     }
 }

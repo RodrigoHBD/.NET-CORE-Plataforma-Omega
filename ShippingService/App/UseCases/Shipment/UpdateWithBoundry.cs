@@ -21,8 +21,9 @@ namespace ShippingService.App.UseCases
                 await UpdateAwaitingForPickUpEvent();
                 await UpdateRejectedEvent();
                 await UpdateForwardingEvents();
+                await UpdateBoundryMessage();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }
@@ -103,6 +104,19 @@ namespace ShippingService.App.UseCases
             catch (Exception e)
             {
 
+            }
+        }
+
+        private async Task UpdateBoundryMessage()
+        {
+            try
+            {
+                var message = await ShippingBoundry.GetShipmentLastMessageAsync(TrackingCode, Implementation);
+                await ShipmentDAO.Methods.UpdateSet.BoundryMessage(Id, message);
+            }
+            catch (Exception e)
+            {
+                
             }
         }
 

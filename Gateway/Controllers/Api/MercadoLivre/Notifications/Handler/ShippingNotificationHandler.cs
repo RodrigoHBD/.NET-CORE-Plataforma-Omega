@@ -37,12 +37,12 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
 
                 if (!saleIsRegistered)
                 {
-                    SaleId = await RegisterSale(AccountId, MLShipment.OrderId);
+                    //SaleId = await RegisterSale(AccountId, MLShipment.OrderId);
                 }
                 else
                 {
-                    await GetSaleDetail();
-                    SaleId = SaleDetail.Id;
+                    //await GetSaleDetail();
+                    //SaleId = SaleDetail.Id;
                 }
 
                 if (trackingCodeAvailable)
@@ -50,7 +50,7 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
                     await CreateShipment();
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }
@@ -86,7 +86,7 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
                     TrackingCode = MLShipment.TrackingCode,
                     SetAutoUpdate = true,
                     MarketplaceAccountId = AccountId.ToString(),
-                    MarketplaceSaleId = SaleId,
+                    MarketplaceSaleId = MLShipment.OrderId.ToString(),
                     BoundMarketplace = "mercado livre",
                     SetCreatedManually = false,
                     ShippingImplementation = GetShipmentImplementation(),
@@ -108,11 +108,11 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
 
                 if(shippingMethod == "Jadlog Normal")
                 {
-                    return "Mercado Envios";
+                    return "mercado envios";
                 }
                 else if(shippingMethod == "PAC")
                 {
-                    return "Correios";
+                    return "correios";
                 }
                 else
                 {

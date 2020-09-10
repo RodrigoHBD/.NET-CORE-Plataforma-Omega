@@ -7,8 +7,10 @@ namespace MercadoLivreService.MercadoLivreModels.Out
 {
     public class OrderSearchJson
     {
-        public string query { get; set; } = "";
-        public List<OrderDetailsJson> results { get; set; } = new List<OrderDetailsJson>();
+        public string query { get; set; } 
+
+        public List<OrderDetailJson> results { get; set; } = new List<OrderDetailJson>();
+
         public PaginationJson paging { get; set; } = new PaginationJson();
     } 
 }

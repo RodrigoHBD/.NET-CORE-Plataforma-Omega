@@ -10,6 +10,10 @@ namespace Gateway.Controllers.Shipping.Input
     {
         public StringSearchFilter DynamicString { get; set; } = new StringSearchFilter();
 
+        public StringSearchFilter BoundMarketplace { get; set; } = new StringSearchFilter();
+
+        public string ShippingService { get; set; } = "";
+
         public BooleanSearchFilter BeingTransported { get; set; } = new BooleanSearchFilter();
 
         public BooleanSearchFilter AwaitingForPickUp { get; set; } = new BooleanSearchFilter();

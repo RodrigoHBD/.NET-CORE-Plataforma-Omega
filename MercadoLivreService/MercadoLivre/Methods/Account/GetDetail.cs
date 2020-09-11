@@ -1,21 +1,21 @@
 ﻿using HttpClientLibrary;
 using MercadoLivreLibrary.Models;
-using MercadoLivreService.MercadoLivre.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MercadoLivreLibrary.Methods.Shipping
+namespace MercadoLivreLibrary.Methods.Account
 {
     public class GetDetail : MercadoLivreMethod
     {
-        public async Task<ShipmentJson> Execute(string shipmentId, string token)
+        public async Task<AccountJson> Execute(string token)
         {
             try
             {
-                var req = GetRequest(shipmentId, token);
-                return await HttpClientLib.Get<ShipmentJson, ErrorJson>(req);
+                var req = GetRequest(token);
+                return await HttpClientLib.Get<AccountJson, ErrorJson>(req);
             }
             catch (Exception)
             {
@@ -23,9 +23,9 @@ namespace MercadoLivreLibrary.Methods.Shipping
             }
         }
 
-        private string GetUri(string shipmentId)
+        private string GetUri()
         {
-            return $"{BaseUri}/shipments/{shipmentId}";
+            return $"{BaseUri}/users/me";
         }
 
         private List<UriParam> GetParams(string token)
@@ -36,11 +36,11 @@ namespace MercadoLivreLibrary.Methods.Shipping
             };
         }
 
-        private GetRequest GetRequest(string shipmentId, string token)
+        private GetRequest GetRequest(string token)
         {
             return new GetRequest()
             {
-                Uri = GetUri(shipmentId),
+                Uri = GetUri(),
                 Params = GetParams(token)
             };
         }

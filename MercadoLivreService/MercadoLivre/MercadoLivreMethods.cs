@@ -1,6 +1,4 @@
-﻿using MercadoLivreService.MercadoLivre.Methods.Orders;
-using MercadoLivreService.MercadoLivre.Methods.Shipping;
-using MercadoLivreService.MercadoLivre.Methods.Tokens;
+﻿using MercadoLivreLibrary.Methods;
 using System;
 using System.Collections.Generic;
 using System.Linq;

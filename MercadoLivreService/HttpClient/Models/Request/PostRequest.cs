@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace HttpClientLibrary
 {
-    public class HttpRequest
+    public class PostRequest : HttpRequest
     {
-        public string Uri { get; set; }
-
-        public List<UriParam> Params { get; set; } = new List<UriParam>();
+        public dynamic Data { get; set; }
     }
 }

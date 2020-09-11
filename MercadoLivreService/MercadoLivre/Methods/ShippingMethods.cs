@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MercadoLivreLibrary.Methods.Shipping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MercadoLivreService.MercadoLivre.Methods.Shipping
+namespace MercadoLivreLibrary.Methods
 {
     public class ShippingMethods
     {

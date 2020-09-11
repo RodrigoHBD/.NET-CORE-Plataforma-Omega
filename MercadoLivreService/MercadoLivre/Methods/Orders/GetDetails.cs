@@ -1,6 +1,5 @@
 ﻿using HttpClientLibrary;
 using MercadoLivreLibrary.Models;
-using MercadoLivreService.MercadoLivreModels.Out;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +9,12 @@ namespace MercadoLivreLibrary.Methods.Order
 {
     public class GetDetails : MercadoLivreMethod
     {
-        public async Task<JsonResponse> Execute(dynamic orderId, dynamic accountId, string token)
+        public async Task<OrderDetailJson> Execute(dynamic orderId, dynamic accountId, string token)
         {
             try
             {
                 var req = GetRequest(orderId, accountId, token);                
-                var json = await HttpClientLib.GetDeserializedJson<OrderDetailJson, ErrorJson> (req);
+                var json = await HttpClientLib.Get<OrderDetailJson, ErrorJson> (req);
                 return json;
             }
             catch (Exception)

@@ -1,23 +1,22 @@
-﻿using MercadoLivreService.App.Models;
-using MercadoLivreService.HttpClientLibrary;
-using MercadoLivreService.MercadoLivre.Models.In;
-using MercadoLivreService.MercadoLivreModels.Out;
+﻿using HttpClientLibrary;
+using MercadoLivreLibrary.Models;
+using MercadoLivreLibrary.Models.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MercadoLivreService.MercadoLivre.Methods.Orders
+namespace MercadoLivreLibrary.Methods.Order
 {
     public class SearchRecentOrders : MercadoLivreMethod
     {
-        public async Task<ApiCallResponse> Execute()
+        public async Task<OrderSearchJson> Execute()
         {
             try
             {
-                var uri = GetUri();
-                var resp = await HttpClient.Get(uri);
-                return MercadoLivreLib.ResponseHandler.HandleApiResponse<OrderSearchJson>(resp);
+                var req = GetRequest();
+                var json = await HttpClientLib.Get<OrderSearchJson, ErrorJson>(req);
+                return json;
             }
             catch (Exception)
             {
@@ -25,23 +24,42 @@ namespace MercadoLivreService.MercadoLivre.Methods.Orders
             }
         }
 
-        public SearchRecentOrders(Account account, PaginationIn pagination)
+        public SearchRecentOrders(long accountId, string token, Pagination pagination)
         {
-            AccountId = account.MercadoLivreId.ToString();
-            AccessToken = account.Tokens.AccessToken;
+            AccountId = accountId;
+            AccessToken = token;
             Pagination = pagination;
         }
 
-        private string AccountId { get; }
+        private long AccountId { get; }
 
         private string AccessToken { get; }
 
-        private PaginationIn Pagination { get; }
+        private Pagination Pagination { get; }
 
         private string GetUri()
         {
-            return $"{BaseUri}/orders/search/recent?seller={AccountId}&access_token={AccessToken}" +
-                $"&offset={Pagination.Offset}&limit={Pagination.Limit}";
+            return $"{BaseUri}/orders/search/recent";
+        }
+
+        private List<UriParam> GetParams()
+        {
+            return new List<UriParam>()
+            {
+                new UriParam(){ Name = "seller", Data = AccountId.ToString() },
+                new UriParam(){ Name = "access_token", Data = AccessToken },
+                new UriParam(){ Name = "offset", Data = Pagination.Offset.ToString() },
+                new UriParam(){ Name = "limit", Data = Pagination.Limit.ToString() },
+            };
+        }
+
+        private GetRequest GetRequest()
+        {
+            return new GetRequest()
+            {
+                Uri = GetUri(),
+                Params = GetParams()
+            };
         }
     }
 }

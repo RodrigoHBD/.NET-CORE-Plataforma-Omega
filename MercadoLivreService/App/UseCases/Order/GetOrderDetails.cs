@@ -1,5 +1,6 @@
-﻿using MercadoLivreService.MercadoLivreModels.In;
-using MercadoLivreService.MercadoLivreModels.Out;
+﻿using MercadoLivreLibrary;
+using MercadoLivreLibrary.Models;
+using MercadoLivreService.App.UseCases.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,39 +14,20 @@ namespace MercadoLivreService.App.UseCases
         {
 			try
 			{
-				var call = await BuildCall(accountId, orderId);
-				var response = await MakeTheCall(call);
-				return HandleResponse(response);
+				//TODO => validate account id
+				var token = await GetToken(accountId);
+				return await MercadoLivreLib.Methods.Order.GetDetails.Execute(orderId, accountId, token);
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 				throw;
 			}
         }
 
-		private OrderDetailJson HandleResponse(ApiCallResponse response)
-		{
-			var results = ApiCallUseCases.HandleApiCallResponse.Execute<OrderDetailJson>(response);
-			return results;
-		}
-
-		private async Task<SearchOrdersApiCall> BuildCall(long accountId, long orderId)
-		{
-			var account = await AccountUseCases.GetByMercadoLivreId.Execute(accountId);
-			var tokens = await GetValidAccessToken.Execeute(account.Id.ToString());
-			var call = new SearchOrdersApiCall()
-			{
-				AccessToken = tokens.AccessToken,
-				BuyerId = account.MercadoLivreId,
-				OrderId = orderId
-			};
-			return call;
-		}
-
-		private async Task<ApiCallResponse> MakeTheCall(SearchOrdersApiCall call)
-		{
-			return await MercadoLivreLib.Methods.Order.GetDetails.Execute(call);
-		}
+		private async Task<string> GetToken(long accountId)
+        {
+			return await TokensUseCases.GetValidAccessToken.ForAccount(accountId);
+        }
 
     }
 }

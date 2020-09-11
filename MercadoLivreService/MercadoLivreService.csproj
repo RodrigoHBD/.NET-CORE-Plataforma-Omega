@@ -38,7 +38,7 @@
 
   <ItemGroup>
     <Folder Include="App\Models\Internal\" />
-    <Folder Include="MercadoLivre\Models\In\" />
+    <Folder Include="MercadoLivre\Models\Out\" />
   </ItemGroup>
 
 </Project>

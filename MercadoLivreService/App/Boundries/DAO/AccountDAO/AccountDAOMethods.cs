@@ -11,6 +11,8 @@ namespace MercadoLivreService.App.Boundries.AccountDAO
     {
         public Get Get { get { return new Get(); } }
 
+        public Set Set { get { return new Set(); } }
+
         public Count Count { get { return new Count(); } }
 
         public Search Search(SearchAccountsReq req) => new Search(req);

@@ -22,11 +22,12 @@ namespace HttpClientLibrary
             }
         }
 
-        public static void PostAsync()
+        public static async Task<HttpResponseMessage> PostAsync(PostRequest req)
         {
             try
             {
-
+                var uri = GetUri(req);
+                return await Client.PostAsync(uri, req.Data);
             }
             catch (Exception)
             {

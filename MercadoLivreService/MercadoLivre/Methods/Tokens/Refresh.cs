@@ -3,16 +3,13 @@ using MercadoLivreLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace MercadoLivreLibrary.Methods.Tokens
 {
-    public class ExchangeAuthCodeForTokens : MercadoLivreMethod
+    public class Refresh : MercadoLivreMethod
     {
         private Credentials Credentials { get { return MercadoLivreLib.Credentials; } }
-
-        private string RedirectUri { get; } = "https://omega.brazilsouth.cloudapp.azure.com/api/mercadolivre/process-authcode-exchange";
 
         public async Task<AccessTokensJson> Execute(string code)
         {
@@ -29,7 +26,7 @@ namespace MercadoLivreLibrary.Methods.Tokens
 
         private string GetUri()
         {
-            return $"{AuthCodeUri}";
+            return $"{RefreshTokenUri}";
         }
 
         private List<UriParam> GetParams(string code)
@@ -38,8 +35,7 @@ namespace MercadoLivreLibrary.Methods.Tokens
             {
                 new UriParam(){ Name ="client_id", Data = Credentials.AppId },
                 new UriParam(){ Name ="client_secret", Data = Credentials.AppToken },
-                new UriParam(){ Name ="code", Data = code },
-                new UriParam(){ Name ="redirect_uri", Data = RedirectUri },
+                new UriParam(){ Name ="refresh_token", Data = code }
             };
         }
 

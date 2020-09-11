@@ -10,11 +10,11 @@ namespace MercadoLivreService.App.Controllers.Adapters
 {
     public class GrpcSearchAccountReqAdapter
     {
-        public static ISearchAccountsReq Adapt(GrpcSearchAccountsReq grpcRequest)
+        public static Models.SearchAccountsReq Adapt(GrpcSearchAccountsReq grpcRequest)
         {
             try
             {
-                return new SearchAccountsReq()
+                return new Implementations.SearchAccountsReq()
                 {
                     Name = new StringSearchField(grpcRequest.Name),
                     User = new StringSearchField(grpcRequest.Owner),

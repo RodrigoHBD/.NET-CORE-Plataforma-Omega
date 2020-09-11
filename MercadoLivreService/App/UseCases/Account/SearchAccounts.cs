@@ -9,7 +9,7 @@ namespace MercadoLivreService.App.UseCases
 {
     public class SearchAccounts
     {
-        public static async Task<IAccountList> Execute(ISearchAccountsReq request)
+        public static async Task<AccountList> Execute(SearchAccountsReq request)
         {
             try
             {

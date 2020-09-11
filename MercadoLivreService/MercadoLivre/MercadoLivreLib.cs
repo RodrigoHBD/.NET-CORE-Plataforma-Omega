@@ -1,30 +1,15 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using MercadoLivreService.App;
-using MercadoLivreService.App.UseCases;
-using MercadoLivreService.HttpClientLibrary;
-using MercadoLivreService.HttpClientLibrary.Helpers;
-using MercadoLivreService.MercadoLivre;
-using MercadoLivreService.MercadoLivre.Methods;
-using MercadoLivreService.MercadoLivreModels;
-using MercadoLivreService.MercadoLivreModels.In;
-using MercadoLivreService.MercadoLivreModels.Out;
+﻿using MercadoLivreLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MercadoLivreService
+namespace MercadoLivreLibrary
 {
     public class MercadoLivreLib
     {
-        private static string BaseUri { get; } = "https://api.mercadolibre.com";
-
-        private static string AuthCodeUri { get { return $"{BaseUri}/oauth/token?grant_type=authorization_code"; } }
-
-        private static string RefreshTokenUri { get { return $"{BaseUri}/oauth/token?grant_type=refresh_token"; } }
-
-        public static MercadoLivreAppCredentials Credentials { get { return AppCredentials.GetInstance(); } }
+        public static Credentials Credentials { get; } = new Credentials();
 
         public static MercadoLivreMethods Methods { get; private set; } = new MercadoLivreMethods();
 
@@ -66,7 +51,7 @@ namespace MercadoLivreService
             }
         }
 
-        public static async Task<ApiCallResponse> GetOrderDetails(string id, string accessToken)
+        public static async Task<JsonResponse> GetOrderDetails(string id, string accessToken)
         {
             try
             {
@@ -80,12 +65,12 @@ namespace MercadoLivreService
             }
         }
 
-        public static async Task<ApiCallResponse> GetAccountDetails()
+        public static async Task<JsonResponse> GetAccountDetails()
         {
             try
             {
                 await Methods.Account.GetAccountDetails.Execute(new ApiCall());
-                return new ApiCallResponse();
+                return new JsonResponse();
             }
             catch (Exception)
             {
@@ -93,7 +78,7 @@ namespace MercadoLivreService
             }
         }
 
-        public static async Task<ApiCallResponse> SearchRecentOrdersAsync(SearchOrdersApiCall call)
+        public static async Task<JsonResponse> SearchRecentOrdersAsync(SearchOrdersApiCall call)
         {
             try
             {
@@ -107,7 +92,7 @@ namespace MercadoLivreService
             }
         }
 
-        public static async Task<ApiCallResponse> GetUserData(string accessToken)
+        public static async Task<JsonResponse> GetUserData(string accessToken)
         {
             try
             {

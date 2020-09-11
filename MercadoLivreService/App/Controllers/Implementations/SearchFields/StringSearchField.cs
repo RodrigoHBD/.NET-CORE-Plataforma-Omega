@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MercadoLivreService.App.Controllers.Implementations
 {
-    public class StringSearchField : IStringSearchField
+    public class StringSearchField : Models.SearchFields.StringSearchField
     {
         public bool IsActive { get; set; } = false;
 

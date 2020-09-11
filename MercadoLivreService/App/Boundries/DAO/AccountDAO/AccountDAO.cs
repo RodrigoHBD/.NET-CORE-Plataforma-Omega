@@ -1,6 +1,6 @@
-﻿using MercadoLivreService.App.Boundries.DAO.AccountDAOFactories;
-using MercadoLivreService.App.Entities.AccountDataFields;
+﻿using MercadoLivreService.App.Boundries.AccountDAO;
 using MercadoLivreService.App.Models;
+using MercadoLivreService.App.Models.Out;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
@@ -12,40 +12,14 @@ namespace MercadoLivreService.App.Boundries.DAO
 {
     public class AccountDAO
     {
+        public static AccountDAOMethods Methods { get; } = new AccountDAOMethods();
+
         public static async Task<string> RegisterAccount(Account account)
         {
             try
             {
                 await Collections.Accounts.InsertOneAsync(account);
                 return account.Id.ToString();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public static async Task<Account> GetAccountById(string id)
-        {
-            try
-            {
-                var filter = Builders<Account>.Filter.Where(acc => acc.Id == ObjectId.Parse(id));
-                var query = await Collections.Accounts.FindAsync(filter); 
-                return query.FirstOrDefault();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public static async Task<Account> GetAccountByMercadoLivreId(long id)
-        {
-            try
-            {
-                var filter = Builders<Account>.Filter.Where(acc => acc.MercadoLivreId == id);
-                var query = await Collections.Accounts.FindAsync(filter);
-                return query.FirstOrDefault();
             }
             catch (Exception)
             {
@@ -73,25 +47,7 @@ namespace MercadoLivreService.App.Boundries.DAO
             }
         }
 
-        public static async Task<IAccountList> SearchAccounts(ISearchAccountsReq search)
-        {
-            try
-            {
-                var pagination = search.Pagination;
-                var filter = BuildSearchFilter(search);
-
-                var count = await CountAccounts(filter);
-                var query = Collections.Accounts.Find(filter).Skip(pagination.Offset).Limit(pagination.Limit);
-                
-                return AccountListFactory.Make(search, query, count);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        private static FilterDefinition<Account> BuildSearchFilter(ISearchAccountsReq search)
+        private static FilterDefinition<Account> BuildSearchFilter(SearchAccountsReq search)
         {
             try
             {

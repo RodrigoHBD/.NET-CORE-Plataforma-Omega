@@ -7,7 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="MercadoLivre\Call\**" />
+    <Content Remove="MercadoLivre\Call\**" />
+    <EmbeddedResource Remove="MercadoLivre\Call\**" />
+    <None Remove="MercadoLivre\Call\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="gRPC\Client\Shipping\Proto\shippingService.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Integra%2528Omega%2529\.NET CORE\MercadoLivreService\App\Models\Internal\Pagination\Pagination.cs" />
+    <Compile Include="..\..\..\Integra%2528Omega%2529\.NET CORE\MercadoLivreService\App\Models\SearchFields\StringSearchField.cs" />
+    <Compile Include="..\..\..\Integra%2528Omega%2529\.NET CORE\MercadoLivreService\MercadoLivre\Models\Json\Search\OrderSearchJson.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,7 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MercadoLivre\Call\GetA\" />
+    <Folder Include="App\Models\Internal\" />
+    <Folder Include="MercadoLivre\Models\In\" />
   </ItemGroup>
 
 </Project>

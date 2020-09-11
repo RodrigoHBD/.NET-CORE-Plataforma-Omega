@@ -1,16 +1,15 @@
-﻿using MercadoLivreService.HttpClientLibrary.Helpers;
-using MercadoLivreService.MercadoLivreModels.Out;
+﻿using MercadoLivreLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MercadoLivreService.MercadoLivre
+namespace MercadoLivreLibrary
 {
     public class ResponseHandler
     {
-        public ApiCallResponse HandleApiResponse<T>(HttpResponseMessage response)
+        public JsonResponse HandleApiResponse<T>(HttpResponseMessage response)
         {
             try
             {
@@ -38,12 +37,12 @@ namespace MercadoLivreService.MercadoLivre
             }
         }
 
-        private ApiCallResponse HandleDeserialization<T>(HttpResponseMessage resp)
+        private JsonResponse HandleDeserialization<T>(HttpResponseMessage resp)
         {
             try
             {
                 var json = resp.Content.ReadAsStringAsync().Result;
-                return new ApiCallResponse()
+                return new JsonResponse()
                 {
                     DeserializedJson = JsonHelper.TryDeserialize<T>(json),
                     IsOk = true
@@ -55,11 +54,11 @@ namespace MercadoLivreService.MercadoLivre
             }
         }
 
-        private ApiCallResponse GetExceptionResponse(Exception e)
+        private JsonResponse GetExceptionResponse(Exception e)
         {
             try
             {
-                return new ApiCallResponse()
+                return new JsonResponse()
                 {
                     IsOk = false,
                     Exception = e

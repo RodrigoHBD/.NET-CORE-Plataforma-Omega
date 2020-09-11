@@ -8,8 +8,10 @@ namespace MercadoLivreService.App.UseCases
 {
     public class OrderUseCases
     {
-        public static GetDetails GetDetails { get; } = new GetDetails();
+        public static GetOrderDetails GetDetails { get; } = new GetOrderDetails();
 
         public static CheckAllRecentOrders CheckAllRecentOrders { get { return new CheckAllRecentOrders(); } }
+
+        public static GetOrderPackId GetPackId { get { return new GetOrderPackId(); } }
     }
 }

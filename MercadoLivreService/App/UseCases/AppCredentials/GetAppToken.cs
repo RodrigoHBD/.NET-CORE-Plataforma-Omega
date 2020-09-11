@@ -11,7 +11,7 @@ namespace MercadoLivreService.App.UseCases
         {
             try
             {
-                return AppCredentials.GetInstance().AppToken;
+                return Credentials.GetInstance().AppToken;
             }
             catch (Exception)
             {

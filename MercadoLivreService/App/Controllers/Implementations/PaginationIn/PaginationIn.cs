@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MercadoLivreService.App.Controllers.Implementations
 {
-    public class PaginationIn : IPaginationIn
+    public class PaginationIn : Models.PaginationIn
     {
         public int Offset { get; set; } = 0;
 

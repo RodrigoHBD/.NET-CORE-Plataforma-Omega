@@ -12,7 +12,7 @@ namespace MercadoLivreService.App.UseCases
 {
     public class GetAccountDataWithBoundry
     {
-        public static async Task<AccountSelfDataJson> Execute(string id)
+        public static async Task<AccountJson> Execute(string id)
         {
 			try
 			{
@@ -20,7 +20,7 @@ namespace MercadoLivreService.App.UseCases
 				var call = BuildApiCall(account);
 				var result = await MercadoLivreBoundry.GetAccountData(call);
 				ValidateJsonDeserialization.Execute(result);
-				return (AccountSelfDataJson) result.DeserializedJson;
+				return (AccountJson) result.DeserializedJson;
 			}
 			catch (Exception)
 			{

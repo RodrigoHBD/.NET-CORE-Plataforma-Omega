@@ -13,7 +13,7 @@ namespace MercadoLivreService.App.UseCases
         {
 			try
 			{
-				return await AccountDAO.GetAccountByMercadoLivreId(id);
+				return await AccountDAO.Methods.Get.ByMercadoLivreId(id);
 			}
 			catch (Exception)
 			{

@@ -17,7 +17,7 @@ namespace MercadoLivreService.App.Entities.AccountSearchDataFields
 
         private static int OffsetMin { get; }
 
-        public static void Validate(IPaginationIn pagination)
+        public static void Validate(PaginationIn pagination)
         {
             try
             {

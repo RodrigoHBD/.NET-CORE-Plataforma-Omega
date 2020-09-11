@@ -25,7 +25,7 @@ namespace MercadoLivreService.App.UseCases
             }
         }
 
-        public static async Task<IAccountList> SearchAccountsAsync(ISearchAccountsReq request)
+        public static async Task<IAccountList> SearchAccountsAsync(SearchAccountsReq request)
         {
             try
             {
@@ -43,8 +43,8 @@ namespace MercadoLivreService.App.UseCases
             try
             {
                 var account = await AccountUseCases.GetById.Execute(id);
-                var newTokens = await new GetRefreshedTokens().Execute(account.Tokens.RefreshToken);
-                await new UpdateAccountTokens().Execute(id, newTokens);
+                var newTokens = await AccountUseCases.GetRefreshedTokens.Execute(account.Tokens.RefreshToken);
+                await AccountUseCases.UpdateAccountTokens.Execute(id, newTokens);
                 return newTokens;
             }
             catch (Exception)

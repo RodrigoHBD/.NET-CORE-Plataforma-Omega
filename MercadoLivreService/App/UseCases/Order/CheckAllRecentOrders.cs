@@ -1,10 +1,7 @@
-﻿using MercadoLivreService.App.Boundries;
-using MercadoLivreService.App.Boundries.MercadoLivreModels;
-using MercadoLivreService.App.Models;
+﻿using MercadoLivreService.App.Models;
+using MercadoLivreService.App.Models.In;
 using MercadoLivreService.gRPC.Client;
 using MercadoLivreService.MercadoLivre.Models;
-using MercadoLivreService.MercadoLivre.Models.In;
-using MercadoLivreService.MercadoLivreModels.In;
 using MercadoLivreService.MercadoLivreModels.Out;
 using System;
 using System.Collections.Generic;

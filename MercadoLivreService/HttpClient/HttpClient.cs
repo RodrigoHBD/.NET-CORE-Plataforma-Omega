@@ -1,98 +1,23 @@
-﻿using MercadoLivreService.HttpClientLibrary.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace MercadoLivreService.HttpClientLibrary
+namespace HttpClientLibrary
 {
-    public class HttpClient
+    public class HttpClientLib
     {
-        private static readonly System.Net.Http.HttpClient Client = new System.Net.Http.HttpClient();
-
-        public static async Task<T> GetJson<T>(string uri)
+        public static async Task<DataType> GetDeserializedJson<DataType, ErrorType>(GetRequest req)
         {
-            try
-            {
-                var response = await Client.GetAsync(uri);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var requestIsOk = response.StatusCode == System.Net.HttpStatusCode.OK;
-
-                if (requestIsOk)
-                {
-                    return await ParseResponse<T>(responseBody);
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
+			try
+			{
+				var response = await HttpRequester.GetAsync(req);
+				return ResponseHandler.HanldeResponse<DataType, ErrorType>(response);
+			}
+			catch (Exception)
+			{
+				throw;
+			}
         }
-
-        public static async Task<T> Post<T>(string uri, HttpContent body = null)
-        {
-            try
-            {
-                var response = await Client.PostAsync(uri, body);
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var requestIsOk = response.StatusCode == System.Net.HttpStatusCode.OK;
-
-                if (requestIsOk)
-                {
-                    return await ParseResponse<T>(responseBody);
-                }
-                else
-                {
-                    throw new Exception(response.ReasonPhrase);
-                }
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-        }
-
-        public static async Task<HttpResponseMessage> Post(string uri, HttpContent body = null)
-        {
-            try
-            {
-                return await Client.PostAsync(uri, body);
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-        }
-
-        public static async Task<HttpResponseMessage> Get(string uri)
-        {
-            try
-            {
-                return await Client.GetAsync(uri);
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
-        }
-
-        private static async Task<T> ParseResponse<T>(string serializedResponse)
-        {
-            try
-            {
-                return JsonHelper.TryDeserialize<T>(serializedResponse);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
     }
 }

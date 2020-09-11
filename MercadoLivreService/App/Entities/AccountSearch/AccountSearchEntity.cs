@@ -9,7 +9,7 @@ namespace MercadoLivreService.App.Entities
 {
     public class AccountSearchEntity
     {
-        public static async Task ValidateSearch(ISearchAccountsReq request)
+        public static async Task ValidateSearch(SearchAccountsReq request)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace MercadoLivreService.App.Entities
             }
         }
 
-        private static async Task ValidateDataFields(ISearchAccountsReq request)
+        private static async Task ValidateDataFields(SearchAccountsReq request)
         {
             try
             {

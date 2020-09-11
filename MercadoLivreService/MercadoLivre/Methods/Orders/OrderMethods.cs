@@ -10,7 +10,7 @@ namespace MercadoLivreService.MercadoLivre.Methods.Orders
 {
     public class OrderMethods
     {
-        public GetOrderDetails GetDetails { get; } = new GetOrderDetails();
+        public GetDetails GetDetails { get; } = new GetDetails();
 
         public SearchRecentOrders SearchRecentOrders(Account account, PaginationIn pagination) =>
              new SearchRecentOrders(account, pagination);

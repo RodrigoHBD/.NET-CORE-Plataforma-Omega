@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace MercadoLivreService.App.Controllers.Implementations
 {
-    public class SearchAccountsReq : ISearchAccountsReq
+    public class SearchAccountsReq : Models.SearchAccountsReq
     {
-        public IStringSearchField User { get; set; } = new StringSearchField();
-        public IStringSearchField Name { get; set; } = new StringSearchField();
-        public IPaginationIn Pagination { get; set; } = new PaginationIn();
+        public Models.SearchFields.StringSearchField User { get; set; } = new StringSearchField();
+        public Models.SearchFields.StringSearchField Name { get; set; } = new StringSearchField();
+        public Models.PaginationIn Pagination { get; set; } = new PaginationIn();
     }
 }

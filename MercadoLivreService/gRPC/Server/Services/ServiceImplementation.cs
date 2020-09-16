@@ -1,6 +1,7 @@
 ﻿using Grpc.Core;
 using MercadoLivreService.App.Controllers;
 using MercadoLivreService.App.UseCases;
+using MercadoLivreService.App.UseCases.Tokens;
 using MercadoLivreService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;
@@ -63,7 +64,7 @@ namespace MercadoLivreService.gRPC.Server
         {
             try
             {
-                await AccountUseCaseController.RefreshAndUpdateTokens(request.Id);
+                await TokensUseCases.Refresh.Execute(request.Id);
                 return new GrpcVoid();
             }
             catch (Exception e)
@@ -113,6 +114,18 @@ namespace MercadoLivreService.gRPC.Server
             try
             {
                 return await MainController.GetAccountByMarketplaceId(request);
+            }
+            catch (Exception e)
+            {
+                throw HandleException(e);
+            }
+        }
+
+        public override async Task<GrpcVoid> SendMessage(GrpcSendMessageReq request, ServerCallContext context)
+        {
+            try
+            {
+                return await MainController.SendMessage(request);
             }
             catch (Exception e)
             {

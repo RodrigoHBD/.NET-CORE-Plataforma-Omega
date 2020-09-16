@@ -1,5 +1,6 @@
 ﻿using MercadoLivreService.App.Boundries.DAO;
 using MercadoLivreService.App.Models;
+using MercadoLivreService.App.Models.Out;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace MercadoLivreService.App.UseCases
 {
     public class SearchAccounts
     {
-        public static async Task<AccountList> Execute(SearchAccountsReq request)
+        public async Task<AccountList> Execute(SearchAccountsReq request)
         {
             try
             {
-                return await AccountDAO.SearchAccounts(request);
+                throw new NotImplementedException("SearchAccounts");
             }
             catch (Exception)
             {

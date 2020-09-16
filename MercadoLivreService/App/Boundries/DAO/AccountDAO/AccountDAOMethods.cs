@@ -9,6 +9,8 @@ namespace MercadoLivreService.App.Boundries.AccountDAO
 {
     public class AccountDAOMethods
     {
+        public Register Register { get { return new Register(); } }
+
         public Get Get { get { return new Get(); } }
 
         public Set Set { get { return new Set(); } }

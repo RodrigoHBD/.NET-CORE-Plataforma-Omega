@@ -1,4 +1,5 @@
-﻿using MercadoLivreService.App.Models.SearchFields;
+﻿using MercadoLivreService.App.Models.In;
+using MercadoLivreService.App.Models.SearchFields;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,6 @@ namespace MercadoLivreService.App.Models
 
         public StringSearchField Name { get; set; } = new StringSearchField();
 
-        public PaginationIn Pagination { get; }
+        public PaginationIn Pagination { get; set; }
     }
 }

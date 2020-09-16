@@ -1,31 +1,31 @@
 ﻿using HttpClientLibrary;
 using MercadoLivreLibrary.Models;
-using MercadoLivreService.MercadoLivre.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MercadoLivreLibrary.Methods.Shipping
+namespace MercadoLivreLibrary.Methods.Pack
 {
-    public class GetDetail : MercadoLivreMethod
+    public class Get : MercadoLivreMethod
     {
-        public async Task<ShipmentJson> Execute(long shipmentId, string token)
+        public async Task<PackJson> Execute(long packId, long accountId, string token)
         {
             try
             {
-                var req = GetRequest(shipmentId, token);
-                return await HttpClientLib.Get<ShipmentJson, ErrorJson>(req);
+                var req = GetRequest(packId, accountId, token);
+                var json = await HttpClientLib.Get<PackJson, ErrorJson>(req);
+                return json;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }
         }
 
-        private string GetUri(long shipmentId)
+        private string GetUri(long packId, long accountId)
         {
-            return $"{BaseUri}/shipments/{shipmentId}";
+            return $"{BaseUri}/messages/packs/{packId}/sellers/{accountId}";
         }
 
         private List<UriParam> GetParams(string token)
@@ -36,11 +36,11 @@ namespace MercadoLivreLibrary.Methods.Shipping
             };
         }
 
-        private GetRequest GetRequest(long shipmentId, string token)
+        private GetRequest GetRequest(long packId, long accountId, string token)
         {
             return new GetRequest()
             {
-                Uri = GetUri(shipmentId),
+                Uri = GetUri(packId, accountId),
                 Params = GetParams(token)
             };
         }

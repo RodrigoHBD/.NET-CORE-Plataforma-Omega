@@ -18,7 +18,7 @@ namespace MercadoLivreService.App.Controllers
             try
             {
                 var request = GrpcAddAccountReqAdapter.Adapt(grpcRequest);
-                await AccountUseCaseController.AddNewAccountAsync(request);
+                await AccountUseCases.Create(request).Execute();
 
                 return new GrpcStatusResponse()
                 {
@@ -36,7 +36,7 @@ namespace MercadoLivreService.App.Controllers
             try
             {
                 var request = GrpcSearchAccountReqAdapter.Adapt(grpcRequest);
-                var result = await AccountUseCaseController.SearchAccountsAsync(request);
+                var result = await AccountUseCases.Search.Execute(request);
                 return AccountListPresenter.Present(result);
             }
             catch (Exception)
@@ -65,7 +65,7 @@ namespace MercadoLivreService.App.Controllers
             {
                 var orderId = grpcRequest.OrderId;
                 var accountId = grpcRequest.AccountId;
-                var json = await OrderUseCaseController.GetOrderDetailById(orderId, accountId);
+                var json = await OrderUseCases.GetDetails.Execute(accountId, orderId);
                 return OrderDetailPresenter.Present(json);
             }
             catch (Exception)
@@ -79,8 +79,8 @@ namespace MercadoLivreService.App.Controllers
             try
             {
                 var id = GrpcGetByIdReqAdapter.Adapt(grpcRequest);
-                var parsed = Int64.Parse(id);
-                var account = await AccountUseCases.GetByMercadoLivreId.Execute(parsed);
+                var parsedId = Int64.Parse(id);
+                var account = await AccountUseCases.Get.ByMercadoLivreId(parsedId);
                 return AccountPresenter.Present(account);
             }
             catch (Exception)
@@ -135,6 +135,24 @@ namespace MercadoLivreService.App.Controllers
                 throw;
             }
         }
+
+        public static async Task<GrpcVoid> SendMessage(GrpcSendMessageReq req)
+        {
+            try
+            {
+                var accountId = req.AccountId;
+                var orderId = req.OrderId;
+                var message = req.MessageText;
+                await MessageUseCases.SendPostSaleMessage.Execute(accountId, orderId, message);
+                return Empity;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
+        private static GrpcVoid Empity { get; } = new GrpcVoid();
 
     }
 }

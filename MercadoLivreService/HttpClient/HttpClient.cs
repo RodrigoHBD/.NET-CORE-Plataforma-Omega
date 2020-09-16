@@ -15,7 +15,7 @@ namespace HttpClientLibrary
 				var response = await HttpRequester.GetAsync(req);
 				return ResponseHandler.HanldeResponse<DataType, ErrorType>(response);
 			}
-			catch (Exception)
+			catch (Exception e)
 			{
 				throw;
 			}
@@ -28,7 +28,20 @@ namespace HttpClientLibrary
 				var response = await HttpRequester.PostAsync(req);
 				return ResponseHandler.HanldeResponse<DataType, ErrorType>(response);
 			}
-			catch (Exception)
+			catch (Exception e)
+			{
+				throw;
+			}
+		}
+
+		public static async Task Post(PostRequest req)
+		{
+			try
+			{
+				var response = await HttpRequester.PostAsync(req);
+				ResponseHandler.HanldeResponse(response);
+			}
+			catch (Exception e)
 			{
 				throw;
 			}

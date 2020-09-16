@@ -1,5 +1,5 @@
-﻿using MercadoLivreService.gRPC.Server.Protos;
-using MercadoLivreService.MercadoLivreModels.Out;
+﻿using MercadoLivreLibrary.Models;
+using MercadoLivreService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,8 @@ namespace MercadoLivreService.App.Presenter
                 ShippingId = json.shipping.id,
                 ShippingStatus = json.shipping.substatus,
                 Status = json.status,
-                TotalAmount = json.total_amount
+                TotalAmount = json.total_amount,
+                PackId = json.pack_id ?? default(long)
             };
         }
     }

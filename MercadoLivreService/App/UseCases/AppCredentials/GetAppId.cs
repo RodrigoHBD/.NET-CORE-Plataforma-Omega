@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MercadoLivreLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace MercadoLivreService.App.UseCases
         {
             try
             {
-                return Credentials.GetInstance().AppId;
+                return MercadoLivreLib.Credentials.AppId;
             }
             catch (Exception)
             {

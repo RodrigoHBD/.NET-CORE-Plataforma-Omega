@@ -1,5 +1,4 @@
-﻿using MercadoLivreService.App.Boundries.DAO.Implementations;
-using MercadoLivreService.App.Controllers.Implementations;
+﻿using MercadoLivreService.App.Models.In;
 using MercadoLivreService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;

@@ -110,7 +110,7 @@ namespace Gateway.Controllers.Api.MercadoLivre.Notifications
                 {
                     return "mercado envios";
                 }
-                else if(shippingMethod == "PAC")
+                else if(shippingMethod == "PAC" && shippingMethod == "Sedex")
                 {
                     return "correios";
                 }

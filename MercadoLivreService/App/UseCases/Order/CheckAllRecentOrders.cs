@@ -1,8 +1,10 @@
-﻿using MercadoLivreService.App.Models;
-using MercadoLivreService.App.Models.In;
+﻿using MercadoLivreLibrary;
+using MercadoLivreLibrary.Models;
+using MercadoLivreLibrary.Models.Input;
+using MercadoLivreService.App.Models;
+using MercadoLivreService.App.UseCases.Tokens;
 using MercadoLivreService.gRPC.Client;
 using MercadoLivreService.MercadoLivre.Models;
-using MercadoLivreService.MercadoLivreModels.Out;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,19 +19,16 @@ namespace MercadoLivreService.App.UseCases
             try
             {
                 await SetAccount(id);
-                await SetInitialPagination();
+                await SetToken();
+                await SetTotal();
 
-                for(var i = 0; i < Pagination.Total; i++)
+                for (; Pagination.Offset < Total; Pagination.Offset++)
                 {
-                    var pagination = new PaginationIn() { Limit = 1, Offset = i };
-                    var apiCallResponse = await MercadoLivreLib.Methods.Order.SearchRecentOrders(Account, pagination).Execute();
-                    ValdiateResponse(apiCallResponse);
-                    var data = apiCallResponse.DeserializedJson as OrderSearchJson;
-                    var order = data.results[0];
-                    await HanldeOrder(order, i);
+                    var data = await Search();
+                    await HandleSearch(data);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }
@@ -37,32 +36,39 @@ namespace MercadoLivreService.App.UseCases
 
         private Account Account { get; set; }
 
-        private Pagination Pagination { get; set; } = new Pagination() { Offset = 0, Total = 0 };
+        private string Token { get; set; }
 
-        private async Task SetAccount(string id)
+        private Pagination Pagination { get; set; } = new Pagination() { Limit = 1 };
+
+        private int Total { get; set; }
+
+        private async Task SetAccount(string id) => Account = await AccountUseCases.Get.ById(id);
+
+        private async Task SetToken() => 
+            Token = await TokensUseCases.GetValidAccessToken.ForAccount(Account.MercadoLivreId);
+
+        private async Task SetTotal()
         {
-            Account = await AccountUseCases.GetById.Execute(id);
+            var search = await MercadoLivreLib.Methods.Order
+                .SearchRecentOrders(Account.MercadoLivreId, Token, Pagination).Execute();
+            Total = search.paging.total;
         }
 
-        private async Task SetInitialPagination()
+        private async Task<OrderSearchJson> Search()
         {
-            var pagination = new PaginationIn() { Offset = 0 };
-            var apiCallResponse = await MercadoLivreLib.Methods.Order.SearchRecentOrders(Account, pagination).Execute();
-            ValdiateResponse(apiCallResponse);
-            var data = apiCallResponse.DeserializedJson as OrderSearchJson;
-            Pagination.Total = data.paging.total;
-            Pagination.Limit = 1;
+            return await MercadoLivreLib.Methods.Order
+                .SearchRecentOrders(Account.MercadoLivreId, Token, Pagination).Execute();
         }
 
-        private void ValdiateResponse(ApiCallResponse response)
+        private async Task HandleSearch(OrderSearchJson json)
         {
-            if (!response.IsOk)
+            json.results.ForEach(async order => 
             {
-                throw response.Exception;
-            }
+                await HanldeOrder(order);
+            });
         }
 
-        private async Task HanldeOrder(OrderDetailJson order, int i)
+        private async Task HanldeOrder(OrderDetailJson order)
         {
             await CreateShipment(order);
         }

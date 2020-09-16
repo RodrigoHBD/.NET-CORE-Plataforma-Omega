@@ -1,4 +1,5 @@
 ﻿using MercadoLivreService.App.Models;
+using MercadoLivreService.App.Models.Out;
 using MercadoLivreService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace MercadoLivreService.App.Presenter
 {
     public class PaginationOutPresenter
     {
-        public static GrpcPaginationOut Present(IPaginationOut pagination)
+        public static GrpcPaginationOut Present(PaginationOut pagination)
         {
             try
             {

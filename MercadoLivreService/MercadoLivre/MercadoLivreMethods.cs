@@ -15,5 +15,7 @@ namespace MercadoLivreLibrary
         public OrderMethods Order { get; } = new OrderMethods();
 
         public ShippingMethods Shipment { get; } = new ShippingMethods();
+
+        public PackMethods Pack { get; } = new PackMethods();
     }
 }

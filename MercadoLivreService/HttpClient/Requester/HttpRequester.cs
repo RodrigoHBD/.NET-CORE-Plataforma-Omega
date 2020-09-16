@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HttpClientLibrary
@@ -27,7 +28,9 @@ namespace HttpClientLibrary
             try
             {
                 var uri = GetUri(req);
-                return await Client.PostAsync(uri, req.Data);
+                var json = Json.Serialize(req.Data);
+                var data = new StringContent(json, Encoding.UTF8, "application/json");
+                return await Client.PostAsync(uri, data);
             }
             catch (Exception)
             {

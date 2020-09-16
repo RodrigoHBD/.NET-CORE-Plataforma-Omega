@@ -9,7 +9,7 @@ namespace MercadoLivreLibrary.Methods.Order
 {
     public class GetDetails : MercadoLivreMethod
     {
-        public async Task<OrderDetailJson> Execute(dynamic orderId, dynamic accountId, string token)
+        public async Task<OrderDetailJson> Execute(long orderId, long accountId, string token)
         {
             try
             {
@@ -23,22 +23,22 @@ namespace MercadoLivreLibrary.Methods.Order
             }
         }
 
-        private string GetUri(string orderId)
+        private string GetUri(long orderId)
         {
             return $"{BaseUri}/orders/{orderId}";
         }
 
-        private List<UriParam> GetParams(dynamic orderId, dynamic accountId, string token)
+        private List<UriParam> GetParams(long orderId, long accountId, string token)
         {
             return new List<UriParam>()
             {
-                new UriParam(){ Name = "seller", Data = accountId },
+                new UriParam(){ Name = "seller", Data = accountId.ToString() },
                 new UriParam(){ Name = "access_token", Data = token },
-                new UriParam(){ Name = "q", Data = orderId }
+                new UriParam(){ Name = "q", Data = orderId.ToString() }
             };
         }
 
-        private GetRequest GetRequest(dynamic orderId, dynamic accountId, string token)
+        private GetRequest GetRequest(long orderId, dynamic accountId, string token)
         {
             return new GetRequest() 
             {

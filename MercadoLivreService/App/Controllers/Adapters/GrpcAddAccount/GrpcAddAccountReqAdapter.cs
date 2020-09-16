@@ -1,5 +1,4 @@
-﻿using MercadoLivreService.App.Controllers.Implementations;
-using MercadoLivreService.App.Models;
+﻿using MercadoLivreService.App.Models;
 using MercadoLivreService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ namespace MercadoLivreService.App.Controllers.Adapters
 {
     public class GrpcAddAccountReqAdapter
     {
-        public static IAddAccountRequest Adapt(GrpcAddAccountReq grpcRequest)
+        public static AddAccountRequest Adapt(GrpcAddAccountReq grpcRequest)
         {
             try
             {

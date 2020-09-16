@@ -24,6 +24,20 @@ namespace HttpClientLibrary
             }
         }
 
+        public static void HanldeResponse(HttpResponseMessage resp)
+        {
+            var requestIsSuccessfull = resp.IsSuccessStatusCode;
+
+            if (requestIsSuccessfull)
+            {
+                return;
+            }
+            else
+            {
+                throw new Exception("HTTP REQUEST FALHOU NO TODO DO HTTPCLIENT SEU ARROMBADO");
+            }
+        }
+
         public static T HandleDeserialization<T>(HttpContent body)
         {
             var contentType = body.Headers.ContentType.MediaType;

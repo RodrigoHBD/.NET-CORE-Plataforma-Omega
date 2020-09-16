@@ -1,4 +1,5 @@
 ﻿using MercadoLivreService.App.Models;
+using MercadoLivreService.App.Models.Out;
 using MercadoLivreService.gRPC.Server.Protos;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace MercadoLivreService.App.Presenter
 {
     public class AccountListPresenter
     {
-        public static GrpcAccountList Present(IAccountList accountList)
+        public static GrpcAccountList Present(AccountList accountList)
         {
             try
             {
@@ -17,7 +18,7 @@ namespace MercadoLivreService.App.Presenter
                 {
                     Pagination = PaginationOutPresenter.Present(accountList.Pagination)
                 };
-                accountList.Accounts.ForEach(acc => { presented.Accounts.Add( AccountPresenter.Present(acc) ); });
+                accountList.Data.ForEach(acc => { presented.Accounts.Add( AccountPresenter.Present(acc) ); });
                 return presented;
             }
             catch (Exception)

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -18,12 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\Integra%2528Omega%2529\.NET CORE\MercadoLivreService\App\Models\Internal\Pagination\Pagination.cs" />
-    <Compile Include="..\..\..\Integra%2528Omega%2529\.NET CORE\MercadoLivreService\App\Models\SearchFields\StringSearchField.cs" />
-    <Compile Include="..\..\..\Integra%2528Omega%2529\.NET CORE\MercadoLivreService\MercadoLivre\Models\Json\Search\OrderSearchJson.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Protobuf Include="gRPC\Client\Shipping\Proto\shippingService.proto" GrpcServices="Client" />
     <Protobuf Include="gRPC\Server\Protos\service.proto" GrpcServices="Server" />
   </ItemGroup>
@@ -38,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="App\Models\Internal\" />
+    <Folder Include="MercadoLivre\Models\Json\Message\" />
     <Folder Include="MercadoLivre\Models\Out\" />
   </ItemGroup>
 

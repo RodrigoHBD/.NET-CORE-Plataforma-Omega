@@ -21,11 +21,12 @@ namespace ShippingService.App.UseCases
 
                 for (; Search.Pagination.Offset < total; IncrementSearch(), await SetShipments())
                 {
-                    Shipments.ForEach(async shipment => { 
-                        await Update(shipment); });
-                    Console.WriteLine();
+                    Shipments.ForEach(async shipment => 
+                    { 
+                        await Update(shipment);
+                        await ShipmentUseCases.NotifyUpdates(shipment);
+                    });
                 }
-                Console.WriteLine();
             }
             catch (Exception e)
             {

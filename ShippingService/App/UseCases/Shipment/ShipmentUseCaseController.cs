@@ -1,4 +1,5 @@
 ﻿using ShippingService.App.Entities;
+using ShippingService.App.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ShippingService.App.UseCases
                 var shipment = await ShipmentUseCases.Get.ById(id);
                 await ShipmentUseCases.UpdateShipmentWithBoundry(shipment);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }

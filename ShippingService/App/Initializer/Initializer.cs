@@ -1,4 +1,5 @@
-﻿using ShippingService.HttpClientLibrary;
+﻿using ShippingService.gRPC.Client.MercadoLivre;
+using ShippingService.HttpClientLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,7 @@ namespace ShippingService.App
         {
             try
             {
+                MercadoLivreClient.Initialize();
                 RoutineScheduler.Initialize();
             }
             catch (Exception e)

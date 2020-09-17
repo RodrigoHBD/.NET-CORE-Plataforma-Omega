@@ -17,6 +17,8 @@ namespace ShippingService.App.Models.ShipmentEvents
 
         public bool PackageHasArrived { get; set; }
 
+        public bool IsUserNotified { get; set; } = false;
+
         public ForwardedToLocations Locations { get; set; } = new ForwardedToLocations();
 
         public ShipmentEventDates Dates { get; set; } = new ShipmentEventDates();

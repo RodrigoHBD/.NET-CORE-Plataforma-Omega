@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShippingService.App.UseCases
 {
-    public class ShipmentGetBy
+    public class GetShipment
     {
         public async Task<Shipment> ById(string id)
         {

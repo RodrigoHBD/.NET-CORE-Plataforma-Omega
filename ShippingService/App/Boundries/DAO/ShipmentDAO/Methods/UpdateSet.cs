@@ -87,5 +87,21 @@ namespace ShippingService.App.Boundries.ShipmentDAOMethods
             }
         }
 
+        public async Task PostedEventNotified(string id, bool toggle)
+        {
+            try
+            {
+                var filter = FilterBuilder.Where(shipment => shipment.Id == ObjectId.Parse(id));
+                var update = UpdateBuilder
+                    .Set(shipment => shipment.PostedEvent.IsUserNotified, toggle)
+                    .Set(shipment => shipment.PostedEvent.Dates.UserLastNotifiedAt, DateTime.UtcNow);
+                await Collections.Shipments.UpdateOneAsync(filter, update);
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
     }
 }

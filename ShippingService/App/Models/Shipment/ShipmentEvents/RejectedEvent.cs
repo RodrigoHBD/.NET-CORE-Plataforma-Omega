@@ -25,6 +25,8 @@ namespace ShippingService.App.Models.ShipmentEvents
 
         public bool IsRejected { get; set; } = false;
 
+        public bool IsUserNotified { get; set; } = false;
+
         public ShipmentModifier GetModifiers()
         {
             if (IsRejected)

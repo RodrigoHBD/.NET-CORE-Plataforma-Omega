@@ -9,8 +9,13 @@ namespace ShippingService.App.Models
     public interface IShipmentEvent
     {
         string Title { get; }
+
         string Description { get; }
+
+        bool IsUserNotified { get; set; }
+
         ShipmentEventDates Dates { get; }
+
         ShipmentModifier GetModifiers();
     }
 
@@ -18,6 +23,9 @@ namespace ShippingService.App.Models
     {
         [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime OccurredAt { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime UserLastNotifiedAt { get; set; }
     }
 
 }

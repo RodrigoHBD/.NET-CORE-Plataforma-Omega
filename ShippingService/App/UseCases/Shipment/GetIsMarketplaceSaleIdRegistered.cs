@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ShippingService.App.UseCases
 {
-    public class Get
+    public class GetIsMarketplaceSaleIdRegistered
     {
-        public async Task<bool> IsMarketplaceSaleIdRegistered()
+        public async Task<bool> Execute()
         {
             try
             {
@@ -22,7 +22,7 @@ namespace ShippingService.App.UseCases
             }
         }
 
-        public Get(string id) => ShipmentId = id;
+        public GetIsMarketplaceSaleIdRegistered(string id) => ShipmentId = id;
 
         private string ShipmentId { get; }
     }

@@ -9,17 +9,14 @@
 
   <ItemGroup>
     <Compile Remove="App\Boundries\Shipping\Helpers\**" />
-    <Compile Remove="gRPC\Client\**" />
     <Content Remove="App\Boundries\Shipping\Helpers\**" />
-    <Content Remove="gRPC\Client\**" />
     <EmbeddedResource Remove="App\Boundries\Shipping\Helpers\**" />
-    <EmbeddedResource Remove="gRPC\Client\**" />
     <None Remove="App\Boundries\Shipping\Helpers\**" />
-    <None Remove="gRPC\Client\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Protobuf Include="gRPC\Server\Protos\service.proto" GrpcServices="Server" />
+    <Protobuf Include="gRPC\Client\MercadoLivre\mercado_livre.proto" GrpcServices="Client" />
   </ItemGroup>
 
   <ItemGroup>

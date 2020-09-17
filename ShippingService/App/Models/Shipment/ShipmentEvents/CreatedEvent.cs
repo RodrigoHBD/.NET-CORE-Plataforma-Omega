@@ -20,6 +20,8 @@ namespace ShippingService.App.Models.ShipmentEvents
 
         public string Description { get; private set; }
 
+        public bool IsUserNotified { get; set; } = false;
+
         public ShipmentEventDates Dates { get; private set; }
 
         public void SetOccuredAtToNow()
